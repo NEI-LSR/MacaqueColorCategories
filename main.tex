@@ -1,43 +1,76 @@
-\documentclass{article}
-
 % Copied from https://www.nature.com/nathumbehav/registeredreports
 % Specifically: https://www.nature.com/documents/NHB_Template_RR_Stage1.docx
 % on 20201202
 
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[american]{babel} % this document is written in American English
+%\usepackage{csquotes} %"csquotes is recommended to ensure that quoted texts are typeset according to the rules of your main language." https://tex.stackexchange.com/a/229653/169285
+
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage{natbib}
+
+\usepackage{doi} %formats DOIs nicely
+\usepackage{hyperref} %handles links
+\usepackage{microtype} %makes text formatting slightly more readable
+\usepackage{libertine} %uses open source font
+
 \begin{document}
 
-\section{Title page}
+%\section{Title page}
 
 \section{Abstract}
+\input{abstract.tex}
 
-\section{Introduction} %(no subheadings permitted)
+\section{Introduction}
 \input{Introduction.tex}
 
 \section{Methods}
 \subsection{Ethics information}
-\subsection{Pilot data}
- %(if applicable)
 \subsection{Design}
-\subsection{Sampling plan}
-\subsection{Analysis plan}
+\subsection{Data Analysis}
 
 \section{Data availability statement}
 
+Data is available at: zenodo(?)...
+
 \section{Code availability statement}
 
-\section{References}
+Code as used in this paper: doi...
+Latest version of code: github...
 
 \section{Acknowledgments}
 
 \section{Author contributions}
 
+% table? e.g. https://twitter.com/AnneEUrai/status/1361356189284581387
+
+% 'CRediT' (https://casrai.org/credit/)
+%:
+% Conceptualization
+% Data curation
+% Formal Analysis
+% Funding acquisition
+% Investigation
+% Methodology
+% Project administration
+% Resources
+% Software
+% Supervision
+% Validation
+% Visualization
+% Writing – original draft
+% Writing – review & editing
+
+
 \section{Competing interests}
 
-\section{Figures \& Figure captions}
+\section{References}
+\bibliographystyle{plainnat}
+\bibliography{bib}
 
-\section{Tables}
- %(A Design Table is mandatory)
- 
 \section{Supplementary information}
 
 \end{document}
