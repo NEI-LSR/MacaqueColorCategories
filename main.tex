@@ -6,16 +6,14 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[american]{babel} % this document is written in American English
-%\usepackage{csquotes} %"csquotes is recommended to ensure that quoted texts are typeset according to the rules of your main language." https://tex.stackexchange.com/a/229653/169285
-
-\renewcommand{\baselinestretch}{1.5}
-
-\usepackage{natbib}
-
+\usepackage{natbib} %bibliography package
 \usepackage{doi} %formats DOIs nicely
 \usepackage{hyperref} %handles links
 \usepackage{microtype} %makes text formatting slightly more readable
 \usepackage{libertine} %uses open source font
+\usepackage{svg}
+
+\renewcommand{\baselinestretch}{1.5} % increase the lineheight to 1.5x
 
 \begin{document}
 
@@ -28,9 +26,20 @@
 \input{Introduction.tex}
 
 \section{Methods}
-\subsection{Ethics information}
-\subsection{Design}
+\subsection{Experimental model and subject details}
+\subsection{Behavioral tasks}
+\input{Behavioral task.tex}
 \subsection{Data Analysis}
+\input{Data Analysis.tex}
+
+\section{Results}
+\input{Results.tex}
+\section{Conclusion}
+
+% Test svg:
+
+% \includesvg{drawing-1.svg}
+
 
 \section{Data availability statement}
 
