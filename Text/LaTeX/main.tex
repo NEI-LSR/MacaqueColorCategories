@@ -12,14 +12,40 @@
 \usepackage{microtype} %makes text formatting slightly more readable
 \usepackage{libertine} %uses open source font
 \usepackage{svg}
+\usepackage{authblk}
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = gray, %Colour of internal links
+  citecolor    = gray  %Colour of citations
+}
 
 \renewcommand{\baselinestretch}{1.5} % increase the lineheight to 1.5x
 
+\newcommand{\beginsupplement}{% this makes it so that tables and figures in the supplement are numbered and automatically captioned appropriately
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+
+\author{Daniel Garside}
+\author{Audrey Chang}
+\author{Hannah Selwyn}
+\author{Shriya Awasthi}
+\author{Bevil Conway}
+\affil{Laboratory of Sensorimotor Research, National Eye Institute, National Institutes of Health, USA}
+
 \begin{document}
+
+\title{Macaque Color Categories}
+\date{}
+\maketitle
 
 %\section{Title page}
 
-\section{Abstract}
+\section*{Abstract}
 \input{abstract.tex}
 
 \section{Introduction}
@@ -82,6 +108,13 @@ Latest version of code: github...
 
 
 \section{Supplementary information}
+\beginsupplement
+
+\begin{figure}
+\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/F1_StimuliAndParadigm_1.svg}
+\caption{SUPPLEMENTAL FIGURE TEST} 
+\label{fig:suppTest}
+\end{figure}
 
 \end{document}
 
