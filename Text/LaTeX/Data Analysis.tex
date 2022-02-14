@@ -1,8 +1,19 @@
 
-To measure color categorization behavior, we analyzed the monkey's errors in the behavioral task. For each cue, we plotted the monkey's choices on incorrect trials by the angular error between the cue and the choice. These values were normalized by the number of times each choice was presented as a choice option for all completed trials of the given cue. 
+To measure color categorization behavior, we analyzed the monkey's errors in the behavioral task. For each completed trial, we calculated the monkey's error as the angular difference between the choice and the cue option. Trials on which the monkey made the correct choice would therefore have an error value of zero degrees, while a trial in which the monkey selected the maximally distant choice available would have an error value of 180 degrees. % not always an option to pick though, so how to make this clear? Furthest choice away on a given cue does not always equal 180 degrees away. 
 
-The peak of the Gaussian was used as a measure of bias in the monkeys' reports.
+For each cue, we plotted the number of times the monkey selected each incorrect choice by angular distance from cue. These values were normalized by the number of times each choice was presented as a choice option for all completed trials of the given cue.
+
+We then fit a Gaussian (equation: $a*exp(-(((x-b)^2)/(2*c^2)))+d$) to the error distribution for each cue. The fit was weighted by the number of times each incorrect choice was an option across all completed trials for the given cue.
+
+The peak of the Gaussian is a measure of the monkey's bias in picking choices. Since the choices to either side of each cue are equally
 
 We then fit a Gaussian curve to the error distribution for each cue. This fit was weighted by the number of times each choice color was an option for the given cue across all completed trials. Bias was given in degrees by the difference between the cue (at 0 degrees) and the peak of the Gaussian. Bias was plotted for each cue. Category centers correspond to where the bias curve crosses the zero line on a downward slope.
 
-To find the 95 percent confidence intervals for the locations of the category centers, we performed 1000 bootstraps on all completed trials and found
+To find the 95\% confidence intervals for the locations of the category centers, we performed 1000 bootstraps on all completed trials and found 
+
+
+\begin{figure}
+\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/F2_DataAnalysis_1.svg}
+\caption{Data analysis} 
+\label{fig:dataAnalysis}
+\end{figure}
