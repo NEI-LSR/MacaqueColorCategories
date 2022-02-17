@@ -1,19 +1,28 @@
 
-To measure color categorization behavior, we analyzed the monkey's errors in the behavioral task. For each completed trial, we calculated the monkey's error as the angular difference between the choice and the cue option. Trials on which the monkey made the correct choice would therefore have an error value of zero degrees, while a trial in which the monkey selected the maximally distant choice available would have an error value of 180 degrees. % not always an option to pick though, so how to make this clear? Furthest choice away on a given cue does not always equal 180 degrees away. 
+\paragraph{Computation of bias} To assess the bias in responses for each cue, we computed the distribution of responses on trials where the monkey made an incorrect choice.
+For each completed trial, we calculated the error as the angular difference between the correct option and the chosen option.  
+For each cue, we computed the number of times the monkey selected each incorrect choice, normalized by the number of times each choice color was available as a choice option for all completed trials of the given cue (this was approximately uniformly distributed).
 
-For each cue, we plotted the number of times the monkey selected each incorrect choice by angular distance from cue. These values were normalized by the number of times each choice was presented as a choice option for all completed trials of the given cue.
+We then fit a Gaussian with a variable floor ($a \cdot exp(-(((x-b)^2)/(2c^2)))+d$) to the error distribution for each cue. 
+This fit was weighted by the number of times each choice color was an option for the given cue across all completed trials (as before, this was approximately uniformly distributed). 
+Bias was taken as the difference between the cue and the peak of the corresponding Gaussian, for each cue color. These values were then smoothed (with a circular moving average filter of 5 cues) since our primary interest was in the broader structure of the bias distribution, and this is shown as the black lines in \autoref{fig:BiasCurves}.
 
-We then fit a Gaussian (equation: $a*exp(-(((x-b)^2)/(2*c^2)))+d$) to the error distribution for each cue. The fit was weighted by the number of times each incorrect choice was an option across all completed trials for the given cue.
+Attractor points (thought to indicate color category centers) occur where the bias curve crosses the zero line from positive to negative (going counter-clockwise).
+At these points, there is zero bias, and hues on either side provoke choices that are biased inwards towards this point.
+Correspondingly, repeller points occur where the bias curve crosses the zero line from \emph{negative to positive} (again, going counter-clockwise).
+At these points there is also zero bias, but hues either side of this point are biased \emph{away} from this point.
 
-The peak of the Gaussian is a measure of the monkey's bias in picking choices. Since the choices to either side of each cue are equally
-
-We then fit a Gaussian curve to the error distribution for each cue. This fit was weighted by the number of times each choice color was an option for the given cue across all completed trials. Bias was given in degrees by the difference between the cue (at 0 degrees) and the peak of the Gaussian. Bias was plotted for each cue. Category centers correspond to where the bias curve crosses the zero line on a downward slope.
-
-To find the 95\% confidence intervals for the locations of the category centers, we performed 1000 bootstraps on all completed trials and found 
-
+\paragraph{Confidence intervals}
+To find the 95\% confidence intervals for the locations of the category centers, we performed 1000 bootstraps on all completed trials. For each bootstrapped sample, we found the bias values for each cue color, smoothed the bias curve, and found the category center locations for each bootstrapped dataset. To find the category center locations for the full data set and their confidence interval, we found the category boundaries and segmented all bootstrapped category centers that fell between two consecutive category boundaries. For each of these segments, we found the circular mean and circular standard deviation of all category crossings that fell within these boundaries. 
 
 \begin{figure}
 \includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/F2_DataAnalysis_1.svg}
-\caption{Data analysis} 
+\caption{\textbf{Data analysis pipeline.}
+\emph{A.} Performance as a function of trial difficulty, quantified as the closeness of the chromatically closest incorrect choice, with four example choice sets below for trials where the cue was cue \#28.
+\emph{B.} The distribution of incorrect choices for cue \#28 for M1, with an arrow indicating the peak of a Gaussian fitted to these values which is taken as the bias for this cue. Confidence interval refers to the 95\% confidence interval on the peak of the Gaussian from the fitting procedure.
+%\emph{C.} Bias as a function of hue. 
+%Upper: For M1, showing raw data (colored dots) and smoothed trend line (black line) derived by using a circular moving average of five cues.
+%Lower: 
+} 
 \label{fig:dataAnalysis}
 \end{figure}
