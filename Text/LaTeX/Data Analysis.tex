@@ -16,7 +16,7 @@ At these points there is also zero bias, but hues either side of this point are 
 To find the 95\% confidence intervals for the locations of the category centers, we performed 1000 bootstraps on all completed trials. For each bootstrapped sample, we found the bias values for each cue color, smoothed the bias curve, and found the category center locations for each bootstrapped dataset. To find the category center locations for the full data set and their confidence interval, we found the category boundaries and segmented all bootstrapped category centers that fell between two consecutive category boundaries. For each of these segments, we found the circular mean and circular standard deviation of all category crossings that fell within these boundaries. 
 
 \begin{figure}
-\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/F2_DataAnalysis_1.svg}
+\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/F2_DataAnalysis_v1.svg}
 \caption{\textbf{Data analysis pipeline.}
 \emph{A.} Performance as a function of trial difficulty, quantified as the closeness of the chromatically closest incorrect choice, with four example choice sets below for trials where the cue was cue \#28.
 \emph{B.} The distribution of incorrect choices for cue \#28 for M1, with an arrow indicating the peak of a Gaussian fitted to these values which is taken as the bias for this cue. Confidence interval refers to the 95\% confidence interval on the peak of the Gaussian from the fitting procedure.
@@ -26,3 +26,5 @@ To find the 95\% confidence intervals for the locations of the category centers,
 } 
 \label{fig:DataAnalysis}
 \end{figure}
+
+\paragraph{Learning Rates}
