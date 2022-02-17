@@ -5,8 +5,10 @@ The animals examined show a hallmark of color categorization behavior: memory bi
 In \autoref{fig:BiasCurves} it can be seen that the confidence intervals deviate substantially from the dashed zero line, with the attractor points being found where the black line crosses the zero line from positive to negative (going counter-clockwise) and the repeller points are found where the line crosses from negative to positive. 
 
 \begin{figure}
-\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/F3_BiasCurves_v1.svg}
+\includesvg[inkscapelatex=false, height=\textwidth]{../../Figures/F3_BiasCurves_v2.svg}
 \caption{\textbf{Bias as a function of hue.} 
+\emph{A.} The distribution of incorrect choices for cue \#28 for M1, with an arrow indicating the peak of a Gaussian fitted to these values which is taken as the bias for this cue. Confidence interval refers to the 95\% confidence interval on the peak of the Gaussian from the fitting procedure.
+\emph{C-F.} Individual bias curves for the 4 tested animals.
 \emph{Black dotted line:} The zero lines where responses would fall if there were no biases.
 \emph{Black line:} Bias as a function of hue for monkeys M1, M2, M3 and M4, smoothed with a moving average filter of 5 cues. 
 \emph{Gray filled:} confidence intervals for the line, computed through bootstrapping . 
@@ -30,7 +32,7 @@ In one animal we see evidence of additional categories: strong evidence for a gr
 
 \paragraph{Controls for non-uniformity of colorspace}
 
-We (hopefully will) disambiguate biases that arise from residual non-uniformity in the colorspace, and those that arise from memory biases.
+We [hopefully will] disambiguate biases that arise from residual non-uniformity in the colorspace, and those that arise from memory biases.
 
 It is plausible that there are non-uniformities in CIELUV that may result in our nominally iso-saturated colors actually appearing to have variable saturation. This would be a concern, as it would be a reasonable prediction that higher saturation colors would be more salient, and thus more likely to be selected as responses. In a control experiment we see no (or very little) bias towards higher saturation colors.
 
