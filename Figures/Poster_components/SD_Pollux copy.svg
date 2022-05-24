@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 454.61 755.04" style="enable-background:new 0 0 454.61 755.04;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#262626;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{font-family:'ArialMT';}
+	.st2{font-size:25px;}
+	.st3{fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{opacity:0.102;}
+	
+		.st5{opacity:0.702;fill:none;stroke:#262626;stroke-width:2;stroke-linejoin:bevel;stroke-miterlimit:1;stroke-dasharray:5.0027,3.0016;}
+</style>
+<g>
+	<line class="st0" x1="78.11" y1="662.56" x2="415.71" y2="662.56"/>
+	<line class="st0" x1="78.11" y1="662.56" x2="78.11" y2="678.42"/>
+	<line class="st0" x1="246.91" y1="662.56" x2="246.91" y2="678.42"/>
+	<line class="st0" x1="415.71" y1="662.56" x2="415.71" y2="678.42"/>
+	<text transform="matrix(1 0 0 1 55.4205 704.6431)" class="st1 st2">-50</text>
+	<text transform="matrix(1 0 0 1 239.1344 704.6401)" class="st1 st2">0</text>
+	<text transform="matrix(1 0 0 1 401.9615 704.6431)" class="st1 st2">50</text>
+	<text transform="matrix(1 0 0 1 68.3579 732.0815)" class="st1 st2">Distance from category center (</text>
+	<text transform="matrix(0.583 0 0 0.583 417.1011 723.7563)" class="st1 st2">o</text>
+	<text transform="matrix(1 0 0 1 425.2065 732.0815)" class="st1 st2">)</text>
+	<line class="st0" x1="78.11" y1="662.56" x2="78.11" y2="28.21"/>
+	<line class="st0" x1="78.11" y1="662.56" x2="68.36" y2="662.56"/>
+	<line class="st0" x1="78.11" y1="28.21" x2="68.36" y2="28.21"/>
+	<text transform="matrix(1 0 0 1 33.2701 672.522)" class="st1 st2">35</text>
+	<text transform="matrix(1 0 0 1 33.2701 39.1196)" class="st1 st2">70</text>
+	<path class="st3" d="M78.07,250.56l9.95,50.32l18.99,46.77c10.69,36.37,29.59,112.42,37.98,150.55l18.99,10.33l18.99-34.96
+		l18.99,47.57l18.99-15.91l18.99-52.72l18.99,25.63l18.99-94.4l18.99,16l18.99-24.61l18.99-11.56l18.99-53.04l18.99-11.37
+		l18.99,66.55l18.99-81.43l4.9,0.04"/>
+	<path class="st4" d="M372.86,174.19l-18.99,12.25l-18.99,69.12l-18.99-8.51l-18.99,63.07l-18.99-68.34l-18.99,143.85l-18.99-10.73
+		l-18.99,67.84l-18.99-8.96l-18.99-59.36l-18.99,57.24l-18.99-15.14C125.04,311.03,95.53,185.87,78.07,79.37
+		c0,93.12,0,215.05,0,307.57c0,8.51,0,26.22,0,34.81c0,0,9.95,42.69,9.95,42.69l18.99-0.31c11.78,26.23,30.28,85.6,37.98,115.76
+		l18.99,5.52l18.99-12.68l18.99,35.78c9.04-20.11,28.06-59.47,37.98-78.38l18.99,40.53c8.4-21.63,27.22-62.78,37.98-81.29
+		l18.99,13.84c10.27-15.83,29.23-50.43,37.98-68.59l18.99-10.49l18.99,57.83l18.99-33.44l4.9,4.5c0-72.92,0-263.58,0-337.37
+		l-4.9,4.41l-18.99,129.41"/>
+	<line class="st5" x1="246.91" y1="662.56" x2="246.91" y2="28.21"/>
+	<text transform="matrix(0 -1 1 0 60.6191 455.2748)" class="st1 st2">Standard deviation (</text>
+	<text transform="matrix(0 -0.583 0.583 0 52.2939 231.5199)" class="st1 st2">o</text>
+	<text transform="matrix(0 -1 1 0 60.6191 223.4144)" class="st1 st2">)</text>
+</g>
+</svg>
