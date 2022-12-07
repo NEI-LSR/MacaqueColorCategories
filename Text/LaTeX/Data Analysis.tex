@@ -32,3 +32,19 @@ Performance as a function of trial difficulty, quantified as the closeness of th
 \end{figure}
 
 \paragraph{Learning Rates}
+
+We applied a reinforcement-learning (RL) framework to assess how learning rates varied for each of the 64 colors used during the 4-AFC version of the task. For each animal, we used a Bayesian Adaptive Direct Search algorithm to optimize the learning rate and inverse temperature for every color.
+The expected values were updated on each trial based on the following equation:
+$$value_i,j(t+1) = value_i,j(t)+p_k*(r(t)-value_i,j(t))$$
+where $v_i,j$ is the expected value for selecting option i given cue j, r is a binary value indicating reward feedback for the current trial t, and $p_k$ is the fitted feedback-dependent learning rate parameter for color $k$.
+
+We then passed these value estimates through the softmax function to generate choice probability estimates as follows:
+$$d_i,j(t) = exp(beta_k * v_i,j) / sum_x(exp(beta_k(x) * v_i,j(x))): $$
+where $d$ is the choice probability, which estimates the certainty of the monkey in selecting the correct choice, and $beta_k$ represents the fitted inverse temperature parameter, which estimates the peak performance for each color k.
+
+Using the choice probability estimate, we computed the negative log likelihood using the following equation:
+$$ll = ll – log(d_i,j(t))$$
+Where $d_i,j(t)$ represents the choice probability for the correct cue-option combination for each trial $t$.
+
+Comparison of learning rates
+The optimal learning rates for each color were plotted in DKL color space, using standard Psychtoolbox methods in MATLAB. Using a Fourier analysis, we then fit the learning rate data in polar DKL color space and determined the statistical significance of any peaks in frequency based on the power spectrum. 
