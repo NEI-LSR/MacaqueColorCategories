@@ -2,23 +2,31 @@
  To assess the bias in responses for each cue, we computed the distribution of responses on trials where the monkey made an incorrect choice.
 For each completed trial, we calculated the error as the angular difference between the correct option and the chosen option.  
 For each cue, we computed the number of times the monkey selected each incorrect choice, normalized by the number of times each choice color was available as a choice option for all completed trials of the given cue (this was approximately uniformly distributed).
+We then fit a Gaussian with a variable floor (Equation \ref{eq:GaussianEquation}) to the error distribution for each cue. 
 
 % demo annotated-equation code from here: https://mirrors.concertpass.com/tex-archive/macros/latex/contrib/annotate-equations/annotate-equations.pdf
 
 %\newpage %Sometimes the annotations don't show up, the hacky solution is to force them onto a new page
-\vspace{4em} 
-\renewcommand{\eqnhighlightheight}{\vphantom{\hat{H}}\mathstrut}
-\begin{equation}
-i \tikzmarknode{hbar}{\mathstrut\hbar} \frac{\partial}{\partial t}
-\eqnmarkbox[blue]{Psi1}{\Psi(x, t)} = \eqnmark[red]{Hhat}{\hat{H}}
-\eqnmarkbox[blue]{Psi2}{\Psi(x, t)}
-\end{equation}
-\annotate[yshift=3em]{above}{hbar}{$\hbar = \frac{h}{2\pi}$, reduced Planck constant}
-\annotate[yshift=1em]{above}{Hhat}{Hamilton operator}
-\annotatetwo[yshift=-1em]{below}{Psi1}{Psi2}{Wave function}
-\vspace{1em}
 
-We then fit a Gaussian with a variable floor ($a \cdot exp(-(((x-b)^2)/(2c^2)))+d$) to the error distribution for each cue. 
+\vspace{2em} 
+\begin{equation} \label{eq:GaussianEquation}
+    \eqnmarkbox[NavyBlue]{p1}{a}
+    \cdot
+    \exp
+    -\frac{(x-
+    \eqnmarkbox[WildStrawberry]{b}{b}
+    )^2}{2 
+    \eqnmarkbox[OliveGreen]{c}{c}^2}
+    +
+    \eqnmarkbox[Plum]{d}{d}        
+\end{equation}
+
+\annotate[yshift=1em]{above,left}{p1}{height of the curve's peak}
+\annotate[yshift=1em]{above}{b}{the position of the center of the peak}
+\annotate[yshift=-0.75em]{below,left}{c}{the standard deviation}
+\annotate[yshift=-1em]{below}{d}{floor}
+\vspace{2em} 
+
 This fit was weighted by the number of times each choice color was an option for the given cue across all completed trials (as before, this was approximately uniformly distributed). 
 Bias was taken as the difference between the cue and the peak of the corresponding Gaussian, for each cue color. These values were then smoothed (with a circular moving average filter of 5 cues) since our primary interest was in the broader structure of the bias distribution, and this is shown as the black lines in \autoref{fig:BiasCurves}.
 
