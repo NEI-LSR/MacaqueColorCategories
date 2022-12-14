@@ -5,7 +5,8 @@
 
 
 % Declare document class
-\documentclass[9pt,biorxiv,lineno]{lapreprint}
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[9pt,biorxiv,lineno,onehalfspacing]{lapreprint}
 % Choose between "biorxiv", "medrxiv", "arxiv" and "chemrxiv". Otherwise defaults "Preprint".
 % Choose between "blue" and "red" colour scheme. Defaults to "blue".
 % Use the "onehalfspacing" option for 1.5 line spacing.
@@ -14,7 +15,6 @@
 % Use the "endfloat" option to place floats after the bibliography.
 
 % Import packages
-\usepackage{siunitx}    % For SI units
 \usepackage{pdflscape}  % For putting pages in landscape mode
 \usepackage{rotating}   % For rotating specific elements
 \usepackage{textgreek}  % Greek symbols
@@ -30,16 +30,10 @@
 \usepackage{snotez}     % For sidenote environments. enotez for endnotes
 \usepackage{csquotes}   % For language-based quote rules (helps BiBLaTeX)
 
-% Make declarations
-\DeclareSIUnit\Molar{M}
-
-% Please note that these options may affect formatting. 
-
-\usepackage[dvipsnames]{xcolor}
-
+%\usepackage[dvipsnames]{xcolor}
 \usepackage[utf8]{inputenc}
-\usepackage[american]{babel} % this document is written in American English
-\usepackage{doi} %formats DOIs nicely
+%\usepackage[american]{babel} % this document is written in American English
+%\usepackage{doi} %formats DOIs nicely
 \usepackage{hyperref} %handles links
 \usepackage[all]{hypcap}
 \usepackage{microtype} %makes text formatting slightly more readable
@@ -80,7 +74,7 @@
 ]{biblatex}
 
 % Update to your bibliography file
-\addbibresource{src/bibliography.bib}
+\addbibresource{bib.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE SETUP
@@ -116,7 +110,10 @@
 %%% ARTICLE START
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Abstract}
+
+\begin{document}
+\maketitle
+
 \input{abstract.tex}
 
 \section{Introduction}
@@ -185,13 +182,13 @@ Latest version of code: github...
 %% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
 \begin{appendix}
 
-\begin{appendixbox}\label{app:ttt}
-    \input{src/supplementary/appendices.tex}
-\end{appendixbox}
-
-\begin{appendixbox}
-    \input{src/supplementary/resources.tex}
-\end{appendixbox}
+%\begin{appendixbox}\label{app:ttt}
+%    \input{src/supplementary/appendices.tex}
+%\end{appendixbox}
+%
+%\begin{appendixbox}
+%    \input{src/supplementary/resources.tex}
+%\end{appendixbox}
 
 \end{appendix}
 
