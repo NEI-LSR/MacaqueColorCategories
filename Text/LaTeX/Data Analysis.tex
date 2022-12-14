@@ -1,7 +1,22 @@
-
-\paragraph{Computation of bias} To assess the bias in responses for each cue, we computed the distribution of responses on trials where the monkey made an incorrect choice.
+\paragraph{Mixture Modeling}
+ To assess the bias in responses for each cue, we computed the distribution of responses on trials where the monkey made an incorrect choice.
 For each completed trial, we calculated the error as the angular difference between the correct option and the chosen option.  
 For each cue, we computed the number of times the monkey selected each incorrect choice, normalized by the number of times each choice color was available as a choice option for all completed trials of the given cue (this was approximately uniformly distributed).
+
+% demo annotated-equation code from here: https://mirrors.concertpass.com/tex-archive/macros/latex/contrib/annotate-equations/annotate-equations.pdf
+
+%\newpage %Sometimes the annotations don't show up, the hacky solution is to force them onto a new page
+\vspace{4em} 
+\renewcommand{\eqnhighlightheight}{\vphantom{\hat{H}}\mathstrut}
+\begin{equation}
+i \tikzmarknode{hbar}{\mathstrut\hbar} \frac{\partial}{\partial t}
+\eqnmarkbox[blue]{Psi1}{\Psi(x, t)} = \eqnmark[red]{Hhat}{\hat{H}}
+\eqnmarkbox[blue]{Psi2}{\Psi(x, t)}
+\end{equation}
+\annotate[yshift=3em]{above}{hbar}{$\hbar = \frac{h}{2\pi}$, reduced Planck constant}
+\annotate[yshift=1em]{above}{Hhat}{Hamilton operator}
+\annotatetwo[yshift=-1em]{below}{Psi1}{Psi2}{Wave function}
+\vspace{1em}
 
 We then fit a Gaussian with a variable floor ($a \cdot exp(-(((x-b)^2)/(2c^2)))+d$) to the error distribution for each cue. 
 This fit was weighted by the number of times each choice color was an option for the given cue across all completed trials (as before, this was approximately uniformly distributed). 
@@ -12,9 +27,8 @@ At these points, there is zero bias, and hues on either side provoke choices tha
 Correspondingly, repeller points occur where the bias curve crosses the zero line from \emph{negative to positive} (again, going counter-clockwise).
 At these points there is also zero bias, but hues either side of this point are biased \emph{away} from this point.
 
-\paragraph{Confidence intervals}
+\subparagraph{Confidence intervals}
 %To find the 95\% confidence intervals for the locations of the category centers, we performed 1000 bootstraps on all completed trials. For each bootstrapped sample, we found the bias values for each cue color, smoothed the bias curve, and found the category center locations for each bootstrapped dataset. To find the category center locations for the full data set and their confidence interval, we found the category boundaries and segmented all bootstrapped category centers that fell between two consecutive category boundaries. For each of these segments, we found the circular mean and circular standard deviation of all category crossings that fell within these boundaries. 
-
 %\begin{figure}
 %\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/F2_DataAnalysis_v2.svg}
 %\caption{\textbf{Task performance.}
@@ -24,6 +38,9 @@ Performance as a function of trial difficulty, quantified as the closeness of th
 %} 
 %\label{fig:TaskPerformance}
 %\end{figure}
+\paragraph{TCC Model}
+
+\paragraph{Reconstruction of colorspace}
 
 \begin{figure}
 \includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/Poster_components/BiasCalculation copy.svg}
@@ -31,20 +48,19 @@ Performance as a function of trial difficulty, quantified as the closeness of th
 \label{fig:BiasCalculation}
 \end{figure}
 
-\paragraph{Learning Rates}
+\paragraph{Effect of colorspace}
+For these experiments we used a nominally perceptually-uniform colorspace: CIELUV. This space has been derived psychophysically, with the goal of minimizing differences in perceptual non-uniformity across the space, for color differences of small magnitudes (the apparent color difference between two points in one part of the space should be equal to the apparent color difference between two points in another part of the space, given that the cartesian distance between the two points in each case be the same).
 
-We applied a reinforcement-learning (RL) framework to assess how learning rates varied for each of the 64 colors used during the 4-AFC version of the task. For each animal, we used a Bayesian Adaptive Direct Search algorithm to optimize the learning rate and inverse temperature for every color.
-The expected values were updated on each trial based on the following equation:
-$$value_i,j(t+1) = value_i,j(t)+p_k*(r(t)-value_i,j(t))$$
-where $v_i,j$ is the expected value for selecting option i given cue j, r is a binary value indicating reward feedback for the current trial t, and $p_k$ is the fitted feedback-dependent learning rate parameter for color $k$.
+However, non-uniformities within the space are known to exist (ref?), and uniformity for small color differences does not necessarily assure uniformity for larger color differences (ref? Teunissen?). Likewise, uniformity for the conditions under which the psychometric measurements from which the space was determined (considering: spatial, temporal, spectral etc.) does not necessarily assure uniformity across all possible viewing conditions (ref).
 
-We then passed these value estimates through the softmax function to generate choice probability estimates as follows:
-$$d_i,j(t) = exp(beta_k * v_i,j) / sum_x(exp(beta_k(x) * v_i,j(x))): $$
-where $d$ is the choice probability, which estimates the certainty of the monkey in selecting the correct choice, and $beta_k$ represents the fitted inverse temperature parameter, which estimates the peak performance for each color k.
+With this in mind, it is reasonable to consider what the effect of residual non-uniformity might be on the results of our experiment. As discussed by \cite{panichello_error-correcting_2019} (their Figure S5) non-uniformities in colorspace could also potentially lead to systematic biases on tasks such as ours. The logic goes as follows: our points are uniformly distributed in our chosen space (\autoref{fig:StimuliAndParadigm}A), but if this space is actually non-uniform compared to the colorspace implicitly being used by an observer, then these same points will be \emph{non}-uniformly distributed in a hypothetical `perfect colorspace'. It follows that for each cue color, surrounding distractor points might actually be closer or further away than anticipated. If the nearest neighbors on one side of the cue are actually chromatically closer than the neighbors on the other side, one would expect these to be chosen at a higher frequency than the others, creating a systematic bias.
 
-Using the choice probability estimate, we computed the negative log likelihood using the following equation:
-$$ll = ll – log(d_i,j(t))$$
-Where $d_i,j(t)$ represents the choice probability for the correct cue-option combination for each trial $t$.
+Unfortunately, these biases act in a similar fashion and are difficult to separate from one another. One potential way to distinguish one type of bias from another is to consider the theoretical relationship between bias and variance: if biases arise due to non-uniformities in colorspace, we would expect the attractor points to also have the \emph{highest} variance in responses. This is because in the hypothetical `perfect space' these points are actually tightly clustered, and so in the presence of noise we can assume that they will be frequently picked over one another. Conversely, at attractor points in spaces where the bias results from categoricality, theory would predict that we would see the \emph{lowest} levels of variance - if these points are conceptualized as `magnets' or `valleys' then we would expect cumulative noise to preferentially return to the attractor point, reducing the variance in responses.
 
-Comparison of learning rates
-The optimal learning rates for each color were plotted in DKL color space, using standard Psychtoolbox methods in MATLAB. Using a Fourier analysis, we then fit the learning rate data in polar DKL color space and determined the statistical significance of any peaks in frequency based on the power spectrum. 
+% Amazon Mechanical Turk Data
+
+% Conversion between CIELAB and CIELUV
+
+\paragraph{Discrete vs. Continuous Response Space}
+% MechTurk data vs. Bae/Panichello Humans
+% Our monkeys vs. Panichello monkeys

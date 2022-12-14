@@ -4,6 +4,8 @@
 
 \documentclass[12pt]{article}
 
+\usepackage[dvipsnames]{xcolor}
+
 \usepackage[utf8]{inputenc}
 \usepackage[american]{babel} % this document is written in American English
 \usepackage{natbib} %bibliography package
@@ -15,6 +17,19 @@
 \usepackage{svg}
 \usepackage{authblk}
 \usepackage[labelfont=bf]{caption}
+
+
+\usepackage{annotate-equations}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{tikzmark} % for \tikzmarknode
+\usetikzlibrary{calc} % for computing the midpoint between two nodes, e.g. at ($(p1.north)!0.5!(p2.north)$) 
+\newcommand{\highlight}[2]{\colorbox{#1!17}{$#2$}}
+\newcommand{\highlightdark}[2]{\colorbox{#1!47}{$#2$}}
 
 \hypersetup{
   colorlinks   = true, %Colours links instead of ugly boxes
