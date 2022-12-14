@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Based on LaPreprint: PREPRINT TEMPLATE
+%%% Source: https://github.com/roaldarbol/LaPreprint/tree/b32e34b797298ed151e979e0871b36ec06108110
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Declare document class
+\documentclass[9pt,biorxiv,lineno]{lapreprint}
+% Choose between "biorxiv", "medrxiv", "arxiv" and "chemrxiv". Otherwise defaults "Preprint".
+% Choose between "blue" and "red" colour scheme. Defaults to "blue".
+% Use the "onehalfspacing" option for 1.5 line spacing.
+% Use the "doublespacing" option for 2.0 line spacing.
+% Use the "lineno" option for line numbers.
+% Use the "endfloat" option to place floats after the bibliography.
+
+% Import packages
+\usepackage{siunitx}    % For SI units
+\usepackage{pdflscape}  % For putting pages in landscape mode
+\usepackage{rotating}   % For rotating specific elements
+\usepackage{textgreek}  % Greek symbols
+\usepackage{gensymb}    % Symbols
+\usepackage[misc]{ifsym} % For the \Letter symbol
+\usepackage{orcidlink}  % For the \orcidlink
+\usepackage{listings}   % For inserting code chunks
+\usepackage{colortbl}   % For Knitr table colouring
+\usepackage{tabularx}   % For making Knitr tables compatible
+\usepackage{longtable}  % For multi-page tables
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{snotez}     % For sidenote environments. enotez for endnotes
+\usepackage{csquotes}   % For language-based quote rules (helps BiBLaTeX)
+
+% Make declarations
+\DeclareSIUnit\Molar{M}
+
+% Please note that these options may affect formatting. 
+
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[utf8]{inputenc}
+\usepackage[american]{babel} % this document is written in American English
+\usepackage{doi} %formats DOIs nicely
+\usepackage{hyperref} %handles links
+\usepackage[all]{hypcap}
+\usepackage{microtype} %makes text formatting slightly more readable
+\usepackage{libertine} %uses open source font
+\usepackage{svg}
+\usepackage{authblk}
+\usepackage[labelfont=bf]{caption}
+
+% for annotated equations
+\usepackage{annotate-equations}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{tikzmark} % for \tikzmarknode
+\usetikzlibrary{calc} % for computing the midpoint between two nodes, e.g. at ($(p1.north)!0.5!(p2.north)$) 
+\newcommand{\highlight}[2]{\colorbox{#1!17}{$#2$}}
+\newcommand{\highlightdark}[2]{\colorbox{#1!47}{$#2$}}
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = gray, %Colour of internal links
+  citecolor    = gray  %Colour of citations
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[			% use biblatex for bibliography
+	backend=biber,      % use biber or bibtex backend
+    style=authoryear,   % choose style
+	natbib=true,		% allow natbib commands
+	hyperref=true,	    % activate hyperref support
+	alldates=year,      % only show year (not month)
+]{biblatex}
+
+% Update to your bibliography file
+\addbibresource{src/bibliography.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Paper title
+\title{Macaque Color Categories}
+
+\author[ \orcidlink{0000-0002-4579-003X} 1 \Letter]{Daniel J. Garside}
+\author[ \orcidlink{   } 1]{Audrey L.Y. Chang}
+\author[ \orcidlink{   } 1]{Hannah M. Selwyn}
+\author[ \orcidlink{   } 1]{Shriya M. Awasthi}
+\author[ \orcidlink{0000-0001-7715-9253} 1 \Letter]{Bevil Conway}
+
+
+% Affiliations
+\affil[1]{Lab of Sensorimotor Research, National Eye Institute, National Institutes of Health}
+%\affil[2]{University of Somewhere}
+
+% Other metadata. Feel free to add your own
+\metadata[]{\Letter\hspace{.5ex} For correspondence}{ \href{mailto:exmaple@example.com}{exmaple@example.com}} %!!!!!!!!!
+\metadata[\authfn{1}\authfn{2}\authfn{3}]{}{Here's a few symbols to denote contribution specifics, e.g. authors who contributed equally to the work.} %!!!!!!!!!!!!!
+\metadata[]{Present address}{Evolution, Behaviour and Environment, School of Life Sciences, University of Sussex, Biology Road, Brighton, BN1 9RH, United Kingdom} %!!!!!!!!!!!!!!
+\metadata[]{Data availability}{Data availability statement. Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.} %!!!!!!!!!!!!!!!!
+\metadata[]{Funding}{MRA was supported by funding from the Leverhulme Foundation. The funders had no role in the template design or decision to publish.} %!!!!!!!!!!!!!!!!!!
+\metadata[]{Competing interests}{The author declare no competing interests.} %!!!!!!!!!!!!!!!
+
+% Surname of the lead author(s) for the running footer
+\leadauthor{Garside}
+\shorttitle{The Causal Relationship between Glob Cell Activity and the Perception of Color}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE START
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Abstract}
+\input{abstract.tex}
+
+\section{Introduction}
+\input{Introduction.tex}
+
+\section{Methods}
+\subsection{Experimental model and subject details}
+\subsection{Behavioral tasks}
+\input{Behavioral task.tex}
+\subsection{Data Analysis}
+\input{Data Analysis.tex}
+
+\section{Results}
+\input{Results.tex}
+
+\section{Discussion}
+\input{Discussion.tex}
+
+\section{Limitations}
+?
+
+\section{Conclusion}
+
+\section{Data availability statement}
+
+Data is available at: zenodo(?)...
+
+\section{Code availability statement}
+
+Code as used in this paper: doi...
+Latest version of code: github...
+
+\section{Acknowledgments}
+
+\section{Author contributions}
+
+% table? e.g. https://twitter.com/AnneEUrai/status/1361356189284581387
+
+% 'CRediT' (https://casrai.org/credit/)
+%:
+% Conceptualization
+% Data curation
+% Formal Analysis
+% Funding acquisition
+% Investigation
+% Methodology
+% Project administration
+% Resources
+% Software
+% Supervision
+% Validation
+% Visualization
+% Writing – original draft
+% Writing – review & editing
+
+
+\printbibliography
+
+% DON'T EDIT. If "endfloat" option is enabled all floats appear before appendices
+\if@endfloat\clearpage\processdelayedfloats\clearpage\fi 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% SUPPLEMENTARY MATERIAL / APPENDICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
+\begin{appendix}
+
+\begin{appendixbox}\label{app:ttt}
+    \input{src/supplementary/appendices.tex}
+\end{appendixbox}
+
+\begin{appendixbox}
+    \input{src/supplementary/resources.tex}
+\end{appendixbox}
+
+\end{appendix}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE END
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+
