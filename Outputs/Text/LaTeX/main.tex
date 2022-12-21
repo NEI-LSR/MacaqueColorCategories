@@ -5,7 +5,6 @@
 
 
 % Declare document class
-\PassOptionsToPackage{dvipsnames}{xcolor}
 \documentclass[9pt,biorxiv,lineno,onehalfspacing]{lapreprint}
 % Choose between "biorxiv", "medrxiv", "arxiv" and "chemrxiv". Otherwise defaults "Preprint".
 % Choose between "blue" and "red" colour scheme. Defaults to "blue".
@@ -32,9 +31,6 @@
 
 %\usepackage[dvipsnames]{xcolor}
 \usepackage[utf8]{inputenc}
-%\usepackage[american]{babel} % this document is written in American English
-%\usepackage{doi} %formats DOIs nicely
-\usepackage{hyperref} %handles links
 \usepackage[all]{hypcap}
 \usepackage{microtype} %makes text formatting slightly more readable
 \usepackage{libertine} %uses open source font
@@ -73,6 +69,13 @@
 	alldates=year,      % only show year (not month)
 ]{biblatex}
 
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearlist{language}
+    \clearfield{url}
+}
+
 % Update to your bibliography file
 \addbibresource{bib.bib}
 
@@ -97,14 +100,14 @@
 % Other metadata. Feel free to add your own
 \metadata[]{\Letter\hspace{.5ex} For correspondence}{ \href{mailto:exmaple@example.com}{exmaple@example.com}} %!!!!!!!!!
 \metadata[\authfn{1}\authfn{2}\authfn{3}]{}{Here's a few symbols to denote contribution specifics, e.g. authors who contributed equally to the work.} %!!!!!!!!!!!!!
-\metadata[]{Present address}{Evolution, Behaviour and Environment, School of Life Sciences, University of Sussex, Biology Road, Brighton, BN1 9RH, United Kingdom} %!!!!!!!!!!!!!!
+\metadata[]{Present address}{49 Convent Drive, Bethesda, MD-20892-4435, USA} %check !!!!!!!!!!!!!!
 \metadata[]{Data availability}{Data availability statement. Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.} %!!!!!!!!!!!!!!!!
-\metadata[]{Funding}{MRA was supported by funding from the Leverhulme Foundation. The funders had no role in the template design or decision to publish.} %!!!!!!!!!!!!!!!!!!
+\metadata[]{Funding}{MRA was supported by funding from the Lorem Ipsum Foundation. The funders had no role in the template design or decision to publish.} %!!!!!!!!!!!!!!!!!!
 \metadata[]{Competing interests}{The author declare no competing interests.} %!!!!!!!!!!!!!!!
 
 % Surname of the lead author(s) for the running footer
 \leadauthor{Garside}
-\shorttitle{The Causal Relationship between Glob Cell Activity and the Perception of Color}
+\shorttitle{Macaque Color Categories}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE START
@@ -120,7 +123,7 @@
 \input{Introduction.tex}
 
 \section{Methods}
-\subsection{Experimental model and subject details}
+\subsection{Subject details}
 \subsection{Behavioral tasks}
 \input{Behavioral task.tex}
 \subsection{Data Analysis}
