@@ -21,6 +21,11 @@
 \usepackage[misc]{ifsym} % For the \Letter symbol
 \usepackage{orcidlink}  % For the \orcidlink
 \usepackage{listings}   % For inserting code chunks
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
 \usepackage{colortbl}   % For Knitr table colouring
 \usepackage{tabularx}   % For making Knitr tables compatible
 \usepackage{longtable}  % For multi-page tables
@@ -41,7 +46,7 @@
 % for annotated equations
 \usepackage{annotate-equations}
 \usepackage{amsmath}
-\usepackage{amssymb}
+%\usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{tikz}
 \usetikzlibrary{backgrounds}
@@ -74,6 +79,7 @@
     \clearfield{urlmonth}
     \clearlist{language}
     \clearfield{url}
+   % \clearfield{issn}
 }
 
 % Update to your bibliography file
