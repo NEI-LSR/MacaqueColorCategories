@@ -15,17 +15,17 @@ We then fit a Gaussian with a variable floor (\autoref{eq:GaussianEquation}) to 
     \eqnmarkbox[purple]{p1}{a}
     \cdot
     \exp
-    -\frac{(x-
-    \eqnmarkbox[violet]{b}{b}
+    \frac{-(x-
+    \eqnmarkbox[violet]{mu}{\mu}
     )^2}{2 
-    \eqnmarkbox[blue]{c}{c}^2}
+    \eqnmarkbox[blue]{sigma}{\sigma}^2}
     +
     \eqnmarkbox[gray]{d}{d}        
 \end{equation}
 
 \annotate[yshift=1em]{above,left}{p1}{height of the curve's peak}
-\annotate[yshift=1em]{above}{b}{position of the center of the peak}
-\annotate[yshift=-0.75em]{below,left}{c}{standard deviation}
+\annotate[yshift=1em]{above}{mu}{position of the center of the peak}
+\annotate[yshift=-0.75em]{below,left}{sigma}{standard deviation}
 \annotate[yshift=-1em]{below}{d}{floor}
 \vspace{2em} 
 
@@ -65,15 +65,15 @@ You can think of it as: for the high-error choice, there are \emph{2 chances} to
 An additional note for clarity: this is an issue for us because of the sampling required for the AFC paradigm, and is not an issue of concern for those who use a response mechanism where all possible responses are simultaneously presented.
 }.
 In order to use the full dataset (both incorrect and correct trials), we developed a generative model, based on the \emph{Target Confusability Competition (TCC)} model of \cite{schurgin_psychophysical_2020}.
-The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ and a value of $d'$ (said: ``d prime''), which can be thought of as the amount of noise acting on the system. 
+The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ and a value of $d'$, which can be thought of as describing the amount of noise acting on the system. 
 Taken together, these two elements can be used to predict the probability that a choice of colour $s_j$ will be picked, from the set of $[s_{j1} ... s_{jn}]$, on a trial where the cue is $s_i$.
 Our implementation of the model differs in some key ways to that described in \cite{schurgin_psychophysical_2020}:
 \begin{enumerate}
-\item We make no assumptions about the underlying function that determines similarity. \cite{schurgin_psychophysical_2020} use an exponential function with additional perceptual noise (see their Figure 1F), based on observations gained from collecting data on various simultaneous judgment tasks. We choose not to do this, because we expect that if biases are present, this would modify the shape of the function differently for each stimulus. We refer to fits made this way as ``free similarity matrix'' fits, since each elements of the matrix is ``free'' to float as it wishes, independently of those elements around it.
 \item We do not assume that the underlying function is the same for each stimulus. 
 \cite{schurgin_psychophysical_2020} collapse across stimuli for the majority of their analyses (though, see their Figures 1D and Extended Data Figure 5). 
 Since we are most interested in the differences between the functions for the different stimuli, it does not make sense for us to collapse our data. 
 We therefore deal with a ``similarity matrix'', whereas \cite{schurgin_psychophysical_2020} could refer to their collapsed version as a ``similarity function''.
+\item We make no assumptions about the underlying function that determines similarity. \cite{schurgin_psychophysical_2020} use an exponential function with additional perceptual noise (see their Figure 1F), based on observations gained from collecting data on various simultaneous judgment tasks. We choose not to do this, because we expect that if biases are present, this would modify the shape of the function differently for each stimulus. We refer to fits made this way as ``free similarity matrix'' fits, since each elements of the matrix is ``free'' to float as it wishes, independently of those elements around it.
 \item We fit our model on a single dataset, whereas \cite{schurgin_psychophysical_2020} derive their similarity functions and values for $d'$ from independent datasets. % why do they do this?
 \item In fitting a ``free similarity matrix'' noise in the system can either be represented by the value of $d'$ or in modifying the ``contrast'' of the similarity matrix (the relationship between the highest values and the lowest values in the matrix), since we apply no constraints on the floor or peak of the function. 
 We therefore assume a value of $d' = 1$ for free similarity matrix fits. %and only actively fit $d'% in (these other models)...
@@ -82,22 +82,11 @@ We use the correction factors of \cite{mcgraw_common_1992} (their Table 3) to es
 This decreases the runtime of our model by several orders of magnitude compared to the method used by \cite{schurgin_psychophysical_2020} (See the function \lstinline{modelPDF} in \lstinline{TCC_Code_InManuscriptOrder\Model\TCCUncorrelated.m} from \url{https://osf.io/j2h65/} for comparison).
 \end{enumerate}
 
-Using this model, we could use parameter estimation techniques to construct a similarity matrix where each cell represented the similarity between stimulus $s_i$ and stimulus $s_j$. 
+Using this model, we used parameter estimation techniques to construct a similarity matrix where each cell represented the similarity between stimulus $s_i$ and stimulus $s_j$. 
 Such a similarity matrix is shown in \autoref{fig:SimilarityMatrixPollux} for a single animal (Monkey P).
-This allows us to...
+This model, and this visualization method, allows us to assess not only the mean of the bias in the responses, but the shape of the response-bias-curve, which gives us an insight into the source of the bias.
 
-\begin{figure}
-\includegraphics[width=\linewidth]{../../../Figures/working/SimilarityMatrixPollux.png}
-\caption{\textbf{Free Similarity Matrix for Monkey P.}
-Similarity between stimulus $s_i$ and stimulus $s_j$, where one is the cue and one is the choice. This is a ``free'' similarity matrix - in that no particular relationship is pre-supposed between any of the stimuli (such as, for example: closer stimuli will be more similar). This figure can be compared to Figure 1D in \cite{schurgin_psychophysical_2020}, except there the rows are circularly shifted so that the the x-axis becomes the relative distance, rather than the absolute value of the stimulus. % should we just plot it the same way at this stage? It doesn't really make a difference here...
-% supplementary figure with alternative plotting method?
-%confidence intervals?!?!?! !!!!!!!!!!!!!!
-} 
-\label{fig:SimilarityMatrixPollux}
-\end{figure}
-
-
-\paragraph{Distinguishing between cognitive biases and non-uniformity of stimulus space}
+\paragraph{Distinguishing between cognitive biases and biases arising from non-uniformity of stimulus space}
 
 For these experiments, we used a nominally perceptually-uniform colorspace: CIELUV. 
 This space has been derived psychophysically, with the goal of minimizing differences in perceptual non-uniformity across the space, for color differences of small magnitudes (the apparent color difference between two points in one part of the space should be equal to the apparent color difference between two points in another part of the space when that the cartesian distance between the two points in each case be the same).
@@ -110,42 +99,72 @@ As discussed by \cite{panichello_error-correcting_2019} (their Figure S5) non-un
 The logic goes as follows: our points are uniformly distributed in our chosen space (\autoref{fig:StimuliAndParadigm}A), but if this space is actually non-uniform compared to the colorspace implicitly being used by an observer, then these same points will be \emph{non}-uniformly distributed in a hypothetical `perfect colorspace'. 
 It follows that for each cue color, surrounding distractor points might actually be closer or further away than anticipated. 
 If the nearest neighbors on one side of the cue are actually chromatically closer than the neighbors on the other side, one would expect these to be chosen at a higher frequency than the others, creating a systematic bias.
+\cite{panichello_error-correcting_2019} lack a robust framework within which to test these ideas, and conclude that there would be no effect on their conclusions. We reach a contrary conclusion.
 
 %Unfortunately, these biases act in a similar fashion and are difficult to separate from one another. One potential way to distinguish one type of bias from another is to consider the theoretical relationship between bias and variance: if biases arise due to non-uniformities in colorspace, we would expect the attractor points to also have the \emph{highest} variance in responses. This is because in the hypothetical `perfect space' these points are actually tightly clustered, and so in the presence of noise we can assume that they will be frequently picked over one another. Conversely, at attractor points in spaces where the bias results from categoricality, theory would predict that we would see the \emph{lowest} levels of variance - if these points are conceptualized as `magnets' or `valleys' then we would expect cumulative noise to preferentially return to the attractor point, reducing the variance in responses.
 
-It has proven difficult to distinguish biases due to cognitive bias and biases due to non-uniformity of colorspace (or stimulus space more generally) using the \nameref{para:MixtureModeling} approach... %why?
+It is difficult to distinguish biases from different sources using the Mixture Modeling approach... %why?
 % is it because TCC seperates out d' and simMatrix, whereas mixmod implicitly combines the two (by using a matrix that is directly "probability of choice"?)
 
-This task becomes tractable in the \nameref{para:TCC} framework.
-A reasonable definition of cognitive bias might be: an agent is more likely to pick choice $b$ as a match to cue $a$ than they are to select choice $a$ as a match to cue $a$, and that this behavior would not be reciprocal (they would not be more likely to pick choice $a$ as a match to cue $b$ than they are to select choice $b$ as a match to cue $b$).
+This task becomes tractable in the TCC framework. (why?)
+A reasonable definition of cognitive bias might be: an agent is more likely to pick choice $s_2$ as a match to cue $s_1$ than they are to select choice $s_1$ as a match to cue $s_1$, and that this behavior would not be reciprocal (they would not be more likely to pick choice $s_1$ as a match to cue $s_2$ than they are to select choice $s_2$ as a match to cue $s_2$).
 By this definition, this type of bias would appear as spread or displacement away from the negative diagonal in the similarity matrix, that \emph{was not} symmetric across the negative diagonal (symmetry across the diagonal would represent reciprocity).
 There are numerous ways that cognitive bias can be envisaged/implemented.
-A cartoon example is shown in Figure XA.
+A cartoon example is shown in \autoref{fig:JustBias}.
 
 Spread away from the negative diagonal which is mirrored across the diagonal represents non-uniformity of the stimulus space.
 In areas where the behavioral space is oversampled, one would see spread away from the negative diagonal (adjacent colors are more similar than the average).
 In areas that are undersampled, one would see a pinch into the negative diagonal (adjacent colors are less similar than the average).
-A cartoon example is shown in Figure XB.
+A cartoon example is shown in \autoref{fig:JustColSpace}.
 
 \begin{figure}
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
-         \includegraphics[width=\textwidth]{../../../Figures/working/justBias_1664376407592_0.png}
-         \label{fig:}
+         \includegraphics[width=\textwidth]{../../Figures/working/justBias_1664376407592_0.png}
+         \caption{}
+         \label{fig:JustBias}
      \end{subfigure}
      \hfill
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
-         \includegraphics[width=\textwidth]{../../../Figures/working/justColSpace_sm_1664376549422_1.png}
+         \includegraphics[width=\textwidth]{../../Figures/working/justColSpace_sm_1664376549422_1.png}
          \caption{}
-         \label{fig:}
+         \label{fig:JustColSpace}
      \end{subfigure}
-        \caption{Main caption}
+        \caption{\textbf{Distinguishing between cognitive biases and non-uniformity of stimulus space.} In the left-hand sub-figure is an example of how cognitive bias might appear. The right-hand is an example of how non-uniformity in stimulus space might appear.}
         \label{fig:main}
 \end{figure}
 
+In this example, it is possible to see how responses could be biased even in the absence of cognitive bias - consider cue 20, for example. 
+The similarity of cue 20 to all the possible choices is represented by the row of elements at location 20. Tracking left to right from the y-axis, see how there is only a small area of similarity to the left of the negative diagonal and a larger area of similarity to the right of the diagonal. 
+Although the most similar choice is still 20, there is a longer tail of the similarity distribution to the right than to the left, and thus responses will be shifted to higher values on average. %illustrate? - by lines on graph, or by pulling out the individual? 
+
+% this also affects standard deviation, which can be assessed in the mixture model...
+
+To estimate how much of the bias could be attributed to non-uniformity of colorspace, we fit an alternative version of the TCC model. 
+In this version, we use a single similarity function, defined by \autoref{eq:SimilarityFunction}, and instead allow the stimuli chromaticities to float.
+This is akin to asking: what set of relationships between the stimuli in stimulus space can best explain the data we observe?
+% do we fit the similarity function, or choose reasonable estimated values?
+
+%\vspace{2em} 
+\begin{equation} \label{eq:SimilarityFunction}
+    \exp(x\lambda_1)
+    \ast      
+    \mathcal{N}(0,\sigma^2)
+\end{equation}
+
+%\annotate[yshift=1em]{above,left}{p1}{height of the curve's peak}
+
+% It would be possible to allow the stimuli to float in any number of dimensions, which might be useful for detecting luminance intrusion, or other unintended/unanticipated dimensions
+
+% The rotation/offset in this space is arbitrary. It is all about relationships.
+
+\vspace{2em} 
+
 \paragraph{Reconstruction of colorspace}
+
+...
 
 %\begin{figure}
 %\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/working/Poster_components/BiasCalculation copy.svg}
@@ -158,6 +177,6 @@ A cartoon example is shown in Figure XB.
 
 % Conversion between CIELAB and CIELUV
 
-\paragraph{Discrete vs. Continuous Response Space}
+%\paragraph{Discrete vs. Continuous Response Space}
 % MechTurk data vs. Bae/Panichello Humans
 % Our monkeys vs. Panichello monkeys
