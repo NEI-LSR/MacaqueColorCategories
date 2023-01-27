@@ -157,18 +157,24 @@ Although the most similar choice is still 20, there is a longer tail of the simi
 % this also affects standard deviation, which can be assessed in the mixture model...
 
 To estimate how much of the bias could be attributed to non-uniformity of colorspace, we fit an alternative version of the TCC model. 
-In this version, we use a single similarity function, defined by \autoref{eq:SimilarityFunction}, and instead allow the stimuli chromaticities to float.
+In this version, we use a single similarity function, defined by \autoref{eq:SimilarityFunction} (which is controlled by two parameters: $\lambda$ and $\sigma$, which together control the slope of the function and the extent of the flat-top of the function at zero)\footnote{These two parameters can be though of theoretically as the \emph{similarity function} (how similar is $x$ to $y$), and the \emph{perceptual function} (at what point do stimuli become indistinguishable from one-another). Unfortunately, in this parameterization of the function, the parameters are highly correlated, which makes recovery of these values via model fitting rather difficult. An alternative parameterization where the parameters were maximally uncorrelated would be preferable.} and instead allow the stimuli chromaticities to float.
 This is akin to asking: what set of relationships between the stimuli in stimulus space can best explain the data we observe?
 % do we fit the similarity function, or choose reasonable estimated values?
 
-%\vspace{2em} 
+\renewcommand{\eqnhighlightheight}{\vphantom{\hat{H}}\mathstrut} %make the highlighted a standard height
+
+
+\vspace{2em} 
 \begin{equation} \label{eq:SimilarityFunction}
-    \exp(x\lambda_1)
-    \ast      
-    \mathcal{N}(0,\sigma^2)
+    \eqnmarkbox[purple]{explambda}{\exp(x\cdot\lambda)}
+    \eqnmarkbox[cyan]{convolution}{\circledast}
+    \eqnmarkbox[blue]{sigma}{\mathcal{N}(0,\sigma^2)}
 \end{equation}
 
-%\annotate[yshift=1em]{above,left}{p1}{height of the curve's peak}
+\annotate[yshift=1em]{above,left}{explambda}{scaled exponential}
+\annotate{below,left}{convolution}{convolution}
+\annotate[yshift=1em]{above}{sigma}{normal distribution with mean of 0 and standard deviation of $\sigma$}
+
 
 % It would be possible to allow the stimuli to float in any number of dimensions, which might be useful for detecting luminance intrusion, or other unintended/unanticipated dimensions
 
