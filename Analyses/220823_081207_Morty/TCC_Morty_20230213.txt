@@ -1,0 +1,33 @@
+Elapsed time is 0.064767 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 78)
+In lsqnonlin (line 260)
+In generateSimulatedData_TCC_caller (line 204) 
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 2).
+
+                                        First-Order                    Norm of 
+ Iteration  Func-count    Residual       optimality      Lambda           step
+     0        4097     6.54955e+09        1.57e-08         0.01
+     1        8194      4.3094e+09        5.98e-08        0.001    1.50428e+08
+     2       12291     3.81562e+09        7.61e-08       0.0001    7.64396e+07
+     3       16398     3.44892e+09        1.15e-07        1e+06        64.0466
+     4       20495     3.43843e+09        1.19e-07       100000        39.9821
+     5       24593     3.43804e+09        1.21e-07        1e+06        37.7451
+     6       28690     3.43757e+09        1.22e-07       100000        37.3507
+     7       32788     3.43753e+09        1.22e-07        1e+06        37.1572
+     8       36885     3.43749e+09        1.22e-07       100000        37.0161
+     9       40983     3.43749e+09        1.22e-07        1e+06        36.9675
+    10       45080     3.43748e+09        1.22e-07       100000        36.9202
+    11       49178     3.43748e+09        1.22e-07        1e+06        36.9047
+    12       53275     3.43748e+09        1.22e-07       100000        36.8847
+    13       57373     3.43748e+09        1.22e-07        1e+06         36.879
+    14       61470     3.43748e+09        1.22e-07       100000        36.8754
+    15       65568     3.43748e+09        1.22e-07        1e+06        36.8761
+    16       69665     3.43748e+09        1.22e-07       100000        36.8741
+
+Optimization stopped because the relative sum of squares (r) is changing
+by less than options.FunctionTolerance = 1.000000e-09.
+
+>> 
