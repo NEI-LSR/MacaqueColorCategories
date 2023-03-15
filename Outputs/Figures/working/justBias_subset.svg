@@ -65,9 +65,6 @@
     ><line y2="56" style="fill:none;" x1="286.1587" x2="286.1587" y1="660"
       /><line x1="334.0952" x2="334.0952" y1="660" style="fill:none; stroke-dasharray:8,8;" y2="56"
     /></g
-    ><g style="fill:white; text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:white; color-interpolation:sRGB;"
-    ><path style="stroke:none;" d="M692 148 L692 72 L466 72 L466 148 Z"
-    /></g
     ><g transform="translate(536.3444,86.4052)" style="text-rendering:geometricPrecision; font-size:18px; color-interpolation:linearRGB; color-rendering:optimizeQuality; image-rendering:optimizeQuality;"
     ><text x="0" xml:space="preserve" y="7.5" style="stroke:none;"
       >Cue / Direct Match</text
@@ -87,12 +84,11 @@
     ><line y2="86.4052" style="fill:none;" x1="471.9868" x2="531.8543" y1="86.4052"
       /><line x1="471.9868" x2="531.8543" y1="133.5948" style="fill:none; stroke-dasharray:8,8;" y2="133.5948"
     /></g
-    ><g style="stroke-linecap:butt; fill:rgb(38,38,38); text-rendering:geometricPrecision; color-rendering:optimizeQuality; image-rendering:optimizeQuality; color-interpolation:linearRGB; stroke:rgb(38,38,38);"
-    ><path d="M466 148 L466 72 L692 72 L692 148 Z" style="fill:none; fill-rule:evenodd;"
-      /><line x1="104" x2="708" y1="708" style="stroke-linecap:square; fill:none; stroke-linejoin:round;" y2="708"
-      /><line x1="104" x2="708" y1="676" style="stroke-linecap:square; fill:none; stroke-linejoin:round;" y2="676"
-      /><line x1="104" x2="104" y1="708" style="stroke-linecap:square; fill:none; stroke-linejoin:round;" y2="676"
-      /><line x1="708" x2="708" y1="708" style="stroke-linecap:square; fill:none; stroke-linejoin:round;" y2="676"
+    ><g style="fill:rgb(38,38,38); text-rendering:geometricPrecision; color-rendering:optimizeQuality; image-rendering:optimizeQuality; stroke-linejoin:round; stroke:rgb(38,38,38); color-interpolation:linearRGB;"
+    ><line y2="708" style="fill:none;" x1="104" x2="708" y1="708"
+      /><line y2="676" style="fill:none;" x1="104" x2="708" y1="676"
+      /><line y2="676" style="fill:none;" x1="104" x2="104" y1="708"
+      /><line y2="676" style="fill:none;" x1="708" x2="708" y1="708"
     /></g
     ><g transform="matrix(0.5,0,0,0.5,104,676)" style="fill-opacity:0; fill:rgb(0,0,0); text-rendering:optimizeSpeed; image-rendering:optimizeSpeed; color-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:rgb(0,0,0); color-interpolation:sRGB; stroke-opacity:0;"
     ><image x="0" y="0" width="1208" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABLgAAABACAIAAACWSVlmAAAGWElEQVR42u3X60oT
