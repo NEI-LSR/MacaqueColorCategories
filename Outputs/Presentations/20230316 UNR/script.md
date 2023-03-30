@@ -3,17 +3,17 @@ Script
 
 ### Title slide
 
-Hi, I'm Danny Garside and I'm a postdoc in the lab of Bevil Conway at the National Institutes of Health in the USA. I'm really excited to be here -- I've been attending this event since I was an undergraduate and it's an honour to finally be presenting.
+Hi, I'm Danny Garside and I'm a postdoc in the lab of Bevil Conway at the National Institutes of Health in the USA. [links to Reno?]
 
-Before I start, I'd like to acknowledge the team that I've been working on this project with, in particular the postbacs who have collected a lot of the data, and developed many of the analyses that I'm presenting today: Audrey Chang, Hannah Selwyn, and Shriya Awasthi.
+Before I start, I'd like to acknowledge the team that I've been working on this project with, in particular the postbacs who have collected a lot of the data, and developed many of the analyses that I'm presenting today: Audrey Chang and Hannah Selwyn.
 
 ### Human vs macaque
 
-Our lab uses color as a model system to understand how the brain makes perception and thought happen. One long-term goal is to understand the responsible neural and circuit level mechanisms. To that end, we rely on macaque monkeys in which we can use invasive techniques such as micro-electrode recording that we cannot readily deploy in humans. But if we're to translate what we learn from electrode recording to humans, we need a firm understanding of the behavioural similarities and differences between humans and macaques. So an important piece of our work involves running comparable behavioural tests in monkeys that have been used in humans.
+Our lab uses color as a model system to understand how the brain makes perception and thought happen. One long-term goal is to understand the responsible neural and circuit level mechanisms. To that end, we rely on macaque monkeys in which we can use invasive techniques such as micro-electrode recording that we cannot readily deploy in humans. But if we're to translate what we learn from electrode recording to humans, we need a firm understanding of the behavioural similarities and differences between humans and monkeys. So an important piece of our work involves running comparable behavioural tests in monkeys that have been used in humans.
 
 ### Different levels of color
 
-An attractive feature of color as a model system is that it encompasses perceptual and cognitive phenomena that range from seemingly low-level behaviours such as detection, to mid-level behaviours such as categorization, and higher-level behaviours such as memory and reward. Today, I'm going to focus on our recent and on-going work investigating whether monkeys have colour categories, but first I'll give a brief overview of our lab's prior work comparing color behaviour in monkeys and humans, to set the stage.
+An attractive feature of color as a model system is that it encompasses perceptual and cognitive phenomena that range from seemingly low-level behaviours such as detection, to mid-level behaviours such as categorization, and higher-level behaviours such as memory and reward. Today, I'm going to focus on our recent and on-going work investigating whether monkeys use colour categories, but first I'll give a brief overview of our lab's prior work comparing color behaviour in monkeys and humans, to set the stage.
 
 ### Receptoral
 
@@ -23,10 +23,11 @@ Macaque monkeys have a very similar front-end of their color system compared to 
 
 In our previous work, we tested the extent to which monkeys and humans have similar post-receptoral mechanisms, adapting the classic paradigm used by Krauskopf and others in the 1980s. Krauskopf's experiments were aimed at testing theories about how signals from the three cone types were analysed by the brain. One hypothesis is that the post-receptoral circuits in the brain establish two cardinal chromatic mechanisms, an evolutionarily older circuit that compares S versus L+M, and a newer circuit that compares L and M. To test for psychophysical evidence of these mechanisms, Krauskopf measured color detection thresholds before and after participants viewed temporally modulating color fields to adapt the post-receptoral neurons. The adaptation involves a fluctuation between pairs of colours, so the photoreceptors themselves shouldn't be selectively adapted -- you get no chromatic afterimage. But if there is a neural mechanism downstream of the photoreceptors that is selective for the colours used in the adaptation, the participants should show increased detection thresholds selectively for the adaptation colours.
 
-According to the standard model that calls for two cardinal chromatic mechanisms, adaptation colours defined by the L-M axis should cause an increase in detection threshold for L and M coloured spots, but should show no increase in threshold for colours defined by the S axis, illustrated here in the polar plot, where changes in detection threshold for each hue are shown by the length of the radius. Similarly, the standard model says that adaptation to colours defined by the S axis should lead to increases in detection thresholds for just the S colours and not for L and M colours.
+According to the standard model that calls for two cardinal chromatic mechanisms, adaptation colours defined by the L-M axis should cause an increase in detection threshold for L and M coloured spots, but should show no increase in threshold for colours defined by the S axis, illustrated here in the polar plot, where changes in detection threshold for each hue are shown by the length of the radius. 
 
 ### Standard Model
 
+Similarly, the standard model says that adaptation to colours defined by the S axis should lead to increases in detection thresholds for just the S colours and not for L and M colours.
 The decisive test of the standard model comes when we use adaptation colours defined by the intermediate axes. These colours will modulate both putative cardinal chromatic mechanisms, knocking them both a bit out of service, so detection thresholds should be elevated for all colours. The prediction is illustrated here, as a circle.
 
 ### Human data 
@@ -39,13 +40,13 @@ So what did we find in monkeys? Here is the pattern of results we obtained. Thes
 
 ### Verbal tests
 
-The lab completed these experiments almost a decade ago, and the natural next question was whether monkeys and humans have similar color categories. That question was a more challenging one to address. The reason is that most assays of color categorization behaviour in humans involve the use of language, and monkeys obviously don't have language. Moreover, the use of language itself has proven problematic in interpreting results in humans because people of different cultural or linguistic backgrounds show some variability in how they categorize colours. The only study that has attempted to measure color category behaviour in monkeys, done in the 1970s, had animals group a set of colours into four pre-defined categories, which is not really the same thing as evaluating how animals spontaneously categorize colours. We've tried a few approaches to tackle this issue over the years, and I think we have finally come up with a paradigm that works. The work is in progress, and I'd welcome feedback. Before we launch into the experiments, it's worth revisiting what we might expect to find given current theories of color categorization.
+The lab completed these experiments almost a decade ago, and the natural next question was whether monkeys and humans have similar color categories. That question was a more challenging one to address. The reason is that most assays of color categorization behaviour in humans involve the use of language, and monkeys obviously don't have language. Moreover, the use of language itself has proven problematic in interpreting results in humans because people of different cultural or linguistic backgrounds show some variability in how they categorize colours. The only study that has attempted to measure color category behaviour in monkeys, done in the 1970s, had animals group a set of colours into four pre-defined categories, which is not really the same thing as evaluating how animals spontaneously categorize colours. We've tried a few approaches to tackle this issue over the years, and I think we have finally come up with a paradigm that works. We're currently writing up these findings, and I'd welcome feedback. Before we launch into the experiments, it's worth revisiting what we might expect to find given current theories of color categorization.
 
 ### Theories of Color Categorization
 
 A simplified cartoon of the current theories of colour categorization might look like this. On one side, are theories that color categories arise because of how we communicate information about colour to each other. These theories include the hard-core Sapir-Whorfian accounts, that color categories depend on language, and by extension, that people with different languages not only categorize colours differently, but see colours differently as a result of their differences in categorization. On the other side, are theories that color categories are the result of some universal feature in how color signals are encoded by the visual system or of regularities in natural scenes. These theories capture the idea that color categories are essentially universal, independent of language, an idea that can be traced to Hering in the early 1900s and his notion that color for all humans can be described by six unique hues (black, white, red, green, blue, and yellow). The modern account of the universalist idea was popularized in the 1960s by Berlin and Kay, who showed that when people are restricted to categorize colours using "basic color terms" they do so pretty consistently across languages.
 
-It has been surprisingly contentious and difficult to sort out how humans categorize colours, often for reasons that are not immediately apparent. For example, many language groups do not have a super-ordinate word "color"---so studies in these cultures require first teaching the people the concept of color, and also teaching them what basic color terms are. It's now clear that this introduces a kind of circularity. Previous work from our lab sought to overcome this circularity. When people are asked to communicate colours and are not restricted to use basic color terms, there is no clear privilege of Berlin and Kay's basic color terms, or Hering's unique hues.
+It has been surprisingly contentious and difficult to sort out how humans categorize colours, often for reasons that are not immediately apparent. For example, many language groups do not have a super-ordinate word "color"---so studies in these cultures require first teaching the people the concept of color, and also teaching them what basic color terms are. It's clear that this introduces a kind of circularity. Previous work from our lab sought to overcome this circularity. When people are asked to communicate colours and are not restricted to use basic color terms, there is no clear privilege of Berlin and Kay's basic color terms, or Hering's unique hues.
 
 ### Game 1
 
@@ -75,9 +76,9 @@ And so the search was on to find a task where we could look for the signatures o
 
 What are these signatures? The two key ones are:
 
-\- Smaller discrimination thresholds across category borders
+- Smaller discrimination thresholds across category borders
 
-\- Bias towards best exemplar of category ("focal color") -- whether this be in memorability, salience, looking time etc.
+- Bias towards best exemplar of category ("focal color") -- whether this be in memorability, salience, looking time etc.
 
 ### Bae paradigm
 
@@ -99,6 +100,7 @@ If we look at the distribution of bias as a function of hue, it is clear that th
 
 ### Attractor points
 
+!!!!!!!!
 In this type of plot, the attractor points (the points where responses are pulled towards) can be found at the centres of the positive slopes, highlighted here by the red circles.
 
 In the other half of this experiment, Bae et al. also collected data on how the stimuli used in that experiment would be categorized, and what the focal colours of certain color categories would be from that stimulus set. These points are indicated here by the black squares. What they found was that the location of the focal colours for orange, green, blue and pink corresponded well with the attractor points -- it seems that people's responses were being biased towards the focal colours for their color categories.
@@ -121,67 +123,22 @@ To zoom out for a second: under the hypothesis that the primary importance of co
 
 What we see in our monkey data is that there are systematic biases, and the structure differs to that collected in humans.
 
-### Bootstrap
-
-Through bootstrapping we can estimate our confidence about the location of the monkey's categories, given the data we have. Plotted here is the mean attractor point, and our 95% confidence intervals, for monkey 1. We have a lot of data from monkey one, and as such we can see that we have quite high confidence in the locations of his color categories.
-
-We see two clear categories, which appear to align with our concepts of \'warm\' and \'cool\' (an orangey color and a blueish color).
-
 ### All monkeys
+!!!!!!!!
+So far we've collected data in additional animals, and it is interesting to consider commonalities and differences that we see between the animals. All three share these warm and cool categories. In monkey 3 we identify two additional categories.
 
-So far we\'ve collected data in additional animals, and it is interesting to consider commonalities and differences that we see between the animals. All three share these warm and cool categories. In monkey 3 we identify two additional categories.
+### Summary
 
-### Strength
-
-In addition to looking at the location of the categories, we can consider the relative \"strength\" of the categories - the extent to which an category biases memories towards it. These values are the gradient of the bias at the category centre, and so are on a scale of 0 to 90. From this we can see that the green category in monkey 3 is a strong category, in line with the others identified, but that the purple category is barely present.
-
-### Power
-
-We can also look at the number of trials we would have needed to reach our current conclusions, to allay concerns that we might be missing other categories by not having collected enough data. We can see that our analysis pulls out the same categories with considerably less data than the total collected.
-
-### Learning rates
-
-We can also look at the relative learning rates for each color -- the speed with which each animal got proficient at trials for different hues. We find that there is structure in these learning rates, and our current theory is that this structure is a function of the post-receptoral contrast for each stimulus, but analysis here is ongoing.
-
-### 
-
-### Multi-sat
-
-I mentioned earlier that we chose to use an AFC version of this task instead of an estimation from a continuous response space. This allows us to very easily adapt the experiment to consider other dimensions of interest. We\'ve recently been running a modified version of the experiment where we also include variation in saturation, and the results of this have been informative in a couple of ways.
-
-First, I should say that one of the key differences between macaques and humans seems to be that humans are significantly better at generalisation. For example, in training the animals on tasks like this we start simple, and then slowly build up the task complexity. Often, when we change something that we would consider to be fairly trivial to task comprehension, such as changing the number of presented choices from 3 to 4, often the monkeys would act as though we'd presented them with a completely new task.
-
-I'm going to show you a heatmap of the cues against the choices. So if the cue was this blue, and the chosen choice was this green, this element of the grid would be increased by 1 count at this location.
-
-If the animal performed perfectly, we would see a filled in diagonal.
-
-### Filled heatmap
-
-And that is what you do see. They did not seem to conceive of this as a fundamentally different task.
-
-We were also curious to see whether the animals would have a bias for higher saturation targets, as some believe humans would.
-
-If the animal always picked the more saturated version of the color, then in an extreme case we would expect to see the lower half of the diagonal to be offset to the other quadrant. Inversely, if they always picked the less-saturated version then we would expect to see the top half offset.
-
-What we actually see is a slight bias for higher saturations, but actually a relatively balanced distribution of errors between higher saturation and lower saturation. This provides some confidence that saturation isn\'t a major issue for the key findings, and also reinforces this second finding that the monkeys consider saturation and hue to be part of the same framework.
-
-To summarise this:
-
-1\. They can generalise the task
-
-2\. saturation is unlikely to be the driving force behind the categories
-
-3\. the monkeys do not appear to show a bias between high and low saturation, which is curious because it\'s often said that humans have a preference for high saturation colours
 
 ### fMRI
 
-What we\'ve shown is that the psychophysical results in monkeys and humans are comparable at the photoreceptor, post-receptoral, and at the stage of color categories. It looks as though their color categories differ from ours, but the evidence suggests that they do have color categories.
+What we've shown is that the psychophysical results in monkeys and humans are comparable at the photoreceptor, post-receptoral, and at the stage of color categories. It looks as though their color categories differ from ours, but the evidence suggests that they do have color categories.
 
 Our fMRI results have discovered a large extensive network of brain regions implicated in processing of color in both humans and monkeys. The functional organisation of these networks is comparable, and we now, by virtue of the similarity of the psychophysical behaviour between monkeys and humans can be assured that the neural mechanisms that we uncover through invasive experiments in monkeys will pertain to the human case.
 
 ### In conclusion:
 
--   There are two color categories that are common to all 3 monkeys
+-   There are two color categories that are common to all 4 monkeys
 
 -   These color categories correspond to the human distinction of warm and cool
 
@@ -189,7 +146,7 @@ Our fMRI results have discovered a large extensive network of brain regions impl
 
 ### Acknowledgements
 
-I'd like to say thank you to the Colour Group for having me here, to my mentor and PI Bevil Conway, and to my collaborators on this project: Audrey Chang, Whitney Teagle, Hannah Selwyn, Shriya Awasthi and Riley Hoffman.
+I'd like to say thank you to Sarah for inviting me, you kind folks for having me here, to my PI Bevil Conway, and to my collaborators on this project: Audrey Chang, Whitney Teagle, Hannah Selwyn, Shriya Awasthi and Riley Hoffman.
 
 
 
