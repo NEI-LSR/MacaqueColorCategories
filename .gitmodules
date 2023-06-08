@@ -1,0 +1,3 @@
+[submodule "Analyses/TCC_AFC"]
+	path = Analyses/TCC_AFC
+	url = https://github.com/NEI-LSR/TCC_AFC.git
