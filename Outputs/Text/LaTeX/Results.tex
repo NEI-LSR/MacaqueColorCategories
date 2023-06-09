@@ -13,11 +13,11 @@ In \autoref{fig:BiasCurvesCombined} it can be seen that the biases deviate subst
 
 \paragraph{Shared color categories across monkeys}
 
-We see that all tested monkeys share two common attractor points, which we interpret as evidence of two shared color categories: a warm/orange-ish category (between 0$^\circ$ and 45$^\circ$), and a cool/blue-ish category (between 180$^\circ$ and 225$^\circ$).
+We see that all tested monkeys share two common attractor points (\autoref{fig:BiasCurvesIndividual}), which we interpret as evidence of two shared color categories: a warm/orange-ish category (between 0$^\circ$ and 45$^\circ$), and a cool/blue-ish category (between 180$^\circ$ and 225$^\circ$). 
 
 \paragraph{Individual differences between monkeys}
 
-In one animal we see evidence of additional categories: strong evidence for a greenish category and weak evidence for a purple category (the ``strength" of a category can be gleaned from looking at the local gradient at the zero-crossing point)
+In one animal \autoref{fig:BiasCurvesCastor} we see evidence of additional categories: strong evidence for a greenish category and weak evidence for a purple category (the ``strength" of a category can be gleaned from looking at the local gradient at the zero-crossing point)
 
 \begin{figure}
     \centering
@@ -60,6 +60,8 @@ In one animal we see evidence of additional categories: strong evidence for a gr
 %\end{figure}
 
 \paragraph{Biases Compared to Humans}
+
+Comparison to our human data, Mech Turk and also rig (maybe?)
 
 Comparison to \cite{bae_why_2015}
 
@@ -110,6 +112,36 @@ Similarity between stimulus $s_i$ and stimulus $s_j$, where one is the cue and o
         \label{fig:SimilarityMatrixIndividual}
 \end{figure}
 
+\paragraph{A behaviorally-derived colorspace}
+
+Extracted colorspace shown in \autoref{fig:MACBEHcolorspace}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{Stimuli in CIELUV \newline\newline}
+         \includesvg[pretex=\tiny, width=\textwidth]{../../Posters/2023_VSS/figures/colorspace_230511.svg}
+         \label{fig:CIELUV}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{Stimuli in behaviorally-derived space \newline}
+         \includesvg[pretex=\tiny, width=\textwidth]{../../Posters/2023_VSS/figures/behaviorally-derived-colorspace_230510.svg}
+         \label{fig:MACBEHspace}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{Stimuli sampled in behaviorally-derived space, projected back into CIELUV}
+         \includegraphics[width=\textwidth]{example-image-a}
+         \label{fig:UniformStimsInCIELUV}
+    \end{subfigure}
+           \caption{\textbf{A behaviorally-derived colorspace.} Ipsum!}
+        \label{fig:MACBEHcolorspace}
+    
+\end{figure}
 
 \paragraph{Longitudinal analysis}
 

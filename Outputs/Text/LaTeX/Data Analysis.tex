@@ -65,7 +65,7 @@ You can think of it as: for the high-error choice, there are \emph{2 chances} to
 An additional note for clarity: this is an issue for us because of the sampling required for the AFC paradigm, and is not an issue of concern for those who use a response mechanism where all possible responses are simultaneously presented.
 }.
 In order to use the full dataset (both incorrect and correct trials), we developed a generative model, based on the \emph{Target Confusability Competition (TCC)} model of \cite{schurgin_psychophysical_2020}.
-The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ and a value of $d'$, which can be thought of as describing the amount of noise acting on the system. 
+The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ through a non-linear mapping of distance to similarity, and a value of $d'$, which can be thought of as describing the amount of noise acting on the system. 
 Taken together, these two elements can be used to predict the probability that a choice of colour $s_j$ will be picked, from the set of $[s_{j1} ... s_{jn}]$, on a trial where the cue is $s_i$.
 Our implementation of the model differs in some key ways to that described in \cite{schurgin_psychophysical_2020}:
 \begin{enumerate}
@@ -86,7 +86,7 @@ Using this model, we used parameter estimation techniques to construct a similar
 Such a similarity matrix is shown in \autoref{fig:SimilarityMatrixPollux} for a single animal (Monkey P).
 This model, and this visualization method, allows us to assess not only the mean of the bias in the responses, but the shape of the response-bias-curve, which gives us an insight into the source of the bias.
 
-\paragraph{Distinguishing between cognitive biases and biases arising from non-uniformity of stimulus space}
+\paragraph{Cognitive Bias vs. Stimulus-Space Non-Uniformity}
 
 For these experiments, we used a nominally perceptually-uniform colorspace: CIELUV. 
 This space has been derived psychophysically, with the goal of minimizing differences in perceptual non-uniformity across the space, for color differences of small magnitudes (the apparent color difference between two points in one part of the space should be equal to the apparent color difference between two points in another part of the space when that the cartesian distance between the two points in each case be the same).
@@ -152,6 +152,7 @@ A cartoon example is shown in \autoref{fig:JustColSpace}.
     \end{subfigure}
         \caption{\textbf{Distinguishing between different sources of bias using TCC models: cognitive bias vs. non-uniformity of stimulus space.} Similarity matrices representing different theoretically driven mechanisms can result in the same average bias value. A mixture model cannot distinguish between these different sources, whereas a TCC model readily can. \ref{fig:JustBias}: an example of how cognitive bias might appear - each row of the matrix is shifted leftwards or rightwards. \ref{fig:JustColSpace}: an example of how non-uniformity in stimulus space might appear - the similarity between each cue and its neighbors is increased or decreased, resulting in an expansion of the higher similarity region of the matrix symmetrically around the negative diagonal for colors which are more similar to their neighbors than average, and a contraction for colors that are less similar to their neighbors than average. \ref{fig:JustBias_subset}: The values representing the similarity function for cue 20 (the row highlighted in red in \ref{fig:JustBias}), with the circular median shown as a vertical dashed line. \ref{fig:JustColSpace_subset}: As in \ref{fig:JustBias_subset} but for \ref{fig:JustColSpace}. Note how the circular median of \emph{both} functions is 25.}
         \label{fig:distinguishing}
+        % !! update this to mirror the VSS 2023 poster with the mixture model examples?
 \end{figure}
 
 In this example, it is possible to see how responses could be biased even in the absence of cognitive bias - consider cue 20, for example. 
@@ -186,9 +187,11 @@ This is akin to asking: what set of relationships between the stimuli in stimulu
 
 \vspace{2em} 
 
-\paragraph{Reconstruction of colorspace}
+\paragraph{A behaviorally-derived colorspace}
 
-...
+Following the fitting of the model described above, the set of modified stimuli chromaticities can be extracted (\autoref{fig:MACBEHspace}. 
+These can be thought of as the chromaticity values for the stimuli that we used, no longer represented in CIELUV, but now in a behaviorally-derived color space instead.
+It is then possible to define a uniformly distributed set of colors in this new space, reparameterize them by their relationship to the original colors in the new space (e.g. new chromaticity $n$ is 60\% of the angular distance on the path between stimulus $m$ and stimulus $p$), and then determine where this new set of colors would be in CIELUV (\autoref{fig:UniformStimsInCIELUV}).
 
 %\begin{figure}
 %\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/working/Poster_components/BiasCalculation copy.svg}
