@@ -1,10 +1,10 @@
 # MacaqueColorCategories
 
-This repo is the home for a manuscript on the topic of color categories in macaque.
+This repo is the home for the Macaque Color Categories project.
 
 Overleaf link: https://www.overleaf.com/9918797415dwvhydynjtmv (it's private so you'll need to be invited)
 
-Don't delete the .git hidden folder.
+Don't delete the `.git` hidden folder.
 
 To convert the LaTeX files to word, use pandoc (from the writing/LaTeX folder):
 ```
