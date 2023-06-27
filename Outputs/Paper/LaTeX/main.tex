@@ -92,7 +92,7 @@ breaklines=true
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Paper title
-\title{Macaque Color Categories}
+\title{The Sources of Color Categories}
 
 \author[ \orcidlink{0000-0002-4579-003X} 1 \Letter]{Daniel J. Garside}
 \author[ \orcidlink{0000-0002-2532-9780} 1]{Audrey L.Y. Chang}
@@ -127,22 +127,14 @@ Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.
 
 \input{abstract.tex}
 
-\section{Introduction}
+%\section{Introduction}
 \input{Introduction.tex}
 
-\section{Methods}
-\subsection{Subject details}
-\input{Subject Details.tex}
-\subsection{Behavioral tasks}
-\input{Behavioral task.tex}
-\subsection{Data Analysis}
-\input{Data Analysis.tex}
-
-\section{Results}
+%\section{Results}
 \input{Results.tex}
 
 \clearpage
-\section{Discussion}
+%\section{Discussion}
 \input{Discussion.tex}
 
 \section{Limitations}
@@ -188,6 +180,14 @@ Latest version of code: github...
 % DON'T EDIT. If "endfloat" option is enabled all floats appear before appendices
 \if@endfloat\clearpage\processdelayedfloats\clearpage\fi 
 
+\newpage
+\section{Methods}
+\subsection{Subject details}
+\input{Subject Details.tex}
+\subsection{Behavioral tasks}
+\input{Behavioral task.tex}
+\subsection{Data Analysis}
+\input{Data Analysis.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% SUPPLEMENTARY MATERIAL / APPENDICES
@@ -195,13 +195,13 @@ Latest version of code: github...
 %% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
 \begin{appendix}
 
-%\begin{appendixbox}\label{app:ttt}
-%    \input{src/supplementary/appendices.tex}
-%\end{appendixbox}
-%
-%\begin{appendixbox}
-%    \input{src/supplementary/resources.tex}
-%\end{appendixbox}
+\begin{appendixbox}\label{app:SatBias}
+    \input{Appendices/SatBias.tex}
+\end{appendixbox}
+
+\begin{appendixbox}\label{app:LongAnal}
+    \input{Appendices/LongAnal.tex}
+\end{appendixbox}
 
 \end{appendix}
 
