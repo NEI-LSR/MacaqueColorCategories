@@ -124,6 +124,7 @@ Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.
 
 \begin{document}
 \maketitle
+\begin{refsection}
 
 \input{abstract.tex}
 
@@ -176,10 +177,12 @@ Latest version of code: github...
 
 \clearpage
 \printbibliography
+\end{refsection}
 
 % DON'T EDIT. If "endfloat" option is enabled all floats appear before appendices
 \if@endfloat\clearpage\processdelayedfloats\clearpage\fi 
 
+\begin{refsection}
 \newpage
 \section{Methods}
 \subsection{Subject details}
@@ -195,7 +198,9 @@ Latest version of code: github...
 %% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
 \begin{appendix}
 
-\noindent
+\begin{appendixbox}\label{app:IndDiffs}
+    \input{Appendices/IndDiffs.tex}
+\end{appendixbox}
 
 \begin{appendixbox}\label{app:SatBias}
     \input{Appendices/SatBias.tex}
@@ -205,7 +210,13 @@ Latest version of code: github...
     \input{Appendices/LongAnal.tex}
 \end{appendixbox}
 
+
+
 \end{appendix}
+
+\clearpage
+\printbibliography
+\end{refsection}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
