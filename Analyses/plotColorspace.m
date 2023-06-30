@@ -17,11 +17,13 @@ stimCols_x_polar = cumsum([0, x_norm(1:end-1)]);
 rotVals = 1:10000; % arbitrary value, determines precision
 for rotVal = rotVals
     stimCols_x_polar_temp = stimCols_x_polar + rotVals(rotVal)/max(rotVals)*360;
-    sq_error(rotVal) = sum(angdiff(deg2rad(pol(1,:)),deg2rad(stimCols_x_polar_temp)).^2); %angdiff from submodule: spatialmath-matlab (https://github.com/petercorke/spatialmath-matlab)
+    sq_error(rotVal) = sum(rad2deg(angdiff(deg2rad(pol(1,:)),deg2rad(stimCols_x_polar_temp))).^2); %angdiff from submodule: spatialmath-matlab (https://github.com/petercorke/spatialmath-matlab)
 end
 
 figure, 
-plot(rotVals,sq_error,'-o')
+plot(rotVals/max(rotVals)*360,sq_error,'-o')
+xlabel('Rotation (degrees)')
+ylabel('Sum squared error')
 axis tight
 
 [~,minLoc] = min(sq_error);
