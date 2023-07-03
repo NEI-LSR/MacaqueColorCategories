@@ -1,21 +1,31 @@
-%% 
+function plotSimilarityMatrix(x)
 
-clear, clc, close all
+%clear, clc, close all
 
+nBig = 64;
 
 %%
 
-%load('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\combined\combined_TCC-FreeSimilarityMatrix-workspace_230509.mat')
-load('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\combined\combined_TCC-0att_fullremap-workspace_230510.mat')
+% %load('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\combined\combined_TCC-FreeSimilarityMatrix-workspace_230509.mat')
+% load('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\combined\combined_TCC-0att_fullremap-workspace_230510.mat')
+% 
+% [~,tempdata] = f(x);
+% sm = tempdata.trialdata.similarityMatrix;
 
-[~,tempdata] = f(x);
-sm = tempdata.trialdata.similarityMatrix;
+%%
+
+if min(size(x) == 1) % if we pass a vector rather than a matrix, assume it needs reshaping
+    sm = reshape(x,[nBig, nBig]);
+else
+    sm = x; % Similarity Matrix
+end
+
+%%
+
 stimCols = generateStimCols('nBig',64);
 
-%sm = reshape(x,[nBig, nBig]);
-
 %%
-f2 = figure('Position',[360 123 582 495]);
+f = figure('Position',[360 123 582 495]);
 ax1 = axes();
 imagesc(sm)
 axis equal tight
@@ -122,7 +132,9 @@ cb3.Position = [cb3_Position(1:2),cb2_Position(1)-cb3_Position(1),cb3_Position(4
 %%
 
 %saveas(f2,'combined_TCC-FreeSimilarityMatrix_230509.svg')
-saveas(f2,'combined_TCC-0att_fullremap-similaityMatrix_230510.svg')
+%saveas(f2,'combined_TCC-0att_fullremap-similaityMatrix_230510.svg')
+
+saveas(f,['sm_',datestr(now,'yymmdd'),'.svg'])
 
 
 
