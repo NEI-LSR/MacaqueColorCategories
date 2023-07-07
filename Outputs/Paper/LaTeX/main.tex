@@ -34,9 +34,9 @@ breaklines=true
 \usepackage{snotez}     % For sidenote environments. enotez for endnotes
 \usepackage{csquotes}   % For language-based quote rules (helps BiBLaTeX)
 
-%\usepackage[dvipsnames]{xcolor}
+%\usepackage[table,xcdraw]{xcolor}
 \usepackage[utf8]{inputenc}
-\usepackage[all]{hypcap}
+%\usepackage[all]{hypcap}
 \usepackage{microtype} %makes text formatting slightly more readable
 \usepackage{libertine} %uses open source font
 \usepackage{svg}
@@ -134,7 +134,7 @@ Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.
 %\section{Results}
 \input{Results.tex}
 
-\clearpage
+%\clearpage
 %\section{Discussion}
 \input{Discussion.tex}
 
@@ -154,29 +154,46 @@ Latest version of code: github...
 
 \section{Acknowledgments}
 
+% - Animals
+% - Animal staff
+% - LSR
+% - Riley, Shriya, Whitney, Josh?
+% - Tim Brady
+
+\newpage
 \section{Author contributions}
 
 % table? e.g. https://twitter.com/AnneEUrai/status/1361356189284581387
 
 % 'CRediT' (https://casrai.org/credit/)
-%:
-% Conceptualization
-% Data curation
-% Formal Analysis
-% Funding acquisition
-% Investigation
-% Methodology
-% Project administration
-% Resources
-% Software
-% Supervision
-% Validation
-% Visualization
-% Writing – original draft
-% Writing – review & editing
+
+\begin{table}[h!]
+\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+\hline
+ & DJG & ALCY & HMS & BRC \\ \hline
+%Conceptualization & \cellcolor[HTML]{343434} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{C0C0C0} &  \\ \hline
+Conceptualization  &  &  &  &  \\ \hline
+Data curation &  &  &  &  \\ \hline
+Formal Analysis &  &  &  &  \\ \hline
+Funding acquisition &  &  &  &  \\ \hline
+Investigation &  &  &  &  \\ \hline
+Methodology &  &  &  &  \\ \hline
+Project administration &  &  &  &  \\ \hline
+Resources &  &  &  &  \\ \hline
+Software &  &  &  &  \\ \hline
+Supervision &  &  &  &  \\ \hline
+Validation &  &  &  &  \\ \hline
+Visualization &  &  &  &  \\ \hline
+Writing – original draft &  &  &  &  \\ \hline
+Writing – review \& editing &  &  &  &  \\ \hline
+\end{tabularx}
+\end{table}
+
+\noindent
+\textit{Level of contribution: \textcolor[HTML]{343434}{lead}, \textcolor[HTML]{9B9B9B}{equal}, \textcolor[HTML]{C0C0C0}{support}.}
 
 \clearpage
-\printbibliography
+\printbibliography[title=Main Text References]
 \end{refsection}
 
 % DON'T EDIT. If "endfloat" option is enabled all floats appear before appendices
@@ -215,7 +232,7 @@ Latest version of code: github...
 \end{appendix}
 
 \clearpage
-\printbibliography
+\printbibliography[title=Additional References]
 \end{refsection}
 
 

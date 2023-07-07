@@ -32,7 +32,7 @@ We then fit a Gaussian with a variable floor (\autoref{eq:GaussianEquation}) to 
 This fit was weighted by the number of times each choice color was an option for the given cue across all completed trials (though as before, this was approximately uniformly distributed). 
 Bias was taken as the difference between the cue and the peak of the corresponding Gaussian, for each cue color ($b$ in \autoref{eq:GaussianEquation}). 
 %These values were then smoothed (with a circular moving average filter of 5 cues) since our primary interest was in the broader structure of the bias distribution, and this is shown as the black lines in \autoref{fig:BiasCurves}.
-These values, for each stimulus, are plotted as the black lines in \autoref{fig:BiasCurvesCombined}.
+These values, for each stimulus, are plotted as the black lines in \autoref{fig:AvResults}.
 Where this line falls closer to the center of the figure than the 0$^{\circ}$ line, there is negative bias (which in this representation is counter-clockwise), and vice versa for values above the 0$^{\circ}$ line.
 %Attractor points (thought to indicate color category centers) occur where the bias curve crosses the zero line from positive to negative (going counter-clockwise).
 %At these points, there is zero bias, and hues on either side provoke choices that are biased inwards towards this point.
@@ -96,7 +96,7 @@ Likewise, uniformity for the conditions under which the psychometric measurement
 
 With this in mind, it is reasonable to consider what the effect of residual non-uniformity might be on the results of our experiment. 
 As discussed by \cite{panichello_error-correcting_2019} (their Figure S5) non-uniformities in colorspace could also potentially lead to systematic biases on tasks such as ours. % However, I think the they reach the opposite conclusion as we do...
-The logic goes as follows: our points are uniformly distributed in our chosen space (\autoref{fig:StimuliAndParadigm}A), but if this space is actually non-uniform compared to the colorspace implicitly being used by an observer, then these same points will be \emph{non}-uniformly distributed in a hypothetical `perfect colorspace'. 
+The logic goes as follows: our points are uniformly distributed in our chosen space (\autoref{fig:ParadigmAnalysisPredictions}), but if this space is actually non-uniform compared to the colorspace implicitly being used by an observer, then these same points will be \emph{non}-uniformly distributed in a hypothetical `perfect colorspace'. 
 It follows that for each cue color, surrounding distractor points might actually be closer or further away than anticipated. 
 If the nearest neighbors on one side of the cue are actually chromatically closer than the neighbors on the other side, one would expect these to be chosen at a higher frequency than the others, creating a systematic bias.
 \cite{panichello_error-correcting_2019} lack a robust framework within which to test these ideas, and conclude that there would be no effect on their conclusions. We reach a contrary conclusion.
@@ -116,44 +116,6 @@ Spread away from the negative diagonal which is mirrored across the diagonal rep
 In areas where the behavioral space is oversampled, one would see spread away from the negative diagonal (adjacent colors are more similar than the average).
 In areas that are undersampled, one would see a pinch into the negative diagonal (adjacent colors are less similar than the average).
 A cartoon example is shown in \autoref{fig:JustColSpace}.
-
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-         \centering
-         \caption{}
-         %\includegraphics[width=\textwidth]{../../Figures/working/justBias.pdf}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/Old/justBias.svg}
-         \label{fig:JustBias}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-         \centering
-         \caption{}
-         %\includegraphics[width=\textwidth]{../../Figures/working/justColSpace.pdf}    
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/Old/justColSpace.svg}
-         \label{fig:JustColSpace}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{0.49\textwidth}
-         \centering
-         \caption{}
-         %\includegraphics[width=\textwidth]{../../Figures/working/justBias_subset.pdf}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/Old/justBias_subset.svg}
-         \label{fig:JustBias_subset}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-         \centering
-         \caption{}
-         %\includegraphics[width=\textwidth]{../../Figures/working/justColSpace_subset.pdf}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/Old/justColSpace_subset.svg}
-         \label{fig:JustColSpace_subset}
-    \end{subfigure}
-        \caption{\textbf{Distinguishing between different sources of bias using TCC models: cognitive bias vs. non-uniformity of stimulus space.} Similarity matrices representing different theoretically driven mechanisms can result in the same average bias value. A mixture model cannot distinguish between these different sources, whereas a TCC model readily can. \ref{fig:JustBias}: an example of how cognitive bias might appear - each row of the matrix is shifted leftwards or rightwards. \ref{fig:JustColSpace}: an example of how non-uniformity in stimulus space might appear - the similarity between each cue and its neighbors is increased or decreased, resulting in an expansion of the higher similarity region of the matrix symmetrically around the negative diagonal for colors which are more similar to their neighbors than average, and a contraction for colors that are less similar to their neighbors than average. \ref{fig:JustBias_subset}: The values representing the similarity function for cue 20 (the row highlighted in red in \ref{fig:JustBias}), with the circular median shown as a vertical dashed line. \ref{fig:JustColSpace_subset}: As in \ref{fig:JustBias_subset} but for \ref{fig:JustColSpace}. Note how the circular median of \emph{both} functions is 25.}
-        \label{fig:distinguishing}
-        % !! update this to mirror the VSS 2023 poster with the mixture model examples?
-\end{figure}
 
 In this example, it is possible to see how responses could be biased even in the absence of cognitive bias - consider cue 20, for example. 
 The similarity of cue 20 to all the possible choices is represented by the row of elements at location 20. Tracking left to right from the y-axis, see how there is only a small area of similarity to the left of the negative diagonal and a larger area of similarity to the right of the diagonal. 
