@@ -82,6 +82,10 @@
 \DeclareOption{onehalfspacing}{\@onehalfspacingtrue}
 \DeclareOption{doublespacing}{\@doublespacingtrue}
 
+%% Section numbers
+\newif\if@secnum
+\DeclareOption{secnum}{\@secnumtrue}
+
 %%% Provides extra font sizes (? - look up extsizes, https://www.ctan.org/pkg/extsizes) 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
 \ExecuteOptions{}
@@ -132,7 +136,7 @@
   \definecolor{MediumGrey}{HTML}{6D6E70}
   \definecolor{LightGrey}{HTML}{929497}
 \else
-  \definecolor{darkColour}{HTML}{0E4B92}
+  \definecolor{darkColour}{HTML}{000000} %DG: changed this as a hacky way to get the appendix captions to not be blue
   \definecolor{lightColour}{HTML}{357ABF}
   \definecolor{MediumGrey}{HTML}{6D6E70}
   \definecolor{LightGrey}{HTML}{929497}
@@ -216,20 +220,20 @@
 \renewcommand{\footrulewidth}{0.4pt}% % No footer rule
 
 % Format title
-\setcounter{secnumdepth}{0}
+\if@secnum\else\setcounter{secnumdepth}{0}\fi
 \RequirePackage[explicit]{titlesec}
 \titleformat{\section}
   {\color{MediumGrey}\Large\bfseries}
-  {\thesection}{}{#1}[]
+  {\thesection}{10pt}{#1}[]
 \titleformat{\subsection}
   {\large\bfseries}
-  {\thesubsection}{}{#1}[]
+  {\thesubsection}{10pt}{#1}[]
 \titleformat{\subsubsection}
   {\large}
-  {\thesubsubsection}{}{#1}[]    
+  {\thesubsubsection}{10pt}{#1}[]    
 \titleformat{\paragraph}
   {\color{MediumGrey}\large}
-  {\theparagraph}{}{#1}[]
+  {\theparagraph}{10pt}{#1}[]
 
 % Title spacing
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{2pt}
@@ -513,15 +517,19 @@
 
 \newcounter{appendix}
 \setcounter{appendix}{0}
-\newenvironment{appendixbox}{%
+\newenvironment{appendixbox}[1][]{%
   \setcounter{figure}{0}
   \setcounter{table}{0}
   \refstepcounter{appendix}%
   \clearpage%
-  \patchcmd{\ttlf@section}{MediumGrey}{darkColour}{}{}
-  \noindent{\bfseries\Large\color{MediumGrey}Appendix \arabic{appendix}\par}
+  \patchcmd{\ttlf@section}{LightGrey}{darkColour}{}{}
+  \begin{mdframed}[hidealllines=true,leftline=true,linecolor=MediumGrey,linewidth=1em]
+  \ifx&#1&%
+    \noindent{\bfseries\Large\color{MediumGrey}Appendix \arabic{appendix}\par}
+  \else
+    \noindent{\bfseries\Large\color{MediumGrey}Appendix \arabic{appendix}---#1\par}
+  \fi  
   \nolinenumbers%
-  \begin{mdframed}[hidealllines=true,backgroundcolor=lightColour!10,leftline=true,linecolor=lightColour,linewidth=1em]
   \if@reqslineno\addtolength{\linenumbersep}{2em}\internallinenumbers\fi
 }{%
   \vspace{1em}%
