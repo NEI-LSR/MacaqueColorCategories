@@ -85,7 +85,11 @@ else
     choices = cell2mat(cleandata.trialdata.choices);
     chosen = cell2mat(cleandata.trialdata.chosen);
     
-    colresp = [cues, chosen, choices];
+    try
+        colresp = [cues, chosen, choices];
+    catch
+        colresp = [cues, chosen', choices];
+    end
     
     % Get completed trials + incorrect trials
     colresp(any(isnan(colresp),2),:) = []; % gets rid of all aborts
