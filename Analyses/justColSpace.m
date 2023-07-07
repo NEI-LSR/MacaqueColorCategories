@@ -222,6 +222,6 @@ saveas(f3,'justColSpace_subset.svg')
 
 %%
 
-moving_bias = categorybias_analysis(tempdata);
+moving_bias = fitMixtureModel(tempdata);
 save('moving_bias','moving_bias');
 

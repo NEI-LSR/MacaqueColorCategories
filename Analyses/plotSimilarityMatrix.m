@@ -1,4 +1,4 @@
-function plotSimilarityMatrix(x)
+function plotSimilarityMatrix(x,filename,OutPutFileDir)
 
 %clear, clc, close all
 
@@ -14,7 +14,7 @@ nBig = 64;
 
 %%
 
-if min(size(x) == 1) % if we pass a vector rather than a matrix, assume it needs reshaping
+if min(size(x)) == 1 % if we pass a vector rather than a matrix, assume it needs reshaping
     sm = reshape(x,[nBig, nBig]);
 else
     sm = x; % Similarity Matrix
@@ -25,7 +25,7 @@ end
 stimCols = generateStimCols('nBig',64);
 
 %%
-f = figure('Position',[360 123 582 495]);
+f = figure;
 ax1 = axes();
 imagesc(sm)
 axis equal tight
@@ -117,7 +117,7 @@ ax.YLabel = [];
 
 %%
 
-hlink = linkprop([ax1,ax2,ax3],{'Position','DataAspectRatio'});
+linkprop([ax1,ax2,ax3],{'Position','DataAspectRatio'});
 
 cb1_Position = cb1.Position;
 cb2_Position = cb2.Position;
@@ -134,7 +134,11 @@ cb3.Position = [cb3_Position(1:2),cb2_Position(1)-cb3_Position(1),cb3_Position(4
 %saveas(f2,'combined_TCC-FreeSimilarityMatrix_230509.svg')
 %saveas(f2,'combined_TCC-0att_fullremap-similaityMatrix_230510.svg')
 
-saveas(f,['sm_',datestr(now,'yymmdd'),'.svg'])
+if ~exist('OutPutFileDir','var')
+    OutPutFileDir = './';
+end
+
+saveas(f,[OutPutFileDir,'sm_',filename,'_',datestr(now,'yymmdd'),'.svg'])
 
 
 

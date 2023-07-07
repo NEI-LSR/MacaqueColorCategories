@@ -1,4 +1,4 @@
-function [moving_bias, lower_95, upper_95] = categorybias_analysis(cleandata,similarityMatrix,Lab)
+function [moving_bias, lower_95, upper_95] = fitMixtureModel(cleandata,similarityMatrix,Lab)
 %% Load in data
 if nargin < 2
     similarityMatrix = [];
@@ -174,9 +174,9 @@ end
 
 %% Category center locations
 
-k = 1; % moving average input
+k = 3; % moving average input
 if mod(k,2) == 0
-    error('K should be even')
+    error('K should be odd')
 end
 
 moving_bias = movmean(padarray(bias,k,"circular"),k,'Endpoints','discard');
@@ -293,7 +293,7 @@ end
 
 %% Figures: Bias by Cue with Category Crossings and Confidence Intervals
 
-figure('WindowState', 'maximized');
+figure
 
 % % create filename
 if isfield(cleandata.trialdata,'dirname')
@@ -359,17 +359,18 @@ end
 
 %exportgraphics(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias1_', datestr(now,'yymmdd'), '.pdf']))
 
-saveas(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias1_', datestr(now,'yymmdd'), '.svg']))
-%disp(['![](../../../analysis/analyses/', file_dir,'/',filename,'_categorybias1_', datestr(now,'yymmdd'), '.svg', ')'])
+saveas(gcf,fullfile('../',[filename,'_categorybias1_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %% Pie chart figure
 
-figure('WindowState', 'maximized');
+figure
+% figure('color', 'white')
 
 hold on
 pie(repelem(interval,nBig));% pie chart w/ nBig equally sized slices
 colormap(rstimCols_sRGB);
 ax = gca;
+axis equal
 delete(ax.Children([1, 1:2:nBig*2])) % stop displaying % for each slice
 for i = 1:nBig
     ax.Children(i).EdgeAlpha = 0; % get rid of lines between slices
@@ -380,7 +381,7 @@ end
 ax.View = [90 90];
 
 % Mark out anything outside of confidence intervals
-if isempty(ci) == 0 && isempty(interp_ci) == 0 % && isempty(change_range) == 0
+if ~isempty(ci) && ~isempty(interp_ci) % && isempty(change_range) == 0
     
     x0=0;
     y0=0;
@@ -423,22 +424,22 @@ if isempty(ci) == 0 && isempty(interp_ci) == 0 % && isempty(change_range) == 0
 %     
 %     unique_opacity = unique(opacity,'stable');
     
-    for i = 1:2:length(CI_range)-1
-        %opacity_number = opacity_number+1;
-        pie_direction = (.25*CI_range(1,i))/90 + 0.25;
-        if CI_range(1,i+1) > CI_range(1,i)
-            theta = deg2rad(CI_range(1,i+1) - CI_range(1,i));
-        elseif CI_range(1,i+1) < CI_range(1,i)
-            theta = deg2rad((360 - CI_range(1,i)) + CI_range(1,i+1));
-        end
-        a1 = 2*pi*pie_direction; % Starting direction
-        a2 = a1 + theta; % Ending direction
-        t = linspace(a1,a2);
-        x = x0 + r*cos(t);
-        y = y0 + r*sin(t);
-        %fill([x0,x,x0],[y0,y,y0],'w','FaceAlpha',unique_opacity(opacity_number),'EdgeAlpha',0);
-        fill([x0,x,x0],[y0,y,y0],'w','FaceAlpha',0.3,'EdgeAlpha',0);
-    end
+    % for i = 1:2:length(CI_range)-1
+    %     %opacity_number = opacity_number+1;
+    %     pie_direction = (.25*CI_range(1,i))/90 + 0.25;
+    %     if CI_range(1,i+1) > CI_range(1,i)
+    %         theta = deg2rad(CI_range(1,i+1) - CI_range(1,i));
+    %     elseif CI_range(1,i+1) < CI_range(1,i)
+    %         theta = deg2rad((360 - CI_range(1,i)) + CI_range(1,i+1));
+    %     end
+    %     a1 = 2*pi*pie_direction; % Starting direction
+    %     a2 = a1 + theta; % Ending direction
+    %     t = linspace(a1,a2);
+    %     x = x0 + r*cos(t);
+    %     y = y0 + r*sin(t);
+    %     %fill([x0,x,x0],[y0,y,y0],'w','FaceAlpha',unique_opacity(opacity_number),'EdgeAlpha',0);
+    %     fill([x0,x,x0],[y0,y,y0],'w','FaceAlpha',0.3,'EdgeAlpha',0);
+    % end
 else
     for i = 1:nBig
         ax.Children(i).FaceAlpha = 0;
@@ -450,52 +451,61 @@ rotated_colvals = im2double(rstimCols_sRGB);
 shift_colvals = [colvals(nBig*(3/4):end,:); colvals(1:nBig*(3/4)-1,:)];
 [cart,~] = generateStimCols('nBig',nBig); % generate values to plot cues
 
-scatter(cart(1,:)./36,cart(2,:)./36,185,shift_colvals,'filled'); % plot all cues around pie chart
+stimscatter = scatter(cart(1,:)./36,cart(2,:)./36,90,shift_colvals,'filled'); % plot all cues around pie chart
 
 set(gca,'visible','off')
-axis equal
+axis equal tight
 
 rad_angle = deg2rad(hue_angle); %hue angles in radians
-axes3 = axes('Position', [0.318 0.1 0.4 0.835]);
-polarplot(rad_angle, be_w+40,'b');
+axes3 = axes;
+p = polarplot(rad_angle, be_w+40,'b'); % dummy holder
+
+
+
 rlim([0 80]);
 hold on
-polarplot(rad_angle, zeros(length(rad_angle),1)+40,'LineStyle','--','Color','k');
+polarplot(rad_angle, zeros(length(rad_angle),1)+40,'LineStyle',':','Color','k');
 polarplot(rad_angle, be_w+40,'k');
+thetaticks(0:45:315)
 
-if isempty(ci) == 0
-    polarplot(rad_angle, lower_95_w+40,':k');
-    polarplot(rad_angle, upper_95_w+40,':k');
-end
+% if isempty(ci) == 0
+%     polarplot(rad_angle, lower_95_w+40,':k');
+%     polarplot(rad_angle, upper_95_w+40,':k');
+% end
 
-for k = 1:length(interp_crossing)
-    %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 60],'Color',[rotated_colvals(crossings(k),:) (1+min(opacity))-opacity(k)],'LineWidth',1.5);
-    polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',rotated_colvals(crossings(k),:),'LineWidth',1.5);
-end
+% add lines
+% for k = 1:length(interp_crossing)
+%     %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 60],'Color',[rotated_colvals(crossings(k),:) (1+min(opacity))-opacity(k)],'LineWidth',1.5);
+%     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',rotated_colvals(crossings(k),:),'LineWidth',1.5);
+% end
+
 ax = gca;
 ax.Color = 'none';
-ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
+% ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
+ax.ThetaTickLabel = {};
 ax.RTick = 0:20:80;
-rticklabels({'','-20{\circ}','0{\circ}','20{\circ}',''});
+rticklabels({'','-20{\circ}','0{\circ}','+20{\circ}',''});
 
-ax.RAxisLocation = 235;
-ax.FontSize = 8;
-ax.Units = 'normalized';
-ax.Position = [0.3734375,0.212952799121844,0.2890625,0.609220636663008];
+
+% ax.RAxisLocation = 235;
+% ax.FontSize = 8;
+% ax.Units = 'normalized';
+%ax.Position = [0.3734375,0.212952799121844,0.2890625,0.609220636663008];
 
 theta = rad_angle;
 
 ax_polar = gca;
 ax_cart = axes();
+axis equal
 ax_cart.Position = ax_polar.Position;
 
 if isempty(ci) == 0
     rlow = lower_95_w' + 40;
     rhigh = upper_95_w' + 40;
-    
+
     [x1,y1] = pol2cart(theta,rlow);
     [x2,y2] = pol2cart(theta,rhigh);
-    patch([x1 fliplr(x2)], [y1 fliplr(y2)], 'k', 'FaceAlpha', 0.3, 'EdgeAlpha', 0);
+    patch([x1 fliplr(x2)], [y1 fliplr(y2)], 'k', 'FaceAlpha', 0.15, 'EdgeAlpha', 0);
 end
 
 xlim(ax_cart,[-max(get(ax_polar,'RLim')),max(get(ax_polar,'RLim'))]);
@@ -515,12 +525,12 @@ set(ax_cart,'visible','off');
 
 %exportgraphics(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias2_', datestr(now,'yymmdd'), '.pdf']))
 
-saveas(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias2_', datestr(now,'yymmdd'), '.svg']))
-%disp(['![](../../../analysis/analyses/', file_dir,'/',filename,'_categorybias2_', datestr(now,'yymmdd'), '.svg', ')'])
+
+saveas(gcf,fullfile('../',[filename,'_categorybias2_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %% Figures: Bias by Cue with Category Crossings and Confidence Intervals
 
-figure('WindowState', 'maximized');
+figure
 
 % % % display fit type
 % axes0 = axes('Position',[0.01 0.95 0.15 0.05]);
@@ -606,7 +616,6 @@ ylabel('Bias ({\circ})');
 
 %exportgraphics(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias3_', datestr(now,'yymmdd'), '.pdf']))
 
-saveas(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias3_', datestr(now,'yymmdd'), '.svg']))
-%disp(['![](../../../analysis/analyses/', file_dir,'/',filename,'_categorybias3_', datestr(now,'yymmdd'), '.svg', ')'])
+saveas(gcf,fullfile('../',[filename,'_categorybias3_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 end

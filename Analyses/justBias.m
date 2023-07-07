@@ -208,5 +208,5 @@ saveas(f3,'justBias_subset.svg')
 
 [~, tempdata] = GenerativeModel([],...
     'nBig',nBig,'similarityMatrix',a_sm,'nTrials',200000);
-moving_bias = categorybias_analysis(tempdata);
+moving_bias = fitMixtureModel(tempdata);
 
