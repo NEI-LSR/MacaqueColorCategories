@@ -321,7 +321,7 @@ end
 % text('Parent',axes1,'Interpreter','none','String',filename,'FontSize', 15, 'Position',[0.05 0.5 0]);
 % set(axes1,'XColor','none','YColor','none')
 
-axes2 = axes('Position', [0.13 0.13 0.8 0.78]);
+axes2 = axes;
 hold on
 if isempty(ci) == 0
     plot(hue_angle, lower_95_w, 'k:');
