@@ -119,6 +119,9 @@ ax.YLabel = [];
 
 linkprop([ax1,ax2,ax3],{'Position','DataAspectRatio'});
 
+ax1_position = ax1.Position;
+set(ax1, 'Position', [0.175,0.15,ax1_position(3:4)]) 
+
 cb1_Position = cb1.Position;
 cb2_Position = cb2.Position;
 cb3_Position = cb3.Position;

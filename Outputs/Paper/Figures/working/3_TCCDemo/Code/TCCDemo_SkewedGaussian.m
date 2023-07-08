@@ -23,8 +23,8 @@ moving_bias = fitMixtureModel(cleandata);
 
 %% Generate a set of paramters for skewed gaussians that would create this data structure
 
-SimFuc_sd = 60;
-[m,c] = computeRelationshipBetweenSkewAndFittedGaussian(SimFuc_sd);
+SimFunc_sd = 60;
+[m,c] = computeRelationshipBetweenSkewAndFittedGaussian(SimFunc_sd);
 
 % % sd = 30;
 % m = -34.7129397313997; %((64a78a13-c347-4503-999c-1f6a5f5ff0f9))
@@ -33,7 +33,7 @@ SimFuc_sd = 60;
 skewedGaussians = (moving_bias - c)/m;
 
 [~, SGdata] = GenerativeModel([],'skewedGaussians',skewedGaussians,...
-    'SimFuc_sd',SimFuc_sd,'nTrials',size(cleandata.trialdata.cues,1));
+    'SimFunc_sd',SimFunc_sd,'nTrials',size(cleandata.trialdata.cues,1));
 
 SG_moving_bias = fitMixtureModel(SGdata);
 
