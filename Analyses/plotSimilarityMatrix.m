@@ -1,4 +1,4 @@
-function plotSimilarityMatrix(x,filename,OutPutFileDir)
+function plotSimilarityMatrix(x,filename,OutPutFileDir,categoryCenter)
 
 %clear, clc, close all
 
@@ -20,9 +20,19 @@ else
     sm = x; % Similarity Matrix
 end
 
+if exist('categoryCenter','var')
+    sm = circshift(sm,[nBig/2-categoryCenter,nBig/2-categoryCenter]);
+end
+
 %%
 
 stimCols = generateStimCols('nBig',64);
+
+if exist('categoryCenter','var')
+    stimCols = circshift(stimCols,[0,nBig/2-categoryCenter]);
+end
+
+
 
 %%
 f = figure;
@@ -35,6 +45,11 @@ ax1.Box = 'off';
 
 hold on
 plot([1,64],[1,64],'k--')
+
+if exist('categoryCenter','var')
+    xline(nBig/2,'r')
+    yline(nBig/2,'r')
+end
 
 cb1 = colorbar;
 cb1.Ticks = [];
