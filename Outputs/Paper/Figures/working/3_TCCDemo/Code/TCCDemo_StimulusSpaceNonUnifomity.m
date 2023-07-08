@@ -11,7 +11,7 @@ rng(42)
 % Add path to required script
 addpath(genpath('../../../../../../Analyses/'))
 
-load('../../../../../../Analyses/combined/combined_TCC-fullremap-workspace_2300706.mat')
+load('../../../../../../Analyses/combined/combined_TCC-fullremap-workspace_2300708.mat')
 
 
 %%

@@ -138,7 +138,7 @@ if ~exist('OutPutFileDir','var')
     OutPutFileDir = './';
 end
 
-saveas(f,[OutPutFileDir,'sm_',filename,'_',datestr(now,'yymmdd'),'.svg'])
+saveas(f,[OutPutFileDir,'sm_',filename,'_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 
 
 
