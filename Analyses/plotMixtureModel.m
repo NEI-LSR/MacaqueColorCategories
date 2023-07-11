@@ -1,3 +1,24 @@
+function plotMixtureModel()
+
+%% Colors
+
+stimCols = generateStimCols('nBig',nBig,'sat',37);
+
+rotVal = interval/2;
+rotationMatrix = [cosd(rotVal), -sind(rotVal); sind(rotVal), cosd(rotVal)]; % h/t: https://www.mathworks.com/matlabcentral/answers/323483-how-to-rotate-points-on-2d-coordinate-systems#answer_253463
+stimCols_rotated = rotationMatrix * stimCols;
+
+if Lab %CIELAB
+    stimCols_sRGB = LabTosRGB([repelem(76.0693, nBig); stimCols]);
+    rstimCols_sRGB = LabTosRGB([repelem(76.0693, nBig); stimCols_rotated]);
+else % CIELUV
+    stimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols]);
+    rstimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols_rotated]);
+end
+
+colvals = im2double(stimCols_sRGB);
+
+
 %% Figures: Bias by Cue with Category Crossings and Confidence Intervals
 
 figure

@@ -42,7 +42,7 @@ end
 %% 
 
 lengthOfSlidingWindow = 9; %Extra smoothing to simplify visual interpretation of instructive cartoon figures
-moving_bias = fitMixtureModel(cleandata,[],[],lengthOfSlidingWindow);
+moving_bias = fitMixtureModel(cleandata,[],lengthOfSlidingWindow);
 disp('Figures saved')
 
 % figure, plot(moving_bias)
@@ -57,7 +57,7 @@ skewedGaussians = (moving_bias - c)/m;
 [~, SGdata] = GenerativeModel([],'skewedGaussians',skewedGaussians,...
     'SimFunc_sd',SimFunc_sd,'nTrials',size(cleandata.trialdata.cues,1));
 
-SG_moving_bias = fitMixtureModel(SGdata,[],[],lengthOfSlidingWindow);
+SG_moving_bias = fitMixtureModel(SGdata,[],lengthOfSlidingWindow);
 disp('Figures saved')
 
 %%

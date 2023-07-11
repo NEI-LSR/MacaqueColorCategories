@@ -1,129 +1,199 @@
 function [moving_bias, lower_95, upper_95] = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
 
+% Extract parameters from cleandata
 
 if isfield(cleandata.trialdata,'dirname') % for real data
-    dirname = unique(cleandata.trialdata.dirname);
-    paradigm = unique(cleandata.trialdata.paradigm);
-    if length(paradigm) > 1
-        warning('More than one paradigm in data file');
+
+    dirname  = unique(cleandata.trialdata.dirname);
+    paradigm = unique(cleandata.trialdata.paradigm); 
+    if length(paradigm) > 1                                                 % TODO: couldn't this be something like `if length(dirname) > 1` instead, and then we could remove the above line
+        error('More than one paradigm in data file');
     end
-    try
+
+    try                                                                     % I think this is required because at one point we changed the data structure slightly. TODO: see if there is a way to avoid needing a try/catch here
         nBig = size(cleandata.trialdata.allchoices{1,1},2);
     catch
         nBig = size(cleandata.trialdata.stimCols{1,1},1);
     end
+
 else
-    dirname = 'simdata'; % for simdata
+    dirname = 'simdata'; 
     nBig = size(cleandata.trialdata.stimCols,2);
 end
 
 nSmall = sum(~isnan(cleandata.trialdata.choices{end,1}));
-
 interval = 360/nBig;
 
-% Colors
-stimCols = generateStimCols('nBig',nBig,'sat',37);
-rotVal = 360/(nBig*2);
-rotationMatrix = [cosd(rotVal),-sind(rotVal);sind(rotVal),cosd(rotVal)];
-stimCols_biased = rotationMatrix * stimCols;
-if Lab %CIELAB
-    stimCols_sRGB = LabTosRGB([repelem(76.0693, nBig); stimCols]);
-    rstimCols_sRGB = LabTosRGB([repelem(76.0693, nBig); stimCols_biased]);
-else % CIELUV
-    stimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols]);
-    rstimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols_biased]);
-end
-colvals = im2double(stimCols_sRGB);
+%% Filter data
 
-%% Calculate bias 
+% Remove aborted trials, and correct trials (we WANT the incorrect trials)
 
-cues = cell2mat(cleandata.trialdata.cues);
+cues    = cell2mat(cleandata.trialdata.cues);
 choices = cell2mat(cleandata.trialdata.choices);
-chosen = cell2mat(cleandata.trialdata.chosen);
+chosen  = cell2mat(cleandata.trialdata.chosen);
 
-try
-    colresp = [cues, chosen, choices];
-catch
-    colresp = [cues, chosen', choices];
-end
+abortIndex = isnan(chosen);                                                 % Note: this previously looked at cues, choices, and chosen, for NaNs, not just at choices. If you have problems, this might be why.
+correctIndex = cues == chosen;
+filter = or(abortIndex,correctIndex);
 
-% Get completed trials + incorrect trials
-colresp(any(isnan(colresp),2),:) = []; % gets rid of all aborts
-incorrect = colresp(colresp(:,1) ~= colresp(:,2),1:2); % cue + response on incorrect trials
+cues_filtered       = cues(~filter);
+choices_filtered    = choices(~filter,:);
+chosen_filtered     = chosen(~filter);
 
+nTrials_filtered = sum(~filter);
 
-% Calculate Angular Error
+% cues_filtered       = cues;
+% choices_filtered    = choices;
+% chosen_filtered     = chosen;
+% 
+% nTrials_filtered = length(cues);
+
+%% Calculate Angular Error
 
 % Distance values
-distances = (-180+interval:interval:180)';
+PotentialDistances = (-180+interval:interval:180)';                         % TODO: Double check the logic that this married with "32" being treated as the zero point in the rest of this function
 
-% Calculate angular error (distance) between incorrect choice and cue
-distance = zeros(size(incorrect(:,1)));
-for i = 1:length(incorrect) % for each trial
-    if abs(incorrect(i,2) - incorrect(i,1)) < nBig/2
-        distance(i,1) = (incorrect(i,2) - incorrect(i,1)) * interval;
-    elseif abs(incorrect(i,2) - incorrect(i,1)) > nBig/2 && incorrect(i,2) > incorrect(i,1)
-        distance(i,1) = (-(nBig - abs(incorrect(i,2) - incorrect(i,1)))) * interval;
+% Calculate angular error (distance) between incorrect choice and cue       % TODO: Switch this out to use `angdiff`?
+d = zeros(nTrials_filtered,1); % distance                                            
+for trial = 1:nTrials_filtered
+    if abs(chosen_filtered(trial) - cues_filtered(trial)) < nBig/2          % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok?
+        d(trial) = (chosen_filtered(trial) - cues_filtered(trial)) * interval;
+    elseif abs(chosen_filtered(trial) - cues_filtered(trial)) > nBig/2 && chosen_filtered(trial) > cues_filtered(trial)
+        d(trial) = (-(nBig - abs(chosen_filtered(trial) - cues_filtered(trial)))) * interval;
     else
-        distance(i,1) = (nBig - abs(incorrect(i,2) - incorrect(i,1))) * interval;
+        d(trial) = (nBig - abs(chosen_filtered(trial) - cues_filtered(trial))) * interval;
     end
 end
 
-% Cue + angular error for each incorrect trial
-cue_dist = [incorrect(:,1), distance];
-
 % Count of number of times each color (by distance from cue) was chosen
-distance_counts = zeros(length(distances),nBig);
+choice_counts = zeros(length(PotentialDistances),nBig);
 for i = 1:nBig
-    dist_count = cue_dist(cue_dist(:,1)==i, :); % All angular error values for cue i
-    distance_counts(:,i) = histc(dist_count(:,2),distances);
+    choice_counts(:,i) = histc(d(cues_filtered == i), PotentialDistances);       % TODO: Replace `histc`
 end
 
-% Count of number of times each color (by distance from cue) was an option
+% figure, 
+% imagesc(choice_counts')
+% colorbar
+% axis square
+% 
+% figure, 
+% choice_counts_midExtract = [...
+%     choice_counts(1:31,:); ...
+%     NaN(1,nBig); ...
+%     choice_counts(33:end,:)...
+%     ]';
+% imagesc(choice_counts_midExtract,...
+%     'AlphaData', ~isnan(choice_counts_midExtract))
+% colorbar                                                                    %TODO: Set NaN to be highlighted as a different thing on the colorbar. I'm sure I've done that before...
+% axis square
+
+%% Count of number of times each color (by distance from cue) was an option
 % (completed trials only)
-for i = 1:nBig
-    comp_trial = colresp(colresp(:,1)==i,3:end); % choices for completed trials
-    for j = 1:nSmall %
-        for k = 1:size(comp_trial,1)
-            if abs(comp_trial(k,j) - i) < nBig/2
-                comp_trial(k,j) = (comp_trial(k,j) - i)*interval;
-            elseif abs(comp_trial(k,j) - i) > nBig/2 && comp_trial(k,j) > i
-                comp_trial(k,j) = (-(nBig - abs(comp_trial(k,j) - i)))*interval;
+
+for cueIndex = 1:nBig
+    comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
+    for choice = 1:nSmall
+        for trial = 1:size(comp_trial,1)
+            if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2            % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok?
+                comp_trial(trial,choice) = (comp_trial(trial,choice) - cueIndex) * interval;
+            elseif  abs(comp_trial(trial,choice) - cueIndex) > nBig/2 && comp_trial(trial,choice) > cueIndex
+                comp_trial(trial,choice) = (-(nBig - abs(comp_trial(trial,choice) - cueIndex))) * interval;
             else
-                comp_trial(k,j) = (nBig - abs(comp_trial(k,j) - i))*interval;
+                comp_trial(trial,choice) = (nBig - abs(comp_trial(trial,choice) - cueIndex)) * interval;
             end
         end
     end
-    for m = 1:length(distances)
-        compchoice_distances(m,i)= sum(comp_trial(:)==distances(m,1));
+    for m = 1:length(PotentialDistances)
+        presentation_counts(m,cueIndex) = sum(comp_trial(:) == PotentialDistances(m));
     end
 end
 
-% Normalize counts for each color by number of times color was an option
-dist_prop = distance_counts./compchoice_distances;
+% figure, 
+% imagesc(presentation_counts')
+% colorbar
+% axis square
+% 
+% figure, 
+% presentation_counts_midExtract = [...
+%     presentation_counts(1:31,:); ...
+%     NaN(1,nBig); ...
+%     presentation_counts(33:end,:)...
+%     ]';
+% imagesc(presentation_counts_midExtract,...
+%     'AlphaData', ~isnan(presentation_counts_midExtract))
+% colorbar                                                                    %TODO: Set NaN to be highlighted as a different thing on the colorbar. I'm sure I've done that before...
+% axis square
+
+%% Normalize counts for each color by number of times color was an option
+
+choice_probability = choice_counts./presentation_counts;
+
+% figure, 
+% imagesc(choice_probability')
+% colorbar
+% axis square
 
 % Replace value at 0 (correct choice) to exclude from curve fit
-dist_prop(nBig/2,:) = NaN;
-compchoice_distances(nBig/2,:) = NaN; % Replace number at distance = 0
+choice_probability(nBig/2,:) = NaN;
+presentation_counts(nBig/2,:) = NaN; 
 
-%Fit Gaussian to error distribution for each cue to get bias value
-for i = 1:nBig
-    gaussEqn = 'a*exp(-(((x-b)^2)/(2*c^2)))+d';
-    startingPoints = [0.5 0 78 0];
-    dist_idx = find(~isnan(dist_prop(:,i))); % Index of distance counts for only colors shown
-    dists = distances(dist_idx,:); % Excludes distance values for colors never shown
-    weights = compchoice_distances(dist_idx,i); % Weights fit by number of times each color was an option
-    f = fit(dists,dist_prop(~isnan(dist_prop(:,i)),i),gaussEqn,'start',startingPoints, 'Weights',weights,'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
+%% Fit Gaussian to error distribution for each cue to get bias value
+
+gaussEqn = 'a*exp(-(((x-b)^2)/(2*c^2)))+d';
+
+startingPoints = [0.5 0 60 0.1];
+
+for cueIndex = 1:nBig  
+
+    dist_idx = find(~isnan(choice_probability(:,i))); % Index of distance counts for only colors shown
+    dists = PotentialDistances(dist_idx,:); % Excludes distance values for colors never shown
+    weights = presentation_counts(dist_idx,i); % Weights fit by number of times each color was an option
+
+    f = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ...
+        gaussEqn, 'Weights', weights,...
+        'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
+    
+    % f = fit(PotentialDistances, choice_probability(:,cueIndex), ...
+    %     gaussEqn, 'Weights', presentation_counts(:, cueIndex),...
+    %     'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
+    % 
+
+    bias(cueIndex) = f.b;
+
     ci = confint(f,0.95);
-    bias(i,1) = f.b;
-    ci_lower_95(i,1) = ci(1,2);
-    ci_upper_95(i,1) = ci(2,2);
+    ci_lower_95(cueIndex) = ci(1,2);
+    ci_upper_95(cueIndex) = ci(2,2);
     if any(isnan(ci),'all')
-        disp(i)
+        disp(cueIndex)
         disp(f)
         disp(ci)
         warning('NaN in CI')
     end
+
+    % temporary plot (TODO will move into plotting later)
+    figure('visible','off')
+    hold on
+    axis tight
+    ylim([0,1])
+
+    % bar(PotentialDistances, choice_probability(:,cueIndex),...
+    %     'FaceColor',[0.9,0.9,0.9],'EdgeColor','none')
+    
+    % plot(f,PotentialDistances,choice_probability(:,cueIndex),'k.')
+    plot(f,dists,choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex),'k.')      % TODO: It would be nice if I could represent the weights for each point...
+    
+    p11 = predint(f,dists,0.95,'functional','off');           %TODO: Check whether this is the appropriate type of interval: https://www.mathworks.com/help/curvefit/confidence-and-prediction-bounds.html
+    plot(dists,p11,'k--',...
+        'DisplayName','Nonsimultaneous Functional Bounds')
+    
+    xlabel('Error distance')
+    ylabel('Choice Probability')
+    % legend('Location','southoutside')
+    legend('off')
+    drawnow
+
+    saveas(gcf,fullfile([num2str(cueIndex),'_mixMod_BreakOut_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+    close all
 end
 
 %% Category center locations
@@ -249,3 +319,8 @@ else
 end
 
 end
+
+
+% Stuff to return...
+%
+% - dirname
