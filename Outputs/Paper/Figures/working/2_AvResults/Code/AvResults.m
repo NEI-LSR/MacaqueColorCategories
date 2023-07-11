@@ -11,12 +11,14 @@ clear, clc, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromModelOutput';
+AnalysisDepth = 'fromPreProcessedData';
 
 %% Behind the scenes...
 
 % Add path to required script
 addpath(genpath('../../../../../../Analyses/'))
+
+rng(0)
 
 %% Load/process data
 
@@ -29,7 +31,7 @@ end
 if strcmp(AnalysisDepth,'fromPreProcessedData')
     dirname = 'C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\data\'; % Fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     cleandata = combineData(dirname);
-    save('combinedData.mat','cleandata');
+    save('../../../../../../Analyses/combinedData.mat','cleandata');
     warning('If combinedData.mat previously existed, it has been overwritten')
 end
 

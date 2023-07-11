@@ -1,4 +1,4 @@
-function [moving_bias, lower_95, upper_95] = fitMixtureModel(cleandata,similarityMatrix,Lab)
+function [moving_bias, lower_95, upper_95] = fitMixtureModel(cleandata,similarityMatrix,Lab,lengthOfSlidingWindow)
 %% Load in data
 if nargin < 2
     similarityMatrix = [];
@@ -174,13 +174,16 @@ end
 
 %% Category center locations
 
-k = 3; % moving average input
-if mod(k,2) == 0
-    error('K should be odd')
+if ~exist('lengthOfSlidingWindow','var')
+    lengthOfSlidingWindow = 3; % moving average input
 end
 
-moving_bias = movmean(padarray(bias,k,"circular"),k,'Endpoints','discard');
-moving_bias = moving_bias(ceil(k/2)+1:end-ceil(k/2));
+if mod(lengthOfSlidingWindow,2) == 0
+    error('lengthOfSlidingWindow should be odd')
+end
+
+moving_bias = movmean(padarray(bias,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
+moving_bias = moving_bias(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
 
 be_w = moving_bias([1:end,1]); % bias estimates including wraparound
 
@@ -218,11 +221,11 @@ end
 %% Confidence intervals of category centers
 if isempty(ci) == 0
     
-    lower_95 = movmean(padarray(ci_lower_95,k,"circular"),k,'Endpoints','discard');
-    lower_95 = lower_95(ceil(k/2)+1:end-ceil(k/2));
+    lower_95 = movmean(padarray(ci_lower_95,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
+    lower_95 = lower_95(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
 
-    upper_95 = movmean(padarray(ci_upper_95,k,"circular"),k,'Endpoints','discard');
-    upper_95 = upper_95(ceil(k/2)+1:end-ceil(k/2));
+    upper_95 = movmean(padarray(ci_upper_95,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
+    upper_95 = upper_95(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
 
     for i = 1:nBig % check whether the confidence interval for each cue includes 0
         withinCI(i) = and(lower_95(i,1)<=0, upper_95(i,1)>=0);
