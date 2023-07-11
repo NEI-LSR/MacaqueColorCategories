@@ -353,12 +353,6 @@ yline(0);
 xlabel('Hue Angle ({\circ})');
 ylabel('Bias ({\circ})');
 
-if ~exist(fullfile(pwd,'analyses',file_dir),'dir')
-    mkdir(fullfile(pwd,'analyses',file_dir))
-end
-
-%exportgraphics(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias1_', datestr(now,'yymmdd'), '.pdf']))
-
 saveas(gcf,fullfile('../',[filename,'_categorybias1_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %% Pie chart figure
@@ -523,9 +517,6 @@ set(ax_cart,'visible','off');
 % text('Parent',axes1,'Interpreter','none','String',filename,'FontSize', 15, 'Position',[0.05 0.5 0]);
 % set(axes1,'XColor','none','YColor','none');
 
-%exportgraphics(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias2_', datestr(now,'yymmdd'), '.pdf']))
-
-
 saveas(gcf,fullfile('../',[filename,'_categorybias2_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %% Figures: Bias by Cue with Category Crossings and Confidence Intervals
@@ -613,8 +604,6 @@ ylim([-50 50]);
 yline(0);
 xlabel('Hue Angle ({\circ})');
 ylabel('Bias ({\circ})');
-
-%exportgraphics(gcf,fullfile(pwd,'analyses',file_dir,[filename,'_categorybias3_', datestr(now,'yymmdd'), '.pdf']))
 
 saveas(gcf,fullfile('../',[filename,'_categorybias3_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
