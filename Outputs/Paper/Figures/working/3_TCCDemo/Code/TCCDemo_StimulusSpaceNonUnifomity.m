@@ -65,7 +65,7 @@ simFunc = SplitGauss(x, 0.5*default_SimFunc_sd, 0.5*default_SimFunc_sd);
 
 figure, hold on
 pltCols(:,4) = 0.8;
-plot(x,simFunc,'k--','LineWidth',3)
+plot(x,simFunc,'k','LineWidth',3)
 xline(0,'k:')
 xlim([-180,180]);
 xticks([-180,0,180]);
