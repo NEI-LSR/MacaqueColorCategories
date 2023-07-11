@@ -192,7 +192,7 @@ for cueIndex = 1:nBig
     legend('off')
     drawnow
 
-    saveas(gcf,fullfile([num2str(cueIndex),'_mixMod_BreakOut_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+    saveas(gcf,fullfile([num2str(cueIndex),'_mixMod_BreakOut.svg']))
     close all
 end
 
