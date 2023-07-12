@@ -3,14 +3,48 @@
 \begin{minipage}{0.9\textwidth}
 
 %h/t: https://stackoverflow.com/a/5958641/6464224
+% alternative if this doesn't work: https://tex.stackexchange.com/questions/122786/align-16-small-images-in-a-4-x-4-grid
 
-\foreach \n in {1,2,3,4}{
+\fontsize{3}{5}\selectfont
 
-\includesvg[pretex=\tiny,width=0.49\textwidth]{../../../Outputs/Paper/Figures/working/mixMod_BreakOut/\n.svg}
+\foreach \n in {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}{
+\includesvg[width=0.22\textwidth]{../../../Outputs/Paper/Figures/working/mixMod_BreakOut/\n_mixMod_BreakOut.svg}
 \hfill
-
-
+\includesvg[width=0.22\textwidth]{../../../Outputs/Paper/Figures/working/mixMod_BreakOut/\the\numexpr \n + 1\relax_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.22\textwidth]{../../../Outputs/Paper/Figures/working/mixMod_BreakOut/\the\numexpr \n + 2\relax_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.22\textwidth]{../../../Outputs/Paper/Figures/working/mixMod_BreakOut/\the\numexpr \n + 3\relax_mixMod_BreakOut.svg}
 }
+
+% \begin{tabular}{cccc}
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}}\\
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}}\\
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}}\\
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subfloat[caption]{\includegraphics[width = 1.5in]{example-image-a}}
+% \end{tabular}
+
+% \centering
+% \begin{tabular}{cccc}
+% \subcaptionbox{caption\label{1}}{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subcaptionbox{caption\label{2}}{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subcaptionbox{caption\label{1}}{\includegraphics[width = 1.5in]{example-image-a}} &
+% \subcaptionbox{caption\label{2}}{\includegraphics[width = 1.5in]{example-image-a}}\\
+% ...
+% \end{tabular}
+% \caption{caption}
 
 
 
