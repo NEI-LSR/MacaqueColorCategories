@@ -6,7 +6,7 @@ if isfield(cleandata.trialdata,'dirname') % for real data
 
     dirname  = unique(cleandata.trialdata.dirname);
     paradigm = unique(cleandata.trialdata.paradigm); 
-    if length(paradigm) > 1                                                 % TODO: couldn't this be something like `if length(dirname) > 1` instead, and then we could remove the above line
+    if length(paradigm) > 1                                                 % TODO: couldn't this be something like `if length(dirname) > 1` instead, and then we could remove the above line?
         error('More than one paradigm in data file');
     end
 
@@ -25,7 +25,6 @@ nSmall = sum(~isnan(cleandata.trialdata.choices{end,1}));
 interval = 360/nBig;
 
 %% Filter data
-
 % Remove aborted trials, and correct trials (we WANT the incorrect trials)
 
 cues    = cell2mat(cleandata.trialdata.cues);
@@ -42,6 +41,7 @@ chosen_filtered     = chosen(~filter);
 
 nTrials_filtered = sum(~filter);
 
+% % _No filter mode_
 % cues_filtered       = cues;
 % choices_filtered    = choices;
 % chosen_filtered     = chosen;
@@ -53,10 +53,11 @@ nTrials_filtered = sum(~filter);
 % Distance values
 PotentialDistances = (-180+interval:interval:180)';                         % TODO: Double check the logic that this married with "32" being treated as the zero point in the rest of this function
 
-% Calculate angular error (distance) between incorrect choice and cue       % TODO: Switch this out to use `angdiff`?
-d = zeros(nTrials_filtered,1); % distance                                            
+% Calculate angular error (distance) between incorrect choice and cue
+
+d = zeros(nTrials_filtered,1); % distance                                   % TODO: Switch this out to use `angdiff`? - `.\Analyses\spatialmath-matlab\angdiff.m` or write our own?                                      
 for trial = 1:nTrials_filtered
-    if abs(chosen_filtered(trial) - cues_filtered(trial)) < nBig/2          % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok?
+    if abs(chosen_filtered(trial) - cues_filtered(trial)) < nBig/2          % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok? Feels like an issue...
         d(trial) = (chosen_filtered(trial) - cues_filtered(trial)) * interval;
     elseif abs(chosen_filtered(trial) - cues_filtered(trial)) > nBig/2 && chosen_filtered(trial) > cues_filtered(trial)
         d(trial) = (-(nBig - abs(chosen_filtered(trial) - cues_filtered(trial)))) * interval;
@@ -68,7 +69,7 @@ end
 % Count of number of times each color (by distance from cue) was chosen
 choice_counts = zeros(length(PotentialDistances),nBig);
 for i = 1:nBig
-    choice_counts(:,i) = histc(d(cues_filtered == i), PotentialDistances);       % TODO: Replace `histc`
+    choice_counts(:,i) = histc(d(cues_filtered == i), PotentialDistances);       % TODO: Replace `histc`. "histc is not recommended. Use histcounts instead."
 end
 
 % figure, 
@@ -94,7 +95,7 @@ for cueIndex = 1:nBig
     comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
     for choice = 1:nSmall
         for trial = 1:size(comp_trial,1)
-            if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2            % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok?
+            if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2            % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok? Feels like an issue...
                 comp_trial(trial,choice) = (comp_trial(trial,choice) - cueIndex) * interval;
             elseif  abs(comp_trial(trial,choice) - cueIndex) > nBig/2 && comp_trial(trial,choice) > cueIndex
                 comp_trial(trial,choice) = (-(nBig - abs(comp_trial(trial,choice) - cueIndex))) * interval;
@@ -149,23 +150,23 @@ for cueIndex = 1:nBig
     dists = PotentialDistances(dist_idx,:); % Excludes distance values for colors never shown
     weights = presentation_counts(dist_idx,i); % Weights fit by number of times each color was an option
 
-    f = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ... % TODO: Make this more readable, get rid of lines above if possible
+    f(cueIndex) = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ... % TODO: Make this more readable, get rid of lines above if possible
         gaussEqn, 'Weights', weights,...
         'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
     
-    % f = fit(PotentialDistances, choice_probability(:,cueIndex), ...
+    % f = fit(PotentialDistances, choice_probability(:,cueIndex), ...                       % ...I tried, and failed, here
     %     gaussEqn, 'Weights', presentation_counts(:, cueIndex),...
     %     'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
     % 
 
-    bias(cueIndex) = f.b;
+    bias(cueIndex) = f(cueIndex).b;
 
-    ci = confint(f,0.95);
-    ci_lower_95(cueIndex) = ci(1,2);
-    ci_upper_95(cueIndex) = ci(2,2);
+    ci = confint(f(cueIndex),0.95);
+    % ci_lower_95(cueIndex) = ci(1,2);
+    % ci_upper_95(cueIndex) = ci(2,2);
     if any(isnan(ci),'all')
         disp(cueIndex)
-        disp(f)
+        disp(f(cueIndex))
         disp(ci)
         warning('NaN in CI')
     end
