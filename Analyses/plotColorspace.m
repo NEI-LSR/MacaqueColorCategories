@@ -2,7 +2,7 @@ clear, clc, close all
 
 
 %%
-load('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\combined\combined_TCC-0att_fullremap-workspace_230510.mat')
+load('.\combined\combined_TCC-0att_fullremap-workspace_230510.mat')
 
 %%
 

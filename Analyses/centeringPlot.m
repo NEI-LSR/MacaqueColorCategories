@@ -2,11 +2,11 @@ clear, clc, close all
 
 rng(42)
 
-%filepath = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\combined\combined_TCC-FreeSimilarityMatrix-workspace_230214.mat';
-%filepath = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\211012_124119_Pollux\210422--211012_Pollux_TCC-FreeSimilarityMatrix-workspace_230222.mat';
-filepath = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\211108_090705_Castor\220517--211108_Castor_TCC-FreeSimilarityMatrix-workspace_230225';
-%filepath = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\210609_124628_Buster\210428--210609_Buster_TCC-FreeSimilarityMatrix-workspace_230213.mat';
-%filepath = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\220823_081207_Morty\220322--220823_Morty_TCC-FreeSimilarityMatrix-workspace_230213.mat';
+%filepath = '.\combined\combined_TCC-FreeSimilarityMatrix-workspace_230214.mat';
+%filepath = '.\211012_124119_Pollux\210422--211012_Pollux_TCC-FreeSimilarityMatrix-workspace_230222.mat';
+filepath = '.\211108_090705_Castor\220517--211108_Castor_TCC-FreeSimilarityMatrix-workspace_230225';
+%filepath = '.\210609_124628_Buster\210428--210609_Buster_TCC-FreeSimilarityMatrix-workspace_230213.mat';
+%filepath = '.\220823_081207_Morty\220322--220823_Morty_TCC-FreeSimilarityMatrix-workspace_230213.mat';
 
 load(filepath)
 

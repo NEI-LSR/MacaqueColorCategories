@@ -149,7 +149,7 @@ for cueIndex = 1:nBig
     dists = PotentialDistances(dist_idx,:); % Excludes distance values for colors never shown
     weights = presentation_counts(dist_idx,i); % Weights fit by number of times each color was an option
 
-    f = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ...
+    f = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ... % TODO: Make this more readable, get rid of lines above if possible
         gaussEqn, 'Weights', weights,...
         'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
     
