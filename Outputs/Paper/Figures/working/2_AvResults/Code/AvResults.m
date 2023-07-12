@@ -1,4 +1,4 @@
-clear, clc, close all
+%function 
 
 % !
 % Before starting, `cd` to the location of this script

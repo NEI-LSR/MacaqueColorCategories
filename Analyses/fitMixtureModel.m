@@ -140,6 +140,8 @@ presentation_counts(nBig/2,:) = NaN;
 
 %% Fit Gaussian to error distribution for each cue to get bias value
 
+clc
+
 gaussEqn = 'a*exp(-(((x-b)^2)/(2*c^2)))+d';
 
 startingPoints = [0.5 0 60 0.1];
@@ -150,23 +152,25 @@ for cueIndex = 1:nBig
     dists = PotentialDistances(dist_idx,:); % Excludes distance values for colors never shown
     weights = presentation_counts(dist_idx,i); % Weights fit by number of times each color was an option
 
-    f(cueIndex) = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ... % TODO: Make this more readable, get rid of lines above if possible
+    f = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ... % TODO: Make this more readable, get rid of lines above if possible
         gaussEqn, 'Weights', weights,...
         'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
     
+    mo{cueIndex} = f; % model output                                        % TODO Ideally this would happen at the model fitting stage rather than being tagged on here
+
     % f = fit(PotentialDistances, choice_probability(:,cueIndex), ...                       % ...I tried, and failed, here
     %     gaussEqn, 'Weights', presentation_counts(:, cueIndex),...
     %     'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
     % 
 
-    bias(cueIndex) = f(cueIndex).b;
+    bias(cueIndex) = f.b;
 
-    ci = confint(f(cueIndex),0.95);
+    ci = confint(f,0.95);
     % ci_lower_95(cueIndex) = ci(1,2);
     % ci_upper_95(cueIndex) = ci(2,2);
     if any(isnan(ci),'all')
         disp(cueIndex)
-        disp(f(cueIndex))
+        disp(f)
         disp(ci)
         warning('NaN in CI')
     end
@@ -177,19 +181,32 @@ for cueIndex = 1:nBig
     axis tight
     ylim([0,1])
 
-    % bar(PotentialDistances, choice_probability(:,cueIndex),...
-    %     'FaceColor',[0.9,0.9,0.9],'EdgeColor','none')
+    pltCol = 1 - repmat(...
+        (presentation_counts(:,i)-min(presentation_counts(:,i)))...
+        /(max(presentation_counts(:,i))-min(presentation_counts(:,i))),...
+        1,3);
+
+    s = scatter(PotentialDistances, choice_probability(:,cueIndex),'filled');
+    s.CData = pltCol;
     
     % plot(f,PotentialDistances,choice_probability(:,cueIndex),'k.')
-    plot(f,dists,choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex),'k.')      % TODO: It would be nice if I could represent the weights for each point...
+    plot(f,dists,choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex),'k.');
     
-    p11 = predint(f,dists,0.95,'functional','off');           %TODO: Check whether this is the appropriate type of interval: https://www.mathworks.com/help/curvefit/confidence-and-prediction-bounds.html
-    plot(dists,p11,'k--',...
+    p = gca;
+    p.Children(2).Marker = 'none'; % turn off data, so that we can replot it how we like...
+    p.Children(1).LineWidth = 3;
+
+    p11 = predint(f,dists,0.95,'functional','off');                         %TODO: Check whether this is the appropriate type of interval: https://www.mathworks.com/help/curvefit/confidence-and-prediction-bounds.html
+    plot(dists,p11,'k:',...
         'DisplayName','Nonsimultaneous Functional Bounds')
+    p.Children(1).LineWidth = 1;
+    p.Children(2).LineWidth = 1;
+
+    xline(0,'k--')
     
     xlabel('Error distance')
     ylabel('Choice Probability')
-    % legend('Location','southoutside')
+    text(-90,0.9,num2str(cueIndex))
     legend('off')
     drawnow
 
@@ -231,8 +248,8 @@ if ~isempty(crossings)
 
     % Category Center Colors
     polarAngs = interp_crossing'; %Polar Angles
-    [a,b] = pol2cart(deg2rad(polarAngs),ones(1,length(polarAngs))*37);
-    crossingCols = [a;b];
+    [a,s] = pol2cart(deg2rad(polarAngs),ones(1,length(polarAngs))*37);
+    crossingCols = [a;s];
     if Lab % CIELAB
         crossingCols_sRGB = LabTosRGB([repelem(76.0693, length(polarAngs)); crossingCols]);
     else % CIELUV
