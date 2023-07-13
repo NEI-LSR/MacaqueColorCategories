@@ -1,24 +1,9 @@
 function [moving_bias, lower_95, upper_95] = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
 
-% Extract parameters from cleandata
-
 if isfield(cleandata.trialdata,'dirname') % for real data
-
-    dirname  = unique(cleandata.trialdata.dirname);
-    paradigm = unique(cleandata.trialdata.paradigm); 
-    if length(paradigm) > 1                                                 % TODO: couldn't this be something like `if length(dirname) > 1` instead, and then we could remove the above line?
-        error('More than one paradigm in data file');
-    end
-
-    try                                                                     % I think this is required because at one point we changed the data structure slightly. TODO: see if there is a way to avoid needing a try/catch here
-        nBig = size(cleandata.trialdata.allchoices{1,1},2);
-    catch
-        nBig = size(cleandata.trialdata.stimCols{1,1},1);
-    end
-
+    nBig = size(cleandata.trialdata.stimCols{1,1},1);
 else
-    dirname = 'simdata'; 
-    nBig = size(cleandata.trialdata.stimCols,2);
+    nBig = size(cleandata.trialdata.stimCols,2); % for sim data
 end
 
 nSmall = sum(~isnan(cleandata.trialdata.choices{end,1}));
@@ -55,22 +40,21 @@ PotentialDistances = (-180+interval:interval:180)';                         % TO
 
 % Calculate angular error (distance) between incorrect choice and cue
 
-d = zeros(nTrials_filtered,1); % distance                                   % TODO: Switch this out to use `angdiff`? - `.\Analyses\spatialmath-matlab\angdiff.m` or write our own?                                      
+d = zeros(nTrials_filtered,1); 
 for trial = 1:nTrials_filtered
-    if abs(chosen_filtered(trial) - cues_filtered(trial)) < nBig/2          % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok? Feels like an issue...
-        d(trial) = (chosen_filtered(trial) - cues_filtered(trial)) * interval;
-    elseif abs(chosen_filtered(trial) - cues_filtered(trial)) > nBig/2 && chosen_filtered(trial) > cues_filtered(trial)
-        d(trial) = (-(nBig - abs(chosen_filtered(trial) - cues_filtered(trial)))) * interval;
-    else
-        d(trial) = (nBig - abs(chosen_filtered(trial) - cues_filtered(trial))) * interval;
-    end
+    d(trial) = rad2deg(angdiff(deg2rad(chosen_filtered(trial)*interval), deg2rad(cues_filtered(trial)*interval)));
 end
+
+d = round(d,4); % cut off number of digits after decimal point
 
 % Count of number of times each color (by distance from cue) was chosen
 choice_counts = zeros(length(PotentialDistances),nBig);
+bin_edges = (-180+interval:interval:180+interval);
+
 for i = 1:nBig
-    choice_counts(:,i) = histc(d(cues_filtered == i), PotentialDistances);       % TODO: Replace `histc`. "histc is not recommended. Use histcounts instead."
+    choice_counts(:,i) = histcounts(d(cues_filtered == i), bin_edges);   
 end
+
 
 % figure, 
 % imagesc(choice_counts')
@@ -91,21 +75,34 @@ end
 %% Count of number of times each color (by distance from cue) was an option
 % (completed trials only)
 
+% for cueIndex = 1:nBig
+%     comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
+%     for choice = 1:nSmall
+%         for trial = 1:size(comp_trial,1)
+%             if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2           
+%                 comp_trial(trial,choice) = (comp_trial(trial,choice) - cueIndex) * interval;
+%             elseif  abs(comp_trial(trial,choice) - cueIndex) > nBig/2 && comp_trial(trial,choice) > cueIndex
+%                 comp_trial(trial,choice) = (-(nBig - abs(comp_trial(trial,choice) - cueIndex))) * interval;
+%             else
+%                 comp_trial(trial,choice) = (nBig - abs(comp_trial(trial,choice) - cueIndex)) * interval;
+%             end
+%         end
+%     end
+%     for m = 1:length(PotentialDistances)
+%         presentation_counts(m,cueIndex) = sum(comp_trial(:) == PotentialDistances(m));
+%     end
+% end
+
 for cueIndex = 1:nBig
     comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
     for choice = 1:nSmall
         for trial = 1:size(comp_trial,1)
-            if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2            % TODO: There is `< nBig/2` and `> nBig/2`, but no `<=` or `>=`. Is that ok? Feels like an issue...
-                comp_trial(trial,choice) = (comp_trial(trial,choice) - cueIndex) * interval;
-            elseif  abs(comp_trial(trial,choice) - cueIndex) > nBig/2 && comp_trial(trial,choice) > cueIndex
-                comp_trial(trial,choice) = (-(nBig - abs(comp_trial(trial,choice) - cueIndex))) * interval;
-            else
-                comp_trial(trial,choice) = (nBig - abs(comp_trial(trial,choice) - cueIndex)) * interval;
-            end
+            comp_trial(trial,choice) = rad2deg(angdiff(deg2rad(comp_trial(trial,choice)*interval), deg2rad(cueIndex*interval)));
+            comp_trial = round(comp_trial,4);
         end
     end
     for m = 1:length(PotentialDistances)
-        presentation_counts(m,cueIndex) = sum(comp_trial(:) == PotentialDistances(m));
+       presentation_counts(m,cueIndex) = sum(comp_trial(:) == PotentialDistances(m));
     end
 end
 
