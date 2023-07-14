@@ -45,7 +45,7 @@ for trial = 1:nTrials_filtered
     d(trial) = rad2deg(angdiff(deg2rad(chosen_filtered(trial)*interval), deg2rad(cues_filtered(trial)*interval)));
 end
 
-d = round(d,4); % cut off number of digits after decimal point
+%d = round(d,4); % cut off number of digits after decimal point
 
 % Count of number of times each color (by distance from cue) was chosen
 choice_counts = zeros(length(PotentialDistances),nBig);
@@ -74,24 +74,6 @@ end
 
 %% Count of number of times each color (by distance from cue) was an option
 % (completed trials only)
-
-% for cueIndex = 1:nBig
-%     comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
-%     for choice = 1:nSmall
-%         for trial = 1:size(comp_trial,1)
-%             if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2           
-%                 comp_trial(trial,choice) = (comp_trial(trial,choice) - cueIndex) * interval;
-%             elseif  abs(comp_trial(trial,choice) - cueIndex) > nBig/2 && comp_trial(trial,choice) > cueIndex
-%                 comp_trial(trial,choice) = (-(nBig - abs(comp_trial(trial,choice) - cueIndex))) * interval;
-%             else
-%                 comp_trial(trial,choice) = (nBig - abs(comp_trial(trial,choice) - cueIndex)) * interval;
-%             end
-%         end
-%     end
-%     for m = 1:length(PotentialDistances)
-%         presentation_counts(m,cueIndex) = sum(comp_trial(:) == PotentialDistances(m));
-%     end
-% end
 
 for cueIndex = 1:nBig
     comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
@@ -207,7 +189,8 @@ for cueIndex = 1:nBig
     legend('off')
     drawnow
 
-    saveas(gcf,fullfile([num2str(cueIndex),'_mixMod_BreakOut.svg']))
+
+    %saveas(gcf,fullfile([num2str(cueIndex),'_mixMod_BreakOut.svg']))
     close all
 end
 
