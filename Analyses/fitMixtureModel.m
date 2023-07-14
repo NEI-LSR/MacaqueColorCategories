@@ -1,4 +1,4 @@
-function [moving_bias, lower_95, upper_95] = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
+function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
 
 if isfield(cleandata.trialdata,'dirname') % for real data
     nBig = size(cleandata.trialdata.stimCols{1,1},1);
@@ -149,7 +149,7 @@ for cueIndex = 1:nBig
         gaussEqn, 'Weights', presentation_counts(dist_idx,cueIndex),...
         'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
     
-    mo{cueIndex} = f; % model output                                        % TODO Ideally this would happen at the model fitting stage rather than being tagged on here
+    model{cueIndex} = f; % model output                                        % TODO Ideally this would happen at the model fitting stage rather than being tagged on here
 
     % f = fit(PotentialDistances, choice_probability(:,cueIndex), ...                       % ...I tried, and failed, here
     %     gaussEqn, 'Weights', presentation_counts(:, cueIndex),...
