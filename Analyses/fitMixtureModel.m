@@ -137,8 +137,6 @@ presentation_counts(nBig/2,:) = NaN;
 
 %% Fit Gaussian to error distribution for each cue to get bias value
 
-clc
-
 gaussEqn = 'a*exp(-(((x-b)^2)/(2*c^2)))+d';
 
 startingPoints = [0.5 0 60 0.1];
@@ -146,11 +144,9 @@ startingPoints = [0.5 0 60 0.1];
 for cueIndex = 1:nBig  
 
     dist_idx = find(~isnan(choice_probability(:,cueIndex))); % Index of distance counts for only colors shown
-    dists = PotentialDistances(dist_idx,:); % Excludes distance values for colors never shown
-    weights = presentation_counts(dist_idx,cueIndex); % Weights fit by number of times each color was an option
 
-    f = fit(dists, choice_probability(~isnan(choice_probability(:,cueIndex)),cueIndex), ... % TODO: Make this more readable, get rid of lines above if possible
-        gaussEqn, 'Weights', weights,...
+    f = fit(PotentialDistances(dist_idx,:), choice_probability(dist_idx,cueIndex), ...
+        gaussEqn, 'Weights', presentation_counts(dist_idx,cueIndex),...
         'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
     
     mo{cueIndex} = f; % model output                                        % TODO Ideally this would happen at the model fitting stage rather than being tagged on here
