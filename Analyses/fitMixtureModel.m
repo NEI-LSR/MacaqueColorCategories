@@ -1,4 +1,4 @@
-function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
+function [model, interp_ci] = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
 
 if isfield(cleandata.trialdata,'dirname') % for real data
     nBig = size(cleandata.trialdata.stimCols{1,1},1);
@@ -200,131 +200,130 @@ for cueIndex = 1:nBig
     close all
 end
 
-%% Category center locations
+if nargout == 2
 
-if ~exist('lengthOfSlidingWindow','var')
-    lengthOfSlidingWindow = 3; % moving average input
-end
+    %% Category center locations
 
-if mod(lengthOfSlidingWindow,2) == 0
-    error('lengthOfSlidingWindow should be odd')
-end
-
-moving_bias = movmean(padarray(bias,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
-moving_bias = moving_bias(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
-
-be_w = moving_bias([1:end,1]); % bias estimates including wraparound
-
-for i = 1:nBig
-    crossesZero(i) = and(be_w(i)>=0, be_w(i+1)<=0);
-end
-
-crossings = find(crossesZero);
-
-hue_angle = 0:interval:360; %includes wraparound
-
-% Category Center Location Interpolation
-if ~isempty(crossings)
-
-    for i = 1:length(crossings)
-        x = [hue_angle(crossings(i)) hue_angle(crossings(i)+1)];
-        y = [be_w(crossings(i)) be_w(crossings(i)+1)];
-        interp_crossing(i,1) = interp1(y,x,0);
+    if ~exist('lengthOfSlidingWindow','var')
+        lengthOfSlidingWindow = 3; % moving average input
     end
 
-    % Category Center Colors
-    polarAngs = interp_crossing'; %Polar Angles
-    [a,s] = pol2cart(deg2rad(polarAngs),ones(1,length(polarAngs))*37);
-    crossingCols = [a;s];
-    if Lab % CIELAB
-        crossingCols_sRGB = LabTosRGB([repelem(76.0693, length(polarAngs)); crossingCols]);
-    else % CIELUV
-        crossingCols_sRGB = LuvTosRGB([repelem(76.0693, length(polarAngs)); crossingCols]);
-    end
-    crossing_colvals = im2double(crossingCols_sRGB);
-else
-    interp_crossing = [];
-end
-
-%% Confidence intervals of category centers
-if isempty(ci) == 0
-
-    lower_95 = movmean(padarray(ci_lower_95,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
-    lower_95 = lower_95(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
-
-    upper_95 = movmean(padarray(ci_upper_95,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
-    upper_95 = upper_95(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
-
-    for i = 1:nBig % check whether the confidence interval for each cue includes 0
-        withinCI(i) = and(lower_95(i,1)<=0, upper_95(i,1)>=0);
+    if mod(lengthOfSlidingWindow,2) == 0
+        error('lengthOfSlidingWindow should be odd')
     end
 
-    with_CI = withinCI([1:end 1]);
+    moving_bias = movmean(padarray(bias,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
+    moving_bias = moving_bias(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
 
+    be_w = moving_bias([1:end,1]); % bias estimates including wraparound
 
     for i = 1:nBig
-        changes(i) = or(and(with_CI(i)==0, with_CI(i+1)==1), and(with_CI(i)==1, with_CI(i+1)==0));
+        crossesZero(i) = and(be_w(i)>=0, be_w(i+1)<=0);
     end
 
-    change_range = find(changes);
+    crossings = find(crossesZero);
 
-    upper_95_w = upper_95([1:end 1]);
-    lower_95_w = lower_95([1:end 1]);
+    hue_angle = 0:interval:360; %includes wraparound
 
-    if isempty(change_range) == 0 % if confidence interval spans zero for all values
-
-        change_range = change_range([1:end 1]);
+    % Category Center Location Interpolation
+    if ~isempty(crossings)
 
         for i = 1:length(crossings)
-            for j = 1:sum(changes)
-                if change_range(j) < change_range(j+1)
-                    if (crossings(i) >= change_range(j) && crossings(i) <= change_range(j+1)) == 1
-                        CI_range(i,:) = [change_range(j) change_range(j+1)];
-                    end
-                elseif change_range(j) > change_range(j+1)
-                    if (crossings(i) >= change_range(j) && crossings(i) >= change_range(j+1)) == 1 ...
-                            || (crossings(i) <= change_range(j) && crossings(i) <= change_range(j+1) == 1)
-                        CI_range(i,:) = [change_range(j) change_range(j+1)];
+            x = [hue_angle(crossings(i)) hue_angle(crossings(i)+1)];
+            y = [be_w(crossings(i)) be_w(crossings(i)+1)];
+            interp_crossing(i,1) = interp1(y,x,0);
+        end
+
+        % Category Center Colors
+        polarAngs = interp_crossing'; %Polar Angles
+        [a,s] = pol2cart(deg2rad(polarAngs),ones(1,length(polarAngs))*37);
+        crossingCols = [a;s];
+        if Lab % CIELAB
+            crossingCols_sRGB = LabTosRGB([repelem(76.0693, length(polarAngs)); crossingCols]);
+        else % CIELUV
+            crossingCols_sRGB = LuvTosRGB([repelem(76.0693, length(polarAngs)); crossingCols]);
+        end
+        crossing_colvals = im2double(crossingCols_sRGB);
+    else
+        interp_crossing = [];
+    end
+
+    %% Confidence intervals of category centers
+    if isempty(ci) == 0
+
+        lower_95 = movmean(padarray(ci_lower_95,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
+        lower_95 = lower_95(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
+
+        upper_95 = movmean(padarray(ci_upper_95,lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
+        upper_95 = upper_95(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
+
+        for i = 1:nBig % check whether the confidence interval for each cue includes 0
+            withinCI(i) = and(lower_95(i,1)<=0, upper_95(i,1)>=0);
+        end
+
+        with_CI = withinCI([1:end 1]);
+
+
+        for i = 1:nBig
+            changes(i) = or(and(with_CI(i)==0, with_CI(i+1)==1), and(with_CI(i)==1, with_CI(i+1)==0));
+        end
+
+        change_range = find(changes);
+
+        upper_95_w = upper_95([1:end 1]);
+        lower_95_w = lower_95([1:end 1]);
+
+        if isempty(change_range) == 0 % if confidence interval spans zero for all values
+
+            change_range = change_range([1:end 1]);
+
+            for i = 1:length(crossings)
+                for j = 1:sum(changes)
+                    if change_range(j) < change_range(j+1)
+                        if (crossings(i) >= change_range(j) && crossings(i) <= change_range(j+1)) == 1
+                            CI_range(i,:) = [change_range(j) change_range(j+1)];
+                        end
+                    elseif change_range(j) > change_range(j+1)
+                        if (crossings(i) >= change_range(j) && crossings(i) >= change_range(j+1)) == 1 ...
+                                || (crossings(i) <= change_range(j) && crossings(i) <= change_range(j+1) == 1)
+                            CI_range(i,:) = [change_range(j) change_range(j+1)];
+                        end
                     end
                 end
             end
-        end
 
-        CI_range = CI_range';
-        CI_range = CI_range(:);
+            CI_range = CI_range';
+            CI_range = CI_range(:);
 
-        % Confidence Interval Interpolation
-        for i = 1:length(CI_range)
-            if be_w(CI_range(i)) > 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
-                y = [lower_95_w(CI_range(i)) lower_95_w(CI_range(i)+1)];
-            elseif  be_w(CI_range(i)) < 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
-                y = [upper_95_w(CI_range(i)) upper_95_w(CI_range(i)+1)];
-            end
+            % Confidence Interval Interpolation
+            for i = 1:length(CI_range)
+                if be_w(CI_range(i)) > 0
+                    x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                    y = [lower_95_w(CI_range(i)) lower_95_w(CI_range(i)+1)];
+                elseif  be_w(CI_range(i)) < 0
+                    x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                    y = [upper_95_w(CI_range(i)) upper_95_w(CI_range(i)+1)];
+                end
 
-            interp_ci(i,1) = interp1(y,x,0);
-
-            if isnan(interp_ci(i,1)) && be_w(CI_range(i)) > 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
-                y = [upper_95_w(CI_range(i)) upper_95_w(CI_range(i)+1)];
                 interp_ci(i,1) = interp1(y,x,0);
-            elseif isnan(interp_ci(i,1)) && be_w(CI_range(i)) < 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
-                y = [lower_95_w(CI_range(i)) lower_95_w(CI_range(i)+1)];
-                interp_ci(i,1) = interp1(y,x,0);
+
+                if isnan(interp_ci(i,1)) && be_w(CI_range(i)) > 0
+                    x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                    y = [upper_95_w(CI_range(i)) upper_95_w(CI_range(i)+1)];
+                    interp_ci(i,1) = interp1(y,x,0);
+                elseif isnan(interp_ci(i,1)) && be_w(CI_range(i)) < 0
+                    x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                    y = [lower_95_w(CI_range(i)) lower_95_w(CI_range(i)+1)];
+                    interp_ci(i,1) = interp1(y,x,0);
+                end
             end
+            %     else
+            %         %interp_ci = []; %needed?
         end
-        %     else
-        %         %interp_ci = []; %needed?
+    else
+        interp_ci = [];
     end
-else
-    interp_ci = [];
-end
 
 end
 
-
-% Stuff to return...
-%
-% - dirname
+end
