@@ -93,6 +93,7 @@ end
 %     end
 % end
 
+presentation_counts = zeros(nBig);
 for cueIndex = 1:nBig
     comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
     for choice = 1:nSmall
@@ -101,8 +102,9 @@ for cueIndex = 1:nBig
             comp_trial = round(comp_trial,4);
         end
     end
-    for m = 1:length(PotentialDistances)
-       presentation_counts(m,cueIndex) = sum(comp_trial(:) == PotentialDistances(m));
+    for PotentialDistanceIndex = 1:length(PotentialDistances)
+       presentation_counts(PotentialDistanceIndex,cueIndex) =...
+           sum(comp_trial(:) == PotentialDistances(PotentialDistanceIndex));
     end
 end
 
