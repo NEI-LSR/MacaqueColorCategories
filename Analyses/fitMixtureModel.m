@@ -153,16 +153,7 @@ for cueIndex = 1:nBig
     
     model{cueIndex} = f; % model output                                        % TODO Ideally this would happen at the model fitting stage rather than being tagged on here
 
-    % f = fit(PotentialDistances, choice_probability(:,cueIndex), ...                       % ...I tried, and failed, here
-    %     gaussEqn, 'Weights', presentation_counts(:, cueIndex),...
-    %     'start',startingPoints, 'Lower',[0 -180 0 0],'Upper',[Inf 180 Inf 1]);
-    % 
-
-    bias(cueIndex) = f.b;
-
     ci = confint(f,0.95);
-    % ci_lower_95(cueIndex) = ci(1,2);
-    % ci_upper_95(cueIndex) = ci(2,2);
     if any(isnan(ci),'all')
         disp(cueIndex)
         disp(f)
