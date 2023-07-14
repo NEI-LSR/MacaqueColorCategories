@@ -25,38 +25,11 @@ rng(0)
 if strcmp(AnalysisDepth,'fromRawData')
     error('not coded yet')
     % load data
-    % save data (?)
+    % pass on to 'fromPreProcessedData'
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
 
-    % dataDir = 'C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\data'; %fix this!!!!!!!!!!!!!!!!!!
-    % dataFiles = {...
-    %     '210422--211012_Pollux_data.mat',...
-    %     '220517--211108_Castor_data.mat',...
-    %     '220322--220823_Morty_data.mat',...
-    %     '210428--210609_Buster_data.mat'};
-    % 
-    % filename = cell(1,4);
-    % for participant = 1:4
-    %     data(participant) = load([dataDir,filesep,dataFiles{participant}]);
-    %     [~,filename{participant}] = fileparts(dataFiles{participant});
-    % end
-
-
-
-    % 
-    % dirname = 'C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\data\'; % Fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    % cleandata = combineData(dirname);
-    % save('../../../../../../Analyses/combinedData.mat','cleandata');
-    % warning('If combinedData.mat previously existed, it has been overwritten')
-
-
-
-
-    % I should set it up so that it has access to the actual data files
-    % rather than relying on these packaged model outputs, but this should
-    % work for now...
     modelOutputDir = '../../../../../../Analyses';
     modelOutputFiles = {...
         '211012_124119_Pollux/210422--211012_Pollux_TCC-FreeSimilarityMatrix-workspace_230222.mat',...
@@ -64,24 +37,37 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
         '220823_081207_Morty/220322--220823_Morty_TCC-FreeSimilarityMatrix-workspace_230213.mat',...
         '210609_124628_Buster/210428--210609_Buster_TCC-FreeSimilarityMatrix-workspace_230213.mat'};
 
+    % Load data
     filename = cell(1,4);
     for participant = 1:4
         data{participant} = load([modelOutputDir,filesep,modelOutputFiles{participant}], 'trialdata');
         [~,filename{participant}] = fileparts(modelOutputFiles{participant});
     end
+
+    % Fit model, save model data
+    for participant = 1:4
+        rng(0) % the modelling might be probabilistic - TODO check this
+        model{participant} = fitMixtureModel(data{participant},0);
+        save([modelOutputDir,'/MixtureModels/',filename{participant},'_',...
+            datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+            'model')
+    end
 end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
-    error('not coded yet')
+    % Load models
+
 end
 
 %% Plot data
 
+clc
+
+whichFigures.MixMod_polar = true;
+
 for participant = 1:4
-    fitMixtureModel(data{participant});
-    disp('Figures saved')
+    plotMixtureModel(model{participant},...
+        whichFigures,filename{participant})
 end
 
 
-% save('../../../../../../Analyses/moving_bias.mat','moving_bias')
-% warning('If moving_bias.mat previously existed, it has been overwritten')
