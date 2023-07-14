@@ -30,7 +30,7 @@ nTrials_filtered = sum(~filter);
 % cues_filtered       = cues;
 % choices_filtered    = choices;
 % chosen_filtered     = chosen;
-% 
+%
 % nTrials_filtered = length(cues);
 
 %% Calculate Angular Error
@@ -40,7 +40,7 @@ PotentialDistances = (-180+interval:interval:180)';                         % TO
 
 % Calculate angular error (distance) between incorrect choice and cue
 
-d = zeros(nTrials_filtered,1); 
+d = zeros(nTrials_filtered,1);
 for trial = 1:nTrials_filtered
     d(trial) = rad2deg(angdiff(deg2rad(chosen_filtered(trial)*interval), deg2rad(cues_filtered(trial)*interval)));
 end
@@ -52,16 +52,16 @@ choice_counts = zeros(length(PotentialDistances),nBig);
 bin_edges = (-180+interval:interval:180+interval);
 
 for i = 1:nBig
-    choice_counts(:,i) = histcounts(d(cues_filtered == i), bin_edges);   
+    choice_counts(:,i) = histcounts(d(cues_filtered == i), bin_edges);
 end
 
 
-% figure, 
+% figure,
 % imagesc(choice_counts')
 % colorbar
 % axis square
-% 
-% figure, 
+%
+% figure,
 % choice_counts_midExtract = [...
 %     choice_counts(1:31,:); ...
 %     NaN(1,nBig); ...
@@ -79,7 +79,7 @@ end
 %     comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
 %     for choice = 1:nSmall
 %         for trial = 1:size(comp_trial,1)
-%             if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2           
+%             if      abs(comp_trial(trial,choice) - cueIndex) < nBig/2
 %                 comp_trial(trial,choice) = (comp_trial(trial,choice) - cueIndex) * interval;
 %             elseif  abs(comp_trial(trial,choice) - cueIndex) > nBig/2 && comp_trial(trial,choice) > cueIndex
 %                 comp_trial(trial,choice) = (-(nBig - abs(comp_trial(trial,choice) - cueIndex))) * interval;
@@ -103,17 +103,17 @@ for cueIndex = 1:nBig
         end
     end
     for PotentialDistanceIndex = 1:length(PotentialDistances)
-       presentation_counts(PotentialDistanceIndex,cueIndex) =...
-           sum(comp_trial(:) == PotentialDistances(PotentialDistanceIndex));
+        presentation_counts(PotentialDistanceIndex,cueIndex) =...
+            sum(comp_trial(:) == PotentialDistances(PotentialDistanceIndex));
     end
 end
 
-% figure, 
+% figure,
 % imagesc(presentation_counts')
 % colorbar
 % axis square
-% 
-% figure, 
+%
+% figure,
 % presentation_counts_midExtract = [...
 %     presentation_counts(1:31,:); ...
 %     NaN(1,nBig); ...
@@ -128,14 +128,14 @@ end
 
 choice_probability = choice_counts./presentation_counts;
 
-% figure, 
+% figure,
 % imagesc(choice_probability')
 % colorbar
 % axis square
 
 % Replace value at 0 (correct choice) to exclude from curve fit
 choice_probability(nBig/2,:) = NaN;
-presentation_counts(nBig/2,:) = NaN; 
+presentation_counts(nBig/2,:) = NaN;
 
 %% Fit Gaussian to error distribution for each cue to get bias value
 
