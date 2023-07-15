@@ -16,7 +16,7 @@ cues    = cell2mat(cleandata.trialdata.cues);
 choices = cell2mat(cleandata.trialdata.choices);
 chosen  = cell2mat(cleandata.trialdata.chosen);
 
-abortIndex = isnan(chosen);                                                 % Note: this previously looked at cues, choices, and chosen, for NaNs, not just at choices. If you have problems, this might be why.
+abortIndex = or(isnan(chosen),any(isnan(choices'))');                                                 % Note: this previously looked at cues, choices, and chosen, for NaNs, not just at choices. If you have problems, this might be why.
 correctIndex = cues == chosen;
 filter = or(abortIndex,correctIndex);
 
@@ -37,6 +37,7 @@ nTrials_filtered = sum(~filter);
 
 % Distance values
 PotentialDistances = (-180+interval:interval:180)';                         % TODO: Double check the logic that this married with "32" being treated as the zero point in the rest of this function
+hue_angle_by_index = 0:interval:360-interval;
 
 % Calculate angular error (distance) between incorrect choice and cue
 
@@ -44,17 +45,17 @@ d = zeros(nTrials_filtered,1);
 for trial = 1:nTrials_filtered
     d(trial) = rad2deg(angdiff(deg2rad(chosen_filtered(trial)*interval), deg2rad(cues_filtered(trial)*interval)));
 end
-
-%d = round(d,4); % cut off number of digits after decimal point
+d_index = round(d/interval);
+d_index(d_index == -32) = 32;
+d = d_index*interval;
 
 % Count of number of times each color (by distance from cue) was chosen
 choice_counts = zeros(length(PotentialDistances),nBig);
-bin_edges = (-180+interval:interval:180+interval);
+bin_edges = (-180+(interval/2):interval:180+(interval/2));
 
 for i = 1:nBig
     choice_counts(:,i) = histcounts(d(cues_filtered == i), bin_edges);
 end
-
 
 % figure,
 % imagesc(choice_counts')
@@ -78,16 +79,22 @@ end
 presentation_counts = zeros(nBig);
 
 for cueIndex = 1:nBig
-    comp_trial = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
+    choices_filtered_forThisCueIndex = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
     for choice = 1:nSmall
-        for trial = 1:size(comp_trial,1)
-            comp_trial(trial,choice) = rad2deg(angdiff(deg2rad(comp_trial(trial,choice)*interval), deg2rad(cueIndex*interval)));
-            comp_trial = round(comp_trial,4);
+        for trial = 1:size(choices_filtered_forThisCueIndex,1)
+            choices_filtered_forThisCueIndex(trial,choice) = rad2deg(angdiff(...
+                deg2rad(hue_angle_by_index(choices_filtered_forThisCueIndex(trial,choice))),...
+                deg2rad(hue_angle_by_index(cueIndex))));
+            choices_filtered_forThisCueIndex(trial,choice) = round(choices_filtered_forThisCueIndex(trial,choice)/interval);
+            if choices_filtered_forThisCueIndex(trial,choice) == -32
+               choices_filtered_forThisCueIndex(trial,choice) = 32;
+            end
+            choices_filtered_forThisCueIndex(trial,choice) = choices_filtered_forThisCueIndex(trial,choice)*interval;
         end
     end
     for PotentialDistanceIndex = 1:length(PotentialDistances)
         presentation_counts(PotentialDistanceIndex,cueIndex) =...
-            sum(comp_trial(:) == PotentialDistances(PotentialDistanceIndex));
+            sum(abs(choices_filtered_forThisCueIndex(:) - PotentialDistances(PotentialDistanceIndex)) < 1);
     end
 end
 
@@ -95,7 +102,7 @@ end
 % imagesc(presentation_counts')
 % colorbar
 % axis square
-%
+% 
 % figure,
 % presentation_counts_midExtract = [...
 %     presentation_counts(1:31,:); ...
@@ -169,13 +176,13 @@ end
 
 crossings = find(crossesZero);
 
-hue_angle = 0:interval:360; %includes wraparound
+hue_angle_w = 0:interval:360; %includes wraparound
 
 % Category Center Location Interpolation
 if ~isempty(crossings)
 
     for i = 1:length(crossings)
-        x = [hue_angle(crossings(i)) hue_angle(crossings(i)+1)];
+        x = [hue_angle_w(crossings(i)) hue_angle_w(crossings(i)+1)];
         y = [be_w(crossings(i)) be_w(crossings(i)+1)];
         interp_crossing(i,1) = interp1(y,x,0);
     end
@@ -247,21 +254,21 @@ if ~isempty(ci)
         % Confidence Interval Interpolation
         for i = 1:length(CI_range)
             if be_w(CI_range(i)) > 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                x = [hue_angle_w(CI_range(i)) hue_angle_w(CI_range(i)+1)];
                 y = [lower_95_w(CI_range(i)) lower_95_w(CI_range(i)+1)];
             elseif  be_w(CI_range(i)) < 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                x = [hue_angle_w(CI_range(i)) hue_angle_w(CI_range(i)+1)];
                 y = [upper_95_w(CI_range(i)) upper_95_w(CI_range(i)+1)];
             end
 
             interp_ci(i,1) = interp1(y,x,0);
 
             if isnan(interp_ci(i,1)) && be_w(CI_range(i)) > 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                x = [hue_angle_w(CI_range(i)) hue_angle_w(CI_range(i)+1)];
                 y = [upper_95_w(CI_range(i)) upper_95_w(CI_range(i)+1)];
                 interp_ci(i,1) = interp1(y,x,0);
             elseif isnan(interp_ci(i,1)) && be_w(CI_range(i)) < 0
-                x = [hue_angle(CI_range(i)) hue_angle(CI_range(i)+1)];
+                x = [hue_angle_w(CI_range(i)) hue_angle_w(CI_range(i)+1)];
                 y = [lower_95_w(CI_range(i)) lower_95_w(CI_range(i)+1)];
                 interp_ci(i,1) = interp1(y,x,0);
             end

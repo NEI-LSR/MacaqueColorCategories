@@ -61,8 +61,6 @@ end
 
 %% Plot data
 
-clc
-
 whichFigures.MixMod_polar = true;
 
 for participant = 1:4
