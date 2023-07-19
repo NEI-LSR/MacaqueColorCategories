@@ -11,12 +11,20 @@ clear, clc, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromPreProcessedData';
+AnalysisDepth = 'fromModelOutput';
 
 %% Behind the scenes...
 
 % Add path to required script
 addpath(genpath('../../../../../../Analyses/'))
+
+DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
+    'Data'];
+
+filename = {'210422--211012_Pollux_data',...
+    '210517--211108_Castor_data',...
+    '220322--220823_Morty_data',...
+    '210428--210609_Buster_data'};
 
 rng(0)
 
@@ -30,34 +38,36 @@ end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
 
-    DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
-        'Data'];
-    DataFiles = {...
-        '210422--211012_Pollux_data.csv',...
-        '210517--211108_Castor_data.csv',...
-        '220322--220823_Morty_data.csv',...
-        '210428--210609_Buster_data.csv'};
-
     % Load data
-    filename = cell(1,4);
     for participant = 1:4
-        data{participant} = readtable([DataDir,filesep,DataFiles{participant}]);
-        [~,filename{participant}] = fileparts(DataFiles{participant});
+        data{participant} = readtable([DataDir,filesep,filename{participant},'.csv']);
     end
 
     % Fit model, save model data
     for participant = 1:4
         rng(0) % the modelling might be probabilistic - TODO check this
-        model{participant} = fitMixtureModel(data{participant},0);
+        model = fitMixtureModel(data{participant},0);
         save([DataDir,'/MixtureModels/',filename{participant},'_',...
             datestr(now,'yymmdd-HHMMSS'),'.mat'],...
             'model')
+        allModels{participant} = model;
     end
 end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
     % Load models
-
+    for participant = 1:4
+        ModelFile = dir([DataDir,filesep,'MixtureModels',filesep,...
+            filename{participant},'*.mat']);
+        if length(ModelFile) > 1
+            warning('Multiple model files for this participant. Using most recent.')
+            [~,idx] = sort([ModelFile.datenum]);
+            ModelFile = ModelFile(idx);
+            ModelFile = ModelFile(end);
+        end
+        load([DataDir,'/MixtureModels/',ModelFile.name],'model')
+        allModels{participant} = model;
+    end
 end
 
 %% Plot data
@@ -65,8 +75,8 @@ end
 whichFigures.MixMod_polar = true;
 
 for participant = 1:4
-    plotMixtureModel(model{participant},...
-        whichFigures,filename{participant})
+    plotMixtureModel(allModels{participant},...
+        whichFigures,[filename{participant},'_',AnalysisDepth])
 end
 
 
