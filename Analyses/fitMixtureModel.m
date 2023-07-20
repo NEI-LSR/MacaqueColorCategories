@@ -1,20 +1,21 @@
 function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
 
-if isfield(cleandata.trialdata,'dirname') % for real data
-    nBig = size(cleandata.trialdata.stimCols{1,1},1);
-else
-    nBig = size(cleandata.trialdata.stimCols,2); % for sim data
-end
-
-nSmall = sum(~isnan(cleandata.trialdata.choices{end,1}));
+nBig = 64;
+nSmall = 4;
 interval = 360/nBig;
 
 %% Filter data
 % Remove aborted trials, and correct trials (we WANT the incorrect trials)
 
-cues    = cell2mat(cleandata.trialdata.cues);
-choices = cell2mat(cleandata.trialdata.choices);
-chosen  = cell2mat(cleandata.trialdata.chosen);
+if istable(cleandata)
+    cues    = cleandata.cues;
+    choices = [cleandata.choices_1,cleandata.choices_2,cleandata.choices_3,cleandata.choices_4];
+    chosen  = cleandata.chosen;
+else
+    cues    = cell2mat(cleandata.trialdata.cues);
+    choices = cell2mat(cleandata.trialdata.choices);
+    chosen  = cell2mat(cleandata.trialdata.chosen);
+end
 
 abortIndex = or(isnan(chosen),any(isnan(choices'))');
 correctIndex = cues == chosen;
