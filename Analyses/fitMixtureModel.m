@@ -16,7 +16,7 @@ cues    = cell2mat(cleandata.trialdata.cues);
 choices = cell2mat(cleandata.trialdata.choices);
 chosen  = cell2mat(cleandata.trialdata.chosen);
 
-abortIndex = or(isnan(chosen),any(isnan(choices'))');                                                 % Note: this previously looked at cues, choices, and chosen, for NaNs, not just at choices. If you have problems, this might be why.
+abortIndex = or(isnan(chosen),any(isnan(choices'))');
 correctIndex = cues == chosen;
 filter = or(abortIndex,correctIndex);
 
@@ -43,7 +43,9 @@ hue_angle_by_index = 0:interval:360-interval;
 
 d = zeros(nTrials_filtered,1);
 for trial = 1:nTrials_filtered
-    d(trial) = rad2deg(angdiff(deg2rad(chosen_filtered(trial)*interval), deg2rad(cues_filtered(trial)*interval)));
+    d(trial) = rad2deg(angdiff(...
+        deg2rad(chosen_filtered(trial)*interval),...
+        deg2rad(cues_filtered(trial)  *interval)));
 end
 d_index = round(d/interval);
 d_index(d_index == -32) = 32;
@@ -78,8 +80,12 @@ end
 
 presentation_counts = zeros(nBig);
 
+cues_completed    = cues(   ~abortIndex);
+choices_completed = choices(~abortIndex,:);
+
 for cueIndex = 1:nBig
-    choices_filtered_forThisCueIndex = choices_filtered(cues_filtered == cueIndex,:); % choices for (completed) trials matching this cueIndex
+    
+    choices_filtered_forThisCueIndex = choices_completed(cues_completed == cueIndex,:); % choices for (completed) trials matching this cueIndex
     for choice = 1:nSmall
         for trial = 1:size(choices_filtered_forThisCueIndex,1)
             choices_filtered_forThisCueIndex(trial,choice) = rad2deg(angdiff(...

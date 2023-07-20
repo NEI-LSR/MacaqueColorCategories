@@ -328,7 +328,7 @@ if isfield(whichFigures,'MixMod_linear_2') && whichFigures.MixMod_linear_2 == tr
     hold on
 
     hue_angle = 0:interval:360;
-    hue_angle = hue_angle - 180; % don't overwrite !!!!!!!!!!!!!!!1
+    hue_angle = hue_angle - 180;                                            % TODO don't overwrite
 
     for i = 1:length(interp_crossing)
         if interp_crossing(i) > 180
