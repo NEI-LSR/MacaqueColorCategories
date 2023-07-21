@@ -15,7 +15,7 @@ rng(0)
 % fromPreProcessedData_preCombined:     % Generate figures from the pre-processed data (before it has been combined across participants)
 % fromPreProcessedData_postCombined:    % Generate figures from the pre-processed data (after it has been combined across participants) (fastest)
 
-AnalysisDepth = 'fromPreProcessedData_postCombined';
+AnalysisDepth = 'fromPreProcessedData_preCombined';
 
 %%
 
@@ -36,29 +36,36 @@ if strcmp(AnalysisDepth,'fromPreProcessedData_preCombined')
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData_postCombined')
-    load('combinedData.mat','cleandata')
+    load('../../../../../../Analyses/combinedData.mat','cleandata')
 end
 
 %% 
 
 lengthOfSlidingWindow = 9; %Extra smoothing to simplify visual interpretation of instructive cartoon figures
-moving_bias = fitMixtureModel(cleandata,[],lengthOfSlidingWindow);
-disp('Figures saved')
+model = fitMixtureModel(cleandata,[],lengthOfSlidingWindow);
+moving_bias = model.moving_bias;
 
-% figure, plot(moving_bias)
+whichFigures.MixMod_polar    = true;
+plotMixtureModel(model,...
+    whichFigures,['TCCDemo_sg_Input_',AnalysisDepth])
 
 %% Generate a set of paramters for skewed gaussians that would create this data structure
 
-SimFunc_sd = 50;
+SimFunc_sd = 25;
 [m,c] = computeRelationshipBetweenSkewAndFittedGaussian(SimFunc_sd);
 
 skewedGaussians = (moving_bias - c)/m;
 
 [~, SGdata] = GenerativeModel([],'skewedGaussians',skewedGaussians,...
     'SimFunc_sd',SimFunc_sd,'nTrials',size(cleandata.trialdata.cues,1));
+SGdata.trialdata.chosen = SGdata.trialdata.chosen';
 
-SG_moving_bias = fitMixtureModel(SGdata,[],lengthOfSlidingWindow);
-disp('Figures saved')
+SG_model = fitMixtureModel(SGdata,[],lengthOfSlidingWindow);
+SG_moving_bias = SG_model.moving_bias;
+
+whichFigures.MixMod_polar    = true;
+plotMixtureModel(SG_model,...
+    whichFigures,['TCCDemo_sg_Output',AnalysisDepth])
 
 %%
 
@@ -104,7 +111,6 @@ colorbar('Ticks',[0,SG_moving_bias_norm(minloc_SG_moving_bias),1],...
 %clim([-15,15]) % This would be nice to do but it would take some fiddling so I'll leave it for now...
 
 saveas(gcf,fullfile('../',['sg-kernel_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
-disp('Figures saved')
 
 %%
 
@@ -119,7 +125,9 @@ SplitGauss = @(x,sd_left,sd_right) ...
      exp(-((x(x> 0).^2)/(2*sd_right^2)))];
 
 for i = 1:length(SkewRange)
-    sg(:,i) = SplitGauss(x, SkewRange(i)*sd, (1-SkewRange(i))*sd);
+    sg(:,i) = SplitGauss(x,...
+            SkewRange(i)     * (2 * sd),...
+            (1-SkewRange(i)) * (2 * sd));
 end
 
 % figure, 

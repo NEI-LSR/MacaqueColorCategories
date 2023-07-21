@@ -46,34 +46,22 @@ x = movmean(x,9);
 
 %% Compute similarity matrix
 
+f = @(x)GenerativeModel(x,'choiceInds',choiceInds,'cueInd',cueInd,'response',response,'nTrials',nTrials,'nBig',nBig,'nSmall',nSmall,'dprime',2.443912865562119,'optimisationMeta',optimisationMeta,...
+    'pltSimFigs', true, 'SimFunc_sd', 25); % this is available in the load file, but I want to add `pltSimFigs` to it
+
 [~,simdata] = f(x); 
+figure(2)
+saveas(gcf,['../SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
+
 plotSimilarityMatrix(simdata.trialdata.similarityMatrix,...
     'ssnu','../')
 
 %%
 
 lengthOfSlidingWindow = 9; %Extra smoothing to simplify visual interpretation of instructive cartoon figures
-fitMixtureModel(simdata,[],[],lengthOfSlidingWindow);
 
-%% Kernel plot
+model = fitMixtureModel(simdata,[],lengthOfSlidingWindow);
 
-% Pulled from `GenerativeModel.m`
-x = -180:0.1:180;
-default_SimFunc_sd = 60;
-SplitGauss = @(x,sd_left,sd_right) [exp(-((x(x<=0).^2)/(2*sd_left^2))), exp(-((x(x>0).^2)/(2*sd_right^2)))];
-simFunc = SplitGauss(x, 0.5*default_SimFunc_sd, 0.5*default_SimFunc_sd);
-
-figure, hold on
-pltCols(:,4) = 0.8;
-plot(x,simFunc,'k','LineWidth',3)
-xline(0,'k:')
-xlim([-180,180]);
-xticks([-180,0,180]);
-ylim([0,1]);
-yticks([0,1]);
-xlabel('Degrees')
-ylabel('Similarity')
-
-saveas(gcf,fullfile('../',['ssnu-kernel_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
-disp('Figures saved')
-
+whichFigures.MixMod_polar = true;
+plotMixtureModel(model,...
+    whichFigures,['TCCDemo_ssnu_Input_',AnalysisDepth])
