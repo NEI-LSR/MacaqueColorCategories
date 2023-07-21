@@ -2,6 +2,8 @@ function indexedLocation = colorSpaceConversion(requestedHueAngles)
 
 % It is assumed that the first value in `requestedHueAngles` will be 0
 
+% TODO Build in rotation (I don't think this is here yet?)
+
 %%
 
 %clear, clc, close all

@@ -21,10 +21,10 @@ addpath(genpath('../../../../../../Analyses/'))
 DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
     'Data'];
 
-filename = {'210422--211012_Pollux_data',...
-    '210517--211108_Castor_data',...
-    '220322--220823_Morty_data',...
-    '210428--210609_Buster_data'};
+filename{1} = '210422--211012_Pollux_data';
+filename{2} = '210517--211108_Castor_data';
+filename{3} = '220322--220823_Morty_data';
+filename{4} = '210428--210609_Buster_data';
 
 rng(0)
 

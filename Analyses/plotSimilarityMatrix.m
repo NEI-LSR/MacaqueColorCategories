@@ -4,16 +4,6 @@ function plotSimilarityMatrix(x,filename,OutPutFileDir,categoryCenter)
 
 nBig = 64;
 
-%%
-
-% %load('.\combined\combined_TCC-FreeSimilarityMatrix-workspace_230509.mat')
-% load('.\combined\combined_TCC-0att_fullremap-workspace_230510.mat')
-% 
-% [~,tempdata] = f(x);
-% sm = tempdata.trialdata.similarityMatrix;
-
-%%
-
 if min(size(x)) == 1 % if we pass a vector rather than a matrix, assume it needs reshaping
     sm = reshape(x,[nBig, nBig]);
 else

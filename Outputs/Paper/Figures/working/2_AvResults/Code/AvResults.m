@@ -32,9 +32,8 @@ if strcmp(AnalysisDepth,'fromRawData')
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
-    dirname = 'C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\data\'; % Fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    data = combineData(dirname);
-    save('../../../../../../Analyses/combinedData.mat','data');
+    data = combineData();
+    save('../../../../../../Data/combinedData.mat','data');
     warning('If combinedData.mat previously existed, it has been overwritten')
 
     rng(0) % the modelling might be probabilistic - TODO check this

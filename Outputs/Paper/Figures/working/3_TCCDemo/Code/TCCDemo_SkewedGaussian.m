@@ -22,6 +22,9 @@ AnalysisDepth = 'fromPreProcessedData_preCombined';
 % Add path to required script
 addpath(genpath('../../../../../../Analyses/'))
 
+DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
+    'Data'];
+
 %%
 
 if strcmp(AnalysisDepth,'fromRawData')
@@ -29,23 +32,21 @@ if strcmp(AnalysisDepth,'fromRawData')
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData_preCombined')
-    dirname = 'C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\data\'; % Fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    cleandata = combineData(dirname);
-    save('../../../../../../Analyses/combinedData.mat','cleandata');
-    warning('If combinedData.mat previously existed, it has been overwritten')
+    addpath(genpath('../../../../../../Data/'))
+    data = combineData(DataDir);
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData_postCombined')
-    load('../../../../../../Analyses/combinedData.mat','cleandata')
+    data = readtable([DataDir,filesep,'combinedData.csv']);
 end
 
 %% 
 
 lengthOfSlidingWindow = 9; %Extra smoothing to simplify visual interpretation of instructive cartoon figures
-model = fitMixtureModel(cleandata,[],lengthOfSlidingWindow);
+model = fitMixtureModel(data,[],lengthOfSlidingWindow);
 moving_bias = model.moving_bias;
 
-whichFigures.MixMod_polar    = true;
+whichFigures.MixMod_polar = true;
 plotMixtureModel(model,...
     whichFigures,['TCCDemo_sg_Input_',AnalysisDepth])
 
@@ -57,15 +58,15 @@ SimFunc_sd = 25;
 skewedGaussians = (moving_bias - c)/m;
 
 [~, SGdata] = GenerativeModel([],'skewedGaussians',skewedGaussians,...
-    'SimFunc_sd',SimFunc_sd,'nTrials',size(cleandata.trialdata.cues,1));
+    'SimFunc_sd',SimFunc_sd,'nTrials',size(data,1));
 SGdata.trialdata.chosen = SGdata.trialdata.chosen';
 
 SG_model = fitMixtureModel(SGdata,[],lengthOfSlidingWindow);
 SG_moving_bias = SG_model.moving_bias;
 
-whichFigures.MixMod_polar    = true;
+whichFigures.MixMod_polar = true;
 plotMixtureModel(SG_model,...
-    whichFigures,['TCCDemo_sg_Output',AnalysisDepth])
+    whichFigures,['TCCDemo_sg_Output_',AnalysisDepth])
 
 %%
 
