@@ -142,11 +142,13 @@ cb3.Position = [cb3_Position(1:2),cb2_Position(1)-cb3_Position(1),cb3_Position(4
 %saveas(f2,'combined_TCC-FreeSimilarityMatrix_230509.svg')
 %saveas(f2,'combined_TCC-0att_fullremap-similaityMatrix_230510.svg')
 
-if ~exist('OutPutFileDir','var')
-    OutPutFileDir = './';
+if exist('filename','var')
+    if ~exist('OutPutFileDir','var')
+        OutPutFileDir = './'; % if `OutPutFileDir` not passed, save here
+    end
+    saveas(f,[OutPutFileDir,'sm_',filename,'_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 end
 
-saveas(f,[OutPutFileDir,'sm_',filename,'_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 
 
 
