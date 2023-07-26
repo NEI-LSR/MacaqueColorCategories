@@ -21,7 +21,7 @@ correct_idx = cues(completed_idx) == chosen(completed_idx);
 distance = abs(cues(completed_idx) - choices(completed_idx,:));
 distance(distance > nBig/2) = nBig - distance(distance > nBig/2);
 
-% difficulty = zeros(1,size(cues(completed_idx),1));
+difficulty = zeros(1,size(cues(completed_idx),1));
 for trial = 1:size(cues(completed_idx),1)
     try
         difficulty(trial) = min(nonzeros(distance(trial,:)));
@@ -36,10 +36,12 @@ end
 
 unique_difficulties = 1:max(unique(difficulty));
 
+difficulties_completed_counts = zeros(size(unique_difficulties,2),1);
 for i = 1:max(unique_difficulties)
     difficulties_completed_counts(i,1) = sum(difficulty==i);
 end
 
+difficulties_correct_counts = zeros(size(unique_difficulties,2),1);
 for i = 1:max(unique_difficulties)
     difficulties_correct_counts(i,1) = sum(difficulty(correct_idx)==i);
 end
@@ -54,7 +56,7 @@ pct_correct(isnan(pct_correct)) = 0;
 Weibull = fittype(@(slope, inflect, floor, ceil, x) (floor+(1-floor-ceil).*(1-exp(-(x./slope).^inflect)))); %Define version of Weibull with 4 args
 
 %% Weighted fit
-[f, gof] = fit(unique_difficulties',pct_correct,...
+f = fit(unique_difficulties',pct_correct,...
     Weibull,...
     'weights', difficulties_completed_counts,...
     'Lower', [0 -20 0 0],...
