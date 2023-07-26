@@ -1,6 +1,6 @@
 function [unique_difficulties,pct_correct,...
     difficulties_completed_counts, f]...
-    = difficulty_psychometric(cleandata)
+    = difficulty_psychometric(cleandata,filename)
 %% PURPOSE:
 %Error analysis by difficulty
 %Get difficulty for each trial, plot errors by difficulty
@@ -70,39 +70,35 @@ Weibull = fittype(@(slope, inflect, floor, ceil, x) (floor+(1-floor-ceil).*(1-ex
 
 %% FIGURES
 
-if isfield(cleandata.trialdata, 'dirname') == 1 % if real data
+figure(1) % Uncomment this to get them all on the same graph
+% figure,
 
-    % create filename
-    if numel(dirname) == 1
-        filename = dirname{1};
-        file_dir = dirname{1};
-    elseif numel(dirname) > 1
-        dates = str2double(extractBefore(dirname, 7)); % DG comment: does this clash with the section above?
-        [dates, date_order]  = sort(dates);
-        filename = [num2str(dates(1)), '--', num2str(dates(end)), extractAfter(dirname{1}, 13)];
-        file_dir = dirname{date_order(end)};
-    end
+% axes1 = axes;
+hold on
+plot(unique_difficulties, pct_correct, '.','MarkerEdgeColor','none'); % this is invisible, yet neccessary, for reasons I don't understand
+% fitplot = plot(f); set(fitplot,'color','k'); set(fitplot,'LineWidth',2);
 
-    figure('WindowState', 'maximized');
+xlim([min(unique_difficulties), max(unique_difficulties)]);
+xticks([min(unique_difficulties) max(unique_difficulties)]);
 
-    % difficulty plot ("psychometric function")
-    axes1 = axes('Position', [0.04, 0.31, 0.2, 0.55]);
-    hold on
-    plot(axes1, unique_difficulties, pct_correct, '.','MarkerEdgeColor','none');
-    fitplot = plot(f); set(fitplot,'color',[0 0.6 0.3]); set(fitplot,'LineWidth',2);
+plot(f,'k')
 
-    ylim([0.25 1]);
-    yticks([0.25 1]);
-    yticklabels({'25%', '100%'});
-    xlim([min(unique_difficulties), max(unique_difficulties)]);
-    xticks([min(unique_difficulties) max(unique_difficulties)]);
-    xticklabels({'',''});
-    title('Accuracy by Trial Difficulty');
-    xlabel('Distance of Closest Distractor');
-    ylabel('Accuracy');
-    axes1.YAxis(1).Color = [0 0 0];
-    legend('off')
+p22 = predint(f,unique_difficulties,0.95,'functional','on');
+x_plot =[unique_difficulties, fliplr(unique_difficulties)]; % h/t https://www.mathworks.com/matlabcentral/answers/425206-plot-of-confidence-interval-with-fill
+y_plot=[p22(:,1)', flipud(p22(:,2))'];
+fill(x_plot, y_plot, 1,'facecolor', 'k', 'edgecolor', 'none', 'facealpha', 0.2);
 
-end
+ylim([0.25 1]);
+yticks([0.25 1]);
+yticklabels({'25%', '100%'});
+title('Accuracy by Trial Difficulty');
+xlabel('Distance of Closest Distractor');
+ylabel('Accuracy');
+legend('off')
+
+%% 
+
+saveas(gcf,['../','difficulty_', filename, ...
+    datestr(now,'yymmdd-HHMMSS'), '.svg'])
 
 end
