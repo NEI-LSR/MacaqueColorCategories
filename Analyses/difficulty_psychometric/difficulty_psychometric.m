@@ -10,16 +10,8 @@ function [unique_difficulties,pct_correct,...
 cues = cell2mat(cleandata.trialdata.cues);
 choices = cell2mat(cleandata.trialdata.choices);
 chosen = cell2mat(cleandata.trialdata.chosen);
-paradigm = unique(cleandata.trialdata.paradigm);
-
-% If real data, get dirname from cleandata
-if isfield(cleandata.trialdata, 'dirname') == 1
-    dirname = unique(cleandata.trialdata.dirname);
-end
 
 nBig = size(cleandata.trialdata.stimCols{1,1},1);
-nSmall = sum(~isnan(cleandata.trialdata.choices{end,1}));
-
 
 %% Calculate difficulty
 
@@ -29,6 +21,7 @@ correct_idx = cues(completed_idx) == chosen(completed_idx);
 distance = abs(cues(completed_idx) - choices(completed_idx,:));
 distance(distance > nBig/2) = nBig - distance(distance > nBig/2);
 
+% difficulty = zeros(1,size(cues(completed_idx),1));
 for trial = 1:size(cues(completed_idx),1)
     try
         difficulty(trial) = min(nonzeros(distance(trial,:)));
