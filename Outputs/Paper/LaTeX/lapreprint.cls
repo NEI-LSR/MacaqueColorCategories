@@ -354,8 +354,8 @@
 \apptocmd{\featurebox}{%
   \begin{mdframed}[linewidth=0pt,backgroundcolor=lightColour!10,fontcolor=darkColour]
   \if@reqslineno\addtolength{\linenumbersep}{1em}\internallinenumbers\fi%
-}{}{}
-\pretocmd{\endfeaturebox}{\end{mdframed}}{}{}
+{}{}
+\pretocmd{\endfeaturebox}\end{mdframed}}{}{}
 
 
 \newenvironment{fullwidth}{%
