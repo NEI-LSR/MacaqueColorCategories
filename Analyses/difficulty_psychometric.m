@@ -21,6 +21,9 @@ correct_idx = cues(completed_idx) == chosen(completed_idx);
 distance = abs(cues(completed_idx) - choices(completed_idx,:));
 distance(distance > nBig/2) = nBig - distance(distance > nBig/2);
 
+interval = 360/nBig;
+distance = distance * interval;
+
 difficulty = zeros(1,size(cues(completed_idx),1));
 for trial = 1:size(cues(completed_idx),1)
     try
@@ -34,47 +37,42 @@ for trial = 1:size(cues(completed_idx),1)
     end
 end
 
-unique_difficulties = 1:max(unique(difficulty));
+unique_difficulties = unique(difficulty);
 
 difficulties_completed_counts = zeros(size(unique_difficulties,2),1);
-for i = 1:max(unique_difficulties)
-    difficulties_completed_counts(i,1) = sum(difficulty==i);
+for i = 1:length(unique_difficulties)
+    difficulties_completed_counts(i,1) = sum(difficulty == unique_difficulties(i));
 end
 
 difficulties_correct_counts = zeros(size(unique_difficulties,2),1);
-for i = 1:max(unique_difficulties)
-    difficulties_correct_counts(i,1) = sum(difficulty(correct_idx)==i);
+for i = 1:length(unique_difficulties)
+    difficulties_correct_counts(i,1) = sum(difficulty(correct_idx) == unique_difficulties(i));
 end
 
 % Percent correct by distance of closest distractor
-pct_correct = difficulties_correct_counts./difficulties_completed_counts;
-pct_correct(isnan(pct_correct)) = 0;
-
+pct_correct = difficulties_correct_counts./difficulties_completed_counts.*100;
 
 %% Fit Weibull function with 4 params
 
-Weibull = fittype(@(slope, inflect, floor, ceil, x) (floor+(1-floor-ceil).*(1-exp(-(x./slope).^inflect)))); %Define version of Weibull with 4 args
+Weibull = fittype(@(slope, inflect, floor, ceil, x)...
+    (floor+(100-floor-ceil).*(1-exp(-(x./slope).^inflect))));
 
 %% Weighted fit
 f = fit(unique_difficulties',pct_correct,...
     Weibull,...
     'weights', difficulties_completed_counts,...
     'Lower', [0 -20 0 0],...
-    'Upper', [20 20 1 1],...
-    'StartPoint', [10 0.01 0.5 0.5]);
+    'Upper', [200 20 100 100],...
+    'StartPoint', [50 2 30 10]);
 
 %% FIGURES
 
 figure(1) % Uncomment this to get them all on the same graph
 % figure,
 
-% axes1 = axes;
 hold on
 plot(unique_difficulties, pct_correct, '.','MarkerEdgeColor','none'); % this is invisible, yet neccessary, for reasons I don't understand
-% fitplot = plot(f); set(fitplot,'color','k'); set(fitplot,'LineWidth',2);
-
-xlim([min(unique_difficulties), max(unique_difficulties)]);
-xticks([min(unique_difficulties) max(unique_difficulties)]);
+xlim([min(unique_difficulties), max(unique_difficulties)]); % this determines the limits within which the function is plotted in the following line
 
 plot(f,'k')
 
@@ -83,9 +81,14 @@ x_plot =[unique_difficulties, fliplr(unique_difficulties)]; % h/t https://www.ma
 y_plot=[p22(:,1)', flipud(p22(:,2))'];
 fill(x_plot, y_plot, 1,'facecolor', 'k', 'edgecolor', 'none', 'facealpha', 0.2);
 
-ylim([0.25 1]);
-yticks([0.25 1]);
-yticklabels({'25%', '100%'});
+xlim([0,180])
+xticks([0,interval,45:45:180])
+xtickangle(90)
+
+ylim([25 100])
+ytickformat('percentage')
+yticks([25,50,75,100])
+
 title('Accuracy by Trial Difficulty');
 xlabel('Distance of Closest Distractor');
 ylabel('Accuracy');
