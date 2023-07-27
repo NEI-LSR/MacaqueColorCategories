@@ -217,6 +217,10 @@ Writing – review \& editing &  &  &  &  \\ \hline
 %% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
 \begin{appendix}
 
+\begin{appendixbox}\label{app:Indi_difficulty}      
+    \input{Outputs/Paper/LaTeX/Appendices/Indi_difficulty}
+\end{appendixbox}
+
 \begin{appendixbox}[Individual Data]\label{app:IndDiffs}
     \input{Appendices/IndDiffs.tex}
 \end{appendixbox}
@@ -229,7 +233,7 @@ Writing – review \& editing &  &  &  &  \\ \hline
     \input{Appendices/LongAnal.tex}
 \end{appendixbox}
 
-\begin{appendixbox}[Mixture Modelling Break Out]\label{app:mixMod_BreakOut}          
+\begin{appendixbox}[Mixture Modelling Break Out]\label{app:mixMod_BreakOut}      
     \input{Appendices/mixMod_BreakOut.tex}
 \end{appendixbox}
 
