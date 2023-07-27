@@ -89,7 +89,7 @@ ylim([25 100])
 ytickformat('percentage')
 yticks([25,50,75,100])
 
-title('Accuracy by Trial Difficulty');
+% title('Accuracy by Trial Difficulty');
 xlabel('Distance of Closest Distractor');
 ylabel('Accuracy');
 legend('off')
