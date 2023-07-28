@@ -127,14 +127,14 @@ if isfield(whichFigures,'MixMod_linear_1') && whichFigures.MixMod_linear_1 == tr
         end
         scatter(interp_crossing,0,'filled','k');
     end
-    yticks([-50 -25 0 25 50])
+    yticks(-35:5:35)
     xticks([0 60 120 180 240 300 360]);
     ax = gca;
     set(gca,'TickDir','out');
     % ax.TickLength = [0.025 0.025];
     % ax.FontSize = 10;
     xlim([0 360]);
-    ylim([-50 50]);
+    ylim([-35 35]);
     yline(0);
     xlabel('Hue Angle');
     ylabel('Bias');
@@ -383,7 +383,7 @@ if isfield(whichFigures,'MixMod_linear_2') && whichFigures.MixMod_linear_2 == tr
     if isempty(interp_crossing) == 0
         scatter(interp_crossing,0,'filled','k');
     end
-    yticks([-50 -25 0 25 50])
+    yticks(-35:5:35)
     xticks([-180 -120 -60 0 60 120 180]);
     hold off
     ax = gca;
@@ -391,7 +391,7 @@ if isfield(whichFigures,'MixMod_linear_2') && whichFigures.MixMod_linear_2 == tr
     % ax.TickLength = [0.025 0.025];
     % ax.FontSize = 10;
     xlim([-180 180]);
-    ylim([-50 50]);
+    ylim([-35 35]);
     yline(0);
     xlabel('Hue Angle');
     ylabel('Bias');
