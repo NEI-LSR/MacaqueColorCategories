@@ -132,7 +132,7 @@ if isfield(whichFigures,'MixMod_linear_1') && whichFigures.MixMod_linear_1 == tr
     ax = gca;
     set(gca,'TickDir','out');
     ax.TickLength = [0.025 0.025];
-    ax.FontSize = 10;
+    % ax.FontSize = 10;
     xlim([0 360]);
     ylim([-50 50]);
     yline(0);
@@ -389,7 +389,7 @@ if isfield(whichFigures,'MixMod_linear_2') && whichFigures.MixMod_linear_2 == tr
     ax = gca;
     set(gca,'TickDir','out');
     ax.TickLength = [0.025 0.025];
-    ax.FontSize = 10;
+    % ax.FontSize = 10;
     xlim([-180 180]);
     ylim([-50 50]);
     yline(0);

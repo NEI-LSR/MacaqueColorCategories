@@ -46,8 +46,15 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
-    load([modelOutputDir,'/MixtureModels/','combined_*.mat'],...            % TODO Fix this
-        'model')
+    ModelFile = dir([modelOutputDir,filesep,'MixtureModels',filesep,...
+        'combined_*.mat']);
+    if length(ModelFile) > 1
+        warning('Multiple model files. Using most recent.')
+        [~,idx] = sort([ModelFile.datenum]);
+        ModelFile = ModelFile(idx);
+        ModelFile = ModelFile(end);
+    end
+    load([modelOutputDir,'/MixtureModels/',ModelFile.name],'model')
 end
 
 %% Plot data
