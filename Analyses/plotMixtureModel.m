@@ -152,7 +152,7 @@ end
 
 if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
-    figure
+    figure('Position',[360, 97+(2/3), 460, 420])
     % figure('color', 'white')
 
     hold on
