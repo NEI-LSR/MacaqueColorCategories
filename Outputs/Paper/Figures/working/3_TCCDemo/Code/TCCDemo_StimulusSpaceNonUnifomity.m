@@ -31,7 +31,7 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
-    load('../../../../../../Analyses/combined/combined_TCC-fullremap-workspace_2300708.mat') % !!!!!!!! Investigate "Warning: Could not find appropriate function on path loading function handle" (still seems to work though...)
+    load('../../../../../../Analyses/combined/combined_TCC-fullremap-workspace_2300708.mat') % TODO Investigate "Warning: Could not find appropriate function on path loading function handle" (still seems to work though...)
 end 
 
 % figure, hold on
@@ -47,7 +47,7 @@ x = movmean(x,9);
 %% Compute similarity matrix
 
 f = @(x)GenerativeModel(x,'choiceInds',choiceInds,'cueInd',cueInd,'response',response,'nTrials',nTrials,'nBig',nBig,'nSmall',nSmall,'dprime',2.443912865562119,'optimisationMeta',optimisationMeta,...
-    'pltSimFigs', true, 'SimFunc_sd', 25); % this is available in the load file, but I want to add `pltSimFigs` to it
+    'pltSimFigs', true, 'gaussianWidth', 25); % this is available in the load file, but I want to add `pltSimFigs` to it
 
 [~,simdata] = f(x); 
 figure(2)
@@ -64,4 +64,4 @@ model = fitMixtureModel(simdata,[],lengthOfSlidingWindow);
 
 whichFigures.MixMod_polar = true;
 plotMixtureModel(model,...
-    whichFigures,['TCCDemo_ssnu_Input_',AnalysisDepth])
+    whichFigures,['TCCDemo_ssnu_',AnalysisDepth])
