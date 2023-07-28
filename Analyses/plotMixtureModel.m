@@ -139,7 +139,7 @@ if isfield(whichFigures,'MixMod_linear_1') && whichFigures.MixMod_linear_1 == tr
     xlabel('Hue Angle');
     ylabel('Bias');
 
-    saveas(gcf,fullfile('../',[filename,'_MixMod_linear_1', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+    saveas(gcf,fullfile('../',[filename,'_MixMod_linear_1_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 end
 
@@ -396,6 +396,6 @@ if isfield(whichFigures,'MixMod_linear_2') && whichFigures.MixMod_linear_2 == tr
     xlabel('Hue Angle');
     ylabel('Bias');
 
-    saveas(gcf,fullfile('../',[filename,'_MixMod_linear_2', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+    saveas(gcf,fullfile('../',[filename,'_MixMod_linear_2_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 end
