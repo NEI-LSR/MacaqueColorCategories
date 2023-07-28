@@ -131,7 +131,7 @@ if isfield(whichFigures,'MixMod_linear_1') && whichFigures.MixMod_linear_1 == tr
     xticks([0 60 120 180 240 300 360]);
     ax = gca;
     set(gca,'TickDir','out');
-    ax.TickLength = [0.025 0.025];
+    % ax.TickLength = [0.025 0.025];
     % ax.FontSize = 10;
     xlim([0 360]);
     ylim([-50 50]);
@@ -388,7 +388,7 @@ if isfield(whichFigures,'MixMod_linear_2') && whichFigures.MixMod_linear_2 == tr
     hold off
     ax = gca;
     set(gca,'TickDir','out');
-    ax.TickLength = [0.025 0.025];
+    % ax.TickLength = [0.025 0.025];
     % ax.FontSize = 10;
     xlim([-180 180]);
     ylim([-50 50]);

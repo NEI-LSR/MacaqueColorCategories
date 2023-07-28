@@ -88,6 +88,7 @@ xtickangle(90)
 ylim([25 100])
 ytickformat('percentage')
 yticks([25,50,75,100])
+set(gca,'TickDir','out');
 
 % title('Accuracy by Trial Difficulty');
 xlabel('Distance of Closest Distractor');
