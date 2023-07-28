@@ -70,6 +70,9 @@ f = fit(unique_difficulties',pct_correct,...
 figure(1) % Uncomment this to get them all on the same graph
 % figure,
 
+axes('PositionConstraint','innerposition',...
+    'Position',[0.13 0.19 0.82 0.75])
+
 hold on
 plot(unique_difficulties, pct_correct, '.','MarkerEdgeColor','none'); % this is invisible, yet neccessary, for reasons I don't understand
 xlim([min(unique_difficulties), max(unique_difficulties)]); % this determines the limits within which the function is plotted in the following line

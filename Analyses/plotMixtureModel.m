@@ -16,9 +16,8 @@ moving_bias         = model.moving_bias;
 % request *all* figures
 if isfield(whichFigures,'all') && whichFigures.all == true
     whichFigures.mixMod_BreakOut = true;
-    whichFigures.MixMod_linear_1 = true;
+    whichFigures.MixMod_linear = true;
     whichFigures.MixMod_polar = true;
-    whichFigures.MixMod_linear_2 = true;
 end
 
 %%
@@ -107,7 +106,9 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     % text('Parent',axes1,'Interpreter','none','String',filename,'FontSize', 15, 'Position',[0.05 0.5 0]);
     % set(axes1,'XColor','none','YColor','none')
 
-    axes2 = axes;
+    axes('PositionConstraint','innerposition',...
+    'Position',[0.13 0.19 0.82 0.75])
+    
     hold on
 
     x = 0;
@@ -143,7 +144,7 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     xlabel('Hue Angle');
     ylabel('Bias');
 
-    saveas(gcf,fullfile('../',[filename,'_MixMod_linear_1_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+    saveas(gcf,fullfile('../',[filename,'_MixMod_linear_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 end
 

@@ -60,7 +60,7 @@ end
 %% Plot data
 
 whichFigures.MixMod_polar    = true;
-whichFigures.MixMod_linear_1 = true;
+whichFigures.MixMod_linear   = true;
 
 plotMixtureModel(model,...
     whichFigures,['AvResults_',AnalysisDepth])
