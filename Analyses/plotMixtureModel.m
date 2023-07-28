@@ -152,13 +152,16 @@ end
 
 if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
-    figure('Position',[360, 97+(2/3), 460, 420])
+    axPositions = [0.02,0.02,0.96,0.96];
+
+    figure('Position',[360, 97+(2/3), 420, 420])
     % figure('color', 'white')
 
     hold on
     pie(repelem(interval,nBig));% pie chart w/ nBig equally sized slices
     colormap(rstimCols_sRGB);
     ax = gca;
+    ax.Position = axPositions;
     axis equal
     delete(ax.Children([1, 1:2:nBig*2])) % stop displaying % for each slice
     for i = 1:nBig
@@ -242,13 +245,13 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     shift_colvals = [colvals(nBig*(3/4):end,:); colvals(1:nBig*(3/4)-1,:)];
     [cart,~] = generateStimCols('nBig',nBig); % generate values to plot cues
 
-    scatter(cart(1,:)./36,cart(2,:)./36,90,shift_colvals,'filled'); % plot all cues around pie chart
+    scatter(cart(1,:)./36,cart(2,:)./36,150,shift_colvals,'filled'); % plot all cues around pie chart
 
     set(gca,'visible','off')
     axis equal tight
 
     rad_angle = deg2rad(hue_angle); %hue angles in radians
-    axes3 = axes;
+    axes3 = axes('Position',[0.07,0.07,0.86,0.86]);
     polarplot(rad_angle, be_w+40,'b'); % dummy holder
 
     rlim([0 80]);
