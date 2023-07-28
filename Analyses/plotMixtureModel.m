@@ -131,8 +131,8 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     scatter(interp_crossing,0,'filled','k');
 
     grid on
-    yticks(-40:10:40)
-    yticklabels({'-40','-30','-20','-10','0','+10','+20','+30','+40'})
+    yticks(-40:20:40)
+    yticklabels({'-40','-20','0','+20','+40'})
     xticks(0:45:360);
     ax = gca;
     set(gca,'TickDir','out');
