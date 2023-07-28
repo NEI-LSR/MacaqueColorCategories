@@ -136,8 +136,8 @@ if isfield(whichFigures,'MixMod_linear_1') && whichFigures.MixMod_linear_1 == tr
     xlim([0 360]);
     ylim([-50 50]);
     yline(0);
-    xlabel('Hue Angle ({\circ})');
-    ylabel('Bias ({\circ})');
+    xlabel('Hue Angle');
+    ylabel('Bias');
 
     saveas(gcf,fullfile('../',[filename,'_MixMod_linear_1', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
@@ -266,7 +266,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
     ax.ThetaTickLabel = {};
     ax.RTick = 0:20:80;
-    rticklabels({'','-20{\circ}','0{\circ}','+20{\circ}',''});
+    rticklabels({'','-20','0','+20',''});
 
     % ax.RAxisLocation = 235;
     % ax.FontSize = 8;
@@ -393,8 +393,8 @@ if isfield(whichFigures,'MixMod_linear_2') && whichFigures.MixMod_linear_2 == tr
     xlim([-180 180]);
     ylim([-50 50]);
     yline(0);
-    xlabel('Hue Angle ({\circ})');
-    ylabel('Bias ({\circ})');
+    xlabel('Hue Angle');
+    ylabel('Bias');
 
     saveas(gcf,fullfile('../',[filename,'_MixMod_linear_2', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
