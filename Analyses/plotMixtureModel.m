@@ -93,7 +93,7 @@ end
 
 %% Figures: Bias by Cue with Category Crossings and Confidence Intervals
 
-if isfield(whichFigures,'MixMod_linear_1') && whichFigures.MixMod_linear_1 == true
+if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
 
     figure
 
@@ -108,34 +108,38 @@ if isfield(whichFigures,'MixMod_linear_1') && whichFigures.MixMod_linear_1 == tr
     % set(axes1,'XColor','none','YColor','none')
 
     axes2 = axes;
-
     hold on
-    plot(hue_angle, lower_95_w, 'k:');
-    plot(hue_angle, upper_95_w,'k:');
+
+    x = 0;
+    for i = 2:2:length(interp_ci)
+        x = x+1;
+        fill([interp_ci(i-1) interp_ci(i) interp_ci(i) interp_ci(i-1)],...
+            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none');%opacity(x))
+    end
+
     h = fill([hue_angle, fliplr(hue_angle)], [lower_95_w', fliplr(upper_95_w')], 'k');
-    set(h, 'facealpha', .1, 'LineStyle', ':');
+    set(h, 'facealpha', .1, 'LineStyle', 'none');
 
     scatter(hue_angle,bias([1:end 1]),100,colvals([1:end 1],:),'filled');
     plot(hue_angle,be_w,'k');
-    if isempty(interp_ci) == 0
-        xline(interp_ci,'--');
-    end
+    % xline(interp_ci,'--');
 
-    if isempty(interp_crossing) == 0
-        for i = 1:length(interp_crossing)
-            xline(interp_crossing(i),'Color',crossing_colvals(i,:),'LineWidth',2.5)
-        end
-        scatter(interp_crossing,0,'filled','k');
-    end
-    yticks(-35:5:35)
-    xticks([0 60 120 180 240 300 360]);
+    % for i = 1:length(interp_crossing)
+    %     xline(interp_crossing(i),'Color',crossing_colvals(i,:),'LineWidth',2.5)
+    % end
+    scatter(interp_crossing,0,'filled','k');
+
+    grid on
+    yticks(-40:10:40)
+    yticklabels({'-40','-30','-20','-10','0','+10','+20','+30','+40'})
+    xticks(0:45:360);
     ax = gca;
     set(gca,'TickDir','out');
     % ax.TickLength = [0.025 0.025];
     % ax.FontSize = 10;
     xlim([0 360]);
-    ylim([-35 35]);
-    yline(0);
+    ylim([-40 40]);
+    yline(0,'LineStyle','--','Color',[0.3,0.3,0.3]);
     xlabel('Hue Angle');
     ylabel('Bias');
 
@@ -230,6 +234,8 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
         end
     end
 
+    ax.Color = 'none';
+
     % rotated_colvals = im2double(rstimCols_sRGB);
 
     shift_colvals = [colvals(nBig*(3/4):end,:); colvals(1:nBig*(3/4)-1,:)];
@@ -246,9 +252,9 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
     rlim([0 80]);
     hold on
-    polarplot(rad_angle, zeros(length(rad_angle),1)+40,'LineStyle',':','Color','k');
+    polarplot(rad_angle, zeros(length(rad_angle),1)+40,'LineStyle','--','Color',[0.3,0.3,0.3]);
     polarplot(rad_angle, be_w+40,'k');
-    thetaticks(0:45:315)
+    thetaticks(0:45:360)
 
     % if isempty(ci) == 0
     %     polarplot(rad_angle, lower_95_w+40,':k');
@@ -265,8 +271,8 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     ax.Color = 'none';
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
     ax.ThetaTickLabel = {};
-    ax.RTick = 0:20:80;
-    rticklabels({'','-20','0','+20',''});
+    % ax.RTick = [5,15,25,35,45,55,65];
+    rticklabels({'-40','-20','0','+20','+40'});
 
     % ax.RAxisLocation = 235;
     % ax.FontSize = 8;
@@ -286,7 +292,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
         [x1,y1] = pol2cart(theta,rlow);
         [x2,y2] = pol2cart(theta,rhigh);
-        patch([x1 fliplr(x2)], [y1 fliplr(y2)], 'k', 'FaceAlpha', 0.15, 'EdgeAlpha', 0);
+        patch([x1 fliplr(x2)], [y1 fliplr(y2)], 'k', 'FaceAlpha', 0.1, 'EdgeAlpha', 0);
     end
 
     xlim(ax_cart,[-max(get(ax_polar,'RLim')),max(get(ax_polar,'RLim'))]);

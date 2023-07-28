@@ -11,7 +11,7 @@ clear, clc, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromModelOutput';
+AnalysisDepth = 'fromPreProcessedData';
 
 %% Behind the scenes...
 
@@ -72,7 +72,8 @@ end
 
 %% Plot data
 
-whichFigures.MixMod_polar = true;
+whichFigures.MixMod_polar  = true;
+whichFigures.MixMod_linear = true;
 
 for participant = 1:4
     plotMixtureModel(allModels{participant},...
