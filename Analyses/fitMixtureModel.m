@@ -81,7 +81,7 @@ end
 
 presentation_counts = zeros(nBig);
 
-cues_completed    = cues(   ~abortIndex);
+cues_completed    = cues(~abortIndex);
 choices_completed = choices(~abortIndex,:);
 
 for cueIndex = 1:nBig
@@ -239,6 +239,8 @@ if ~isempty(ci)
     if isempty(change_range) == 0 % if confidence interval spans zero for all values
 
         change_range = change_range([1:end 1]);
+
+        crossings = interp_crossing / interval; 
 
         for i = 1:length(crossings)
             for j = 1:sum(changes)
