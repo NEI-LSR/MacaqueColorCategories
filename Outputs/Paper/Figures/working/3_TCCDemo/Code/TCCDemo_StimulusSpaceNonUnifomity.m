@@ -51,7 +51,7 @@ f = @(x)GenerativeModel(x,'choiceInds',choiceInds,'cueInd',cueInd,'response',res
 
 [~,simdata] = f(x); 
 figure(2)
-saveas(gcf,['../SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
+saveas(gcf,['../ssnu_SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
 
 plotSimilarityMatrix(simdata.trialdata.similarityMatrix,...
     'ssnu','../')

@@ -15,7 +15,7 @@ rng(0)
 % fromPreProcessedData_preCombined:     % Generate figures from the pre-processed data (before it has been combined across participants)
 % fromPreProcessedData_postCombined:    % Generate figures from the pre-processed data (after it has been combined across participants) (fastest)
 
-AnalysisDepth = 'fromPreProcessedData_preCombined';
+AnalysisDepth = 'fromPreProcessedData_postCombined';
 
 %%
 
@@ -52,14 +52,18 @@ plotMixtureModel(model,...
 
 %% Generate a set of paramters for skewed gaussians that would create this data structure
 
-SimFunc_sd = 25;
-[m,c] = computeRelationshipBetweenSkewAndFittedGaussian(SimFunc_sd);
+gaussianWidth = 25;
+[m,c] = computeRelationshipBetweenSkewAndFittedGaussian(gaussianWidth);
 
 skewedGaussians = (moving_bias - c)/m;
 
 [~, SGdata] = GenerativeModel([],'skewedGaussians',skewedGaussians,...
-    'SimFunc_sd',SimFunc_sd,'nTrials',size(data,1));
+    'gaussianWidth',gaussianWidth,'nTrials',size(data,1),...
+    'pltSimFigs', true);
 SGdata.trialdata.chosen = SGdata.trialdata.chosen';
+
+figure(3)
+saveas(gcf,['../sg_SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
 
 SG_model = fitMixtureModel(SGdata,[],lengthOfSlidingWindow);
 SG_moving_bias = SG_model.moving_bias;
@@ -70,48 +74,8 @@ plotMixtureModel(SG_model,...
 
 %%
 
-% figure, 
-% hold on
-% plot(moving_bias)
-% plot(SG_moving_bias)
-
 plotSimilarityMatrix(SGdata.trialdata.similarityMatrix,...
     'sg','../')
-
-nBig = 64;
-for i = 1:nBig
-    sm_cs(i,:) = circshift(SGdata.trialdata.similarityMatrix(i,:), (nBig/2)-i+1);
-end
-
-% figure, imagesc(sm_cs)
-% axis square
-
-[~,orderByBias] = sort(SG_moving_bias);
-
-figure, hold on
-pltCols = parula(nBig);
-pltCols(:,4) = 0.8;
-for i = 1:nBig
-    plot(-180:360/nBig:180,sm_cs(orderByBias(i),[1:end,1]),'Color',pltCols(i,:))
-end
-plot(-180:360/nBig:180,mean(sm_cs(:,[1:end,1])),'k--','LineWidth',3)
-xline(0,'k:')
-xlim([-180,180]);
-xticks([-180,0,180]);
-ylim([0,1]);
-yticks([0,1]);
-xlabel('Degrees')
-ylabel('Similarity')
-
-[~,minloc_SG_moving_bias] = min(abs(SG_moving_bias)); % find the element of SG_moving_bias that is closest to 0
-SG_moving_bias_norm = SG_moving_bias - min(SG_moving_bias);
-SG_moving_bias_norm = SG_moving_bias_norm/max(SG_moving_bias_norm);
-
-colorbar('Ticks',[0,SG_moving_bias_norm(minloc_SG_moving_bias),1],...
-         'TickLabels',[min(SG_moving_bias),0,max(SG_moving_bias)])
-%clim([-15,15]) % This would be nice to do but it would take some fiddling so I'll leave it for now...
-
-saveas(gcf,fullfile('../',['sg-kernel_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %%
 
