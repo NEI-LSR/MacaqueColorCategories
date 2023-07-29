@@ -67,8 +67,8 @@ f = fit(unique_difficulties',pct_correct,...
 
 %% FIGURES
 
-figure(1) % Uncomment this to get them all on the same graph
-% figure,
+% figure(1) % Uncomment this to get them all on the same graph
+figure,
 
 axes('PositionConstraint','innerposition',...
     'Position',[0.13 0.19 0.82 0.75])
@@ -97,6 +97,19 @@ set(gca,'TickDir','out');
 xlabel('Distance of Closest Distractor');
 ylabel('Accuracy');
 legend('off')
+
+startDate = datetime(str2double([num2str(20),(cleandata.trialdata.dirname{1}(1:2))]),...
+    str2double(cleandata.trialdata.dirname{1}(3:4)),...
+    str2double(cleandata.trialdata.dirname{1}(5:6)));
+
+endDate = datetime(str2double([num2str(20),(cleandata.trialdata.dirname{end}(1:2))]),...
+    str2double(cleandata.trialdata.dirname{end}(3:4)),...
+    str2double(cleandata.trialdata.dirname{end}(5:6)));
+
+text(100,60,[...
+    'Trials: ',num2str(size(cues,1)),newline...
+    'Sessions: ', num2str(length(unique(cleandata.trialdata.dirname))),newline,...
+    'Duration: ', char(between(startDate, endDate)), newline])
 
 %% 
 
