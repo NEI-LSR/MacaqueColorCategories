@@ -22,12 +22,10 @@ if exist('categoryCenter','var')
     stimCols = circshift(stimCols,[0,nBig/2-categoryCenter]);
 end
 
-
-
 %%
 f = figure;
 ax1 = axes();
-imagesc(sm)
+imagesc(sm')
 axis equal tight
 colormap('gray')
 axis off
