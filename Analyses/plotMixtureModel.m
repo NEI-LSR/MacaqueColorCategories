@@ -114,8 +114,15 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     x = 0;
     for i = 2:2:length(interp_ci)
         x = x+1;
+        if interp_ci(i) > interp_ci(i-1)
         fill([interp_ci(i-1) interp_ci(i) interp_ci(i) interp_ci(i-1)],...
             [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none');%opacity(x))
+        elseif interp_ci(i) < interp_ci(i-1)
+            fill([interp_ci(i-1) 360 360 interp_ci(i-1)],...
+            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none');
+            fill([0 interp_ci(i) interp_ci(i) 0],...
+            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none');
+        end
     end
 
     h = fill([hue_angle, fliplr(hue_angle)], [lower_95_w', fliplr(upper_95_w')], 'k');
@@ -240,7 +247,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
     ax.Color = 'none';
 
-    % rotated_colvals = im2double(rstimCols_sRGB);
+     %rotated_colvals = im2double(rstimCols_sRGB);
 
     shift_colvals = [colvals(nBig*(3/4):end,:); colvals(1:nBig*(3/4)-1,:)];
     [cart,~] = generateStimCols('nBig',nBig); % generate values to plot cues
@@ -266,10 +273,10 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     % end
 
     % add lines
-    % for k = 1:length(interp_crossing)
-    %     %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 60],'Color',[rotated_colvals(crossings(k),:) (1+min(opacity))-opacity(k)],'LineWidth',1.5);
-    %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',rotated_colvals(crossings(k),:),'LineWidth',1.5);
-    % end
+    %  for k = 1:length(interp_crossing)
+    %      %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 60],'Color',[rotated_colvals(crossings(k),:) (1+min(opacity))-opacity(k)],'LineWidth',1.5);
+    %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',[0 0 0],'LineWidth',1.5);
+    %  end
 
     ax = gca;
     ax.Color = 'none';
