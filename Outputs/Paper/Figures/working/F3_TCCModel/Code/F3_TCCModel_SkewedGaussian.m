@@ -48,7 +48,7 @@ moving_bias = model.moving_bias;
 
 whichFigures.MixMod_polar = true;
 plotMixtureModel(model,...
-    whichFigures,['TCCDemo_sg_Input_',AnalysisDepth])
+    whichFigures,['F3_TCCModel_sg_Input_',AnalysisDepth])
 
 %% Generate a set of paramters for skewed gaussians that would create this data structure
 
@@ -70,7 +70,7 @@ SG_moving_bias = SG_model.moving_bias;
 
 whichFigures.MixMod_polar = true;
 plotMixtureModel(SG_model,...
-    whichFigures,['TCCDemo_sg_Output_',AnalysisDepth])
+    whichFigures,['F3_TCCModel_sg_Output_',AnalysisDepth])
 
 %%
 

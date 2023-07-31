@@ -1,6 +1,3 @@
-%function 
-
-% !
 % Before starting, `cd` to the location of this script
 
 %% Options
@@ -63,5 +60,5 @@ whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
 
 plotMixtureModel(model,...
-    whichFigures,['AvResults_',AnalysisDepth])
+    whichFigures,['F2_CombinedMMResults_',AnalysisDepth])
 
