@@ -18,7 +18,7 @@ AnalysisDepth = 'fromPreProcessedData';
 % Add path to required script
 addpath(genpath('../../../../../../Analyses/'))
 
-DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
+DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
     'Data'];
 
 filename{1} = '210422--211012_Pollux_data';

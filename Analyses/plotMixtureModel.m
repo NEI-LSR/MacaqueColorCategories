@@ -1,5 +1,7 @@
 function plotMixtureModel(model, whichFigures, filename)
 
+forBevil = true;
+
 PotentialDistances  = model.PotentialDistances;
 interp_crossing     = model.interp_crossing;
 interp_ci           = model.interp_ci;
@@ -68,13 +70,13 @@ if isfield(whichFigures,'mixMod_BreakOut') && whichFigures.mixMod_BreakOut == tr
 
         p = gca;
         p.Children(2).Marker = 'none'; % turn off data, so that we can replot it how we like...
-        p.Children(1).LineWidth = 3;
+        % p.Children(1).LineWidth = 3;
 
         p11 = predint(model.gaussfits{cueIndex},PotentialDistances,0.95,'functional','off');                         %TODO: Check whether this is the appropriate type of interval: https://www.mathworks.com/help/curvefit/confidence-and-prediction-bounds.html
         plot(PotentialDistances,p11,'k:',...
             'DisplayName','Nonsimultaneous Functional Bounds')
-        p.Children(1).LineWidth = 1;
-        p.Children(2).LineWidth = 1;
+        % p.Children(1).LineWidth = 1;
+        % p.Children(2).LineWidth = 1;
 
         xline(0,'k--')
 
@@ -116,12 +118,12 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
         x = x+1;
         if interp_ci(i) > interp_ci(i-1)
         fill([interp_ci(i-1) interp_ci(i) interp_ci(i) interp_ci(i-1)],...
-            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none');%opacity(x))
+            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);%opacity(x))
         elseif interp_ci(i) < interp_ci(i-1)
             fill([interp_ci(i-1) 360 360 interp_ci(i-1)],...
-            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none');
+            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
             fill([0 interp_ci(i) interp_ci(i) 0],...
-            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none');
+            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
         end
     end
 
@@ -132,10 +134,10 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     plot(hue_angle,be_w,'k');
     % xline(interp_ci,'--');
 
-    % for i = 1:length(interp_crossing)
-    %     xline(interp_crossing(i),'Color',crossing_colvals(i,:),'LineWidth',2.5)
-    % end
-    scatter(interp_crossing,0,'filled','k');
+    for i = 1:length(interp_crossing)
+        plot([interp_crossing(i), interp_crossing(i)], ylim(), 'Color', crossing_colvals(i,:));
+    end
+    plot(interp_crossing,0,'ko','MarkerFaceColor','k');
 
     grid on
     yticks(-40:20:40)
@@ -159,6 +161,8 @@ end
 
 if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
+    axisoffset = 40;
+
     axPositions = [0.02,0.02,0.96,0.96];
 
     figure('Position',[360, 97+(2/3), 420, 420])
@@ -175,7 +179,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
         ax.Children(i).EdgeAlpha = 0; % get rid of lines between slices
     end
     for i = 1:nBig
-        ax.Children(i).FaceAlpha = 1;
+        ax.Children(i).FaceAlpha = 0.5;
     end
     ax.View = [90 90];
 
@@ -247,8 +251,6 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
     ax.Color = 'none';
 
-     %rotated_colvals = im2double(rstimCols_sRGB);
-
     shift_colvals = [colvals(nBig*(3/4):end,:); colvals(1:nBig*(3/4)-1,:)];
     [cart,~] = generateStimCols('nBig',nBig); % generate values to plot cues
 
@@ -258,32 +260,36 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     axis equal tight
 
     rad_angle = deg2rad(hue_angle); %hue angles in radians
-    axes3 = axes('Position',[0.07,0.07,0.86,0.86]);
-    polarplot(rad_angle, be_w+40,'b'); % dummy holder
+    axes3 = axes('Position',[0.02,0.02,0.96,0.96]);
+    polarplot(rad_angle, be_w + axisoffset,'b'); % dummy holder
 
     rlim([0 80]);
     hold on
-    polarplot(rad_angle, zeros(length(rad_angle),1)+40,'LineStyle','--','Color',[0.3,0.3,0.3]);
-    polarplot(rad_angle, be_w+40,'k');
+    polarplot(rad_angle, zeros(length(rad_angle),1) + axisoffset,'LineStyle','--','Color',[0.3,0.3,0.3]);
+    polarplot(rad_angle, be_w + axisoffset,'k');
     thetaticks(0:45:360)
 
     % if isempty(ci) == 0
-    %     polarplot(rad_angle, lower_95_w+40,':k');
-    %     polarplot(rad_angle, upper_95_w+40,':k');
+    %     polarplot(rad_angle, lower_95_w + axisoffset,':k');
+    %     polarplot(rad_angle, upper_95_w + axisoffset,':k');
     % end
 
     % add lines
-    %  for k = 1:length(interp_crossing)
-    %      %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 60],'Color',[rotated_colvals(crossings(k),:) (1+min(opacity))-opacity(k)],'LineWidth',1.5);
-    %     polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',[0 0 0],'LineWidth',1.5);
-    %  end
+    for k = 1:length(interp_crossing)
+        polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',rstimCols_sRGB(round(interp_crossing(k)/interval),:));
+        polarplot(deg2rad(interp_crossing(k)), 0 + axisoffset, 'ko','MarkerFaceColor','k')
+    end
 
     ax = gca;
     ax.Color = 'none';
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
     ax.ThetaTickLabel = {};
     % ax.RTick = [5,15,25,35,45,55,65];
-    rticklabels({'-40','-20','0','+20','+40'});
+    if forBevil
+        rticklabels({'','','','',''});
+    else
+        rticklabels({'-40','-20','0','+20','+40'}); % Could use `axisoffset`?
+    end
 
     % ax.RAxisLocation = 235;
     % ax.FontSize = 8;
@@ -298,8 +304,8 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     ax_cart.Position = ax_polar.Position;
 
     if isempty(ci) == 0
-        rlow = lower_95_w' + 40;
-        rhigh = upper_95_w' + 40;
+        rlow = lower_95_w' + axisoffset;
+        rhigh = upper_95_w' + axisoffset;
 
         [x1,y1] = pol2cart(theta,rlow);
         [x2,y2] = pol2cart(theta,rhigh);
