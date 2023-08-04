@@ -2,4 +2,5 @@
 *.mat
 
 !Data/MixtureModels/*
+<<<<<<< HEAD
 !Analyses/TCCModels/*
