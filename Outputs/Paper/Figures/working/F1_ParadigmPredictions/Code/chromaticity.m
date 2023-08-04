@@ -5,9 +5,15 @@
 
 clear, clc, close all
 
+addpath(genpath(['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
+    'Analyses']))
+
 %%
 
-DrawChromaticity('upvp')
+figure
+
+% DrawChromaticity('upvp')
+
 % Can I add u*v* as second axes? !!!!
 % Should I add gamut? !!!!
 
@@ -16,22 +22,22 @@ DrawChromaticity('upvp')
 Lstar = 76.0693;
 whitepoint = [0.3,0.4]; % Need to grab the actual white point !!!!
 
-stimCols = generateStimCols('nBig',64);
-stimCols_upvp = stimCols./(13*Lstar) + whitepoint';
-stimCols_sRGB = im2double(LuvTosRGB([repelem(Lstar, 64); stimCols(1,:); stimCols(2,:)]))';
+stimCols = [generateStimCols('nBig',64),[0;0]];
+% stimCols_upvp = stimCols./(13*Lstar) + whitepoint';
+stimCols_sRGB = im2double(LuvTosRGB([repelem(Lstar, 65); stimCols(1,:); stimCols(2,:)]))';
 
 hold on
-scatter(stimCols_upvp(1,:),stimCols_upvp(2,:),[],stimCols_sRGB',"filled")
+scatter(stimCols(1,:),stimCols(2,:),100,stimCols_sRGB',"filled")
 
-xlim([0, 0.6])
-ylim([0, 0.6])
+xticks([-40,0,40])
+yticks([-40,0,40])
+
+xlabel('u*')
+ylabel('v*')
 
 %%
 
-f = gcf;
+axis equal square
 
-f.Position = [100 100 175 175];
-
-formatFig(gcf, [3 3], 'nature') % bc6:\MakeFigure
-saveas(gcf,fullfile(['chromaticity', datestr(now,'yymmdd'), '.svg']))
+saveas(gcf,fullfile(['../','chromaticity', datestr(now,'yymmdd'), '.svg']))
 
