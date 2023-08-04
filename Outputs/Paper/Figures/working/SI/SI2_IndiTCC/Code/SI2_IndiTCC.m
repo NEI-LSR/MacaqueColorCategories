@@ -16,7 +16,7 @@ AnalysisDepth = 'fromModelOutput';
 %% Behind the scenes...
 
 % Add path to required script
-addpath(genpath('../../../../../../Analyses/'))
+addpath(genpath('../../../../../../../Analyses/'))
 
 %%
 

@@ -1,6 +1,7 @@
 function plotMixtureModel(model, whichFigures, filename)
 
 forBevil = true;
+axlims = 40;
 
 PotentialDistances  = model.PotentialDistances;
 interp_crossing     = model.interp_crossing;
@@ -140,15 +141,15 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     plot(interp_crossing,0,'ko','MarkerFaceColor','k');
 
     grid on
-    yticks(-40:20:40)
-    yticklabels({'-40','-20','0','+20','+40'})
+    yticks([-axlims,-20:20:20,axlims])
+    yticklabels({'-40','-20','0','+20','+40',''})
     xticks(0:45:360);
     ax = gca;
     set(gca,'TickDir','out');
     % ax.TickLength = [0.025 0.025];
     % ax.FontSize = 10;
     xlim([0 360]);
-    ylim([-40 40]);
+    ylim([-axlims axlims]);
     yline(0,'LineStyle','--','Color',[0.3,0.3,0.3]);
     xlabel('Hue Angle');
     ylabel('Bias');
@@ -161,7 +162,7 @@ end
 
 if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
-    axisoffset = 40;
+    axisoffset = axlims;
 
     axPositions = [0.02,0.02,0.96,0.96];
 
@@ -263,7 +264,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     axes3 = axes('Position',[0.02,0.02,0.96,0.96]);
     polarplot(rad_angle, be_w + axisoffset,'b'); % dummy holder
 
-    rlim([0 80]);
+    rlim([0 axlims*2]);
     hold on
     polarplot(rad_angle, zeros(length(rad_angle),1) + axisoffset,'LineStyle','--','Color',[0.3,0.3,0.3]);
     polarplot(rad_angle, be_w + axisoffset,'k');
@@ -276,7 +277,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
     % add lines
     for k = 1:length(interp_crossing)
-        polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',rstimCols_sRGB(round(interp_crossing(k)/interval),:));
+        polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 axlims*2],'Color',rstimCols_sRGB(round(interp_crossing(k)/interval),:));
         polarplot(deg2rad(interp_crossing(k)), 0 + axisoffset, 'ko','MarkerFaceColor','k')
     end
 
@@ -284,7 +285,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     ax.Color = 'none';
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
     ax.ThetaTickLabel = {};
-    % ax.RTick = [5,15,25,35,45,55,65];
+    ax.RTick = [0:20:axlims*2];
     if forBevil
         rticklabels({'','','','',''});
     else

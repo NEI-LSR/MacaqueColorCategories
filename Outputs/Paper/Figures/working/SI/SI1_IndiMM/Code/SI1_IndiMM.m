@@ -11,12 +11,12 @@ clear, clc, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromPreProcessedData';
+AnalysisDepth = 'fromModelOutput';
 
 %% Behind the scenes...
 
 % Add path to required script
-addpath(genpath('../../../../../../Analyses/'))
+addpath(genpath('../../../../../../../Analyses/'))
 
 DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
     'Data'];
