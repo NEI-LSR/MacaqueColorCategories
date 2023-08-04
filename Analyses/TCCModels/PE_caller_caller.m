@@ -2,7 +2,7 @@ clear, clc, close all
 
 addpath(genpath('C:\Users\cege-user\Documents\MacaqueColorCategories'))
 
-for i = 1:10
+for i = 1%:10
     ParameterEstimator_caller(i)
 end
 
@@ -10,7 +10,8 @@ end
 
 % cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\ssnu')
 % cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg')
-cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg_ssnu')
+% cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg_ssnu')
+cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\ssnu_THEN_sg')
 d = dir('*.mat');
 
 % https://www.mathworks.com/matlabcentral/answers/397385-how-to-sort-a-structure-array-based-on-a-specific-field#answer_317198

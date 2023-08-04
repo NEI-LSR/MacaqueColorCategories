@@ -8,9 +8,9 @@ data = combineData_mat(DataDir); % TODO Switch to csv
 
 %% From PE_caller_caller
 
-cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\ssnu')
+% cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\ssnu')
 % cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg')
-% cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg_ssnu')
+cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg_ssnu')
 d = dir('*.mat');
 
 % https://www.mathworks.com/matlabcentral/answers/397385-how-to-sort-a-structure-array-based-on-a-specific-field#answer_317198
@@ -61,7 +61,7 @@ optimisationMeta(:,2) = [...
     nBig,...        % skewedGaussians
     ];
 
-for i = 1%:length(d)
+for i = 1:length(d)
     choiceInds = cell2mat(data.trialdata.choices);
     cueInd = cell2mat(data.trialdata.cues);
     response = cell2mat(data.trialdata.chosen);
