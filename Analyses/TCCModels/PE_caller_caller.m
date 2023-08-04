@@ -14,9 +14,9 @@ cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg_ss
 d = dir('*.mat');
 
 % https://www.mathworks.com/matlabcentral/answers/397385-how-to-sort-a-structure-array-based-on-a-specific-field#answer_317198
-T = struct2table(d); % convert the struct array to a table
-sortedT = sortrows(T, 'date'); % sort the table by 'DOB'
-d = table2struct(sortedT); % change it back to struct array if necessary
+T = struct2table(d);
+sortedT = sortrows(T, 'date');
+d = table2struct(sortedT);
 
 for i = 1:length(d)
     load(d(i).name)
