@@ -62,6 +62,8 @@ skewedGaussians = (moving_bias - c)/m;
     'pltSimFigs', true);
 SGdata.trialdata.chosen = SGdata.trialdata.chosen';
 
+save('SGdata.mat')
+
 figure(3)
 saveas(gcf,['../sg_SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
 

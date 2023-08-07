@@ -2,7 +2,7 @@ clear, clc, close all
 
 addpath(genpath('C:\Users\cege-user\Documents\MacaqueColorCategories'))
 
-for i = 1%:10
+for i = 2:10
     ParameterEstimator_caller(i)
 end
 

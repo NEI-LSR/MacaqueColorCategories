@@ -1,12 +1,16 @@
-clear, clc, close all
+function plotColorspace(x,filename)
 
+%% Load default data
 
-%%
-load('.\combined\combined_TCC-0att_fullremap-workspace_230510.mat')
+if nargin == 0
+	load('.\combined\combined_TCC-0att_fullremap-workspace_230510.mat') % TODO Replace .mat file with csv, 
+	% TODO Does this only use `x`? If so, specify this, for clarity/readability
+end
 
 %%
 
 nBig = 64;
+warning('Assuming nBig == 64')
 [stimCols,pol] = generateStimCols('nBig',nBig);
 stimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols(1,:);stimCols(2,:)]);
 colvals = im2double(stimCols_sRGB);
@@ -20,11 +24,11 @@ for rotVal = rotVals
     sq_error(rotVal) = sum(rad2deg(angdiff(deg2rad(pol(1,:)),deg2rad(stimCols_x_polar_temp))).^2); %angdiff from submodule: spatialmath-matlab (https://github.com/petercorke/spatialmath-matlab)
 end
 
-figure, 
-plot(rotVals/max(rotVals)*360,sq_error,'-o')
-xlabel('Rotation (degrees)')
-ylabel('Sum squared error')
-axis tight
+% figure, 
+% plot(rotVals/max(rotVals)*360,sq_error,'-o')
+% xlabel('Rotation (degrees)')
+% ylabel('Sum squared error')
+% axis tight
 
 [~,minLoc] = min(sq_error);
 rotationVal = rotVals(minLoc)/max(rotVals)*360;
@@ -51,7 +55,7 @@ cla
 scatter(stimCols_x_rotated(1,:),stimCols_x_rotated(2,:),100,colvals,"filled")
 %scatter(stimCols_x(1,1:2:end),stimCols_x(2,1:2:end),200,colvals(1:2:end,:),"filled")
 
-saveas(gcf,fullfile(['behaviorally-derived-colorspace_', datestr(now,'yymmdd'), '.svg']))
+saveas(gcf,fullfile([filename,'_', datestr(now,'yymmdd'), '.svg']))
 %saveas(gcf,fullfile(['behaviorally-derived-colorspace_everySecond', datestr(now,'yymmdd'), '.svg']))
 
 %%

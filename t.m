@@ -10,8 +10,7 @@ data = combineData_mat(DataDir); % TODO Switch to csv
 
 % cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\ssnu')
 % cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg')
-% cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg_ssnu')
-cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\ssnu_THEN_sg')
+cd('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\sg_ssnu')
 d = dir('*.mat');
 
 % https://www.mathworks.com/matlabcentral/answers/397385-how-to-sort-a-structure-array-based-on-a-specific-field#answer_317198
@@ -38,10 +37,6 @@ data.trialdata.nTrials = 98104;
 data.trialdata.nSmall = 4;
 data.trialdata.dPrime           = 1.4899;
 data.trialdata.gaussianWidth    = 39.0070;
-
-load('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\ssnu\4_230803-161235.mat',...
-    'x')
-data.trialdata.stimulusRemappingPol = x;
 
 % From ParameterEstimator.m
 optimisationMeta = double(zeros([6,2]));
@@ -80,7 +75,6 @@ for i = 1:length(d)
         'nSmall',       data.trialdata.nSmall,...
         'dPrime',       data.trialdata.dPrime,...
         'gaussianWidth',data.trialdata.gaussianWidth,...
-        'stimulusRemappingPol',data.trialdata.stimulusRemappingPol,...
         'optimisationMeta',optimisationMeta); % (add stimCols to speed up slightly)
 
     [~,tempdata] = f(all_x(:,i)');
