@@ -3,8 +3,9 @@ function plotColorspace(x,filename)
 %% Load default data
 
 if nargin == 0
-	load('.\combined\combined_TCC-0att_fullremap-workspace_230510.mat') % TODO Replace .mat file with csv, 
+	load('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\combined\combined_TCC-0att_fullremap-workspace_230510.mat') % TODO Replace .mat file with csv, 
 	% TODO Does this only use `x`? If so, specify this, for clarity/readability
+    filename = 'combined_TCC-0att_fullremap-workspace_230510';
 end
 
 %%
@@ -46,23 +47,26 @@ axis off
 
 scatter(stimCols_x(1,:),stimCols_x(2,:),100,colvals,"filled")
 
-%saveas(gcf,fullfile(['behaviorally-derived-colorspace_unrotated', datestr(now,'yymmdd'), '.svg']))
+%saveas(gcf,fullfile(['behaviorally-derived-colorspace_unrotated', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %%
 
 cla
 
-scatter(stimCols_x_rotated(1,:),stimCols_x_rotated(2,:),100,colvals,"filled")
-%scatter(stimCols_x(1,1:2:end),stimCols_x(2,1:2:end),200,colvals(1:2:end,:),"filled")
+% scatter(stimCols_x_rotated(1,:),stimCols_x_rotated(2,:),100,colvals,"filled")
+scatter(stimCols_x(1,1:2:end),stimCols_x(2,1:2:end),200,colvals(1:2:end,:),"filled")
 
-saveas(gcf,fullfile([filename,'_', datestr(now,'yymmdd'), '.svg']))
-%saveas(gcf,fullfile(['behaviorally-derived-colorspace_everySecond', datestr(now,'yymmdd'), '.svg']))
+% saveas(gcf,fullfile([filename,'_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+saveas(gcf,fullfile(['../',filename,'_behaviorally-derived-colorspace_everySecond', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %%
 
 cla
-scatter(stimCols(1,:),stimCols(2,:),100,colvals,"filled")
-%scatter(stimCols(1,1:2:end),stimCols(2,1:2:end),200,colvals(1:2:end,:),"filled")
+% scatter(stimCols(1,:),stimCols(2,:),100,colvals,"filled")
+scatter(stimCols(1,1:2:end),stimCols(2,1:2:end),200,colvals(1:2:end,:),"filled")
 
-%saveas(gcf,fullfile(['colorspace_everySecond', datestr(now,'yymmdd'), '.svg']))
+saveas(gcf,fullfile(['../','colorspace_everySecond', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
+%%
+
+% TODO Inversion - specify in behavioral space, plot in CIELUV?
