@@ -34,9 +34,9 @@ ax1.Box = 'off';
 hold on
 plot([1,64],[1,64],'k--')
 
-if exist('categoryCenter','var')
-    xline(nBig/2,'r')
-    yline(nBig/2,'r')
+if exist('categoryCenter','var') % Add center lines
+    xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
+    yline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
 end
 
 cb1 = colorbar;
