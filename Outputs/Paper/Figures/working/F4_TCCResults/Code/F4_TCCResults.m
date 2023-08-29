@@ -26,6 +26,6 @@ realOrSimData = 'real';
 
 % rn = 0;
 for rn = 1:9
-RecoveryTesting(realOrSimData,rn)
+    RecoveryTesting(realOrSimData,rn)
 end
 

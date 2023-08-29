@@ -1,0 +1,5434 @@
+Warning: Trust-region-reflective algorithm requires at least as many equations as variables;
+using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      9.95392e+09        0.000647         0.01
+     1         139       9.7149e+09         0.00136        1e+07        4.45941
+     2         204      9.70186e+09         0.00213        1e+06        2.11694
+     3         271      9.69714e+09          0.0035        1e+08       0.168372
+     4         336      9.69455e+09          0.0047        1e+07       0.117933
+     5         402      9.69323e+09         0.00546        1e+08      0.0854793
+     6         467      9.69238e+09         0.00675        1e+07      0.0686909
+     7         532      9.69083e+09         0.00421        1e+06       0.537812
+     8         598      9.68918e+09         0.00734        1e+07       0.463059
+     9         663      9.68831e+09         0.00924        1e+06       0.391398
+    10         729      9.68753e+09         0.00937        1e+07       0.294173
+    11         794      9.68743e+09         0.00668        1e+06       0.311357
+    12         860      9.68689e+09          0.0111        1e+07       0.353356
+    13         925       9.6862e+09          0.0103        1e+06        0.24589
+    14         991      9.68609e+09         0.00886        1e+07        0.30067
+    15        1057       9.6859e+09          0.0148        1e+08      0.0360145
+    16        1122      9.68582e+09          0.0138        1e+07      0.0280538
+    17        1187       9.6857e+09         0.00741        1e+06       0.229222
+    18        1253      9.68532e+09          0.0156        1e+07       0.254268
+    19        1318      9.68484e+09          0.0158        1e+06       0.228482
+    20        1384       9.6847e+09          0.0197        1e+07       0.180282
+    21        1449      9.68435e+09          0.0185        1e+06       0.175897
+    22        1515       9.6842e+09         0.00995        1e+07       0.179106
+    23        1581      9.68407e+09          0.0187        1e+08      0.0334412
+    24        1646      9.68403e+09          0.0179        1e+07      0.0212675
+    25        1711      9.68378e+09          0.0124        1e+06       0.163402
+    26        1777      9.68368e+09          0.0162        1e+07       0.332747
+    27        1842      9.68364e+09         0.00907        1e+06       0.208487
+    28        1909      9.68347e+09          0.0194        1e+08      0.0362163
+    29        1974      9.68341e+09          0.0215        1e+07      0.0182604
+    30        2039       9.6833e+09           0.015        1e+06       0.150736
+    31        2105      9.68324e+09          0.0109        1e+07       0.190821
+    32        2171      9.68309e+09          0.0203        1e+08      0.0297399
+    33        2236      9.68307e+09          0.0183        1e+07      0.0197859
+    34        2301      9.68303e+09          0.0105        1e+06       0.163844
+    35        2367      9.68291e+09          0.0167        1e+07       0.194048
+    36        2433      9.68284e+09          0.0157        1e+08      0.0190922
+    37        2498      9.68274e+09          0.0139        1e+07      0.0246723
+    38        2563      9.68262e+09        9.83e-06        1e+06        0.32355
+    39        2629      9.68246e+09          0.0227        1e+07       0.321568
+    40        2694      9.68229e+09          0.0148        1e+06       0.120652
+    41        2762      9.68227e+09        1.01e-05        1e+09     0.00288334
+    42        2828      9.68227e+09        1.07e-05        1e+10    0.000402698
+    43        2874                                                 2.18259e-50
+
+Optimization stopped because the relative norm of the current step, 1.696468e-51,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6097
+        gaussianWidth: 36.7371
+    stimulusRemapping: [1.0863 0.5626 1.2415 1.2709 1.5398 1.0111 1.6463 0.7794 0.8285 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8399e+04
+
+
+x0 =
+
+  Columns 1 through 9
+
+    1.8248    1.0942    1.3610    1.0355    1.5464    1.7961    1.0511    1.1887    1.3655
+
+  Columns 10 through 18
+
+    1.2443    1.7951    1.3521    1.6389    1.4934    1.5835    1.9393    1.9435    1.1117
+
+  Columns 19 through 27
+
+    1.8436    1.3460    1.1008    1.3834    1.5104    1.9611    1.3715    1.0124    1.8597
+
+  Columns 28 through 36
+
+    1.1111    1.4783    1.8500    1.5147    1.4466    1.8005    1.0204    1.5726    1.4114
+
+  Columns 37 through 45
+
+    1.9851    1.8014    1.0540    1.1905    1.4524    1.7029    1.3320    1.3600    1.9215
+
+  Columns 46 through 54
+
+    1.9536    1.4077    1.8986    1.3303    1.0827    1.5267    1.6608    1.8930    1.9652
+
+  Columns 55 through 63
+
+    1.7699    1.7591    1.7100    1.7016    1.7673    1.9743    1.3737    1.0831    1.2396
+
+  Column 64
+
+    1.2215
+
+   1.0352e+05
+
+Elapsed time is 0.079447 seconds.
+   1.0352e+05
+
+Elapsed time is 0.104168 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations as variables;
+using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65       1.0716e+10        5.92e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.03358e+10        7.55e-09        1e+09       0.452155
+     2         206      1.01085e+10        9.18e-09        1e+08       0.370114
+     3         271      1.00183e+10        8.65e-09        1e+07        2.70444
+Objective function returned NaN; trying a new point...
+     4         337      9.98038e+09         1.3e-08        1e+08        2.40979
+Objective function returned NaN; trying a new point...
+     5         403      9.86893e+09        1.04e-08        1e+09       0.258545
+     6         468      9.79628e+09        8.78e-09        1e+08       0.204437
+     7         534      9.74922e+09        7.85e-09        1e+09       0.164765
+     8         599      9.72084e+09        9.25e-09        1e+08       0.136441
+     9         665      9.70458e+09         1.2e-08        1e+09      0.0991613
+    10         730      9.69518e+09         1.5e-08        1e+08      0.0836151
+    11         796       9.6899e+09        1.86e-08        1e+09      0.0656055
+    12         861      9.68703e+09        2.29e-08        1e+08      0.0517679
+    13         927      9.68556e+09        2.87e-08        1e+09      0.0409742
+    14         992       9.6849e+09        3.63e-08        1e+08      0.0325037
+    15        1058      9.68468e+09        4.59e-08        1e+09      0.0258379
+    16        1124      9.68468e+09        4.68e-08        1e+10     0.00205841
+    17        1189      9.68468e+09        4.78e-08        1e+09     0.00201685
+    18        1255      9.68468e+09        4.88e-08        1e+10     0.00197616
+    19        1321      9.68468e+09        4.89e-08        1e+11    0.000193633
+    20        1386      9.68468e+09         4.9e-08        1e+10    0.000193243
+    21        1452      9.68468e+09        4.91e-08        1e+11    0.000192853
+    22        1517      9.68468e+09        4.92e-08        1e+10    0.000192465
+    23        1584      9.68468e+09        4.92e-08        1e+12    1.92077e-05
+    24        1649      9.68468e+09        4.93e-08        1e+11    1.92038e-05
+    25        1677                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6097
+        gaussianWidth: 36.7371
+    stimulusRemapping: [1.0863 0.5626 1.2415 1.2709 1.5398 1.0111 1.6463 0.7794 0.8285 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8411e+04
+
+
+x0 =
+
+    0.9670
+    0.5472
+    0.9727
+    0.7148
+    0.6977
+    0.2161
+    0.9763
+    0.0062
+    0.2530
+    0.4348
+    0.7794
+    0.1977
+    0.8630
+    0.9834
+    0.1638
+    0.5973
+    0.0090
+    0.3866
+    0.0442
+    0.9567
+    0.4361
+    0.9490
+    0.7863
+    0.8663
+    0.1732
+    0.0749
+    0.6007
+    0.1680
+    0.7334
+    0.4084
+    0.5279
+    0.9376
+    0.5217
+    0.1082
+    0.1582
+    0.5452
+    0.5244
+    0.6376
+    0.4015
+    0.6498
+    0.3969
+    0.6239
+    0.7674
+    0.1790
+    0.3756
+    0.5025
+    0.6867
+    0.2537
+    0.5547
+    0.6249
+    0.8955
+    0.3629
+    0.6376
+    0.1914
+    0.4978
+    0.1824
+    0.9184
+    0.4318
+    0.8302
+    0.4168
+    0.9047
+    0.4048
+    0.3312
+    0.5721
+
+   1.0895e+05
+
+Elapsed time is 0.086506 seconds.
+   1.0895e+05
+
+Elapsed time is 0.097149 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard upper/lower
+bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          108954               1                              Uncertainty test
+     0           3          108954               1            Initial mesh      
+     1           4          108954             0.5             Refine grid      Train (failed)
+     2           6         98361.6             0.5    Successful search (ES-wcm)      
+     2          12         98361.6            0.25             Refine grid      
+     3          14         98361.5            0.25    Successful search (ES-wcm)      
+     3          15         98361.4            0.25    Incremental search (ES-wcm)      
+     3          17         98361.3            0.25    Incremental search (ES-ell)      
+     3          18         98361.2            0.25    Incremental search (ES-ell)      
+     3          20         98361.2           0.125             Refine grid      
+     4          25         98361.2          0.0625             Refine grid      Train
+     5          28         98355.7          0.0625    Successful search (ES-wcm)      
+     5          33         98355.7         0.03125             Refine grid      
+     6          38         98355.7        0.015625             Refine grid      Train (failed)
+     7          43         98355.7       0.0078125             Refine grid      
+     8          48         98355.7      0.00195312             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98355.7.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5251
+        gaussianWidth: 36.7371
+    stimulusRemapping: [1.0863 0.5626 1.2415 1.2709 1.5398 1.0111 1.6463 0.7794 0.8285 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8356e+04
+
+
+x0 =
+
+    0.6177
+
+   1.0937e+05
+
+Elapsed time is 0.118650 seconds.
+   1.0937e+05
+
+Elapsed time is 0.113041 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard upper/lower
+bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          109372               1                              Uncertainty test
+     0           3          109372               1            Initial mesh      
+     1           4          108207               1         Successful poll      Train (failed)
+     2           5         99644.3               1    Successful search (ES-wcm)      
+     2           6         99069.3               1    Successful search (ES-wcm)      
+     2           7         98964.8               1    Successful search (ES-wcm)      
+     2           8         98909.9               1    Successful search (ES-wcm)      
+     2           9         98867.5               1    Successful search (ES-ell)      
+     2          10         98846.9               1    Successful search (ES-wcm)      
+     2          11         98816.8               1    Successful search (ES-ell)      
+     2          12         98777.8               1    Successful search (ES-ell)      
+     2          17         98777.8             0.5             Refine grid      
+     3          22         98777.8            0.25             Refine grid      
+     4          25         98351.8            0.25    Successful search (ES-wcm)      
+     4          30         98351.8           0.125             Refine grid      
+     5          35         98351.8          0.0625             Refine grid      
+     6          38         98351.8          0.0625    Incremental search (ES-ell)      
+     6          40         98351.8         0.03125             Refine grid      
+     7          45         98351.8        0.015625             Refine grid      
+     8          50         98351.8       0.0078125             Refine grid      Train (failed)
+     9          55         98351.8      0.00195312             Refine grid      Train (failed)
+    10          56         98351.8      0.00195312    Incremental search (ES-wcm)      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98351.8.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5251
+        gaussianWidth: 37.5034
+    stimulusRemapping: [1.0863 0.5626 1.2415 1.2709 1.5398 1.0111 1.6463 0.7794 0.8285 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8352e+04
+
+
+x0 =
+
+  110.6088
+
+   1.0003e+05
+
+Elapsed time is 0.087519 seconds.
+   1.0003e+05
+
+Elapsed time is 0.087709 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations as variables;
+using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65       1.0005e+10         0.00063         0.01
+     1         139      9.69944e+09         0.00183        1e+07        5.38051
+     2         204      9.68534e+09         0.00339        1e+06        1.76282
+     3         270      9.68486e+09         0.00262        1e+07       0.928337
+     4         335      9.68389e+09         0.00245        1e+06        1.09859
+     5         402      9.68107e+09          0.0033        1e+08       0.133541
+     6         467      9.67942e+09         0.00494        1e+07       0.100218
+     7         533      9.67856e+09         0.00818        1e+08      0.0659791
+     8         598      9.67815e+09         0.00887        1e+07      0.0550742
+     9         663      9.67772e+09         0.00666        1e+06       0.477828
+    10         729      9.67657e+09          0.0116        1e+07       0.359625
+    11         794      9.67612e+09          0.0138        1e+06        0.28922
+    12         860      9.67563e+09          0.0162        1e+07       0.207405
+    13         925      9.67522e+09          0.0151        1e+06       0.201348
+    14         991      9.67501e+09          0.0178        1e+07       0.233722
+    15        1056      9.67461e+09          0.0134        1e+06       0.183664
+    16        1122      9.67444e+09          0.0147        1e+07       0.240674
+    17        1187      9.67413e+09           0.014        1e+06       0.222597
+    18        1253      9.67396e+09           0.018        1e+07       0.242077
+    19        1318      9.67381e+09          0.0115        1e+06       0.164183
+    20        1384      9.67349e+09          0.0187        1e+07       0.195698
+    21        1449      9.67325e+09          0.0119        1e+06       0.199824
+    22        1515       9.6732e+09          0.0209        1e+07       0.265121
+    23        1580      9.67308e+09          0.0153        1e+06       0.164073
+    24        1647      9.67299e+09           0.016        1e+08      0.0236811
+    25        1712      9.67293e+09          0.0283        1e+07      0.0215171
+    26        1777       9.6728e+09          0.0256        1e+06       0.123728
+    27        1843      9.67268e+09          0.0234        1e+07       0.140786
+    28        1908      9.67259e+09           0.014        1e+06       0.139088
+    29        1974      9.67242e+09          0.0196        1e+07       0.147227
+    30        2039      9.67234e+09          0.0231        1e+06       0.162939
+    31        2105      9.67215e+09          0.0173        1e+07       0.135082
+    32        2170      9.67212e+09           0.019        1e+06       0.235064
+    33        2236      9.67195e+09          0.0283        1e+07       0.198677
+    34        2301      9.67183e+09        1.27e-05        1e+06       0.129607
+    35        2367      9.67179e+09          0.0215        1e+07       0.235462
+    36        2433      9.67173e+09          0.0208        1e+08      0.0134693
+    37        2498      9.67172e+09          0.0386        1e+07      0.0137613
+    38        2563      9.67169e+09          0.0192        1e+06      0.0932811
+    39        2630      9.67161e+09          0.0258        1e+08      0.0159585
+    40        2695       9.6716e+09          0.0324        1e+07      0.0161765
+    41        2760      9.67155e+09           0.016        1e+06        0.10311
+    42        2826       9.6715e+09        2.22e-05        1e+07       0.145358
+    43        2891      9.67143e+09          0.0183        1e+06       0.208149
+    44        2957      9.67132e+09          0.0265        1e+07       0.208899
+    45        3023      9.67123e+09        1.62e-05        1e+08      0.0118018
+    46        3090      9.67123e+09        1.71e-05        1e+10    0.000292266
+    47        3115                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5251
+        gaussianWidth: 37.5034
+    stimulusRemapping: [0.9340 0.6111 0.9617 1.5290 1.4075 1.1685 1.1692 0.8121 0.7207 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8342e+04
+
+
+x0 =
+
+  Columns 1 through 9
+
+    1.0393    1.3572    1.0796    1.3055    1.3307    1.7738    1.0400    1.4295    1.3149
+
+  Columns 10 through 18
+
+    1.6365    1.3463    1.0431    1.8799    1.7632    1.8781    1.4175    1.6056    1.5135
+
+  Columns 19 through 27
+
+    1.5978    1.2622    1.3009    1.0254    1.3031    1.2421    1.5576    1.5655    1.4751
+
+  Columns 28 through 36
+
+    1.2928    1.0643    1.9788    1.3397    1.4950    1.9771    1.4408    1.3183    1.5198
+
+  Columns 37 through 45
+
+    1.5781    1.8539    1.0681    1.4645    1.7819    1.7186    1.5860    1.0371    1.3507
+
+  Columns 46 through 54
+
+    1.5632    1.2997    1.5123    1.6735    1.1592    1.0505    1.3378    1.1081    1.1789
+
+  Columns 55 through 63
+
+    1.8858    1.3654    1.2188    1.7525    1.1069    1.7446    1.4698    1.5983    1.1476
+
+  Column 64
+
+    1.1840
+
+   1.0226e+05
+
+Elapsed time is 0.092279 seconds.
+   1.0226e+05
+
+Elapsed time is 0.104766 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations as variables;
+using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.04566e+10        6.81e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141       1.0169e+10        7.16e-09        1e+09       0.407716
+     2         206      9.99499e+09         1.2e-08        1e+08        0.32941
+     3         271      9.89759e+09        1.04e-08        1e+07        2.35977
+Objective function returned NaN; trying a new point...
+     4         337      9.89346e+09        8.42e-09        1e+08        2.00706
+Objective function returned NaN; trying a new point...
+     5         403      9.80477e+09        8.08e-09        1e+09       0.220494
+     6         468      9.75142e+09           1e-08        1e+08       0.178975
+     7         534      9.71875e+09        1.09e-08        1e+09       0.137856
+     8         599      9.69959e+09        1.27e-08        1e+08       0.108825
+     9         665      9.68801e+09         1.5e-08        1e+09       0.085522
+    10         730      9.68105e+09        1.81e-08        1e+08      0.0677425
+    11         796       9.6769e+09        2.24e-08        1e+09      0.0538585
+    12         861      9.67448e+09        2.82e-08        1e+08      0.0429043
+    13         927      9.67312e+09        3.58e-08        1e+09      0.0342136
+    14         992      9.67241e+09        4.57e-08        1e+08      0.0273025
+    15        1058      9.67207e+09        5.86e-08        1e+09      0.0218032
+    16        1123      9.67195e+09        7.55e-08        1e+08      0.0174279
+    17        1190      9.67195e+09        7.72e-08        1e+10     0.00139483
+    18        1255      9.67195e+09         7.9e-08        1e+09     0.00136713
+    19        1321      9.67195e+09        8.09e-08        1e+10     0.00133999
+    20        1386      9.67195e+09        8.27e-08        1e+09     0.00131341
+    21        1461      9.67195e+09        8.27e-08        1e+19    1.28737e-12
+    22        1526      9.67195e+09        8.27e-08        1e+18    1.28737e-12
+    23        1545                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5251
+        gaussianWidth: 37.5034
+    stimulusRemapping: [0.9340 0.6111 0.9617 1.5290 1.4075 1.1685 1.1692 0.8121 0.7207 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8346e+04
+
+
+x0 =
+
+    0.0763
+    0.7799
+    0.4384
+    0.7235
+    0.9780
+    0.5385
+    0.5011
+    0.0721
+    0.2684
+    0.4999
+    0.6792
+    0.8037
+    0.3809
+    0.0659
+    0.2881
+    0.9096
+    0.2134
+    0.4521
+    0.9312
+    0.0249
+    0.6005
+    0.9501
+    0.2303
+    0.5485
+    0.9091
+    0.1332
+    0.5234
+    0.7504
+    0.6690
+    0.4678
+    0.2048
+    0.4908
+    0.3724
+    0.4774
+    0.3659
+    0.8379
+    0.7686
+    0.3140
+    0.5726
+    0.2760
+    0.4528
+    0.3530
+    0.6574
+    0.3704
+    0.4591
+    0.7193
+    0.4130
+    0.9064
+    0.1805
+    0.7411
+    0.4224
+    0.4265
+    0.6344
+    0.5229
+    0.4149
+    0.0014
+    0.0923
+    0.7094
+    0.5243
+    0.6962
+    0.9555
+    0.6829
+    0.0531
+    0.3089
+
+   1.3122e+05
+
+Elapsed time is 0.105445 seconds.
+   1.3122e+05
+
+Elapsed time is 0.105702 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard upper/lower
+bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          131220               1                              Uncertainty test
+     0           3          121441               1            Initial mesh      
+     1           4          112560               1         Successful poll      Train (failed)
+     2           5          104996               1    Successful search (ES-wcm)      
+     2           6         98397.9               1    Successful search (ES-wcm)      
+     2          11         98397.9             0.5             Refine grid      
+     3          16         98397.9            0.25             Refine grid      Train
+     4          21         98397.9           0.125             Refine grid      
+     5          24         98345.6           0.125    Successful search (ES-wcm)      
+     5          29         98345.6          0.0625             Refine grid      
+     6          31         98345.6          0.0625    Incremental search (ES-wcm)      
+     6          34         98345.6         0.03125             Refine grid      Train
+     7          39         98345.6        0.015625             Refine grid      
+     8          44         98345.6      0.00390625             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98345.6.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5330
+        gaussianWidth: 37.5034
+    stimulusRemapping: [0.9340 0.6111 0.9617 1.5290 1.4075 1.1685 1.1692 0.8121 0.7207 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8346e+04
+
+
+x0 =
+
+   44.6537
+
+   9.8654e+04
+
+Elapsed time is 0.086679 seconds.
+   9.8654e+04
+
+Elapsed time is 0.102441 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard upper/lower
+bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2         98654.2               1                              Uncertainty test
+     0           3         98654.2               1            Initial mesh      
+     1           4         98654.2             0.5             Refine grid      Train (failed)
+     2           7         98405.6             0.5    Successful search (ES-wcm)      
+     2           8         98402.8             0.5    Successful search (ES-wcm)      
+     2           9         98400.9             0.5    Successful search (ES-wcm)      
+     2          10           98400             0.5    Successful search (ES-wcm)      
+     2          11         98399.1             0.5    Successful search (ES-wcm)      
+     2          12         98398.2             0.5    Successful search (ES-wcm)      
+     2          13         98397.4             0.5    Successful search (ES-wcm)      
+     2          18         98397.4            0.25             Refine grid      
+     3          23         98397.4           0.125             Refine grid      
+     4          28         98397.4          0.0625             Refine grid      
+     5          33         98397.4        0.015625             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98397.4.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5330
+        gaussianWidth: 34.9524
+    stimulusRemapping: [0.9340 0.6111 0.9617 1.5290 1.4075 1.1685 1.1692 0.8121 0.7207 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8397e+04
+
+
+x0 =
+
+   45.1766
+
+   1.0012e+05
+
+Elapsed time is 0.094953 seconds.
+   1.0012e+05
+
+Elapsed time is 0.104664 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations as variables;
+using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.00235e+10        0.000649         0.01
+     1         139      9.72237e+09         0.00115        1e+07        4.87969
+     2         204      9.70273e+09         0.00162        1e+06         2.4172
+     3         271       9.6962e+09          0.0026        1e+08       0.195522
+     4         336      9.69306e+09          0.0032        1e+07       0.130714
+     5         402      9.69135e+09          0.0043        1e+08      0.0978755
+     6         467      9.69037e+09         0.00491        1e+07      0.0727806
+     7         532        9.688e+09         0.00395        1e+06       0.600734
+     8         598      9.68658e+09          0.0091        1e+07       0.408682
+     9         663      9.68551e+09         0.00884        1e+06       0.310532
+    10         729      9.68481e+09         0.00985        1e+07       0.428813
+    11         795      9.68474e+09         0.00994        1e+08      0.0363236
+    12         860      9.68472e+09         0.00981        1e+07      0.0424069
+    13         925      9.68436e+09           0.016        1e+06       0.355047
+    14         991      9.68389e+09         0.00803        1e+07       0.230976
+    15        1057      9.68366e+09         0.00756        1e+08      0.0346132
+    16        1122      9.68359e+09          0.0138        1e+07      0.0498482
+    17        1188      9.68351e+09          0.0158        1e+08      0.0219152
+    18        1253      9.68351e+09          0.0202        1e+07      0.0234625
+    19        1318       9.6832e+09          0.0154        1e+06       0.161427
+    20        1384      9.68296e+09         0.00684        1e+07       0.203855
+    21        1450      9.68286e+09          0.0127        1e+08      0.0431965
+    22        1515      9.68269e+09          0.0146        1e+07      0.0286992
+    23        1581      9.68263e+09          0.0194        1e+08      0.0205679
+    24        1646      9.68257e+09          0.0142        1e+07      0.0174665
+    25        1712      9.68253e+09            0.02        1e+08      0.0261616
+    26        1777      9.68251e+09          0.0247        1e+07      0.0168358
+    27        1842       9.6822e+09        9.45e-06        1e+06        0.13487
+    28        1908      9.68196e+09          0.0114        1e+07       0.396829
+    29        1974      9.68195e+09          0.0177        1e+08      0.0367755
+    30        2040      9.68193e+09          0.0186        1e+09     0.00179541
+    31        2105      9.68192e+09          0.0204        1e+08     0.00167543
+    32        2171      9.68192e+09           0.024        1e+09     0.00155081
+    33        2238      9.68192e+09           0.023        1e+11    1.39635e-05
+    34        2262                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5330
+        gaussianWidth: 34.9524
+    stimulusRemapping: [1.1040 0.3912 0.6739 1.6021 1.4229 0.9659 0.9398 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8397e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.6184    1.4761    1.4042    1.7419    1.8259    1.6832    1.1393
+
+  Columns 8 through 14
+
+    1.7028    1.0588    1.1927    1.9248    1.4051    1.1483    1.6823
+
+  Columns 15 through 21
+
+    1.1635    1.6482    1.2516    1.0414    1.9587    1.0662    1.5129
+
+  Columns 22 through 28
+
+    1.3413    1.6600    1.8444    1.6039    1.5872    1.1170    1.7105
+
+  Columns 29 through 35
+
+    1.2045    1.4904    1.0366    1.3154    1.8630    1.5585    1.5467
+
+  Columns 36 through 42
+
+    1.3678    1.8282    1.2764    1.1257    1.5628    1.2673    1.7750
+
+  Columns 43 through 49
+
+    1.1794    1.7833    1.6080    1.0417    1.5613    1.6681    1.9384
+
+  Columns 50 through 56
+
+    1.7860    1.7504    1.4971    1.0427    1.8169    1.0136    1.5500
+
+  Columns 57 through 63
+
+    1.5668    1.1129    1.0628    1.5747    1.4855    1.3014    1.0398
+
+  Column 64
+
+    1.6339
+
+   1.0272e+05
+
+Elapsed time is 0.121627 seconds.
+   1.0272e+05
+
+Elapsed time is 0.157128 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.05523e+10        8.77e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02437e+10        7.45e-09        1e+09       0.410072
+     2         206      1.00577e+10        7.64e-09        1e+08       0.319363
+Objective function returned NaN; trying a new point...
+     3         272      9.92772e+09         8.1e-09        1e+09        0.26591
+     4         337      9.84123e+09        8.79e-09        1e+08       0.223911
+     5         402      9.81148e+09        1.34e-08        1e+07        1.75774
+Objective function returned NaN; trying a new point...
+     6         468      9.79407e+09        8.39e-09        1e+08        1.52289
+     7         534      9.75198e+09        1.14e-08        1e+09       0.153286
+     8         599      9.72625e+09         1.5e-08        1e+08       0.121517
+     9         665      9.71015e+09        1.89e-08        1e+09      0.0960597
+    10         730      9.70001e+09        2.32e-08        1e+08      0.0764073
+    11         796       9.6936e+09        2.85e-08        1e+09       0.060912
+    12         861      9.68955e+09        3.49e-08        1e+08      0.0485951
+    13         927      9.68699e+09        4.23e-08        1e+09      0.0387811
+    14         992      9.68538e+09        5.11e-08        1e+08      0.0309604
+    15        1058      9.68436e+09        6.16e-08        1e+09      0.0247317
+    16        1123      9.68371e+09        7.42e-08        1e+08      0.0197734
+    17        1189       9.6833e+09        8.93e-08        1e+09      0.0158274
+    18        1254      9.68305e+09        1.07e-07        1e+08      0.0126865
+    19        1320      9.68289e+09        1.29e-07        1e+09      0.0101849
+    20        1385      9.68279e+09        1.55e-07        1e+08     0.00819083
+    21        1451      9.68272e+09        1.85e-07        1e+09     0.00659935
+    22        1516      9.68269e+09        2.22e-07        1e+08      0.0053274
+    23        1582      9.68267e+09        2.66e-07        1e+09      0.0043092
+    24        1647      9.68266e+09        3.19e-07        1e+08      0.0034927
+    25        1713      9.68266e+09        3.82e-07        1e+09     0.00283674
+    26        1779      9.68266e+09        3.88e-07        1e+10    0.000230873
+    27        1844      9.68266e+09        3.94e-07        1e+09    0.000226605
+    28        1921      9.68266e+09        3.94e-07        1e+21    2.22419e-15
+    29        1936                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5330
+        gaussianWidth: 34.9524
+    stimulusRemapping: [1.1040 0.3912 0.6739 1.6021 1.4229 0.9659 0.9398 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8400e+04
+
+
+x0 =
+
+    0.4360
+    0.0259
+    0.5497
+    0.4353
+    0.4204
+    0.3303
+    0.2046
+    0.6193
+    0.2997
+    0.2668
+    0.6211
+    0.5291
+    0.1346
+    0.5136
+    0.1844
+    0.7853
+    0.8540
+    0.4942
+    0.8466
+    0.0796
+    0.5052
+    0.0653
+    0.4281
+    0.0965
+    0.1272
+    0.5967
+    0.2260
+    0.1069
+    0.2203
+    0.3498
+    0.4678
+    0.2017
+    0.6404
+    0.4831
+    0.5052
+    0.3869
+    0.7936
+    0.5800
+    0.1623
+    0.7008
+    0.9646
+    0.5000
+    0.8895
+    0.3416
+    0.5671
+    0.4275
+    0.4367
+    0.7766
+    0.5356
+    0.9537
+    0.5442
+    0.0821
+    0.3663
+    0.8509
+    0.4063
+    0.0272
+    0.2472
+    0.0671
+    0.9939
+    0.9706
+    0.8003
+    0.6018
+    0.7650
+    0.1692
+
+   1.2850e+05
+
+Elapsed time is 0.226167 seconds.
+   1.2850e+05
+
+Elapsed time is 0.122130 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          128498               1                              Uncertainty test
+     0           3          105193               1            Initial mesh      
+     1           4          105193             0.5             Refine grid      Train (failed)
+     2           6         98428.8             0.5    Successful search (ES-ell)      
+     2          12         98428.8            0.25             Refine grid      
+     3          17         98428.8           0.125             Refine grid      
+     4          22         98428.8          0.0625             Refine grid      
+     5          24         98394.5          0.0625    Successful search (ES-ell)      
+     5          25         98394.5          0.0625    Incremental search (ES-ell)      
+     5          27         98394.5          0.0625    Incremental search (ES-ell)      
+     5          30         98394.5         0.03125             Refine grid      
+     6          32         98394.5         0.03125    Incremental search (ES-ell)      
+     6          35         98394.5        0.015625             Refine grid      Train (failed)
+     7          40         98394.5       0.0078125             Refine grid      
+     8          45         98394.5      0.00195312             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98394.5.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5061
+        gaussianWidth: 34.9524
+    stimulusRemapping: [1.1040 0.3912 0.6739 1.6021 1.4229 0.9659 0.9398 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8395e+04
+
+
+x0 =
+
+   27.5848
+
+   1.1911e+05
+
+Elapsed time is 0.089890 seconds.
+   1.1911e+05
+
+Elapsed time is 0.101084 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          119115               1                              Uncertainty test
+     0           3          112336               1            Initial mesh      
+     1           4         98380.5               1         Successful poll      Train (failed)
+     2           7         98380.5             0.5             Refine grid      
+     3          12         98380.5            0.25             Refine grid      
+     4          17         98380.5          0.0625             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98380.5.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5061
+        gaussianWidth: 35.5221
+    stimulusRemapping: [1.1040 0.3912 0.6739 1.6021 1.4229 0.9659 0.9398 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8381e+04
+
+
+x0 =
+
+  174.8125
+
+   9.9869e+04
+
+Elapsed time is 0.078854 seconds.
+   9.9869e+04
+
+Elapsed time is 0.083944 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65       9.9738e+09        0.000693         0.01
+     1         139      9.74488e+09         0.00105        1e+07         4.2818
+     2         204      9.69874e+09         0.00206        1e+06        2.97111
+     3         271      9.69416e+09         0.00299        1e+08       0.165884
+     4         336      9.69114e+09         0.00398        1e+07       0.128877
+     5         402       9.6893e+09          0.0048        1e+08       0.100915
+     6         467      9.68817e+09         0.00539        1e+07      0.0779815
+     7         532      9.68519e+09         0.00774        1e+06         0.6972
+     8         598      9.68389e+09          0.0129        1e+07       0.357521
+     9         663      9.68303e+09          0.0116        1e+06       0.276621
+    10         729      9.68232e+09          0.0119        1e+07       0.274572
+    11         794      9.68214e+09           0.013        1e+06       0.344149
+    12         860      9.68153e+09          0.0121        1e+07       0.323348
+    13         925      9.68117e+09         0.00948        1e+06       0.240746
+    14         992      9.68103e+09          0.0128        1e+08      0.0304075
+    15        1057      9.68096e+09          0.0122        1e+07      0.0292995
+    16        1122       9.6808e+09         0.00634        1e+06       0.251729
+    17        1188      9.68052e+09          0.0199        1e+07       0.351576
+    18        1253      9.68027e+09          0.0196        1e+06       0.173467
+    19        1319      9.67994e+09          0.0206        1e+07       0.206501
+    20        1384      9.67968e+09          0.0318        1e+06         0.1585
+    21        1450      9.67939e+09          0.0178        1e+07       0.124365
+    22        1515       9.6793e+09           0.016        1e+06       0.232524
+    23        1581      9.67919e+09          0.0108        1e+07       0.236622
+    24        1647      9.67908e+09          0.0161        1e+08       0.028104
+    25        1712        9.679e+09          0.0142        1e+07       0.020985
+    26        1778        9.679e+09          0.0217        1e+08      0.0284566
+    27        1843      9.67896e+09          0.0273        1e+07      0.0144457
+    28        1908      9.67878e+09          0.0147        1e+06       0.141096
+    29        1974      9.67873e+09         0.00818        1e+07       0.197581
+    30        2040      9.67864e+09           0.015        1e+08      0.0314289
+    31        2105      9.67856e+09          0.0118        1e+07      0.0179651
+    32        2171       9.6785e+09          0.0182        1e+08       0.022925
+    33        2237      9.67849e+09           0.014        1e+09     0.00146521
+    34        2263                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5061
+        gaussianWidth: 35.5221
+    stimulusRemapping: [1.4571 0.4261 1.0468 1.2341 1.6304 1.1076 1.2310 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8379e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.8248    1.0942    1.3610    1.0355    1.5464    1.7961    1.0511
+
+  Columns 8 through 14
+
+    1.1887    1.3655    1.2443    1.7951    1.3521    1.6389    1.4934
+
+  Columns 15 through 21
+
+    1.5835    1.9393    1.9435    1.1117    1.8436    1.3460    1.1008
+
+  Columns 22 through 28
+
+    1.3834    1.5104    1.9611    1.3715    1.0124    1.8597    1.1111
+
+  Columns 29 through 35
+
+    1.4783    1.8500    1.5147    1.4466    1.8005    1.0204    1.5726
+
+  Columns 36 through 42
+
+    1.4114    1.9851    1.8014    1.0540    1.1905    1.4524    1.7029
+
+  Columns 43 through 49
+
+    1.3320    1.3600    1.9215    1.9536    1.4077    1.8986    1.3303
+
+  Columns 50 through 56
+
+    1.0827    1.5267    1.6608    1.8930    1.9652    1.7699    1.7591
+
+  Columns 57 through 63
+
+    1.7100    1.7016    1.7673    1.9743    1.3737    1.0831    1.2396
+
+  Column 64
+
+    1.2215
+
+   1.0308e+05
+
+Elapsed time is 0.171520 seconds.
+   1.0308e+05
+
+Elapsed time is 0.152666 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.06254e+10        6.12e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.03013e+10        7.64e-09        1e+09       0.416046
+     2         206      1.01018e+10        9.69e-09        1e+08       0.346904
+     3         271      9.90424e+09         9.8e-09        1e+07        2.57237
+Objective function returned NaN; trying a new point...
+     4         337      9.83296e+09        1.07e-08        1e+08        1.92255
+     5         403      9.77262e+09        8.94e-09        1e+09        0.18294
+     6         468      9.73342e+09         8.7e-09        1e+08       0.152809
+     7         534      9.70995e+09        1.03e-08        1e+09       0.119019
+     8         599      9.69618e+09        1.37e-08        1e+08      0.0953856
+     9         665      9.68807e+09         1.8e-08        1e+09      0.0743787
+    10         730      9.68328e+09        2.32e-08        1e+08      0.0586862
+    11         796      9.68047e+09        2.97e-08        1e+09       0.046601
+    12         861      9.67885e+09        3.78e-08        1e+08      0.0371529
+    13         927      9.67795e+09        4.82e-08        1e+09      0.0297092
+    14         992      9.67749e+09        6.12e-08        1e+08      0.0238173
+    15        1058      9.67728e+09        7.77e-08        1e+09      0.0191386
+    16        1123      9.67722e+09        9.84e-08        1e+08      0.0154135
+    17        1190      9.67722e+09           1e-07        1e+10     0.00124412
+    18        1255      9.67722e+09        1.03e-07        1e+09      0.0012203
+    19        1283                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5061
+        gaussianWidth: 35.5221
+    stimulusRemapping: [1.4571 0.4261 1.0468 1.2341 1.6304 1.1076 1.2310 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8373e+04
+
+
+x0 =
+
+    0.9670
+    0.5472
+    0.9727
+    0.7148
+    0.6977
+    0.2161
+    0.9763
+    0.0062
+    0.2530
+    0.4348
+    0.7794
+    0.1977
+    0.8630
+    0.9834
+    0.1638
+    0.5973
+    0.0090
+    0.3866
+    0.0442
+    0.9567
+    0.4361
+    0.9490
+    0.7863
+    0.8663
+    0.1732
+    0.0749
+    0.6007
+    0.1680
+    0.7334
+    0.4084
+    0.5279
+    0.9376
+    0.5217
+    0.1082
+    0.1582
+    0.5452
+    0.5244
+    0.6376
+    0.4015
+    0.6498
+    0.3969
+    0.6239
+    0.7674
+    0.1790
+    0.3756
+    0.5025
+    0.6867
+    0.2537
+    0.5547
+    0.6249
+    0.8955
+    0.3629
+    0.6376
+    0.1914
+    0.4978
+    0.1824
+    0.9184
+    0.4318
+    0.8302
+    0.4168
+    0.9047
+    0.4048
+    0.3312
+    0.5721
+
+   1.0884e+05
+
+Elapsed time is 0.162587 seconds.
+   1.0884e+05
+
+Elapsed time is 0.162233 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          108845               1                              Uncertainty test
+     0           3          108845               1            Initial mesh      
+     1           4          108845             0.5             Refine grid      Train (failed)
+     2           6         98379.8             0.5    Successful search (ES-wcm)      
+     2          12         98379.8            0.25             Refine grid      
+     3          14         98379.7            0.25    Successful search (ES-wcm)      
+     3          15         98379.5            0.25    Successful search (ES-ell)      
+     3          16         98379.4            0.25    Successful search (ES-wcm)      
+     3          18         98379.3            0.25    Successful search (ES-wcm)      
+     3          19         98379.1            0.25    Successful search (ES-wcm)      
+     3          20           98379            0.25    Successful search (ES-wcm)      
+     3          23         98378.9            0.25    Successful search (ES-ell)      
+     3          24         98378.7            0.25    Successful search (ES-wcm)      
+     3          26         98378.6            0.25    Successful search (ES-wcm)      
+     3          27         98378.5            0.25    Successful search (ES-ell)      
+     3          28         98378.3            0.25    Successful search (ES-ell)      
+     3          30         98378.2            0.25    Incremental search (ES-wcm)      
+     3          31         98378.1            0.25    Incremental search (ES-wcm)      
+     3          33           98378            0.25    Incremental search (ES-wcm)      
+     3          35           98378           0.125             Refine grid      Train (failed)
+     4          40           98378          0.0625             Refine grid      
+     5          45           98378         0.03125             Refine grid      Train (failed)
+     6          50           98378       0.0078125             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98378.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5378
+        gaussianWidth: 35.5221
+    stimulusRemapping: [1.4571 0.4261 1.0468 1.2341 1.6304 1.1076 1.2310 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8378e+04
+
+
+x0 =
+
+    0.6177
+
+   1.1626e+05
+
+Elapsed time is 0.124331 seconds.
+   1.1626e+05
+
+Elapsed time is 0.128121 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          116247               1                              Uncertainty test
+     0           3          102182               1            Initial mesh      
+     1           4          102182             0.5             Refine grid      Train (failed)
+     2           5         98904.8             0.5    Successful search (ES-ell)      
+     2           6         98391.4             0.5    Successful search (ES-wcm)      
+     2          10         98390.7             0.5    Successful search (ES-ell)      
+     2          11         98389.9             0.5    Successful search (ES-ell)      
+     2          14         98389.1             0.5    Successful search (ES-ell)      
+     2          15         98388.4             0.5    Successful search (ES-ell)      
+     2          16         98387.6             0.5    Successful search (ES-ell)      
+     2          17         98386.9             0.5    Successful search (ES-ell)      
+     2          21         98386.2             0.5    Successful search (ES-ell)      
+     2          23         98385.4             0.5    Successful search (ES-wcm)      
+     2          25         98361.5             0.5    Successful search (ES-wcm)      
+     2          27         98350.5             0.5    Successful search (ES-wcm)      
+     2          33         98350.5            0.25             Refine grid      
+     3          36         98350.5            0.25    Incremental search (ES-ell)      
+     3          38         98350.5           0.125             Refine grid      Train (failed)
+     4          43         98350.5          0.0625             Refine grid      Train (failed)
+     5          46         98350.5          0.0625    Incremental search (ES-wcm)      
+     5          48         98350.5        0.015625             Refine grid      Train
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98350.5.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5378
+        gaussianWidth: 37.5459
+    stimulusRemapping: [1.4571 0.4261 1.0468 1.2341 1.6304 1.1076 1.2310 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8350e+04
+
+
+x0 =
+
+  154.4928
+
+   1.0002e+05
+
+Elapsed time is 0.137848 seconds.
+   1.0002e+05
+
+Elapsed time is 0.129450 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.00046e+10        0.000698         0.01
+     1         139       9.7594e+09        0.000929        1e+07        4.46564
+     2         204      9.69262e+09         0.00269        1e+06        3.12444
+     3         270      9.68954e+09         0.00285        1e+07        1.12602
+     4         335      9.68374e+09         0.00362        1e+06        1.11519
+     5         401      9.68166e+09         0.00483        1e+07       0.781984
+     6         466      9.68005e+09         0.00496        1e+06       0.685944
+     7         532      9.67919e+09         0.00576        1e+07       0.578994
+     8         597      9.67834e+09         0.00573        1e+06       0.563752
+     9         663      9.67789e+09         0.00639        1e+07       0.493266
+    10         728      9.67751e+09         0.00771        1e+06       0.499065
+    11         794       9.6763e+09         0.00849        1e+07       0.445446
+    12         859      9.67616e+09          0.0108        1e+06       0.349854
+    13         925      9.67557e+09          0.0114        1e+07       0.355118
+    14         990       9.6755e+09          0.0107        1e+06       0.265234
+    15        1056      9.67521e+09         0.00714        1e+07       0.333534
+    16        1122      9.67504e+09         0.00868        1e+08      0.0421113
+    17        1187       9.6749e+09          0.0112        1e+07      0.0327634
+    18        1253      9.67489e+09          0.0135        1e+08      0.0263334
+    19        1318      9.67482e+09          0.0187        1e+07      0.0258383
+    20        1383      9.67458e+09          0.0186        1e+06       0.191317
+    21        1449      9.67447e+09          0.0117        1e+07       0.168923
+    22        1515       9.6744e+09          0.0147        1e+08       0.028244
+    23        1580      9.67438e+09          0.0122        1e+07      0.0208831
+    24        1645      9.67426e+09          0.0129        1e+06       0.344801
+    25        1711      9.67402e+09          0.0256        1e+07       0.236742
+    26        1776      9.67385e+09          0.0154        1e+06       0.126758
+    27        1842      9.67372e+09          0.0207        1e+07       0.330559
+    28        1907      9.67357e+09          0.0163        1e+06       0.179384
+    29        1973      9.67332e+09        1.72e-05        1e+07       0.222211
+    30        2001                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5378
+        gaussianWidth: 37.5459
+    stimulusRemapping: [0.9752 0.8108 1.3675 1.6788 1.5104 1.3194 1.5745 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8353e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.0089    1.0679    1.4348    1.4315    1.1859    1.5297    1.5991
+
+  Columns 8 through 14
+
+    1.7209    1.3064    1.4044    1.8228    1.5871    1.7065    1.5106
+
+  Columns 15 through 21
+
+    1.8301    1.7207    1.8663    1.2034    1.2985    1.4758    1.4936
+
+  Columns 22 through 28
+
+    1.6077    1.8189    1.5277    1.9392    1.7234    1.1788    1.6197
+
+  Columns 29 through 35
+
+    1.5623    1.7634    1.8066    1.2986    1.1384    1.6354    1.0083
+
+  Columns 36 through 42
+
+    1.7886    1.5021    1.9971    1.9840    1.2271    1.8500    1.8128
+
+  Columns 43 through 49
+
+    1.2361    1.6569    1.9772    1.7316    1.0956    1.5006    1.4624
+
+  Columns 50 through 56
+
+    1.0007    1.9889    1.8776    1.2172    1.6054    1.4720    1.3591
+
+  Columns 57 through 63
+
+    1.5293    1.5648    1.8335    1.0628    1.6064    1.5036    1.1603
+
+  Column 64
+
+    1.1454
+
+   1.0230e+05
+
+Elapsed time is 0.125134 seconds.
+   1.0230e+05
+
+Elapsed time is 0.131132 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.04661e+10        6.81e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.01713e+10           7e-09        1e+09       0.411748
+     2         206      9.99735e+09        1.22e-08        1e+08       0.329643
+     3         271       9.9022e+09         9.5e-09        1e+07        2.35289
+Objective function returned NaN; trying a new point...
+     4         337      9.89485e+09        1.03e-08        1e+08        2.01101
+Objective function returned NaN; trying a new point...
+     5         403      9.80841e+09        1.08e-08        1e+09       0.221627
+     6         468       9.7558e+09        1.02e-08        1e+08       0.174468
+     7         534      9.72244e+09        1.13e-08        1e+09       0.137567
+     8         599      9.70235e+09        1.32e-08        1e+08        0.10966
+     9         665      9.69003e+09        1.58e-08        1e+09      0.0865173
+    10         730      9.68262e+09        1.93e-08        1e+08       0.068468
+    11         796      9.67819e+09        2.45e-08        1e+09      0.0541785
+    12         861       9.6756e+09        3.15e-08        1e+08      0.0428665
+    13         927      9.67413e+09        3.99e-08        1e+09      0.0339136
+    14         992      9.67332e+09        5.04e-08        1e+08      0.0268379
+    15        1058      9.67292e+09         6.4e-08        1e+09      0.0212553
+    16        1123      9.67275e+09        8.15e-08        1e+08       0.016857
+    17        1189      9.67272e+09        1.04e-07        1e+09      0.0133945
+    18        1217                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5378
+        gaussianWidth: 37.5459
+    stimulusRemapping: [0.9752 0.8108 1.3675 1.6788 1.5104 1.3194 1.5745 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8350e+04
+
+
+x0 =
+
+    0.0763
+    0.7799
+    0.4384
+    0.7235
+    0.9780
+    0.5385
+    0.5011
+    0.0721
+    0.2684
+    0.4999
+    0.6792
+    0.8037
+    0.3809
+    0.0659
+    0.2881
+    0.9096
+    0.2134
+    0.4521
+    0.9312
+    0.0249
+    0.6005
+    0.9501
+    0.2303
+    0.5485
+    0.9091
+    0.1332
+    0.5234
+    0.7504
+    0.6690
+    0.4678
+    0.2048
+    0.4908
+    0.3724
+    0.4774
+    0.3659
+    0.8379
+    0.7686
+    0.3140
+    0.5726
+    0.2760
+    0.4528
+    0.3530
+    0.6574
+    0.3704
+    0.4591
+    0.7193
+    0.4130
+    0.9064
+    0.1805
+    0.7411
+    0.4224
+    0.4265
+    0.6344
+    0.5229
+    0.4149
+    0.0014
+    0.0923
+    0.7094
+    0.5243
+    0.6962
+    0.9555
+    0.6829
+    0.0531
+    0.3089
+
+   1.3111e+05
+
+Elapsed time is 0.181617 seconds.
+   1.3111e+05
+
+Elapsed time is 0.213697 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          131111               1                              Uncertainty test
+     0           3          121324               1            Initial mesh      
+     1           4          112573               1         Successful poll      Train (failed)
+     2           5          104666               1    Successful search (ES-wcm)      
+     2           6         98406.3               1    Successful search (ES-wcm)      
+     2          11         98406.3             0.5             Refine grid      
+     3          16         98406.3            0.25             Refine grid      Train
+     4          21         98406.3           0.125             Refine grid      
+     5          26         98406.3         0.03125             Refine grid      Train
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98406.3.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6210
+        gaussianWidth: 37.5459
+    stimulusRemapping: [0.9752 0.8108 1.3675 1.6788 1.5104 1.3194 1.5745 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8406e+04
+
+
+x0 =
+
+   44.6537
+
+   1.1559e+05
+
+Elapsed time is 0.128819 seconds.
+   1.1559e+05
+
+Elapsed time is 0.140683 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          115582               1                              Uncertainty test
+     0           3          101801               1            Initial mesh      
+     1           4          101801             0.5             Refine grid      Train (failed)
+     2           5         98963.7             0.5    Successful search (ES-ell)      
+     2           6           98431             0.5    Successful search (ES-wcm)      
+     2          12           98431            0.25             Refine grid      
+     3          13         98409.5            0.25    Successful search (ES-ell)      
+     3          20         98409.5           0.125             Refine grid      
+     4          25         98409.5          0.0625             Refine grid      Train (failed)
+     5          30         98409.5         0.03125             Refine grid      
+     6          35         98409.5       0.0078125             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98409.5.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6210
+        gaussianWidth: 37.3722
+    stimulusRemapping: [0.9752 0.8108 1.3675 1.6788 1.5104 1.3194 1.5745 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8410e+04
+
+
+x0 =
+
+  154.4928
+
+   1.0057e+05
+
+Elapsed time is 0.152066 seconds.
+   1.0057e+05
+
+Elapsed time is 0.156750 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.01153e+10         0.00066         0.01
+     1         139      9.72666e+09         0.00206        1e+07        5.78933
+     2         204      9.69696e+09         0.00513        1e+06        1.91447
+     3         270       9.6941e+09         0.00515        1e+07       0.602809
+     4         335      9.69114e+09         0.00613        1e+06       0.663614
+     5         401      9.69042e+09          0.0054        1e+07       0.489756
+     6         466      9.69034e+09         0.00521        1e+06       0.583689
+     7         533      9.68945e+09         0.00821        1e+08      0.0656929
+     8         598      9.68906e+09          0.0076        1e+07      0.0494923
+     9         663       9.6885e+09         0.00571        1e+06       0.396272
+    10         729      9.68759e+09          0.0122        1e+07       0.333115
+    11         794      9.68728e+09          0.0204        1e+06       0.287665
+    12         860      9.68683e+09           0.017        1e+07       0.183712
+    13         925      9.68658e+09          0.0135        1e+06       0.171882
+    14         991      9.68625e+09          0.0219        1e+07       0.308856
+    15        1056      9.68597e+09           0.017        1e+06       0.155123
+    16        1122      9.68583e+09          0.0196        1e+07       0.191635
+    17        1187      9.68549e+09          0.0172        1e+06       0.167236
+    18        1253      9.68524e+09          0.0197        1e+07       0.132745
+    19        1318      9.68509e+09          0.0261        1e+06       0.173189
+    20        1384      9.68483e+09          0.0208        1e+07       0.130171
+    21        1449      9.68479e+09          0.0143        1e+06       0.175911
+    22        1515       9.6846e+09           0.017        1e+07       0.318682
+    23        1580      9.68434e+09          0.0143        1e+06       0.216666
+    24        1646      9.68426e+09          0.0172        1e+07       0.240773
+    25        1711      9.68401e+09          0.0198        1e+06        0.21948
+    26        1777      9.68387e+09          0.0182        1e+07       0.141127
+    27        1842      9.68374e+09          0.0197        1e+06       0.208467
+    28        1908      9.68364e+09        1.33e-05        1e+07       0.184709
+    29        1973       9.6835e+09          0.0138        1e+06       0.406615
+    30        2039      9.68336e+09          0.0271        1e+07       0.299903
+    31        2104       9.6833e+09         0.00829        1e+06       0.171906
+    32        2170      9.68314e+09          0.0129        1e+07       0.377947
+    33        2236      9.68314e+09          0.0229        1e+08      0.0330987
+    34        2301      9.68304e+09          0.0211        1e+07      0.0188352
+    35        2366      9.68292e+09           0.015        1e+06       0.207569
+    36        2433       9.6829e+09          0.0144        1e+08      0.0257649
+    37        2498      9.68288e+09          0.0182        1e+07      0.0332619
+    38        2526                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6210
+        gaussianWidth: 37.3722
+    stimulusRemapping: [1.0680 0.0127 1.4201 1.5933 1.4208 0.4214 1.7651 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8402e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.5926    1.2351    1.9650    1.9450    1.8484    1.4723    1.8415
+
+  Columns 8 through 14
+
+    1.1311    1.3087    1.4630    1.7418    1.4858    1.1369    1.3435
+
+  Columns 15 through 21
+
+    1.3244    1.3004    1.1655    1.4149    1.4481    1.7749    1.7964
+
+  Columns 22 through 28
+
+    1.5224    1.4606    1.7782    1.8873    1.6749    1.8005    1.9391
+
+  Columns 29 through 35
+
+    1.0407    1.8757    1.2766    1.4758    1.7968    1.7172    1.1471
+
+  Columns 36 through 42
+
+    1.6587    1.0693    1.3571    1.8128    1.4277    1.5999    1.7282
+
+  Columns 43 through 49
+
+    1.8212    1.7605    1.0071    1.4203    1.4631    1.0555    1.5414
+
+  Columns 50 through 56
+
+    1.6078    1.8285    1.9418    1.1281    1.2304    1.6592    1.1325
+
+  Columns 57 through 63
+
+    1.2241    1.5749    1.1695    1.7822    1.8570    1.0337    1.5326
+
+  Column 64
+
+    1.7970
+
+   1.0347e+05
+
+Elapsed time is 0.085291 seconds.
+   1.0347e+05
+
+Elapsed time is 0.092276 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.07067e+10        6.03e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02851e+10        8.76e-09        1e+09       0.496236
+     2         206      1.00732e+10        1.18e-08        1e+08       0.350686
+     3         271        9.982e+09        1.04e-08        1e+07        2.60049
+Objective function returned NaN; trying a new point...
+     4         337      9.95391e+09        1.02e-08        1e+08        2.25902
+     5         403      9.85725e+09        1.07e-08        1e+09        0.23083
+     6         468       9.7921e+09        1.01e-08        1e+08       0.193102
+     7         534      9.74914e+09        9.79e-09        1e+09       0.157066
+     8         599      9.72149e+09        1.03e-08        1e+08       0.129803
+     9         665       9.7054e+09        1.15e-08        1e+09      0.0945367
+    10         730      9.69402e+09        1.39e-08        1e+08      0.0885862
+    11         796      9.68743e+09        1.73e-08        1e+09      0.0707858
+    12         861      9.68385e+09        2.22e-08        1e+08      0.0560814
+    13         927      9.68207e+09        2.89e-08        1e+09      0.0441757
+    14         992      9.68132e+09        3.81e-08        1e+08      0.0347046
+    15        1058      9.68113e+09        5.08e-08        1e+09      0.0272688
+    16        1125      9.68113e+09         5.1e-08        1e+11    0.000214807
+    17        1190      9.68113e+09        5.11e-08        1e+10    0.000214357
+    18        1256      9.68113e+09        5.12e-08        1e+11    0.000213908
+    19        1321      9.68113e+09        5.14e-08        1e+10     0.00021346
+    20        1394      9.68113e+09        5.14e-08        1e+18    2.13013e-11
+    21        1415                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6210
+        gaussianWidth: 37.3722
+    stimulusRemapping: [1.0680 0.0127 1.4201 1.5933 1.4208 0.4214 1.7651 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8393e+04
+
+
+x0 =
+
+    0.7713
+    0.0208
+    0.6336
+    0.7488
+    0.4985
+    0.2248
+    0.1981
+    0.7605
+    0.1691
+    0.0883
+    0.6854
+    0.9534
+    0.0039
+    0.5122
+    0.8126
+    0.6125
+    0.7218
+    0.2919
+    0.9178
+    0.7146
+    0.5425
+    0.1422
+    0.3733
+    0.6741
+    0.4418
+    0.4340
+    0.6178
+    0.5131
+    0.6504
+    0.6010
+    0.8052
+    0.5216
+    0.9086
+    0.3192
+    0.0905
+    0.3007
+    0.1140
+    0.8287
+    0.0469
+    0.6263
+    0.5476
+    0.8193
+    0.1989
+    0.8569
+    0.3517
+    0.7546
+    0.2960
+    0.8839
+    0.3255
+    0.1650
+    0.3925
+    0.0935
+    0.8211
+    0.1512
+    0.3841
+    0.9443
+    0.9876
+    0.4563
+    0.8261
+    0.2514
+    0.5974
+    0.9028
+    0.5346
+    0.5902
+
+   1.2637e+05
+
+Elapsed time is 0.104725 seconds.
+   1.2637e+05
+
+Elapsed time is 0.144677 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          126376               1                              Uncertainty test
+     0           3         98631.3               1            Initial mesh      
+     1           4         98631.3             0.5             Refine grid      Train (failed)
+     2           9         98631.3            0.25             Refine grid      
+     3          10         98360.2            0.25    Successful search (ES-wcm)      
+     3          17         98360.2           0.125             Refine grid      
+     4          22         98360.2          0.0625             Refine grid      
+     5          24         98336.4          0.0625    Successful search (ES-ell)      
+     5          30         98336.4         0.03125             Refine grid      
+     6          31         98336.4         0.03125    Incremental search (ES-ell)      
+     6          35         98336.4        0.015625             Refine grid      Train (failed)
+     7          40         98336.4       0.0078125             Refine grid      
+     8          45         98336.4      0.00195312             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98336.4.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5345
+        gaussianWidth: 37.3722
+    stimulusRemapping: [1.0680 0.0127 1.4201 1.5933 1.4208 0.4214 1.7651 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8336e+04
+
+
+x0 =
+
+   20.9094
+
+   1.0453e+05
+
+Elapsed time is 0.154963 seconds.
+   1.0453e+05
+
+Elapsed time is 0.119736 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          104540               1                              Uncertainty test
+     0           3          104540               1            Initial mesh      
+     1           4          104540             0.5             Refine grid      Train (failed)
+     2           5         98654.1             0.5    Successful search (ES-wcm)      
+     2           6         98394.8             0.5    Successful search (ES-wcm)      
+     2          12         98394.8            0.25             Refine grid      
+     3          13         98357.5            0.25    Successful search (ES-wcm)      
+     3          20         98357.5           0.125             Refine grid      
+     4          25         98357.5          0.0625             Refine grid      Train (failed)
+     5          30         98357.5         0.03125             Refine grid      
+     6          35         98346.9          0.0625         Successful poll      
+     7          39         98346.9         0.03125             Refine grid      
+     8          42         98346.9        0.015625             Refine grid      
+     9          45         98344.8        0.015625    Successful search (ES-wcm)      
+     9          47         98343.4        0.015625    Successful search (ES-wcm)      
+     9          48         98341.7        0.015625    Successful search (ES-wcm)      
+     9          49         98340.2        0.015625    Successful search (ES-ell)      
+     9          50           98339        0.015625    Successful search (ES-ell)      
+     9          52           98338        0.015625    Successful search (ES-ell)      
+     9          53         98337.2        0.015625    Successful search (ES-ell)      
+     9          54         98336.6        0.015625    Successful search (ES-ell)      
+     9          56         98336.3        0.015625    Successful search (ES-ell)      
+     9          57         98336.2        0.015625    Successful search (ES-wcm)      
+     9          62         98336.2       0.0078125             Refine grid      Train (failed)
+    10          67         98336.2      0.00390625             Refine grid      Train (failed)
+    11          72         98336.2      0.00195312             Refine grid      Train (failed)
+    12          74         98336.2      0.00195312    Successful search (ES-wcm)      
+    12          80         98336.2     0.000976562             Refine grid      
+    13          85         98336.2     0.000488281             Refine grid      
+    14          87         98336.2     0.000488281    Incremental search (ES-wcm)      
+    14          90         98336.2     0.000244141             Refine grid      
+    15          95         98336.2     6.10352e-05             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98336.2.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5345
+        gaussianWidth: 37.5353
+    stimulusRemapping: [1.0680 0.0127 1.4201 1.5933 1.4208 0.4214 1.7651 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8336e+04
+
+
+x0 =
+
+   83.9874
+
+   1.0064e+05
+
+Elapsed time is 0.116344 seconds.
+   1.0064e+05
+
+Elapsed time is 0.112506 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.01284e+10        0.000662         0.01
+     1         139      9.75309e+09         0.00115        1e+07        5.83089
+     2         204      9.68894e+09         0.00383        1e+06        2.98366
+     3         270      9.68681e+09         0.00322        1e+07       0.886767
+     4         335      9.68224e+09         0.00388        1e+06        1.04444
+     5         401      9.68108e+09         0.00335        1e+07       0.792349
+     6         467      9.68003e+09         0.00399        1e+08      0.0825232
+     7         532      9.67911e+09         0.00506        1e+07      0.0772945
+     8         597      9.67851e+09         0.00427        1e+06       0.625012
+     9         664      9.67761e+09         0.00544        1e+08      0.0747176
+    10         729      9.67694e+09         0.00861        1e+07      0.0628213
+    11         794      9.67575e+09         0.00948        1e+06       0.421157
+    12         860      9.67487e+09         0.00825        1e+07        0.25534
+    13         925      9.67481e+09         0.00894        1e+06       0.389276
+    14         991      9.67425e+09         0.00588        1e+07       0.402897
+    15        1057      9.67397e+09         0.00746        1e+08      0.0441811
+    16        1122      9.67375e+09         0.00681        1e+07      0.0381999
+    17        1188      9.67363e+09          0.0155        1e+08      0.0433074
+    18        1253      9.67355e+09           0.014        1e+07      0.0226343
+    19        1318      9.67328e+09          0.0123        1e+06       0.197165
+    20        1384      9.67311e+09         0.00749        1e+07       0.259042
+    21        1450      9.67287e+09         0.00769        1e+08       0.042653
+    22        1515      9.67281e+09          0.0179        1e+07      0.0453712
+    23        1580      9.67249e+09          0.0242        1e+06       0.166934
+    24        1646      9.67226e+09          0.0209        1e+07       0.142989
+    25        1711       9.6721e+09          0.0169        1e+06       0.154787
+    26        1777      9.67189e+09         0.00904        1e+07       0.198973
+    27        1843      9.67178e+09          0.0137        1e+08      0.0342003
+    28        1908      9.67172e+09           0.015        1e+07      0.0213732
+    29        1976      9.67172e+09          0.0148        1e+10     0.00022468
+    30        2041      9.67171e+09          0.0131        1e+09    0.000238629
+    31        2067                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5345
+        gaussianWidth: 37.5353
+    stimulusRemapping: [0.6964 0.9769 1.1357 1.4891 2.2063 0.7762 1.7840 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8345e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.3258    1.4451    1.0615    1.2427    1.9716    1.2306    1.6915
+
+  Columns 8 through 14
+
+    1.6505    1.7239    1.4751    1.5967    1.0670    1.0726    1.1990
+
+  Columns 15 through 21
+
+    1.1519    1.1001    1.1293    1.5533    1.1878    1.9521    1.6816
+
+  Columns 22 through 28
+
+    1.5410    1.7072    1.2639    1.9267    1.8392    1.7263    1.4802
+
+  Columns 29 through 35
+
+    1.8421    1.7448    1.6603    1.9140    1.6337    1.3659    1.5528
+
+  Columns 36 through 42
+
+    1.1964    1.1921    1.7257    1.7849    1.9721    1.8510    1.5436
+
+  Columns 43 through 49
+
+    1.0898    1.4889    1.9279    1.7876    1.4851    1.4553    1.2180
+
+  Columns 50 through 56
+
+    1.1772    1.0736    1.8924    1.6402    1.1433    1.4141    1.0491
+
+  Columns 57 through 63
+
+    1.2094    1.7307    1.6511    1.4790    1.2748    1.6522    1.9564
+
+  Column 64
+
+    1.4355
+
+   1.0446e+05
+
+Elapsed time is 0.163502 seconds.
+   1.0446e+05
+
+Elapsed time is 0.199755 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.09122e+10        4.82e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141       1.0381e+10        6.77e-09        1e+09        0.54961
+     2         206      1.01198e+10        9.44e-09        1e+08       0.390721
+     3         271      9.97211e+09        1.23e-08        1e+07        2.71357
+Objective function returned NaN; trying a new point...
+     4         338      9.86164e+09        1.39e-08        1e+09       0.247109
+     5         403      9.79522e+09         1.2e-08        1e+08        0.19213
+     6         468      9.79341e+09         1.1e-08        1e+07        1.49548
+Objective function returned NaN; trying a new point...
+     7         535      9.74732e+09        1.44e-08        1e+09       0.154258
+     8         600      9.71953e+09        1.69e-08        1e+08       0.121583
+     9         666      9.70251e+09        2.05e-08        1e+09      0.0949087
+    10         731      9.69196e+09        2.56e-08        1e+08      0.0745261
+    11         797      9.68539e+09        3.28e-08        1e+09      0.0587245
+    12         862      9.68126e+09        4.28e-08        1e+08       0.046396
+    13         927      9.68076e+09        2.55e-08        1e+07       0.367027
+Objective function returned NaN; trying a new point...
+    14         993      9.67628e+09        1.12e-08        1e+08        0.38389
+    15        1059      9.67361e+09        1.34e-08        1e+09      0.0521319
+    16        1124      9.67237e+09        1.64e-08        1e+08      0.0410834
+    17        1190      9.67193e+09        2.07e-08        1e+09      0.0321388
+    18        1256      9.67192e+09        2.11e-08        1e+10     0.00249961
+    19        1321      9.67191e+09        2.16e-08        1e+09     0.00244358
+    20        1387       9.6719e+09        2.21e-08        1e+10     0.00238873
+    21        1452       9.6719e+09        2.26e-08        1e+09     0.00233506
+    22        1518       9.6719e+09        2.31e-08        1e+10     0.00228253
+    23        1584       9.6719e+09        2.31e-08        1e+11    0.000223114
+    24        1650       9.6719e+09        2.31e-08        1e+12    2.22611e-05
+    25        1715       9.6719e+09        2.31e-08        1e+11    2.22561e-05
+    26        1781       9.6719e+09        2.32e-08        1e+12    2.22511e-05
+    27        1808                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5345
+        gaussianWidth: 37.5353
+    stimulusRemapping: [0.6964 0.9769 1.1357 1.4891 2.2063 0.7762 1.7840 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8346e+04
+
+
+x0 =
+
+    0.4170
+    0.7203
+    0.0001
+    0.3023
+    0.1468
+    0.0923
+    0.1863
+    0.3456
+    0.3968
+    0.5388
+    0.4192
+    0.6852
+    0.2045
+    0.8781
+    0.0274
+    0.6705
+    0.4173
+    0.5587
+    0.1404
+    0.1981
+    0.8007
+    0.9683
+    0.3134
+    0.6923
+    0.8764
+    0.8946
+    0.0850
+    0.0391
+    0.1698
+    0.8781
+    0.0983
+    0.4211
+    0.9579
+    0.5332
+    0.6919
+    0.3155
+    0.6865
+    0.8346
+    0.0183
+    0.7501
+    0.9889
+    0.7482
+    0.2804
+    0.7893
+    0.1032
+    0.4479
+    0.9086
+    0.2936
+    0.2878
+    0.1300
+    0.0194
+    0.6788
+    0.2116
+    0.2655
+    0.4916
+    0.0534
+    0.5741
+    0.1467
+    0.5893
+    0.6998
+    0.1023
+    0.4141
+    0.6944
+    0.4142
+
+   1.2649e+05
+
+Elapsed time is 0.124729 seconds.
+   1.2649e+05
+
+Elapsed time is 0.110692 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          126502               1                              Uncertainty test
+     0           3         98640.1               1            Initial mesh      
+     1           4         98640.1             0.5             Refine grid      Train (failed)
+     2           9         98640.1            0.25             Refine grid      
+     3          10         98370.4            0.25    Successful search (ES-ell)      
+     3          17         98370.4           0.125             Refine grid      
+     4          22         98370.4          0.0625             Refine grid      
+     5          25         98354.2          0.0625    Successful search (ES-wcm)      
+     5          28         98345.8          0.0625    Successful search (ES-ell)      
+     5          33         98345.8         0.03125             Refine grid      
+     6          38         98345.8        0.015625             Refine grid      
+     7          43         98345.8       0.0078125             Refine grid      
+     8          48         98345.8      0.00195312             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98345.8.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5343
+        gaussianWidth: 37.5353
+    stimulusRemapping: [0.6964 0.9769 1.1357 1.4891 2.2063 0.7762 1.7840 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8346e+04
+
+
+x0 =
+
+   20.9094
+
+   1.0452e+05
+
+Elapsed time is 0.085765 seconds.
+   1.0452e+05
+
+Elapsed time is 0.092468 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          104534               1                              Uncertainty test
+     0           3          104534               1            Initial mesh      
+     1           4          104534             0.5             Refine grid      Train (failed)
+     2           5         98666.3             0.5    Successful search (ES-wcm)      
+     2           6         98405.5             0.5    Successful search (ES-wcm)      
+     2          12         98405.5            0.25             Refine grid      
+     3          13         98367.6            0.25    Successful search (ES-wcm)      
+     3          20         98367.6           0.125             Refine grid      
+     4          25         98367.6          0.0625             Refine grid      Train
+     5          26           98353          0.0625    Successful search (ES-wcm)      
+     5          30         98348.6          0.0625    Successful search (ES-wcm)      
+     5          32         98348.3          0.0625    Successful search (ES-wcm)      
+     5          34         98345.7          0.0625    Successful search (ES-wcm)      
+     5          39         98345.7         0.03125             Refine grid      
+     6          44         98345.7        0.015625             Refine grid      Train (failed)
+     7          49         98345.7       0.0078125             Refine grid      
+     8          54         98345.7      0.00195312             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98345.7.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5343
+        gaussianWidth: 37.6333
+    stimulusRemapping: [0.6964 0.9769 1.1357 1.4891 2.2063 0.7762 1.7840 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8346e+04
+
+
+x0 =
+
+   83.9874
+
+   9.9865e+04
+
+Elapsed time is 0.083699 seconds.
+   9.9865e+04
+
+Elapsed time is 0.082179 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65       9.9731e+09        0.000646         0.01
+     1         139      9.70237e+09         0.00134        1e+07        4.80933
+     2         204      9.68966e+09         0.00206        1e+06        2.05113
+     3         271      9.68483e+09         0.00338        1e+08       0.168964
+     4         336      9.68212e+09         0.00414        1e+07       0.125092
+     5         402      9.68052e+09         0.00475        1e+08      0.0928347
+     6         467      9.67951e+09          0.0062        1e+07      0.0744374
+     7         532      9.67772e+09          0.0049        1e+06       0.570105
+     8         598      9.67608e+09          0.0114        1e+07       0.469764
+     9         663      9.67499e+09         0.00958        1e+06       0.305174
+    10         729      9.67438e+09          0.0123        1e+07       0.305382
+    11         794      9.67382e+09          0.0168        1e+06       0.375317
+    12         860      9.67327e+09          0.0113        1e+07       0.220273
+    13         925      9.67313e+09           0.014        1e+06        0.41703
+    14         991       9.6725e+09          0.0123        1e+07       0.222844
+    15        1056      9.67234e+09          0.0126        1e+06       0.277557
+    16        1122      9.67194e+09          0.0075        1e+07       0.310858
+    17        1188      9.67192e+09          0.0131        1e+08      0.0409375
+    18        1253      9.67184e+09          0.0199        1e+07      0.0220265
+    19        1318      9.67159e+09          0.0127        1e+06       0.176188
+    20        1385       9.6715e+09          0.0175        1e+08      0.0248485
+    21        1450      9.67146e+09          0.0199        1e+07      0.0197302
+    22        1515      9.67127e+09          0.0215        1e+06        0.18172
+    23        1581      9.67118e+09          0.0122        1e+07       0.168365
+    24        1647      9.67111e+09          0.0194        1e+08      0.0299686
+    25        1712      9.67101e+09          0.0139        1e+07      0.0175655
+    26        1777      9.67098e+09          0.0201        1e+06       0.272966
+    27        1843      9.67086e+09          0.0141        1e+07       0.216171
+    28        1909       9.6707e+09          0.0175        1e+08      0.0273533
+    29        1974      9.67062e+09          0.0193        1e+07      0.0186464
+    30        2039      9.67052e+09          0.0119        1e+06       0.156634
+    31        2105      9.67048e+09          0.0156        1e+07       0.264122
+    32        2171      9.67033e+09          0.0116        1e+08      0.0223949
+    33        2236      9.67031e+09          0.0147        1e+07      0.0349641
+    34        2301      9.67022e+09          0.0102        1e+06       0.258594
+    35        2367      9.67009e+09          0.0205        1e+07       0.388941
+    36        2432      9.66988e+09          0.0133        1e+06       0.161954
+    37        2499      9.66987e+09          0.0246        1e+08      0.0214297
+    38        2564      9.66985e+09          0.0226        1e+07       0.015367
+    39        2630      9.66982e+09          0.0203        1e+08      0.0137162
+    40        2695      9.66978e+09        1.12e-05        1e+07      0.0206092
+    41        2761      9.66977e+09          0.0334        1e+08      0.0315454
+    42        2826      9.66976e+09          0.0256        1e+07      0.0106214
+    43        2893      9.66976e+09          0.0313        1e+09     0.00149579
+    44        2959      9.66976e+09          0.0309        1e+10    9.65795e-05
+    45        3024      9.66976e+09          0.0313        1e+09    9.86082e-05
+    46        3090      9.66976e+09          0.0308        1e+10    9.53669e-05
+    47        3155      9.66976e+09          0.0307        1e+09    9.76053e-05
+    48        3181                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5343
+        gaussianWidth: 37.6333
+    stimulusRemapping: [1.2946 0.3460 1.0561 1.1658 1.5829 0.9206 1.2647 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8335e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.8248    1.0942    1.3610    1.0355    1.5464    1.7961    1.0511
+
+  Columns 8 through 14
+
+    1.1887    1.3655    1.2443    1.7951    1.3521    1.6389    1.4934
+
+  Columns 15 through 21
+
+    1.5835    1.9393    1.9435    1.1117    1.8436    1.3460    1.1008
+
+  Columns 22 through 28
+
+    1.3834    1.5104    1.9611    1.3715    1.0124    1.8597    1.1111
+
+  Columns 29 through 35
+
+    1.4783    1.8500    1.5147    1.4466    1.8005    1.0204    1.5726
+
+  Columns 36 through 42
+
+    1.4114    1.9851    1.8014    1.0540    1.1905    1.4524    1.7029
+
+  Columns 43 through 49
+
+    1.3320    1.3600    1.9215    1.9536    1.4077    1.8986    1.3303
+
+  Columns 50 through 56
+
+    1.0827    1.5267    1.6608    1.8930    1.9652    1.7699    1.7591
+
+  Columns 57 through 63
+
+    1.7100    1.7016    1.7673    1.9743    1.3737    1.0831    1.2396
+
+  Column 64
+
+    1.2215
+
+   1.0335e+05
+
+Elapsed time is 0.183953 seconds.
+   1.0335e+05
+
+Elapsed time is 0.175254 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.06802e+10        5.73e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.03156e+10        8.28e-09        1e+09       0.442695
+     2         206      1.00989e+10        8.81e-09        1e+08         0.3588
+     3         271      9.97273e+09        9.95e-09        1e+07        2.68322
+Objective function returned NaN; trying a new point...
+     4         337      9.90478e+09        1.05e-08        1e+08          2.213
+     5         403       9.8131e+09        9.16e-09        1e+09       0.229412
+     6         468      9.75453e+09        7.65e-09        1e+08        0.18334
+     7         534      9.71882e+09         8.8e-09        1e+09       0.148224
+     8         599      9.69791e+09        1.21e-08        1e+08       0.117771
+     9         665      9.68587e+09        1.62e-08        1e+09      0.0906639
+    10         730      9.67897e+09        2.12e-08        1e+08      0.0714297
+    11         796      9.67508e+09        2.76e-08        1e+09      0.0561277
+    12         861      9.67295e+09        3.56e-08        1e+08      0.0442084
+    13         927      9.67186e+09         4.6e-08        1e+09       0.034889
+    14         992      9.67136e+09        5.91e-08        1e+08      0.0275943
+    15        1058      9.67119e+09         7.6e-08        1e+09      0.0218806
+    16        1124      9.67119e+09        7.77e-08        1e+10     0.00174014
+    17        1189      9.67118e+09        7.94e-08        1e+09     0.00170488
+    18        1255      9.67118e+09        8.12e-08        1e+10     0.00167036
+    19        1320      9.67118e+09         8.3e-08        1e+09     0.00163658
+    20        1386      9.67118e+09        8.49e-08        1e+10     0.00160351
+    21        1462      9.67118e+09        8.49e-08        1e+21    1.57116e-14
+    22        1478                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5343
+        gaussianWidth: 37.6333
+    stimulusRemapping: [1.2946 0.3460 1.0561 1.1658 1.5829 0.9206 1.2647 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8342e+04
+
+
+x0 =
+
+    0.9670
+    0.5472
+    0.9727
+    0.7148
+    0.6977
+    0.2161
+    0.9763
+    0.0062
+    0.2530
+    0.4348
+    0.7794
+    0.1977
+    0.8630
+    0.9834
+    0.1638
+    0.5973
+    0.0090
+    0.3866
+    0.0442
+    0.9567
+    0.4361
+    0.9490
+    0.7863
+    0.8663
+    0.1732
+    0.0749
+    0.6007
+    0.1680
+    0.7334
+    0.4084
+    0.5279
+    0.9376
+    0.5217
+    0.1082
+    0.1582
+    0.5452
+    0.5244
+    0.6376
+    0.4015
+    0.6498
+    0.3969
+    0.6239
+    0.7674
+    0.1790
+    0.3756
+    0.5025
+    0.6867
+    0.2537
+    0.5547
+    0.6249
+    0.8955
+    0.3629
+    0.6376
+    0.1914
+    0.4978
+    0.1824
+    0.9184
+    0.4318
+    0.8302
+    0.4168
+    0.9047
+    0.4048
+    0.3312
+    0.5721
+
+   1.0904e+05
+
+Elapsed time is 0.151501 seconds.
+   1.0904e+05
+
+Elapsed time is 0.163760 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          109038               1                              Uncertainty test
+     0           3          109038               1            Initial mesh      
+     1           4          109038             0.5             Refine grid      Train (failed)
+     2           6         98349.5             0.5    Successful search (ES-wcm)      
+     2          12         98349.5            0.25             Refine grid      
+     3          15         98349.4            0.25    Successful search (ES-ell)      
+     3          17         98349.2            0.25    Successful search (ES-wcm)      
+     3          18         98349.1            0.25    Successful search (ES-wcm)      
+     3          20         98348.9            0.25    Successful search (ES-ell)      
+     3          22         98348.8            0.25    Successful search (ES-wcm)      
+     3          26         98342.1            0.25    Successful search (ES-ell)      
+     3          29         98342.1            0.25    Incremental search (ES-ell)      
+     3          32         98342.1           0.125             Refine grid      Train (failed)
+     4          37         98342.1          0.0625             Refine grid      
+     5          42         98342.1         0.03125             Refine grid      Train (failed)
+     6          47         98342.1       0.0078125             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98342.1.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5357
+        gaussianWidth: 37.6333
+    stimulusRemapping: [1.2946 0.3460 1.0561 1.1658 1.5829 0.9206 1.2647 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8342e+04
+
+
+x0 =
+
+    0.6177
+
+   1.0290e+05
+
+Elapsed time is 0.160872 seconds.
+   1.0290e+05
+
+Elapsed time is 0.180479 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          102906               1                              Uncertainty test
+     0           3          102906               1            Initial mesh      
+     1           4          102906             0.5             Refine grid      Train (failed)
+     2           6          100177             0.5    Successful search (ES-wcm)      
+     2           7         98708.1             0.5    Successful search (ES-wcm)      
+     2           8         98503.5             0.5    Successful search (ES-wcm)      
+     2           9         98455.9             0.5    Successful search (ES-ell)      
+     2          10         98438.7             0.5    Successful search (ES-ell)      
+     2          11         98427.2             0.5    Successful search (ES-ell)      
+     2          12         98421.7             0.5    Successful search (ES-ell)      
+     2          13         98416.4             0.5    Successful search (ES-ell)      
+     2          18         98416.4            0.25             Refine grid      
+     3          23         98416.4           0.125             Refine grid      
+     4          24         98342.1           0.125    Successful search (ES-ell)      
+     4          25         98342.1           0.125    Incremental search (ES-ell)      
+     4          31         98342.1          0.0625             Refine grid      
+     5          36         98342.1         0.03125             Refine grid      Train (failed)
+     6          41         98342.1        0.015625             Refine grid      
+     7          46         98342.1      0.00390625             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98342.1.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5357
+        gaussianWidth: 37.6694
+    stimulusRemapping: [1.2946 0.3460 1.0561 1.1658 1.5829 0.9206 1.2647 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8342e+04
+
+
+x0 =
+
+   16.1853
+
+   1.0015e+05
+
+Elapsed time is 0.199072 seconds.
+   1.0015e+05
+
+Elapsed time is 0.161896 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.00308e+10        0.000603         0.01
+     1         139      9.70376e+09         0.00158        1e+07        5.77933
+     2         205      9.69492e+09         0.00239        1e+08       0.223268
+     3         270      9.69027e+09         0.00313        1e+07       0.162412
+     4         335      9.68865e+09         0.00198        1e+06        1.20637
+     5         401      9.67924e+09         0.00494        1e+07        1.18884
+     6         466      9.67776e+09         0.00973        1e+06       0.593962
+     7         532      9.67665e+09         0.00948        1e+07       0.384867
+     8         597      9.67629e+09          0.0071        1e+06       0.314302
+     9         664      9.67591e+09          0.0134        1e+08      0.0493812
+    10         729      9.67587e+09           0.013        1e+07      0.0308703
+    11         794      9.67558e+09         0.00644        1e+06       0.255129
+    12         860      9.67534e+09         0.00948        1e+07       0.352539
+    13         925      9.67528e+09         0.00647        1e+06        0.30442
+    14         991      9.67518e+09         0.00687        1e+07        0.43334
+    15        1057      9.67477e+09         0.00956        1e+08      0.0467814
+    16        1122      9.67452e+09          0.0092        1e+07      0.0355627
+    17        1187      9.67431e+09          0.0108        1e+06       0.321063
+    18        1253      9.67395e+09         0.00849        1e+07       0.280531
+    19        1318      9.67382e+09          0.0086        1e+06       0.379263
+    20        1385      9.67357e+09          0.0105        1e+08      0.0362486
+    21        1450      9.67348e+09          0.0141        1e+07      0.0312486
+    22        1515       9.6731e+09          0.0136        1e+06       0.233244
+    23        1581      9.67288e+09          0.0148        1e+07        0.20299
+    24        1647      9.67286e+09          0.0174        1e+08      0.0242983
+    25        1712      9.67275e+09          0.0144        1e+07      0.0237409
+    26        1779      9.67275e+09          0.0136        1e+09     0.00291329
+    27        1805                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5357
+        gaussianWidth: 37.6694
+    stimulusRemapping: [1.2317 0.4282 0.7333 1.6704 1.6193 1.1594 0.9423 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8350e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.6184    1.4761    1.4042    1.7419    1.8259    1.6832    1.1393
+
+  Columns 8 through 14
+
+    1.7028    1.0588    1.1927    1.9248    1.4051    1.1483    1.6823
+
+  Columns 15 through 21
+
+    1.1635    1.6482    1.2516    1.0414    1.9587    1.0662    1.5129
+
+  Columns 22 through 28
+
+    1.3413    1.6600    1.8444    1.6039    1.5872    1.1170    1.7105
+
+  Columns 29 through 35
+
+    1.2045    1.4904    1.0366    1.3154    1.8630    1.5585    1.5467
+
+  Columns 36 through 42
+
+    1.3678    1.8282    1.2764    1.1257    1.5628    1.2673    1.7750
+
+  Columns 43 through 49
+
+    1.1794    1.7833    1.6080    1.0417    1.5613    1.6681    1.9384
+
+  Columns 50 through 56
+
+    1.7860    1.7504    1.4971    1.0427    1.8169    1.0136    1.5500
+
+  Columns 57 through 63
+
+    1.5668    1.1129    1.0628    1.5747    1.4855    1.3014    1.0398
+
+  Column 64
+
+    1.6339
+
+   1.0299e+05
+
+Elapsed time is 0.168564 seconds.
+   1.0299e+05
+
+Elapsed time is 0.229729 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.06064e+10        8.31e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02589e+10        7.26e-09        1e+09       0.438633
+     2         206      1.00488e+10        7.04e-09        1e+08       0.339037
+Objective function returned NaN; trying a new point...
+     3         272      9.91198e+09        7.25e-09        1e+09       0.277951
+     4         337      9.82605e+09        1.03e-08        1e+08       0.225852
+     5         402      9.81257e+09        1.35e-08        1e+07        1.72159
+Objective function returned NaN; trying a new point...
+     6         469      9.76177e+09        1.57e-08        1e+09       0.165435
+     7         534      9.73034e+09        1.75e-08        1e+08       0.131853
+     8         600      9.71082e+09        1.94e-08        1e+09       0.103306
+     9         665      9.69848e+09        2.29e-08        1e+08      0.0815037
+    10         730      9.69487e+09        1.87e-08        1e+07       0.643663
+Objective function returned NaN; trying a new point...
+    11         797      9.68602e+09        2.35e-08        1e+09      0.0676114
+    12         862      9.68098e+09        2.98e-08        1e+08      0.0559951
+    13         928      9.67798e+09         3.8e-08        1e+09      0.0437601
+    14         993       9.6762e+09        4.86e-08        1e+08      0.0342515
+    15        1059      9.67514e+09        6.23e-08        1e+09      0.0268534
+    16        1124      9.67453e+09        8.01e-08        1e+08       0.021092
+    17        1190      9.67417e+09        1.03e-07        1e+09      0.0166009
+    18        1255      9.67397e+09        1.33e-07        1e+08      0.0130956
+    19        1321      9.67387e+09        1.61e-07        1e+09      0.0103556
+    20        1386      9.67381e+09        1.95e-07        1e+08     0.00821002
+    21        1452      9.67379e+09        2.36e-07        1e+09     0.00652648
+    22        1517      9.67379e+09        2.86e-07        1e+08     0.00520256
+    23        1545                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5357
+        gaussianWidth: 37.6694
+    stimulusRemapping: [1.2317 0.4282 0.7333 1.6704 1.6193 1.1594 0.9423 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8355e+04
+
+
+x0 =
+
+    0.4360
+    0.0259
+    0.5497
+    0.4353
+    0.4204
+    0.3303
+    0.2046
+    0.6193
+    0.2997
+    0.2668
+    0.6211
+    0.5291
+    0.1346
+    0.5136
+    0.1844
+    0.7853
+    0.8540
+    0.4942
+    0.8466
+    0.0796
+    0.5052
+    0.0653
+    0.4281
+    0.0965
+    0.1272
+    0.5967
+    0.2260
+    0.1069
+    0.2203
+    0.3498
+    0.4678
+    0.2017
+    0.6404
+    0.4831
+    0.5052
+    0.3869
+    0.7936
+    0.5800
+    0.1623
+    0.7008
+    0.9646
+    0.5000
+    0.8895
+    0.3416
+    0.5671
+    0.4275
+    0.4367
+    0.7766
+    0.5356
+    0.9537
+    0.5442
+    0.0821
+    0.3663
+    0.8509
+    0.4063
+    0.0272
+    0.2472
+    0.0671
+    0.9939
+    0.9706
+    0.8003
+    0.6018
+    0.7650
+    0.1692
+
+   1.2830e+05
+
+Elapsed time is 0.183247 seconds.
+   1.2830e+05
+
+Elapsed time is 0.182585 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          128299               1                              Uncertainty test
+     0           3          105423               1            Initial mesh      
+     1           4          105423             0.5             Refine grid      Train (failed)
+     2           6         98398.8             0.5    Successful search (ES-ell)      
+     2          12         98398.8            0.25             Refine grid      
+     3          15         98398.5            0.25    Successful search (ES-ell)      
+     3          16         98398.2            0.25    Successful search (ES-ell)      
+     3          18         98397.8            0.25    Successful search (ES-ell)      
+     3          21         98397.5            0.25    Successful search (ES-wcm)      
+     3          24         98397.1            0.25    Successful search (ES-wcm)      
+     3          29         98397.1           0.125             Refine grid      
+     4          34         98397.1          0.0625             Refine grid      Train (failed)
+     5          39         98397.1         0.03125             Refine grid      
+     6          44         98397.1       0.0078125             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98397.1.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6097
+        gaussianWidth: 37.6694
+    stimulusRemapping: [1.2317 0.4282 0.7333 1.6704 1.6193 1.1594 0.9423 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8397e+04
+
+
+x0 =
+
+   27.5848
+
+   1.0475e+05
+
+Elapsed time is 0.154570 seconds.
+   1.0475e+05
+
+Elapsed time is 0.151377 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          104768               1                              Uncertainty test
+     0           3          104768               1            Initial mesh      
+     1           4          104768             0.5             Refine grid      Train (failed)
+     2           5         98389.5             0.5    Successful search (ES-wcm)      
+     2          12         98389.5            0.25             Refine grid      
+     3          17         98389.5           0.125             Refine grid      
+     4          22         98389.5          0.0625             Refine grid      
+     5          24         98389.4          0.0625    Successful search (ES-wcm)      
+     5          25         98389.4          0.0625    Incremental search (ES-wcm)      
+     5          30         98389.4         0.03125             Refine grid      
+     6          35         98389.4        0.015625             Refine grid      Train (failed)
+     7          37         98389.4        0.015625    Incremental search (ES-wcm)      
+     7          40         98389.4       0.0078125             Refine grid      
+     8          43         98389.4       0.0078125    Incremental search (ES-wcm)      
+     8          45         98389.4      0.00195312             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98389.4.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6097
+        gaussianWidth: 38.7741
+    stimulusRemapping: [1.2317 0.4282 0.7333 1.6704 1.6193 1.1594 0.9423 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8389e+04
+
+
+x0 =
+
+   87.7630
+
+   1.0055e+05
+
+Elapsed time is 0.146073 seconds.
+   1.0055e+05
+
+Elapsed time is 0.129271 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.01112e+10        0.000644         0.01
+     1         139      9.71509e+09         0.00191        1e+07        5.95113
+     2         204      9.69295e+09         0.00298        1e+06        1.75162
+     3         270      9.69269e+09          0.0029        1e+07       0.941462
+     4         335      9.69072e+09         0.00301        1e+06        1.07729
+     5         402      9.68866e+09         0.00406        1e+08       0.106313
+     6         467      9.68735e+09         0.00535        1e+07      0.0846083
+     7         533      9.68655e+09          0.0062        1e+08      0.0678057
+     8         598      9.68601e+09         0.00908        1e+07      0.0546362
+     9         663      9.68497e+09         0.00725        1e+06       0.462538
+    10         729      9.68435e+09         0.00919        1e+07       0.367522
+    11         794      9.68415e+09         0.00652        1e+06       0.331578
+    12         860       9.6834e+09          0.0159        1e+07        0.32454
+    13         925        9.683e+09          0.0129        1e+06       0.225948
+    14         991      9.68283e+09          0.0147        1e+07       0.224166
+    15        1056      9.68258e+09          0.0129        1e+06       0.197625
+    16        1122      9.68234e+09          0.0117        1e+07       0.387597
+    17        1187      9.68202e+09          0.0167        1e+06       0.265267
+    18        1253      9.68185e+09          0.0194        1e+07       0.214428
+    19        1318       9.6818e+09          0.0227        1e+06       0.179719
+    20        1384      9.68158e+09          0.0122        1e+07       0.176347
+    21        1450      9.68153e+09          0.0159        1e+08      0.0280673
+    22        1515      9.68149e+09          0.0185        1e+07        0.02235
+    23        1581      9.68147e+09          0.0219        1e+08      0.0176736
+    24        1646      9.68146e+09          0.0283        1e+07      0.0181444
+    25        1711      9.68134e+09          0.0189        1e+06       0.132235
+    26        1777      9.68113e+09          0.0144        1e+07       0.143939
+    27        1842      9.68111e+09          0.0217        1e+06       0.274272
+    28        1908      9.68084e+09        1.51e-05        1e+07       0.139429
+    29        1973      9.68081e+09          0.0163        1e+06        0.28212
+    30        2039      9.68064e+09          0.0243        1e+07        0.24463
+    31        2104      9.68062e+09          0.0146        1e+06       0.149048
+    32        2171       9.6805e+09          0.0242        1e+08      0.0225666
+    33        2236      9.68042e+09        1.72e-05        1e+07      0.0162602
+    34        2304      9.68042e+09        1.75e-05        1e+10    0.000330759
+    35        2370      9.68042e+09        1.75e-05        1e+11    3.26064e-05
+    36        2435      9.68042e+09        1.73e-05        1e+10    3.27601e-05
+    37        2460                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6097
+        gaussianWidth: 38.7741
+    stimulusRemapping: [1.2298 0.1450 1.5940 1.8094 1.8017 0.7675 1.8875 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8389e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.5926    1.2351    1.9650    1.9450    1.8484    1.4723    1.8415
+
+  Columns 8 through 14
+
+    1.1311    1.3087    1.4630    1.7418    1.4858    1.1369    1.3435
+
+  Columns 15 through 21
+
+    1.3244    1.3004    1.1655    1.4149    1.4481    1.7749    1.7964
+
+  Columns 22 through 28
+
+    1.5224    1.4606    1.7782    1.8873    1.6749    1.8005    1.9391
+
+  Columns 29 through 35
+
+    1.0407    1.8757    1.2766    1.4758    1.7968    1.7172    1.1471
+
+  Columns 36 through 42
+
+    1.6587    1.0693    1.3571    1.8128    1.4277    1.5999    1.7282
+
+  Columns 43 through 49
+
+    1.8212    1.7605    1.0071    1.4203    1.4631    1.0555    1.5414
+
+  Columns 50 through 56
+
+    1.6078    1.8285    1.9418    1.1281    1.2304    1.6592    1.1325
+
+  Columns 57 through 63
+
+    1.2241    1.5749    1.1695    1.7822    1.8570    1.0337    1.5326
+
+  Column 64
+
+    1.7970
+
+   1.0352e+05
+
+Elapsed time is 0.121210 seconds.
+   1.0352e+05
+
+Elapsed time is 0.114538 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.07163e+10        6.31e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02845e+10        8.76e-09        1e+09       0.502936
+     2         206      1.00655e+10        1.06e-08        1e+08       0.356786
+     3         271      1.00102e+10        9.25e-09        1e+07        2.63993
+Objective function returned NaN; trying a new point...
+     4         337      9.98477e+09        1.09e-08        1e+08        2.37234
+     5         403        9.876e+09         1.1e-08        1e+09       0.245432
+     6         468       9.8033e+09        1.16e-08        1e+08       0.203833
+     7         534      9.75556e+09        9.97e-09        1e+09       0.165044
+     8         599      9.72414e+09        9.01e-09        1e+08        0.13738
+     9         665      9.70545e+09        1.02e-08        1e+09       0.100764
+    10         730      9.69224e+09        1.22e-08        1e+08       0.094481
+    11         796      9.68441e+09        1.51e-08        1e+09      0.0747594
+    12         861      9.68015e+09        1.92e-08        1e+08      0.0600808
+    13         927      9.67801e+09        2.49e-08        1e+09      0.0472622
+    14         992      9.67708e+09        3.28e-08        1e+08      0.0370264
+    15        1058      9.67682e+09        4.36e-08        1e+09       0.028976
+    16        1124      9.67681e+09        4.48e-08        1e+10      0.0022712
+    17        1189      9.67681e+09        4.59e-08        1e+09     0.00222265
+    18        1219                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6097
+        gaussianWidth: 38.7741
+    stimulusRemapping: [1.2298 0.1450 1.5940 1.8094 1.8017 0.7675 1.8875 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8371e+04
+
+
+x0 =
+
+    0.7713
+    0.0208
+    0.6336
+    0.7488
+    0.4985
+    0.2248
+    0.1981
+    0.7605
+    0.1691
+    0.0883
+    0.6854
+    0.9534
+    0.0039
+    0.5122
+    0.8126
+    0.6125
+    0.7218
+    0.2919
+    0.9178
+    0.7146
+    0.5425
+    0.1422
+    0.3733
+    0.6741
+    0.4418
+    0.4340
+    0.6178
+    0.5131
+    0.6504
+    0.6010
+    0.8052
+    0.5216
+    0.9086
+    0.3192
+    0.0905
+    0.3007
+    0.1140
+    0.8287
+    0.0469
+    0.6263
+    0.5476
+    0.8193
+    0.1989
+    0.8569
+    0.3517
+    0.7546
+    0.2960
+    0.8839
+    0.3255
+    0.1650
+    0.3925
+    0.0935
+    0.8211
+    0.1512
+    0.3841
+    0.9443
+    0.9876
+    0.4563
+    0.8261
+    0.2514
+    0.5974
+    0.9028
+    0.5346
+    0.5902
+
+   1.2625e+05
+
+Elapsed time is 0.227694 seconds.
+   1.2625e+05
+
+Elapsed time is 0.206466 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          126260               1                              Uncertainty test
+     0           3         98682.6               1            Initial mesh      
+     1           4         98682.6             0.5             Refine grid      Train (failed)
+     2           7         98647.6             0.5    Successful search (ES-wcm)      
+     2           8           98644             0.5    Successful search (ES-wcm)      
+     2           9         98640.4             0.5    Successful search (ES-wcm)      
+     2          12         98636.9             0.5    Successful search (ES-wcm)      
+     2          15         98633.3             0.5    Successful search (ES-ell)      
+     2          18         98626.4             0.5    Successful search (ES-ell)      
+     2          20         98622.9             0.5    Successful search (ES-ell)      
+     2          22         98619.4             0.5    Successful search (ES-wcm)      
+     2          23           98616             0.5    Successful search (ES-wcm)      
+     2          27         98612.6             0.5    Successful search (ES-ell)      
+     2          28         98609.2             0.5    Successful search (ES-ell)      
+     2          29         98605.9             0.5    Successful search (ES-ell)      
+     2          30         98602.5             0.5    Successful search (ES-ell)      
+     2          31         98599.2             0.5    Successful search (ES-ell)      
+     2          32         98595.9             0.5    Successful search (ES-ell)      
+     2          33         98592.6             0.5    Successful search (ES-ell)      
+     2          36         98589.4             0.5    Successful search (ES-ell)      
+     2          37         98586.2             0.5    Successful search (ES-ell)      
+     2          38         98582.9             0.5    Successful search (ES-ell)      
+     2          39         98579.8             0.5    Successful search (ES-ell)      
+     2          41         98576.6             0.5    Successful search (ES-ell)      
+     2          42         98573.4             0.5    Successful search (ES-ell)      
+     2          45         98570.3             0.5    Successful search (ES-ell)      
+     2          46         98567.2             0.5    Successful search (ES-ell)      
+     2          48         98564.1             0.5    Successful search (ES-ell)      
+     2          49         98561.1             0.5    Successful search (ES-wcm)      
+     2          50           98558             0.5    Successful search (ES-wcm)      
+     2          52           98555             0.5    Successful search (ES-wcm)      
+     2          53           98552             0.5    Successful search (ES-wcm)      
+     2          54           98549             0.5    Successful search (ES-wcm)      
+     2          55         98546.1             0.5    Successful search (ES-wcm)      
+     2          56         98543.1             0.5    Successful search (ES-wcm)      
+     2          57         98540.2             0.5    Successful search (ES-ell)      
+     2          60         98537.3             0.5    Successful search (ES-wcm)      
+     2          61         98534.5             0.5    Successful search (ES-ell)      
+     2          62         98531.6             0.5    Successful search (ES-wcm)      
+     2          63         98528.8             0.5    Successful search (ES-wcm)      
+     2          65           98526             0.5    Successful search (ES-wcm)      
+     2          66         98523.2             0.5    Successful search (ES-wcm)      
+     2          67         98460.6             0.5    Successful search (ES-wcm)      
+     2          68         98445.4             0.5    Successful search (ES-wcm)      
+     2          69         98401.5             0.5    Successful search (ES-wcm)      
+     2          75         98401.5            0.25             Refine grid      
+     3          80         98401.5           0.125             Refine grid      
+     4          85         98401.5          0.0625             Refine grid      
+     5          90         98401.5        0.015625             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98401.5.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6383
+        gaussianWidth: 38.7741
+    stimulusRemapping: [1.2298 0.1450 1.5940 1.8094 1.8017 0.7675 1.8875 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8402e+04
+
+
+x0 =
+
+   20.9094
+
+   1.1349e+05
+
+Elapsed time is 0.119897 seconds.
+   1.1349e+05
+
+Elapsed time is 0.124109 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          113492               1                              Uncertainty test
+     0           3          113492               1            Initial mesh      
+     1           4         98495.7               1         Successful poll      Train (failed)
+     2           7         98495.7             0.5             Refine grid      
+     3          12         98495.7            0.25             Refine grid      
+     4          13         98406.7            0.25    Successful search (ES-wcm)      
+     4          20         98406.7           0.125             Refine grid      
+     5          25         98406.7          0.0625             Refine grid      Train
+     6          26         98400.4          0.0625    Successful search (ES-wcm)      
+     6          27         98400.4          0.0625    Incremental search (ES-wcm)      
+     6          33         98400.4         0.03125             Refine grid      
+     7          35         98400.4         0.03125    Incremental search (ES-ell)      
+     7          38         98400.4        0.015625             Refine grid      
+     8          43         98400.4       0.0078125             Refine grid      
+     9          44         98400.4       0.0078125    Incremental search (ES-wcm)      
+     9          48         98400.4      0.00195312             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98400.4.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6383
+        gaussianWidth: 39.2015
+    stimulusRemapping: [1.2298 0.1450 1.5940 1.8094 1.8017 0.7675 1.8875 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8400e+04
+
+
+x0 =
+
+    3.0645
+
+   1.0021e+05
+
+Elapsed time is 0.129121 seconds.
+   1.0021e+05
+
+Elapsed time is 0.114228 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65       1.0043e+10        0.000631         0.01
+     1         139      9.73665e+09         0.00108        1e+07        5.12972
+     2         204      9.70303e+09         0.00262        1e+06        2.84369
+     3         270      9.70101e+09          0.0022        1e+07        1.17475
+     4         335       9.6967e+09         0.00228        1e+06        1.46595
+     5         402      9.69324e+09         0.00316        1e+08       0.134872
+     6         467      9.69122e+09         0.00347        1e+07       0.102779
+     7         533      9.68978e+09         0.00451        1e+08      0.0882031
+     8         598      9.68891e+09         0.00767        1e+07       0.066703
+     9         663      9.68728e+09         0.00716        1e+06        0.56703
+    10         729      9.68645e+09          0.0127        1e+07       0.319859
+    11         794      9.68596e+09          0.0121        1e+06       0.296324
+    12         860      9.68548e+09           0.014        1e+07       0.223535
+    13         925      9.68515e+09          0.0106        1e+06       0.289434
+    14         991      9.68481e+09          0.0258        1e+07       0.266033
+    15        1056       9.6844e+09          0.0156        1e+06       0.154377
+    16        1122      9.68425e+09          0.0122        1e+07       0.266474
+    17        1187      9.68404e+09        7.56e-06        1e+06        0.40951
+    18        1253      9.68386e+09         6.5e-06        1e+07       0.376471
+    19        1319      9.68382e+09          0.0107        1e+08      0.0631243
+    20        1384      9.68381e+09          0.0185        1e+07      0.0251265
+    21        1449      9.68359e+09          0.0192        1e+06       0.190347
+    22        1515      9.68339e+09          0.0131        1e+07       0.195066
+    23        1580      9.68319e+09          0.0156        1e+06       0.260977
+    24        1646      9.68289e+09          0.0171        1e+07       0.225893
+    25        1715      9.68289e+09           0.017        1e+11    1.69222e-05
+    26        1760                                                 3.07629e-50
+
+Optimization stopped because the relative norm of the current step, 2.222443e-51,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6383
+        gaussianWidth: 39.2015
+    stimulusRemapping: [0.7791 0.7821 1.3555 1.6344 1.3427 0.9854 1.6728 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8402e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.0089    1.0679    1.4348    1.4315    1.1859    1.5297    1.5991
+
+  Columns 8 through 14
+
+    1.7209    1.3064    1.4044    1.8228    1.5871    1.7065    1.5106
+
+  Columns 15 through 21
+
+    1.8301    1.7207    1.8663    1.2034    1.2985    1.4758    1.4936
+
+  Columns 22 through 28
+
+    1.6077    1.8189    1.5277    1.9392    1.7234    1.1788    1.6197
+
+  Columns 29 through 35
+
+    1.5623    1.7634    1.8066    1.2986    1.1384    1.6354    1.0083
+
+  Columns 36 through 42
+
+    1.7886    1.5021    1.9971    1.9840    1.2271    1.8500    1.8128
+
+  Columns 43 through 49
+
+    1.2361    1.6569    1.9772    1.7316    1.0956    1.5006    1.4624
+
+  Columns 50 through 56
+
+    1.0007    1.9889    1.8776    1.2172    1.6054    1.4720    1.3591
+
+  Columns 57 through 63
+
+    1.5293    1.5648    1.8335    1.0628    1.6064    1.5036    1.1603
+
+  Column 64
+
+    1.1454
+
+   1.0274e+05
+
+Elapsed time is 0.104619 seconds.
+   1.0274e+05
+
+Elapsed time is 0.105660 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.05561e+10        6.13e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02054e+10        6.99e-09        1e+09       0.453965
+     2         206      1.00081e+10        1.09e-08        1e+08        0.34766
+     3         272      9.88934e+09         1.1e-08        1e+09       0.258756
+     4         337      9.81308e+09        1.23e-08        1e+08       0.213879
+     5         403      9.76616e+09        1.43e-08        1e+09       0.168699
+     6         468      9.73606e+09        1.57e-08        1e+08       0.139601
+     7         534      9.71687e+09        1.69e-08        1e+09        0.11372
+     8         599      9.70455e+09        1.88e-08        1e+08      0.0935092
+     9         665      9.69664e+09        2.15e-08        1e+09      0.0774065
+    10         730      9.69161e+09         2.5e-08        1e+08      0.0643869
+    11         796      9.68846e+09        2.98e-08        1e+09      0.0537631
+    12         861      9.68653e+09        3.47e-08        1e+08      0.0450492
+    13         927      9.68539e+09        3.76e-08        1e+09      0.0378806
+    14         992      9.68475e+09        4.14e-08        1e+08      0.0319697
+    15        1058      9.68444e+09        4.57e-08        1e+09      0.0270837
+    16        1123      9.68432e+09        5.06e-08        1e+08      0.0230318
+    17        1190      9.68431e+09        5.11e-08        1e+10     0.00196591
+    18        1255      9.68431e+09        5.16e-08        1e+09     0.00193761
+    19        1321      9.68431e+09        5.21e-08        1e+10     0.00190977
+    20        1386       9.6843e+09        5.26e-08        1e+09     0.00188236
+    21        1452       9.6843e+09        5.31e-08        1e+10      0.0018554
+    22        1517       9.6843e+09        5.36e-08        1e+09     0.00182886
+    23        1584       9.6843e+09        5.37e-08        1e+11    0.000180275
+    24        1649       9.6843e+09        5.37e-08        1e+10    0.000180018
+    25        1715       9.6843e+09        5.38e-08        1e+11    0.000179762
+    26        1780       9.6843e+09        5.39e-08        1e+10    0.000179505
+    27        1847       9.6843e+09        5.39e-08        1e+12     1.7925e-05
+    28        1912       9.6843e+09        5.39e-08        1e+11    1.79224e-05
+    29        1978       9.6843e+09        5.39e-08        1e+12    1.79199e-05
+    30        2043       9.6843e+09        5.39e-08        1e+11    1.79173e-05
+    31        2109       9.6843e+09        5.39e-08        1e+12    1.79148e-05
+    32        2176       9.6843e+09        5.39e-08        1e+14    1.79122e-07
+    33        2241       9.6843e+09        5.39e-08        1e+13    1.79122e-07
+    34        2307       9.6843e+09        5.39e-08        1e+14    1.79121e-07
+    35        2372       9.6843e+09        5.39e-08        1e+13    1.79121e-07
+    36        2438       9.6843e+09        5.39e-08        1e+14    1.79121e-07
+    37        2463                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.6383
+        gaussianWidth: 39.2015
+    stimulusRemapping: [0.7791 0.7821 1.3555 1.6344 1.3427 0.9854 1.6728 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8409e+04
+
+
+x0 =
+
+    0.0763
+    0.7799
+    0.4384
+    0.7235
+    0.9780
+    0.5385
+    0.5011
+    0.0721
+    0.2684
+    0.4999
+    0.6792
+    0.8037
+    0.3809
+    0.0659
+    0.2881
+    0.9096
+    0.2134
+    0.4521
+    0.9312
+    0.0249
+    0.6005
+    0.9501
+    0.2303
+    0.5485
+    0.9091
+    0.1332
+    0.5234
+    0.7504
+    0.6690
+    0.4678
+    0.2048
+    0.4908
+    0.3724
+    0.4774
+    0.3659
+    0.8379
+    0.7686
+    0.3140
+    0.5726
+    0.2760
+    0.4528
+    0.3530
+    0.6574
+    0.3704
+    0.4591
+    0.7193
+    0.4130
+    0.9064
+    0.1805
+    0.7411
+    0.4224
+    0.4265
+    0.6344
+    0.5229
+    0.4149
+    0.0014
+    0.0923
+    0.7094
+    0.5243
+    0.6962
+    0.9555
+    0.6829
+    0.0531
+    0.3089
+
+   1.3098e+05
+
+Elapsed time is 0.141782 seconds.
+   1.3098e+05
+
+Elapsed time is 0.137933 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          130985               1                              Uncertainty test
+     0           3          120992               1            Initial mesh      
+     1           4          112742               1         Successful poll      Train (failed)
+     2           5          102999               1    Successful search (ES-wcm)      
+     2           6         98471.6               1    Successful search (ES-wcm)      
+     2          11         98471.6             0.5             Refine grid      
+     3          16         98471.6            0.25             Refine grid      Train
+     4          21         98471.6           0.125             Refine grid      
+     5          24         98357.5           0.125    Successful search (ES-wcm)      
+     5          25         98357.5           0.125    Incremental search (ES-wcm)      
+     5          29         98357.5          0.0625             Refine grid      
+     6          30         98357.5          0.0625    Incremental search (ES-ell)      
+     6          34         98357.5         0.03125             Refine grid      Train (failed)
+     7          39         98357.5        0.015625             Refine grid      
+     8          44         98357.5      0.00390625             Refine grid      Train
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98357.5.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5543
+        gaussianWidth: 39.2015
+    stimulusRemapping: [0.7791 0.7821 1.3555 1.6344 1.3427 0.9854 1.6728 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8358e+04
+
+
+x0 =
+
+   44.6537
+
+   1.2083e+05
+
+Elapsed time is 0.104915 seconds.
+   1.2083e+05
+
+Elapsed time is 0.103911 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          120820               1                              Uncertainty test
+     0           3          100680               1            Initial mesh      
+     1           4          100680             0.5             Refine grid      Train (failed)
+     2           5           99099             0.5    Successful search (ES-ell)      
+     2           6         98375.8             0.5    Successful search (ES-ell)      
+     2           7         98375.2             0.5    Successful search (ES-ell)      
+     2          12         98375.2            0.25             Refine grid      
+     3          13         98360.5            0.25    Successful search (ES-ell)      
+     3          20         98360.5           0.125             Refine grid      
+     4          25         98360.5          0.0625             Refine grid      Train (failed)
+     5          30         98360.5         0.03125             Refine grid      
+     6          35         98360.5       0.0078125             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98360.5.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5543
+        gaussianWidth: 36.5534
+    stimulusRemapping: [0.7791 0.7821 1.3555 1.6344 1.3427 0.9854 1.6728 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8360e+04
+
+
+x0 =
+
+  193.4389
+
+   1.0016e+05
+
+Elapsed time is 0.115071 seconds.
+   1.0016e+05
+
+Elapsed time is 0.115908 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.00314e+10        0.000615         0.01
+     1         139      9.70319e+09          0.0018        1e+07        5.66208
+     2         205      9.69607e+09         0.00256        1e+08       0.200351
+     3         270      9.69219e+09         0.00277        1e+07       0.149166
+     4         335      9.69213e+09         0.00187        1e+06        1.20154
+     5         401      9.68191e+09         0.00832        1e+07        1.20319
+     6         466      9.67992e+09         0.00889        1e+06       0.488721
+     7         532      9.67906e+09         0.00844        1e+07       0.312655
+     8         598      9.67902e+09          0.0158        1e+08      0.0410746
+     9         663      9.67893e+09          0.0203        1e+07      0.0216183
+    10         728      9.67839e+09          0.0164        1e+06       0.199268
+    11         794      9.67782e+09         0.00609        1e+07       0.212092
+    12         860      9.67774e+09          0.0085        1e+08      0.0478995
+    13         925      9.67772e+09          0.0125        1e+07      0.0361205
+    14         990      9.67742e+09          0.0127        1e+06       0.273285
+    15        1056      9.67709e+09           0.011        1e+07        0.27412
+    16        1121      9.67683e+09         0.00977        1e+06       0.281882
+    17        1187      9.67681e+09         0.00644        1e+07       0.301813
+    18        1253      9.67655e+09         0.00685        1e+08      0.0382574
+    19        1318      9.67633e+09         0.00736        1e+07      0.0364436
+    20        1384      9.67621e+09         0.00819        1e+08      0.0294044
+    21        1449      9.67607e+09         0.00832        1e+07      0.0302958
+    22        1515      9.67598e+09           0.012        1e+08      0.0263807
+    23        1580      9.67598e+09          0.0147        1e+07      0.0206096
+    24        1645      9.67581e+09          0.0102        1e+06       0.226112
+    25        1711      9.67546e+09           0.022        1e+07       0.395942
+    26        1776      9.67517e+09          0.0133        1e+06       0.164852
+    27        1842      9.67494e+09          0.0217        1e+07       0.249996
+    28        1907      9.67467e+09          0.0156        1e+06       0.158467
+    29        1973      9.67446e+09        1.31e-05        1e+07       0.176492
+    30        2038      9.67441e+09          0.0169        1e+06       0.327839
+    31        2104      9.67419e+09          0.0083        1e+07       0.179623
+    32        2170      9.67408e+09          0.0115        1e+08      0.0343117
+    33        2235      9.67401e+09          0.0135        1e+07      0.0233071
+    34        2301      9.67396e+09          0.0126        1e+08      0.0160199
+    35        2366      9.67395e+09          0.0318        1e+07      0.0197582
+    36        2431      9.67378e+09          0.0119        1e+06       0.138286
+    37        2497      9.67371e+09          0.0159        1e+07        0.23224
+    38        2562      9.67345e+09        1.04e-05        1e+06       0.217929
+    39        2628      9.67341e+09           0.018        1e+07       0.280963
+    40        2693      9.67329e+09          0.0239        1e+06       0.167754
+    41        2759      9.67321e+09         0.00892        1e+07       0.162777
+    42        2825      9.67312e+09           0.013        1e+08      0.0277273
+    43        2890      9.67305e+09        1.02e-05        1e+07      0.0174288
+    44        2956        9.673e+09        1.09e-05        1e+08      0.0285483
+    45        3022      9.67299e+09        9.21e-06        1e+09     0.00363487
+    46        3049                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5543
+        gaussianWidth: 36.5534
+    stimulusRemapping: [1.1785 0.6037 0.9946 1.6948 1.3002 0.7201 1.2516 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8351e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.6184    1.4761    1.4042    1.7419    1.8259    1.6832    1.1393
+
+  Columns 8 through 14
+
+    1.7028    1.0588    1.1927    1.9248    1.4051    1.1483    1.6823
+
+  Columns 15 through 21
+
+    1.1635    1.6482    1.2516    1.0414    1.9587    1.0662    1.5129
+
+  Columns 22 through 28
+
+    1.3413    1.6600    1.8444    1.6039    1.5872    1.1170    1.7105
+
+  Columns 29 through 35
+
+    1.2045    1.4904    1.0366    1.3154    1.8630    1.5585    1.5467
+
+  Columns 36 through 42
+
+    1.3678    1.8282    1.2764    1.1257    1.5628    1.2673    1.7750
+
+  Columns 43 through 49
+
+    1.1794    1.7833    1.6080    1.0417    1.5613    1.6681    1.9384
+
+  Columns 50 through 56
+
+    1.7860    1.7504    1.4971    1.0427    1.8169    1.0136    1.5500
+
+  Columns 57 through 63
+
+    1.5668    1.1129    1.0628    1.5747    1.4855    1.3014    1.0398
+
+  Column 64
+
+    1.6339
+
+   1.0291e+05
+
+Elapsed time is 0.114749 seconds.
+   1.0291e+05
+
+Elapsed time is 0.105203 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65       1.0591e+10        8.39e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02518e+10        7.16e-09        1e+09       0.428627
+     2         206      1.00455e+10        7.56e-09        1e+08       0.338616
+Objective function returned NaN; trying a new point...
+     3         272      9.91285e+09        7.56e-09        1e+09        0.27262
+     4         337      9.82792e+09           1e-08        1e+08       0.223334
+     5         402      9.81181e+09        1.33e-08        1e+07        1.72344
+Objective function returned NaN; trying a new point...
+     6         469      9.76213e+09        1.58e-08        1e+09       0.163328
+     7         534      9.73142e+09         1.8e-08        1e+08       0.129829
+     8         599      9.73023e+09        1.45e-08        1e+07        1.00981
+Objective function returned NaN; trying a new point...
+     9         666      9.70907e+09        1.77e-08        1e+09       0.105743
+    10         731      9.69573e+09         2.2e-08        1e+08      0.0889842
+    11         797      9.68764e+09        2.76e-08        1e+09      0.0699478
+    12         862      9.68274e+09         3.5e-08        1e+08      0.0549815
+    13         928      9.67978e+09        4.46e-08        1e+09      0.0432177
+    14         993      9.67801e+09        5.71e-08        1e+08      0.0339825
+    15        1059      9.67694e+09        7.33e-08        1e+09      0.0267419
+    16        1124      9.67631e+09        9.42e-08        1e+08      0.0210698
+    17        1190      9.67593e+09        1.19e-07        1e+09      0.0166275
+    18        1255      9.67571e+09        1.43e-07        1e+08      0.0131468
+    19        1321      9.67559e+09        1.73e-07        1e+09       0.010417
+    20        1386      9.67552e+09        2.08e-07        1e+08     0.00827325
+    21        1452      9.67549e+09        2.51e-07        1e+09     0.00658677
+    22        1517      9.67547e+09        3.03e-07        1e+08     0.00525742
+    23        1583      9.67547e+09        3.65e-07        1e+09     0.00420731
+    24        1610                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5543
+        gaussianWidth: 36.5534
+    stimulusRemapping: [1.1785 0.6037 0.9946 1.6948 1.3002 0.7201 1.2516 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8364e+04
+
+
+x0 =
+
+    0.4360
+    0.0259
+    0.5497
+    0.4353
+    0.4204
+    0.3303
+    0.2046
+    0.6193
+    0.2997
+    0.2668
+    0.6211
+    0.5291
+    0.1346
+    0.5136
+    0.1844
+    0.7853
+    0.8540
+    0.4942
+    0.8466
+    0.0796
+    0.5052
+    0.0653
+    0.4281
+    0.0965
+    0.1272
+    0.5967
+    0.2260
+    0.1069
+    0.2203
+    0.3498
+    0.4678
+    0.2017
+    0.6404
+    0.4831
+    0.5052
+    0.3869
+    0.7936
+    0.5800
+    0.1623
+    0.7008
+    0.9646
+    0.5000
+    0.8895
+    0.3416
+    0.5671
+    0.4275
+    0.4367
+    0.7766
+    0.5356
+    0.9537
+    0.5442
+    0.0821
+    0.3663
+    0.8509
+    0.4063
+    0.0272
+    0.2472
+    0.0671
+    0.9939
+    0.9706
+    0.8003
+    0.6018
+    0.7650
+    0.1692
+
+   1.2838e+05
+
+Elapsed time is 0.129955 seconds.
+   1.2838e+05
+
+Elapsed time is 0.144614 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          128383               1                              Uncertainty test
+     0           3          105320               1            Initial mesh      
+     1           4          105320             0.5             Refine grid      Train (failed)
+     2           6         98397.6             0.5    Successful search (ES-ell)      
+     2          12         98397.6            0.25             Refine grid      
+     3          17         98397.6           0.125             Refine grid      
+     4          22         98397.6          0.0625             Refine grid      
+     5          24         98356.6          0.0625    Successful search (ES-ell)      
+     5          30         98356.6         0.03125             Refine grid      
+     6          35         98356.6        0.015625             Refine grid      Train (failed)
+     7          40         98356.6       0.0078125             Refine grid      
+     8          41         98356.6       0.0078125    Incremental search (ES-ell)      
+     8          45         98356.6      0.00195312             Refine grid      Train (failed)
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98356.6.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5238
+        gaussianWidth: 36.5534
+    stimulusRemapping: [1.1785 0.6037 0.9946 1.6948 1.3002 0.7201 1.2516 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8357e+04
+
+
+x0 =
+
+   27.5848
+
+   1.0461e+05
+
+Elapsed time is 0.110724 seconds.
+   1.0461e+05
+
+Elapsed time is 0.115478 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          104626               1                              Uncertainty test
+     0           3          104626               1            Initial mesh      
+     1           4          104626             0.5             Refine grid      Train (failed)
+     2           5         98669.5             0.5    Successful search (ES-wcm)      
+     2           6         98414.4             0.5    Successful search (ES-wcm)      
+     2          12         98414.4            0.25             Refine grid      
+     3          13         98375.5            0.25    Successful search (ES-wcm)      
+     3          20         98375.5           0.125             Refine grid      
+     4          25         98375.5          0.0625             Refine grid      Train
+     5          26         98359.3          0.0625    Successful search (ES-wcm)      
+     5          28         98354.2          0.0625    Successful search (ES-wcm)      
+     5          31         98351.9          0.0625    Successful search (ES-wcm)      
+     5          33         98351.9          0.0625    Incremental search (ES-wcm)      
+     5          36         98351.9         0.03125             Refine grid      
+     6          41         98351.9        0.015625             Refine grid      
+     7          46         98351.9       0.0078125             Refine grid      
+     8          51         98351.9      0.00195312             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98351.9.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5238
+        gaussianWidth: 37.3952
+    stimulusRemapping: [1.1785 0.6037 0.9946 1.6948 1.3002 0.7201 1.2516 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8352e+04
+
+
+x0 =
+
+   83.9874
+
+   1.0008e+05
+
+Elapsed time is 0.111345 seconds.
+   1.0008e+05
+
+Elapsed time is 0.119900 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.00151e+10        0.000727         0.01
+     1         139      9.73772e+09         0.00125        1e+07         4.6909
+     2         204      9.68669e+09         0.00409        1e+06        2.60302
+     3         270      9.68574e+09         0.00333        1e+07       0.858548
+     4         335      9.68322e+09         0.00345        1e+06       0.969792
+     5         402      9.68165e+09         0.00448        1e+08      0.0987167
+     6         467      9.68048e+09         0.00731        1e+07      0.0804295
+     7         532      9.67962e+09         0.00666        1e+06       0.583966
+     8         598       9.6779e+09          0.0153        1e+07       0.418277
+     9         663      9.67719e+09           0.012        1e+06       0.238524
+    10         729      9.67678e+09          0.0157        1e+07       0.315319
+    11         794      9.67653e+09          0.0178        1e+06       0.223849
+    12         860      9.67627e+09          0.0147        1e+07       0.226459
+    13         925      9.67611e+09          0.0111        1e+06       0.300683
+    14         991      9.67571e+09          0.0258        1e+07       0.242434
+    15        1056      9.67547e+09          0.0327        1e+06       0.144147
+    16        1122      9.67531e+09          0.0185        1e+07       0.124579
+    17        1187      9.67518e+09          0.0152        1e+06       0.244226
+    18        1253      9.67495e+09           0.022        1e+07       0.245307
+    19        1318      9.67481e+09           0.016        1e+06       0.154371
+    20        1384      9.67473e+09          0.0193        1e+07       0.217825
+    21        1449      9.67465e+09           0.025        1e+06        0.24205
+    22        1515       9.6745e+09          0.0265        1e+07       0.170798
+    23        1580      9.67432e+09          0.0275        1e+06       0.119972
+    24        1646      9.67426e+09          0.0402        1e+07       0.111117
+    25        1711       9.6741e+09         2.7e-05        1e+06      0.0979954
+    26        1777      9.67406e+09          0.0195        1e+07        0.24414
+    27        1842      9.67397e+09        1.37e-05        1e+06       0.222529
+    28        1908      9.67396e+09          0.0177        1e+07       0.407381
+    29        1974      9.67392e+09          0.0191        1e+08      0.0179462
+    30        2040      9.67391e+09          0.0169        1e+09     0.00154094
+    31        2066                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5238
+        gaussianWidth: 37.3952
+    stimulusRemapping: [0.4920 1.0992 1.5001 1.6940 1.8850 0.9883 1.9836 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8356e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.0500    1.5359    1.6638    1.5149    1.9446    1.5866    1.9034
+
+  Columns 8 through 14
+
+    1.1375    1.1393    1.8074    1.3977    1.1654    1.9275    1.3478
+
+  Columns 15 through 21
+
+    1.7508    1.7260    1.8833    1.6237    1.7509    1.3489    1.2699
+
+  Columns 22 through 28
+
+    1.8959    1.4281    1.9648    1.6634    1.6217    1.1147    1.9495
+
+  Columns 29 through 35
+
+    1.4499    1.5784    1.4081    1.2370    1.9034    1.5737    1.0029
+
+  Columns 36 through 42
+
+    1.6171    1.3266    1.5271    1.8859    1.3573    1.9085    1.6234
+
+  Columns 43 through 49
+
+    1.0158    1.9294    1.6909    1.9973    1.1723    1.1371    1.9326
+
+  Columns 50 through 56
+
+    1.6968    1.0660    1.7555    1.7539    1.9230    1.7115    1.1243
+
+  Columns 57 through 63
+
+    1.0199    1.0262    1.0283    1.2462    1.8600    1.5388    1.5528
+
+  Column 64
+
+    1.8420
+
+   1.0284e+05
+
+Elapsed time is 0.104688 seconds.
+   1.0284e+05
+
+Elapsed time is 0.109613 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.05759e+10        8.09e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02445e+10        6.98e-09        1e+09       0.426781
+     2         206      1.00397e+10        7.44e-09        1e+08       0.337403
+Objective function returned NaN; trying a new point...
+     3         272      9.90821e+09        7.45e-09        1e+09       0.272438
+     4         337      9.82472e+09        1.01e-08        1e+08       0.222256
+     5         402      9.80628e+09        1.32e-08        1e+07        1.70722
+Objective function returned NaN; trying a new point...
+     6         469      9.75736e+09        1.59e-08        1e+09       0.161245
+     7         534      9.72733e+09        1.81e-08        1e+08       0.128313
+     8         599        9.726e+09         1.5e-08        1e+07       0.994335
+Objective function returned NaN; trying a new point...
+     9         666      9.70567e+09        1.85e-08        1e+09       0.104312
+    10         731      9.69289e+09         2.3e-08        1e+08      0.0876055
+    11         797      9.68512e+09         2.9e-08        1e+09       0.068911
+    12         862      9.68041e+09        3.68e-08        1e+08      0.0542195
+    13         928      9.67756e+09        4.69e-08        1e+09      0.0426653
+    14         993      9.67584e+09        5.99e-08        1e+08       0.033585
+    15        1059       9.6748e+09        7.68e-08        1e+09      0.0264565
+    16        1124      9.67418e+09        9.85e-08        1e+08      0.0208645
+    17        1190       9.6738e+09        1.23e-07        1e+09      0.0164789
+    18        1255      9.67359e+09        1.49e-07        1e+08      0.0130383
+    19        1321      9.67346e+09        1.79e-07        1e+09       0.010337
+    20        1386      9.67339e+09        2.16e-07        1e+08     0.00821356
+    21        1452      9.67335e+09         2.6e-07        1e+09     0.00654173
+    22        1517      9.67333e+09        3.13e-07        1e+08     0.00522306
+    23        1583      9.67332e+09        3.77e-07        1e+09     0.00418081
+    24        1648      9.67332e+09        4.54e-07        1e+08      0.0033552
+    25        1676                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5238
+        gaussianWidth: 37.3952
+    stimulusRemapping: [0.4920 1.0992 1.5001 1.6940 1.8850 0.9883 1.9836 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8353e+04
+
+
+x0 =
+
+    0.4360
+    0.0259
+    0.5497
+    0.4353
+    0.4204
+    0.3303
+    0.2046
+    0.6193
+    0.2997
+    0.2668
+    0.6211
+    0.5291
+    0.1346
+    0.5136
+    0.1844
+    0.7853
+    0.8540
+    0.4942
+    0.8466
+    0.0796
+    0.5052
+    0.0653
+    0.4281
+    0.0965
+    0.1272
+    0.5967
+    0.2260
+    0.1069
+    0.2203
+    0.3498
+    0.4678
+    0.2017
+    0.6404
+    0.4831
+    0.5052
+    0.3869
+    0.7936
+    0.5800
+    0.1623
+    0.7008
+    0.9646
+    0.5000
+    0.8895
+    0.3416
+    0.5671
+    0.4275
+    0.4367
+    0.7766
+    0.5356
+    0.9537
+    0.5442
+    0.0821
+    0.3663
+    0.8509
+    0.4063
+    0.0272
+    0.2472
+    0.0671
+    0.9939
+    0.9706
+    0.8003
+    0.6018
+    0.7650
+    0.1692
+
+   1.2837e+05
+
+Elapsed time is 0.133881 seconds.
+   1.2837e+05
+
+Elapsed time is 0.135326 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 44) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          128367               1                              Uncertainty test
+     0           3          105394               1            Initial mesh      
+     1           4          105394             0.5             Refine grid      Train (failed)
+     2           6         98396.7             0.5    Successful search (ES-ell)      
+     2          12         98396.7            0.25             Refine grid      
+     3          15         98396.4            0.25    Successful search (ES-ell)      
+     3          16           98396            0.25    Successful search (ES-ell)      
+     3          17         98395.7            0.25    Successful search (ES-ell)      
+     3          20         98395.4            0.25    Successful search (ES-ell)      
+     3          21           98395            0.25    Successful search (ES-ell)      
+     3          24         98394.7            0.25    Successful search (ES-wcm)      
+     3          26         98394.3            0.25    Successful search (ES-wcm)      
+     3          30           98394            0.25    Successful search (ES-ell)      
+     3          32         98393.7            0.25    Successful search (ES-wcm)      
+     3          34         98393.3            0.25    Successful search (ES-wcm)      
+     3          35           98393            0.25    Successful search (ES-ell)      
+     3          39         98392.7            0.25    Successful search (ES-wcm)      
+     3          42         98392.3            0.25    Successful search (ES-wcm)      
+     3          43           98392            0.25    Successful search (ES-wcm)      
+     3          47         98391.7            0.25    Successful search (ES-wcm)      
+     3          48         98391.4            0.25    Successful search (ES-ell)      
+     3          49           98391            0.25    Successful search (ES-ell)      
+     3          50         98390.7            0.25    Successful search (ES-ell)      
+     3          53         98390.4            0.25    Successful search (ES-wcm)      
+     3          55         98390.1            0.25    Successful search (ES-wcm)      
+     3          57         98389.8            0.25    Successful search (ES-ell)      
+     3          58         98389.4            0.25    Successful search (ES-ell)      
+     3          61         98389.1            0.25    Successful search (ES-wcm)      
+     3          64         98388.8            0.25    Successful search (ES-ell)      
+     3          66         98388.5            0.25    Successful search (ES-ell)      
+     3          67         98388.2            0.25    Successful search (ES-ell)      
+     3          70         98387.9            0.25    Successful search (ES-ell)      
+     3          71         98387.6            0.25    Successful search (ES-ell)      
+     3          74         98387.3            0.25    Successful search (ES-ell)      
+     3          77         98386.9            0.25    Successful search (ES-ell)      
+     3          78         98386.6            0.25    Successful search (ES-wcm)      
+     3          81         98386.3            0.25    Successful search (ES-wcm)      
+     3          83           98386            0.25    Successful search (ES-wcm)      
+     3          85         98385.7            0.25    Successful search (ES-ell)      
+     3          86         98385.4            0.25    Successful search (ES-wcm)      
+     3          87         98385.1            0.25    Successful search (ES-wcm)      
+     3          88         98384.8            0.25    Successful search (ES-wcm)      
+     3          89         98384.5            0.25    Successful search (ES-wcm)      
+     3          90         98383.7            0.25    Successful search (ES-wcm)      
+     3          95         98383.7           0.125             Refine grid      Train
+     4          96         98374.3           0.125    Successful search (ES-wcm)      
+     4          99         98353.5           0.125    Successful search (ES-wcm)      
+     4         106         98353.5          0.0625             Refine grid      Train
+     5         111         98353.5         0.03125             Refine grid      
+     6         116         98353.5        0.015625             Refine grid      Train
+     7         118         98352.4        0.015625    Successful search (ES-ell)      
+     7         124         98352.4       0.0078125             Refine grid      Train (failed)
+     8         126         98352.4       0.0078125    Successful search (ES-ell)      
+     8         132         98352.4      0.00390625             Refine grid      
+     9         137         98352.4      0.00195312             Refine grid      
+    10         142         98352.4     0.000976562             Refine grid      
+    11         147         98352.4     0.000244141             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98352.4.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5325
+        gaussianWidth: 37.3952
+    stimulusRemapping: [0.4920 1.0992 1.5001 1.6940 1.8850 0.9883 1.9836 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8352e+04
+
+
+x0 =
+
+   27.5848
+
+   1.0937e+05
+
+Elapsed time is 0.126606 seconds.
+   1.0937e+05
+
+Elapsed time is 0.120836 seconds.
+Warning: Plausible lower/upper bounds PLB and/or PUB not specified. Using hard
+upper/lower bounds instead. 
+> In boundscheck (line 13)
+In bads (line 349)
+In ParameterEstimator (line 202)
+In ParameterEstimator_caller (line 61) 
+Variables (index) internally transformed to log coordinates: 1.
+Beginning optimization of a DETERMINISTIC objective fcn.
+ Iteration    f-count         f(x)           MeshScale          Method          Actions
+     0           2          109367               1                              Uncertainty test
+     0           3          109367               1            Initial mesh      
+     1           4          108200               1         Successful poll      Train (failed)
+     2           5         99661.5               1    Successful search (ES-wcm)      
+     2           6         99083.8               1    Successful search (ES-wcm)      
+     2           7         98978.5               1    Successful search (ES-wcm)      
+     2           8         98923.1               1    Successful search (ES-wcm)      
+     2           9         98880.4               1    Successful search (ES-ell)      
+     2          10         98859.6               1    Successful search (ES-wcm)      
+     2          11         98829.1               1    Successful search (ES-ell)      
+     2          12         98799.5               1    Successful search (ES-ell)      
+     2          13         98789.8               1    Successful search (ES-ell)      
+     2          17         98789.8             0.5             Refine grid      
+     3          22         98789.8            0.25             Refine grid      
+     4          24         98782.6            0.25    Successful search (ES-wcm)      
+     4          25         98352.7            0.25    Successful search (ES-wcm)      
+     4          27         98352.1            0.25    Successful search (ES-wcm)      
+     4          33         98352.1           0.125             Refine grid      
+     5          38         98352.1          0.0625             Refine grid      
+     6          43         98352.1         0.03125             Refine grid      
+     7          48         98352.1       0.0078125             Refine grid      
+
+Optimization terminated: change in the function value less than OPTIONS.TolFun.
+Function value at minimum: 98352.1.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5325
+        gaussianWidth: 37.6329
+    stimulusRemapping: [0.4920 1.0992 1.5001 1.6940 1.8850 0.9883 1.9836 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8352e+04
+
+
+x0 =
+
+  110.6088
+
+   1.0015e+05
+
+Elapsed time is 0.111186 seconds.
+   1.0015e+05
+
+Elapsed time is 0.119952 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 78) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.00302e+10        0.000612         0.01
+     1         139      9.70582e+09         0.00155        1e+07         5.7439
+     2         205      9.69727e+09         0.00218        1e+08       0.220905
+     3         270      9.69262e+09         0.00291        1e+07       0.161824
+     4         335      9.69231e+09          0.0019        1e+06        1.22301
+     5         401      9.68154e+09         0.00499        1e+07        1.26796
+     6         466      9.67983e+09          0.0103        1e+06       0.637457
+     7         532      9.67869e+09          0.0136        1e+07       0.336214
+     8         597      9.67797e+09          0.0115        1e+06       0.220217
+     9         663      9.67764e+09          0.0154        1e+07       0.273843
+    10         728      9.67717e+09          0.0199        1e+06       0.211902
+    11         794      9.67674e+09          0.0193        1e+07       0.160835
+    12         859      9.67637e+09          0.0214        1e+06       0.165866
+    13         924       9.6746e+09         0.00826       100000         1.5624
+    14         991      9.67424e+09         0.00709        1e+07       0.155377
+    15        1057      9.67412e+09         0.00938        1e+08      0.0384347
+    16        1122      9.67402e+09          0.0121        1e+07       0.029443
+    17        1187      9.67351e+09          0.0187        1e+06       0.220692
+    18        1253      9.67336e+09          0.0192        1e+07       0.262309
+    19        1318      9.67316e+09          0.0242        1e+06       0.130237
+    20        1384      9.67305e+09          0.0146        1e+07        0.14684
+    21        1452      9.67305e+09          0.0145        1e+10    0.000230129
+    22        1518      9.67305e+09          0.0145        1e+11    2.39288e-05
+    23        1563                                                 5.66699e-50
+
+Optimization stopped because the relative norm of the current step, 4.545283e-51,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5325
+        gaussianWidth: 37.6329
+    stimulusRemapping: [0.9468 0.5188 0.8797 1.6614 1.4808 0.7759 1.3204 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8352e+04
+
+
+x0 =
+
+  Columns 1 through 7
+
+    1.6184    1.4761    1.4042    1.7419    1.8259    1.6832    1.1393
+
+  Columns 8 through 14
+
+    1.7028    1.0588    1.1927    1.9248    1.4051    1.1483    1.6823
+
+  Columns 15 through 21
+
+    1.1635    1.6482    1.2516    1.0414    1.9587    1.0662    1.5129
+
+  Columns 22 through 28
+
+    1.3413    1.6600    1.8444    1.6039    1.5872    1.1170    1.7105
+
+  Columns 29 through 35
+
+    1.2045    1.4904    1.0366    1.3154    1.8630    1.5585    1.5467
+
+  Columns 36 through 42
+
+    1.3678    1.8282    1.2764    1.1257    1.5628    1.2673    1.7750
+
+  Columns 43 through 49
+
+    1.1794    1.7833    1.6080    1.0417    1.5613    1.6681    1.9384
+
+  Columns 50 through 56
+
+    1.7860    1.7504    1.4971    1.0427    1.8169    1.0136    1.5500
+
+  Columns 57 through 63
+
+    1.5668    1.1129    1.0628    1.5747    1.4855    1.3014    1.0398
+
+  Column 64
+
+    1.6339
+
+   1.0294e+05
+
+Elapsed time is 0.171824 seconds.
+   1.0294e+05
+
+Elapsed time is 0.152589 seconds.
+Warning: Trust-region-reflective algorithm requires at least as many equations
+as variables; using Levenberg-Marquardt algorithm instead. 
+> In lsqncommon (line 79)
+In lsqnonlin (line 280)
+In ParameterEstimator (line 204)
+In ParameterEstimator_caller (line 95) 
+
+                                        First-order                     Norm of 
+ Iteration  Func-count      Resnorm      optimality       Lambda           step
+     0          65      1.05966e+10        8.12e-09         0.01
+Objective function returned NaN; trying a new point...
+     1         141      1.02517e+10        6.96e-09        1e+09       0.432884
+     2         206      1.00444e+10        6.82e-09        1e+08       0.339136
+Objective function returned NaN; trying a new point...
+     3         272      9.91073e+09        7.12e-09        1e+09       0.274765
+     4         337      9.82563e+09        9.94e-09        1e+08       0.225355
+     5         402      9.81082e+09        1.31e-08        1e+07        1.72161
+Objective function returned NaN; trying a new point...
+     6         469       9.7592e+09        1.57e-08        1e+09       0.166165
+     7         534      9.72783e+09        1.79e-08        1e+08       0.130827
+     8         599      9.72754e+09         1.4e-08        1e+07        1.00801
+Objective function returned NaN; trying a new point...
+     9         666      9.70606e+09        1.74e-08        1e+09       0.107758
+    10         731      9.69246e+09        2.19e-08        1e+08       0.091076
+    11         797      9.68428e+09        2.79e-08        1e+09      0.0714602
+    12         862      9.67937e+09        3.56e-08        1e+08      0.0560655
+    13         928      9.67643e+09        4.57e-08        1e+09      0.0439832
+    14         993      9.67469e+09        5.87e-08        1e+08      0.0345139
+    15        1059      9.67366e+09        7.53e-08        1e+09      0.0271045
+    16        1124      9.67305e+09         9.7e-08        1e+08      0.0213135
+    17        1190       9.6727e+09         1.2e-07        1e+09      0.0167892
+    18        1255       9.6725e+09        1.45e-07        1e+08      0.0132534
+    19        1321      9.67239e+09        1.74e-07        1e+09      0.0104874
+    20        1386      9.67233e+09         2.1e-07        1e+08     0.00832031
+    21        1452       9.6723e+09        2.53e-07        1e+09     0.00661931
+    22        1517      9.67229e+09        3.05e-07        1e+08     0.00528116
+    23        1584      9.67229e+09         3.1e-07        1e+10    0.000422588
+    24        1649      9.67229e+09        3.15e-07        1e+09    0.000414221
+    25        1715      9.67229e+09        3.21e-07        1e+10    0.000406028
+    26        1780      9.67229e+09        3.26e-07        1e+09    0.000398006
+    27        1847      9.67229e+09        3.27e-07        1e+11    3.90149e-05
+    28        1912      9.67229e+09        3.27e-07        1e+10    3.89379e-05
+    29        1985      9.67229e+09        3.27e-07        1e+18    3.88611e-12
+    30        2003                                                           0
+
+Optimization stopped because the relative norm of the current step, 0.000000e+00,
+is less than options.StepTolerance = 1.000000e-50.
+
+
+currentValues = 
+
+  struct with fields:
+
+               dPrime: 1.5325
+        gaussianWidth: 37.6329
+    stimulusRemapping: [0.9468 0.5188 0.8797 1.6614 1.4808 0.7759 1.3204 … ]
+      skewedGaussians: [64×1 double]
+
+
+aic =
+
+   NaN
+
+
+bic =
+
+   NaN
+
+
+nll_x =
+
+   9.8348e+04
+
+
+x0 =
+
+    0.4360
+    0.0259
+    0.5497
+    0.4353
+    0.4204
+    0.3303
+    0.2046
+    0.6193
+    0.2997
+    0.2668
+    0.6211
+    0.5291
+    0.1346
+    0.5136
+    0.1844
+    0.7853
+    0.8540
+    0.4942
+    0.8466
+    0.0796
+    0.5052
+    0.0653
+    0.4281
+    0.0965
+    0.1272
+    0.5967
+    0.2260
+    0.1069
+    0.2203
+    0.3498
+    0.4678
+    0.2017
+    0.6404
+    0.4831
+    0.5052
+    0.3869
+    0.7936
+    0.5800
+    0.1623
+    0.7008
+    0.9646
+    0.5000
+    0.8895
+    0.3416
+    0.5671
+    0.4275
+    0.4367
+    0.7766
+    0.5356
+    0.9537
+    0.5442
+    0.0821
+    0.3663
+    0.8509
+    0.4063
+    0.0272
+    0.2472
+    0.0671
+    0.9939
+    0.9706
+    0.8003
+    0.6018
+    0.7650
+    0.1692
+
+>> 
