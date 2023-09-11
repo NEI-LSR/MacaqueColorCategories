@@ -10,8 +10,7 @@ end
 
 %%
 
-nBig = 64;
-warning('Assuming nBig == 64')
+nBig = length(x);
 [stimCols,pol] = generateStimCols('nBig',nBig);
 stimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols(1,:);stimCols(2,:)]);
 colvals = im2double(stimCols_sRGB);

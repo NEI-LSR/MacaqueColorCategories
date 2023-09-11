@@ -2,11 +2,11 @@ function plotSimilarityMatrix(x,filename,OutPutFileDir,categoryCenter)
 
 %clear, clc, close all
 
-nBig = 64;
-
 if min(size(x)) == 1 % if we pass a vector rather than a matrix, assume it needs reshaping
+    nBig = sqrt(length(x));
     sm = reshape(x,[nBig, nBig]);
 else
+    nBig = length(x);
     sm = x; % Similarity Matrix
 end
 
@@ -16,7 +16,7 @@ end
 
 %%
 
-stimCols = generateStimCols('nBig',64);
+stimCols = generateStimCols('nBig',nBig);
 
 if exist('categoryCenter','var')
     stimCols = circshift(stimCols,[0,nBig/2-categoryCenter]);
@@ -32,7 +32,7 @@ axis off
 ax1.Box = 'off';
 
 hold on
-plot([1,64],[1,64],'k--')
+plot([1,nBig],[1,nBig],'k--')
 
 if exist('categoryCenter','var') % Add center lines
     xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
@@ -66,7 +66,7 @@ cb2 = colorbar;
 
 lambda = 1:nBig;
 
-stimCols_sRGB = LuvTosRGB([ones(1,64)*76.0693;stimCols]);
+stimCols_sRGB = LuvTosRGB([ones(1,nBig)*76.0693;stimCols]);
 ax = gca;
 ax.Colormap = stimCols_sRGB;
 ax.CLim = [min(lambda) max(lambda)];
