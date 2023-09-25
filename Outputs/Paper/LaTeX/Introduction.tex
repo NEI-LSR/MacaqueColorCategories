@@ -1,30 +1,30 @@
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.49\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/1_ParadigmAnalysisPredictions/epochs230620.svg}
-         \label{fig:epochs}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/chromaticity230804.svg}
+         \label{fig:StimuliChromaticities}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
+    \begin{subfigure}[b]{0.65\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/1_ParadigmAnalysisPredictions/chromaticity230620.svg}
-         \label{fig:StimuliChromaticities}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/epochs230620.svg}
+         \label{fig:epochs}
     \end{subfigure}
 
     \begin{subfigure}[b]{0.49\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/1_ParadigmAnalysisPredictions/bias1-230620.svg}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias1-230620.svg}
          \label{fig:Bias1}
     \end{subfigure}
         \hfill
     \begin{subfigure}[b]{0.49\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/1_ParadigmAnalysisPredictions/bias2-230620.svg}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias2-230620.svg}
          \label{fig:Bias2}
     \end{subfigure}
     \caption{\textbf{4-Alternative Forced Choice (4-AFC), Delayed Match to Sample Paradigm.}
@@ -36,24 +36,199 @@
     
 \end{figure}
 
-Color categorization appears to be a universal human phenomenon. 
-Widespread variability in culture-specific color terminology suggests that color categories are linguistic in nature; however, fundamental similarities in color naming and color categorization across languages suggests that there may be some underlying structure which is universally inherent to human cognition and neurophysiology \citep{berlin_basic_1991,gibson_color_2017}. 
-Studying categories in non-linguistic animals allows us to pick apart the relative contributions of language and innate factors. It has been previously shown that non-linguistic animals can be trained to perform tasks that involve the categorization of color \citep{sandell_color_1979,fagot_cross-species_2006}. What has been unclear is whether these categories are used without explicit externally-motivated training.
+Color categories are identified by color terms, of which the Basic Color Terms are considered prominent {Berlin, 1969 \#1165}. One hypothesis is that among the BCTs, red, green, blue, and yellow are universal {Heider, 1972 \#2762;Regier, 2005 \#8218} and endowed by hard-wired neural mechanisms present at birth {Bornstein, 1976 \#18689;Lindsey, 2006 \#8246}. This idea, put forth 150 years ago {Hering, 1875 \#18572}, predicts observed cross-cultural color naming patterns {Jameson, 2009 \#7488;Baronchelli, 2010 \#8500;Lindsey, 2015 \#8219;Abbott, 2016 \#8474} and is consistent with some neurophysiological results {Clifford, 2009 \#18682;Holmes, 2009 \#18683;Brouwer, 2013 \#6550;Bird, 2014 \#8271;Yang, 2016 \#18693;Forder, 2017 \#10003}. Behavioral work in infants provides perhaps the strongest evidence for a biological origin of color categories {Franklin, 2004 \#18692;Ozturk, 2013 \#6777}; this work suggests that the innate categories may be defined by retinal cone-opponent mechanisms rather than basic colors {Skelton, 2017 \#14994;Maule, 2019 \#18691}.  Another hypothesis is that color categories emerge in development, instructed by language and culture {Roberson, 2005 \#8197;Regier, 2009 \#8250;Cibelli, 2016 \#18503}, and possibly involving an interplay of innate and developmental factors {Kay, 2006 \#18704;Franklin, 2008 \#4562;Regier, 2009 \#8250}. This hypothesis is promoted by variability in color naming patterns across languages and individuals {Davidoff, 1999 \#6901;Roberson, 2000 \#6899;Paramei, 2018 \#16202;Webster, 2002 \#8200}. Current consensus is that some aspect of adult color category behavior is acquired through experience; but the extent to which the origin of color categories is innate remains unresolved {Davidoff, 2009 \#18684;Skelton, 2023 \#18695}. 
 
-% More about Sandell and/or Fagot?
-
-We developed a method to test for evidence of categorical behavior without explicit categorical training, based on a task which has been extensively used in the investigation of working memory: a delayed forced-choice task. % refs 
-In this task, the participant is shown a colored circle on screen, which they remember the color of, and then after a delay, they select a circle of matching color from a set of differently colored circles.
-
-This task has traditionally been used in working memory experiments because color was seen as a simple continuous scale with well-defined perceptual uniformity across the scale. 
-Unfortunately, for working memory researchers, these assumptions have been shown to be ill-founded - \cite{bae_why_2015} found that certain colors were remembered more accurately than others and that responses for certain colors were biased towards other colors.
-The pattern in responses could be accounted for by a model that encoded a memorized color in two distinct ways simultaneously - as a point on a continuous scale and \emph{also} as a member of one of a number of categories that carved up colorspace. 
-For humans they found that a four-category model fit their data well.
-
-In seeking to explain this result, they showed that these categories correspond relatively well with categories identified in a separate experiment (with separate observers) to the categories recovered from people's linguistic categories for color. 
-This shows us that, at least at the population level, there is an apparent correspondence between the location of color category centers and the biases in response.
-It is possible to train macaques on a delayed forced-choice task such as this, thus we are able to use such a task, alongside the theoretical constructs of \cite{bae_why_2015}, to investigate innate use of color categories in macaques.
+One approach to the origin of color categories that sidesteps difficulties working with human infants is studies of trichromatic non-human primates. The few studies on this topic have come to different conclusions: one found color categories in macaques consistent with categories in human adults {Sandell, 1979 \#210}; one tested for a blue-green category boundary and found it in humans but not in baboons {Fagot, 2006 \#18502}; and one found different categories in the two macaques tested, apparently dependent on the animals’ experiences {Panichello, 2019 \#18694}. 
 
 
-% Summary of things to add
-% - TCC
+\paragraph{Measuring color categories in macaque monkeys}
+Addressing the question of color categories in monkeys confronts several challenges. First, how to measure color categories without teaching the animals the categories {Essock, 1977 \#18698;Matsuno, 2004 \#18697}. Second, how to specify the color stimuli {Siuda-Krzywicka, 2019 \#17168}; for example, specifying the colors as wavelengths {Sandell, 1979 \#210} is not appropriate {Davidoff, 2010 \#18699}. Third, how to obtain precise data across the full circle of hues. A match-to-sample paradigm using colors defined in a perceptually uniform color space (Figure 1a) provides a potential solution {Bae, 2015 \#9761;Panichello, 2019 \#18694}.  But to test for consistent color categories across animals, we need not only to ensure precision in the matched colors but also to avoid the possibility of reinforcing biases acquired while the animals perform the task. So, rather than having animals match a cued color to a spot on a continuous ring of colors and occasionally rewarding them for inaccurate matches as in the established paradigm, we adapted it as an alternative-forced-choice task in which a direct match to the cue was available in every trial and the monkeys were only rewarded for making the direct match (Figure 1b). One consequence of the adapted paradigm is that it requires considerable data to satisfactorily sample category performance across the space of colors. Four animals performed the task, completing at total of 299,690 trials over 232 sessions (SI Figure 1).
+
+\begin{figure}
+    \centering
+        \begin{subfigure}[t]{0.36\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/difficulty_combinedData230728-225520.svg}
+         \label{fig:CombinedLinear}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.36\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_linear_230803-001625.svg}
+         \label{fig:CombinedLinear}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.25\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_polar_230803-001626.svg}
+         \label{fig:CombinedPolar}
+    \end{subfigure}
+    \caption{\textbf{Bias as a function of hue, for data collapsed over 4 animals.} 
+    }
+    \label{fig:AvResults}
+\end{figure}
+
+If a monkey has a color category, the category will be captured by the negative slope in a plot of the choice bias (Figure 1c). The approach is data driven so it will recover whatever categories exist; nonetheless, before collecting the data we considered three possibilities. First, that the monkeys would show no color categories, as predicted by the work in baboons {Davidoff, 2010 \#18699} (Figure 1d, top); second, that macaque color categories would correspond to the four main basic color categories, consistent with data in human adults {Bae, 2015 \#9761} (Figure 1d, middle); and third, that macaque color categories would align with the cone-opponent mechanisms predicted by data in human infants{Skelton, 2017 \#14994} (Figure 1d, bottom). The animals performed well on the task, showing an average lapse rate on the easiest trials of X\% (Figure 2a; plots of individual animals in SI Figure 2) and providing clear evidence of choice biases (SI Figure 3). But the recovered color categories analyzed with a mixture model do not support any of the predictions (Figure 2b). Instead, the animals appeared to show two consensus color categories. These categories are not obviously aligned with either of the cone-opponent mechanisms (arrowheads, Figure 2c) but could instead be described as “warm” and “cool” (teal-colored and salmon-colored radiating wedges in Figure 2c; data for individual animals is shown in SI Figure 4).
+
+\paragraph{Two possible explanations for choice biases in macaque monkeys}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{}
+        \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/TCCDemo_sg_Output_fromPreProcessedData_postCombined_MixMod_polar_230731-150119.svg}
+         \label{fig:JustBias}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/TCCDemo_ssnu_fromModelOutput_MixMod_polar_230731-150044.svg}
+         \label{fig:JustColSpace}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/sm_sg_230807-153350.svg}
+         \label{fig:JustBias_subset}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/sm_ssnu_230731-150037.svg}
+         \label{fig:JustColSpace_subset}
+    \end{subfigure}
+
+    % \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/sg_SimilarityFunction_230807-153339.svg}
+    %      %\label{fig:JustBias_subset}
+    % \end{subfigure}
+    % \hfill
+    % \begin{subfigure}[b]{0.45\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/ssnu_SimilarityFunction_230731-150035}\llap{\raisebox{3cm}{\includesvg[pretex=\tiny, width=2.5cm]{../Figures/working/F6_ColSpace/combined_TCC-0att_fullremap-workspace_230510_behaviorally-derived-colorspace_everySecond230818-114423.svg}}} 
+    %      % h/t: https://tex.stackexchange.com/a/89778/169285 
+    %      %\label{fig:JustColSpace_subset}
+    % \end{subfigure}
+        \caption{\textbf{Distinguishing between different sources of bias using TCC models: cognitive bias vs. non-uniformity of stimulus space.} Similarity matrices representing different theoretically driven mechanisms can result in the same average bias value. A mixture model cannot distinguish between these different sources, whereas a TCC model readily can. \ref{fig:JustBias}: an example of how cognitive bias might appear - each row of the matrix is shifted leftwards or rightwards. \ref{fig:JustColSpace}: an example of how non-uniformity in stimulus space might appear - the similarity between each cue and its neighbors is increased or decreased, resulting in an expansion of the higher similarity region of the matrix symmetrically around the negative diagonal for colors which are more similar to their neighbors than average, and a contraction for colors that are less similar to their neighbors than average. \ref{fig:JustBias_subset}: The values representing the similarity function for cue 20 (the row highlighted in red in \ref{fig:JustBias}), with the circular median shown as a vertical dashed line. \ref{fig:JustColSpace_subset}: As in \ref{fig:JustBias_subset} but for \ref{fig:JustColSpace}. Note how the circular median of \emph{both} functions is 25.}
+        \label{fig:TCCDemo}
+        % !! update this to mirror the VSS 2023 poster with the mixture model examples?
+\end{figure}
+
+
+The colors we used were defined by the International Commission on Illumination (CIE) to be approximately perceptually uniform. But it has long been recognized that there may be non-uniformities in the space {Brainard, 2010 \#4684}; some have argued that perceptual uniformity may be task dependent or simply unattainable {Judd, 1970 \#17915}. One might even suppose that if language influences color perception, as stipulated by the Sapir-Whorf hypothesis, then all color spaces generated by human observers could be shaped by language. Could the macaque consensus color categories be attributed not to a true “cognitive” category (Figure 3a) but to unrecognized distortions in the presumed uniform space of colors (Figure 3b)? The central difference in the two explanations can be understood by considering the relationship between two neighboring colors. For the cognitive-bias account, there is an asymmetry between the colors if there is a category center nearby. The color further from the category center will be more likely mistaken for the color closer to the category center than the other way around. Whereas for the non-uniform color space, there is no asymmetry in mismatches between neighboring pairs of colors. If these two colors were more easily confused with eachother than their other neighbors, then on average the response to either would be biased towards a point between them.
+
+To illustrate that the behavioral data could be caused by either a cognitive-bias account or a stimulus-space non-uniformity, we generated two sets of simulated color matching data. One simulation was derived from a uniform space with two color category centers and the other was derived from a distorted color space with two foci of distortion. Both simulations give rise to the same pattern of results when analyzed with a mixture model, and the pattern qualitatively matches the behavioral data (Figure 3c,d; compare these simulations with Figure 2c). So, to tease apart the possible underlying causes of the behavioral results, we developed a generative model based on the Target Confusability Competition (TCC) model {Schurgin, 2020 \#17999}. The key modification of our model is that it does not assume the same underlying similarity function for each color. Instead, the shape of the similarity function can be adjusted to discover the structure underlying the choice biases (by contrast, the TCC model uses an exponential function with additional perceptual noise). We refer to our model as TCC for recovering choice biases (TCC-c) and illustrate the output with a similarity matrix that we describe as “free”, since the similarity function of each color is free to be optimally fit independently of the functions for all other colors, including those next to it. The simulated data for the cognitive-bias account was generated by imposing an asymmetric relationship among pairs of neighboring colors, and the TCC-c model recovers that structure as an asymmetry in the similarity matrix about the diagonal (Figure 3e). The simulated data for the stimulus space non-uniformity account, meanwhile, was generated by imposing symmetric relationships between neighboring pairs of colors but varying the relationship distance between pairs around the color wheel. The TCC-c model recovers this structure as a symmetric bulge about the diagonal (Figure 3f). 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F4_TCCResults/sm_combined_TCC-FreeSimilarityMatrix-workspace_230214cool_230818-111211.svg}
+         %\label{fig:SimilarityMatrixCombined}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F4_TCCResults/sm_combined_TCC-FreeSimilarityMatrix-workspace_230214warm_230818-111210.svg}
+         %\label{fig:SimilarityMatrixCombinedRemapOnly}
+    \end{subfigure}
+    \hfill
+       \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F4_TCCResults/BIC_Combined_230907-051338.svg}
+         %\label{fig:SimilarityMatrixCombinedRemapOnly}
+    \end{subfigure}
+    \caption{\textbf{Free Similarity model fit for combined data from all animals.}
+    Similarity between stimulus $s_i$ and stimulus $s_j$, where one is the cue and one is the choice. This is a ``free'' similarity matrix - in that no particular relationship is pre-supposed between any of the stimuli (such as, for example: closer stimuli will be more similar). This figure can be compared to Figure 1D in \cite{schurgin_psychophysical_2020}, except there the rows are circularly shifted so that the the x-axis becomes the relative distance, rather than the absolute value of the stimulus. % should we just plot it the same way at this stage? It doesn't really make a difference here...
+    % supplementary figure with alternative plotting method?
+    %confidence intervals?!?!?! !!!!!!!!!!!!!!
+    } 
+    \label{fig:TCCOutput}
+\end{figure}
+
+
+To determine which model better explains the macaque behavioral data, we quantitatively compared the free similarity matrix of the macaque behavioral data (Figure 4a, b) with TCC-c models that were constrained to fit using either the cognitive-bias similarity functions, the stimulus space non-uniformity similarity functions, or a combination.  The behavioral data are much better explained by a model that reflects nonuniformities in the color space than by a model that reflects cognitive biases, as quantified by negative log-likelihood and AIC (Figure 4c,d). In fact, the cognitive-bias model does no better than the null hypothesis. These results strongly suggest that macaque monkeys do not have innate color categories. And if the macaque is an accurate model of the human, then the results imply that humans do not have innate color categories either. 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.2\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/SI/SI1_IndiMM/210517--211108_Castor_data_fromPreProcessedData_MixMod_polar_230803-000637.svg}
+         %\label{fig:SimilarityMatrixCombined}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.38\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F5_CastorCogBias/sm_18_230731-150331.svg}
+         %\label{fig:SimilarityMatrixCombinedRemapOnly}
+    \end{subfigure}
+    \hfill
+       \begin{subfigure}[b]{0.38\textwidth}
+         \centering
+         \caption{}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F5_CastorCogBias/BIC_Castor_230907-052020.svg}
+         %\label{fig:SimilarityMatrixCombinedRemapOnly}
+    \end{subfigure}
+    \caption{\textbf{Lorem}
+    Ipsum}
+    \label{fig:IndiDataCogBias}
+\end{figure}
+
+But does the TCC-c model have sufficient sensitivity to discover a cognitive bias should one exist? The data for individual animals shows that it does. By mixture-model analysis, one animal showed not only the two consensus choice biases for “warm” and “cool” but also a strong choice bias for pea green (Figure 5a). The free similarity matrix for the data from this animal shows a asymmetry about the diagonal corresponding to this color (Figure 5b), providing the hallmark of a cognitive color bias that is confirmed by negative log-likelihood and AIC quantification (Figure 5c, d).
+
+
+\begin{figure}[t!] %!!!!!
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{Stimuli in CIELUV \newline\newline}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/colorspace_everySecond230818-114428.svg}
+         \label{fig:CIELUV}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{Stimuli in behaviorally-derived space \newline}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/combined_TCC-0att_fullremap-workspace_230510_behaviorally-derived-colorspace_everySecond230818-114423.svg}
+         \label{fig:MACBEHspace}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \caption{Stimuli sampled in behaviorally-derived space, projected back into CIELUV}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/newEqualSampling230818-170747.svg}
+         \label{fig:UniformStimsInCIELUV}
+    \end{subfigure}
+           \caption{\textbf{A behaviorally-derived colorspace.} Ipsum!}
+        \label{fig:MACBEHcolorspace}
+    
+\end{figure}
+
+
+\paragraph{A perceptually uniform color space unconfounded by language}
+The behavioral data in macaques provide a rare opportunity to reconstruct a perceptually uniform color space unconfounded by language. We computed, empirically, the matrix required to transform the spacing of stimuli such that the macaques would, on average, show no choice bias. When colors evenly sampled from the purportedly uniform CIELu*v* space (Figure 6a) are plotted within this macaque-derived uniform color space, colors around the teal part of the space collect, and to a lesser extent, so do colors in the salmon-peach part of the space (Figure 6b). 
+
+The non-uniformities in the CIE CIELu*v* space implied by these results raise a question about their origin. Given color categories can be learned, as evident in at least one macaque in our study (Figure 5) and two macaques in another study {Panichello, 2019 \#18694}, coupled with the likely possibility that this learning reflects colors of environmental or behavioral relevance, we wondered whether the distortions in the presumed uniform color space could be attributed to the warm and cool color categories manifest in apparently all human cultures {Gibson, 2017 \#9992} and hypothesized to be caused by the non-arbitrary color statistics of objects and backgrounds {Rosenthal, 2018 \#15658}—objects are more likely to be warm colored and backgrounds, cool colored. To test this idea, we ran a simulation in which the macaque uniform color space was used in a color-matching task by an agent with cognitive biases for warm and cool colors defined by the average colors of objects and backgrounds. The resulting similarity space of colors shows a distortion—a non-uniformity—that corresponds to the distortion inferred from the macaque behavioral data. These results provide a plausible mechanism by which the distortions in the color space arise and suggest that all color spaces made by human observers are inexorably impacted by the universally behaviorally relevant categories of warm and cool. 
+
+Left to incorporate: 
+different colorspaces, optimised for different tasks, could exist at different levels of the visual hierarchy. 
+
+Saturation bias
+
+4-Alternative Forced Choice: Human participants
+
