@@ -3,12 +3,12 @@
 
 <svg
    width="197.32681mm"
-   height="68.563469mm"
-   viewBox="0 0 197.32681 68.563469"
+   height="80mm"
+   viewBox="0 0 197.32681 80.000001"
    version="1.1"
    id="svg41033"
-   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
-   sodipodi:docname="epochs.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="epochs230620.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,14 +25,21 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.914906"
-     inkscape:cx="375.99491"
-     inkscape:cy="547.05073"
-     inkscape:window-width="3840"
-     inkscape:window-height="1521"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:cx="374.9019"
+     inkscape:cy="3.8255296"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showguides="true">
+    <sodipodi:guide
+       position="76.057448,74.216162"
+       orientation="0,-1"
+       id="guide1"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <defs
      id="defs41030">
     <clipPath
@@ -963,7 +970,7 @@
      transform="translate(-5.5450645,-3.7469874)">
     <g
        id="g29395"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29397"
          clip-path="url(#clipPath29401)">
@@ -981,7 +988,7 @@
     </g>
     <g
        id="g29419"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29421"
          clip-path="url(#clipPath29425)">
@@ -997,7 +1004,7 @@
     </g>
     <g
        id="g29431"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29433"
          clip-path="url(#clipPath29437)">
@@ -1015,7 +1022,7 @@
     </g>
     <g
        id="g29455"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29457"
          clip-path="url(#clipPath29461)">
@@ -1031,7 +1038,7 @@
     </g>
     <g
        id="g29467"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29469"
          clip-path="url(#clipPath29473)">
@@ -1049,7 +1056,7 @@
     </g>
     <g
        id="g29495"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29497"
          clip-path="url(#clipPath29501)">
@@ -1065,7 +1072,7 @@
     </g>
     <g
        id="g29507"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29509"
          clip-path="url(#clipPath29513)">
@@ -1083,7 +1090,7 @@
     </g>
     <g
        id="g29531"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29533"
          clip-path="url(#clipPath29537)">
@@ -1263,13 +1270,15 @@
                id="g29639">
               <text
                  xml:space="preserve"
-                 transform="matrix(1,0,0,-1,810.7827,1654.7788)"
-                 style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#010101;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                 id="text29637"><tspan
-                   x="0 17.52 34.200001 50.880001 67.559998 84.239998 92.580002 117.57"
-                   y="0"
+                 transform="scale(1,-1)"
+                 style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;font-family:Arial;-inkscape-font-specification:ArialMT;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#010101;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                 id="text29637"
+                 x="950.2243"
+                 y="-1654.7788"><tspan
                    sodipodi:role="line"
-                   id="tspan29635">&lt;5000 ms</tspan></text>
+                   id="tspan29635"
+                   x="950.2243"
+                   y="-1654.7788" /></text>
             </g>
           </g>
         </g>
@@ -1293,7 +1302,7 @@
     </g>
     <g
        id="g29651"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29653"
          clip-path="url(#clipPath29657)">
@@ -1311,7 +1320,7 @@
     </g>
     <g
        id="g29675"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29677"
          clip-path="url(#clipPath29681)">
@@ -1327,7 +1336,7 @@
     </g>
     <g
        id="g29687"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29689"
          clip-path="url(#clipPath29693)">
@@ -1345,7 +1354,7 @@
     </g>
     <g
        id="g29711"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29713"
          clip-path="url(#clipPath29717)">
@@ -1361,7 +1370,7 @@
     </g>
     <g
        id="g29723"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29725"
          clip-path="url(#clipPath29729)">
@@ -1379,7 +1388,7 @@
     </g>
     <g
        id="g29751"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29753"
          clip-path="url(#clipPath29757)">
@@ -1395,7 +1404,7 @@
     </g>
     <g
        id="g29763"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29765"
          clip-path="url(#clipPath29769)">
@@ -1413,7 +1422,7 @@
     </g>
     <g
        id="g29787"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29789"
          clip-path="url(#clipPath29793)">
@@ -1639,7 +1648,7 @@
     </g>
     <g
        id="g29915"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29917"
          clip-path="url(#clipPath29921)">
@@ -1657,7 +1666,7 @@
     </g>
     <g
        id="g29939"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29941"
          clip-path="url(#clipPath29945)">
@@ -1673,7 +1682,7 @@
     </g>
     <g
        id="g29951"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29953"
          clip-path="url(#clipPath29957)">
@@ -1691,7 +1700,7 @@
     </g>
     <g
        id="g29975"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29977"
          clip-path="url(#clipPath29981)">
@@ -1707,7 +1716,7 @@
     </g>
     <g
        id="g29987"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g29989"
          clip-path="url(#clipPath29993)">
@@ -1725,7 +1734,7 @@
     </g>
     <g
        id="g30015"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30017"
          clip-path="url(#clipPath30021)">
@@ -1741,7 +1750,7 @@
     </g>
     <g
        id="g30027"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30029"
          clip-path="url(#clipPath30033)">
@@ -1759,7 +1768,7 @@
     </g>
     <g
        id="g30051"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30053"
          clip-path="url(#clipPath30057)">
@@ -1953,7 +1962,7 @@
     </g>
     <g
        id="g30163"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30165"
          clip-path="url(#clipPath30169)">
@@ -1971,7 +1980,7 @@
     </g>
     <g
        id="g30187"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30189"
          clip-path="url(#clipPath30193)">
@@ -1987,7 +1996,7 @@
     </g>
     <g
        id="g30199"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30201"
          clip-path="url(#clipPath30205)">
@@ -2005,7 +2014,7 @@
     </g>
     <g
        id="g30223"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30225"
          clip-path="url(#clipPath30229)">
@@ -2021,7 +2030,7 @@
     </g>
     <g
        id="g30235"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30237"
          clip-path="url(#clipPath30241)">
@@ -2039,7 +2048,7 @@
     </g>
     <g
        id="g30263"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30265"
          clip-path="url(#clipPath30269)">
@@ -2055,7 +2064,7 @@
     </g>
     <g
        id="g30275"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30277"
          clip-path="url(#clipPath30281)">
@@ -2073,7 +2082,7 @@
     </g>
     <g
        id="g30299"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30301"
          clip-path="url(#clipPath30305)">
@@ -2275,7 +2284,7 @@
     </g>
     <g
        id="g30415"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30417"
          clip-path="url(#clipPath30421)">
@@ -2293,7 +2302,7 @@
     </g>
     <g
        id="g30439"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30441"
          clip-path="url(#clipPath30445)">
@@ -2309,7 +2318,7 @@
     </g>
     <g
        id="g30451"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30453"
          clip-path="url(#clipPath30457)">
@@ -2327,7 +2336,7 @@
     </g>
     <g
        id="g30475"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30477"
          clip-path="url(#clipPath30481)">
@@ -2343,7 +2352,7 @@
     </g>
     <g
        id="g30487"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30489"
          clip-path="url(#clipPath30493)">
@@ -2361,7 +2370,7 @@
     </g>
     <g
        id="g30515"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30517"
          clip-path="url(#clipPath30521)">
@@ -2377,7 +2386,7 @@
     </g>
     <g
        id="g30527"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30529"
          clip-path="url(#clipPath30533)">
@@ -2395,7 +2404,7 @@
     </g>
     <g
        id="g30551"
-       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,370.77544)">
+       transform="matrix(0.21890027,0,0,-0.21890029,-6.5913137,380.3005)">
       <g
          id="g30553"
          clip-path="url(#clipPath30557)">
@@ -2587,5 +2596,68 @@
         </g>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.56701px;font-family:Arial;-inkscape-font-specification:ArialMT;text-align:center;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#010101;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.2189"
+       id="text29637-1"
+       x="184.03996"
+       y="11.279183"><tspan
+         id="tspan29635-8"
+         style="text-align:center;text-anchor:middle;stroke-width:0.2189"
+         sodipodi:role="line"
+         x="184.03996"
+         y="11.279183">choice</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.56701px;font-family:Arial;-inkscape-font-specification:ArialMT;text-align:center;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#010101;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.2189"
+       id="text29637-1-4"
+       x="24.35902"
+       y="11.284378"><tspan
+         id="tspan29635-8-7"
+         style="text-align:center;text-anchor:middle;stroke-width:0.2189"
+         sodipodi:role="line"
+         x="24.35902"
+         y="11.284378">fix. spot</tspan></text>
+    <g
+       id="g1"
+       transform="translate(-120.7103,-0.34543472)">
+      <text
+         xml:space="preserve"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.56701px;font-family:Arial;-inkscape-font-specification:ArialMT;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#010101;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.2189"
+         id="text29637-1-6"
+         x="184.59105"
+         y="11.279183"><tspan
+           id="tspan29635-8-6"
+           style="text-align:center;text-anchor:middle;stroke-width:0.2189"
+           sodipodi:role="line"
+           x="184.59105"
+           y="11.279183">cue</tspan></text>
+    </g>
+    <g
+       id="g1-8"
+       transform="translate(-81.797874,-0.35816004)">
+      <text
+         xml:space="preserve"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.56701px;font-family:Arial;-inkscape-font-specification:ArialMT;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#010101;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.2189"
+         id="text29637-1-67"
+         x="184.59105"
+         y="11.279183"><tspan
+           id="tspan29635-8-5"
+           style="text-align:center;text-anchor:middle;stroke-width:0.2189"
+           sodipodi:role="line"
+           x="184.59105"
+           y="11.279183">memory</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.56701px;font-family:Arial;-inkscape-font-specification:ArialMT;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#010101;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.2189"
+       id="text29637-1-8"
+       x="144.92369"
+       y="11.308987"><tspan
+         id="tspan29635-8-8"
+         style="text-align:center;text-anchor:middle;stroke-width:0.2189"
+         sodipodi:role="line"
+         x="144.92369"
+         y="11.308987">match options</tspan></text>
   </g>
 </svg>
