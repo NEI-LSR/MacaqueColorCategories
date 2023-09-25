@@ -87,7 +87,7 @@ if isfield(whichFigures,'mixMod_BreakOut') && whichFigures.mixMod_BreakOut == tr
         legend('off')
         drawnow
 
-        saveas(gcf,fullfile([filename,'_',num2str(cueIndex),'_mixMod_BreakOut.svg']))
+        saveas(gcf,fullfile([filename,num2str(cueIndex),'_mixMod_BreakOut.svg']))
         close all
     end
 
