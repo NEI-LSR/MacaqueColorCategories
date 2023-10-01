@@ -14,10 +14,11 @@ data.trialdata.nTrials = size(data.trialdata.cues,1);
 %% Pulled from `ParameterEstimator_caller.m`
 
 rn = 0;
-dims = 1:2:30;
+dims = 1:64;%1:2:30;
 
 SaveDir = '.';
-fittingType = 'single-ssnu';
+% fittingType = 'single-ssnu';
+fittingType = 'single-sg';
 
 for i = 1:length(dims)
     dim = dims(i);
@@ -27,9 +28,14 @@ for i = 1:length(dims)
     [x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn);
     disp(x);
 
-    params = [0,0,0,1,0,0];
+    % params = [0,0,0,1,0,0];
+    params = [0,0,0,0,0,1];
 
-    [x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,dim,...
+    % [x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,dim,...
+    %     'dPrime',           x(1),...
+    %     'gaussianWidth',    x(2));
+
+    [x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],dim,...
         'dPrime',           x(1),...
         'gaussianWidth',    x(2));
 
@@ -42,7 +48,8 @@ end
 
 %% Re-load data
 
-d = dir('single-ssnu0*');
+% d = dir('single-ssnu0*');
+d = dir('single-sg0*');
 
 for i = 1:length(d)
     load(d(i).name,'x','nll_x','dim')
@@ -50,8 +57,10 @@ for i = 1:length(d)
     xt(dim).stimulusRemapping = x;
 end
 
-nll_train = nll_train(1:2:end);
-x = xt(1:2:end);
+% nll_train = nll_train(1:2:end);
+% x = xt(1:2:end);
+
+x = xt;
 
 %% Pulled from `fitModel2` (in the Color Space Geometry repo)
 
