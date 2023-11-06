@@ -31,7 +31,7 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
-    load('../../../../../../Analyses/combined/combined_TCC-fullremap-workspace_2300708.mat') % TODO Investigate "Warning: Could not find appropriate function on path loading function handle" (still seems to work though...)
+    load('../../../../../../Analyses/TCCModels/Combined/combined_TCC-fullremap-workspace_2300708.mat') % TODO Investigate "Warning: Could not find appropriate function on path loading function handle" (still seems to work though...)
 end 
 
 % figure, hold on
