@@ -15,18 +15,6 @@ We sampled our stimuli from in the nominally uniform CIELUV colorspace, but ther
 The knock on effect of this is that some colours will be more likely to be confused with neighbours on one side than on the other side (in the visual, the greenish-yellow at the center of the bullseye will be more likely to be confused with a green distractor than a yellow distractor). 
 This would then be analysed as a bias towards green.
 
-<<<<<<< HEAD
----
-In the case of cognitive bias driven by categorical encoding, colors close to a category center will be more likely to be recalled as the color _at_ the category center, or biased towards it to some lesser extent.
-In the case of a stimulus-space non-uniformity, some colors will be more confusible with their neighbours on one side than on the other side, and so on average, responses will be biased towards the closer neighbors.
-
-Importantly though, these two mechanisms make distinguishable predictions.
-If we think about this situation using a similarity matrix, where we plot the 
-
----
-
-=======
->>>>>>> 740171e7129cde2f4d462dbb8b36d747d60de7cc
 One way to distinguish these two types of bias is by using a similarity matrix: a matrix that lists the similarity between every colour, and every other colour.
 (This can be thought of an extension to the TCC model's "similarity function", but rather than having a single similarity function that applies to all colours, we have separate similarity functions for each colour)
 In the case of cognitive bias, we'd expect to see something like an s-curve around the diagonal - here, both greens and blues are pulled towards cyan. 
