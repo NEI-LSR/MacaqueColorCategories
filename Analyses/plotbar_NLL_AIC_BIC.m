@@ -4,7 +4,7 @@ function plotbar_NLL_AIC_BIC(p,filedir)
 
 d = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\';
 
-% p = 'Combined'; % participant
+p = 'Combined'; % participant
 % p = 'Castor';
 % p = 'Pollux';
 % p = 'Buster';
@@ -86,9 +86,9 @@ catch
     b = bar(diag(AIC([1,3,2,4,5])),'stacked');
 end
 if strcmp(p,'Combined')
-    ylim([194e3,200e3])
-    yticks(194e3:1e3:200e3)
-    yticklabels({'194K',[],[],[],[],[],'200K'})
+    % ylim([194e3,200e3])
+    % yticks(194e3:1e3:200e3)
+    % yticklabels({'194K',[],[],[],[],[],'200K'})
     set(b(6),'facecolor',[0.3,0.3,0.3])
 elseif strcmp(p,'Castor')
     ylim([94e3,100e3])
@@ -117,13 +117,14 @@ xticks([])
 grid()
 % text(1:length(AIC([1,3,2,4,5,6])), AIC([1,3,2,4,5,6])', ...
 % num2str(AIC([1,3,2,4,5,6])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
-try
-    text(1:length(AIC([1,3,2,4,5,6])), AIC([1,3,2,4,5,6])', ...
-        num2str(AIC([1,3,2,4,5,6])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
-catch
-    text(1:length(AIC([1,3,2,4,5])), AIC([1,3,2,4,5])', ...
-        num2str(AIC([1,3,2,4,5])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
-end
+
+% try
+%     text(1:length(AIC([1,3,2,4,5,6])), AIC([1,3,2,4,5,6])', ...
+%         num2str(AIC([1,3,2,4,5,6])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+% catch
+%     text(1:length(AIC([1,3,2,4,5])), AIC([1,3,2,4,5])', ...
+%         num2str(AIC([1,3,2,4,5])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+% end
 
 figure('Name','BIC'),
 try

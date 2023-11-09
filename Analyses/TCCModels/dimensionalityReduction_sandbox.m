@@ -20,7 +20,7 @@ SaveDir = '.';
 % fittingType = 'single-ssnu';
 fittingType = 'single-sg';
 
-for i = 1:length(dims)
+for i = 64%1:length(dims)
     dim = dims(i);
 
     params = [0,1,0,0,1,0];
