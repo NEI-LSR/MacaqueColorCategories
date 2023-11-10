@@ -1,51 +1,55 @@
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/chromaticity231109.svg}
-         \label{fig:StimuliChromaticities}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.65\textwidth}
-         \centering
-         \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/epochs230620.svg}
-         \label{fig:epochs}
-    \end{subfigure}
+    % \begin{subfigure}[b]{0.3\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/chromaticity231109.svg}
+    %      \label{fig:StimuliChromaticities}
+    % \end{subfigure}
+    % \hfill
+    % \begin{subfigure}[b]{0.65\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/epochs230620.svg}
+    %      \label{fig:epochs}
+    % \end{subfigure}
 
-    \begin{subfigure}[b]{0.20\textwidth}
-         \centering
-         \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias1-230620.svg}
-         \label{fig:Bias1}
-    \end{subfigure}
-        \hfill
-    \begin{subfigure}[b]{0.20\textwidth}
-         \centering
-         \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias2-230620.svg}
-         \label{fig:Bias2}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.20\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{example-image-a}
-         \label{fig:BiasLinear}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.20\textwidth}
-         \centering
-         \caption{}
-         \includegraphics[width=\textwidth]{example-image-a}
-         \label{fig:BiasPredictions}
-    \end{subfigure}
+    % \begin{subfigure}[b]{0.20\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias1-230620.svg}
+    %      \label{fig:Bias1}
+    % \end{subfigure}
+    %     \hfill
+    % \begin{subfigure}[b]{0.20\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias2-230620.svg}
+    %      \label{fig:Bias2}
+    % \end{subfigure}
+    % \hfill
+    % \begin{subfigure}[b]{0.20\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includegraphics[width=\textwidth]{example-image-a}
+    %      \label{fig:BiasLinear}
+    % \end{subfigure}
+    % \hfill
+    % \begin{subfigure}[b]{0.20\textwidth}
+    %      \centering
+    %      \caption{}
+    %      \includegraphics[width=\textwidth]{example-image-a}
+    %      \label{fig:BiasPredictions}
+    % \end{subfigure}
+
+    \includegraphics[width=\textwidth,trim={0 12cm 0 0},clip]{../Figures/flat/F1_ParadigmPredictions_3.jpg}
     
     \caption{\textbf{4-Alternative Forced Choice (4-AFC), Delayed Match to Sample Paradigm.}
     \emph{A.} Cue and choice colors in the $u^*v^*$ plane of CIELUV. Colors were defined to be equi-luminant and equi-saturated in CIELUV.
-    \emph{B.} Cue and choice colors in DKL colorspace.
-    \emph{C.} The timing and visual organization of the delayed match-to-sample task that the animals performed.
+    \emph{B.} The epochs of the paradigm: a trial is initiated when fixation upon a fixation cross is maintained for 50ms. Following this a cue color is shown. This disappears and the animal must remember this color. 4 options appear on the screen, with 1 being a direct match to the cue. Once the fixation cross disappears, the monkey is allowed to make a choice by looking at the their choice, and they are rewarded if they select the choice which matches the cue for that trial.
+    \emph{C.} The presence of color categories can cause bias. This bias will be in the direction of the category center.
+    Where the magnitude of bias crosses zero from anticlockwise to clockwise bias, we label this as the center of the category.
+    \emph{D.} Competing hypotheses for the structure of biases, based on existing theories.
 } 
     \label{fig:ParadigmAnalysisPredictions}
     
@@ -83,21 +87,21 @@ Four animals performed the task, completing at total of 299,690 trials over 232 
         \begin{subfigure}[t]{0.36\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/difficulty_combinedData230728-225520.svg}
+         \includesvg[width=\textwidth]{../Figures/working/F1_ParadigmPredictions/difficulty_combinedData230728-225520.svg}
          \label{fig:CombinedDifficulty}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.36\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_linear_230803-001625.svg}
+         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_linear_231110-001902.svg}
          \label{fig:CombinedLinear}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.25\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_polar_230803-001626.svg}
+         \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_polar_231110-001903.svg}
          \label{fig:CombinedPolar}
     \end{subfigure}
     \caption{\textbf{Bias as a function of hue, for data collapsed over 4 animals.} 
