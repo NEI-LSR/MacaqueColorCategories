@@ -211,27 +211,36 @@ Writing – review \& editing & \cellcolor[HTML]{000000} & \cellcolor[HTML]{C0C0
 %%% SUPPLEMENTARY MATERIAL / APPENDICES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
-\begin{appendix}
 
-\begin{appendixbox}[Individual Difficulty Analayses]\label{app:Indi_difficulty}          \input{Outputs/Paper/LaTeX/Appendices/Indi_difficulty}
-\end{appendixbox}
+% \begin{appendix}
 
-\begin{appendixbox}[Individual Data]\label{app:IndDiffs}
-    \input{Appendices/IndDiffs.tex}
-\end{appendixbox}
+% \renewcommand{\figurename}{Supplementary Figure}
+% \setcounter{figure}{0}
 
-\begin{appendixbox}[Mixture Modelling Break Out]\label{app:mixMod_BreakOut}      
-    \input{Appendices/mixMod_BreakOut.tex}
-\end{appendixbox}
+% \begin{appendixbox}[Individual Difficulty Analayses]\label{app:Indi_difficulty}  
 
-\begin{appendixbox}[Individual TCC Model Summaries]\label{app:TCCModelSummaries}          \input{Outputs/Paper/LaTeX/Appendices/TCCModelSummaries}
-\end{appendixbox}
+\section{Individual Difficulty Analyses}
+\label{app:Indi_difficulty}
+\input{Outputs/Paper/LaTeX/Appendices/Indi_difficulty}
 
-\begin{appendixbox}[Longitudinal Analysis]\label{app:LongAnal}
-    \input{Appendices/LongAnal.tex}
-\end{appendixbox}
+\section{Individual Data}
+\label{app:IndDiffs}
+\input{Appendices/IndDiffs.tex}
 
-\end{appendix}
+% TODO: Convert this into subfigure format
+% \begin{appendixbox}[Mixture Modelling Break Out]\label{app:mixMod_BreakOut}      
+%     \input{Appendices/mixMod_BreakOut.tex}
+% \end{appendixbox}
+
+\section{Individual TCC Model Summaries}
+\label{app:TCCModelSummaries} 
+\input{Outputs/Paper/LaTeX/Appendices/TCCModelSummaries}
+
+% \begin{appendixbox}[Longitudinal Analysis]\label{app:LongAnal}
+%     \input{Appendices/LongAnal.tex}
+% \end{appendixbox}
+
+% \end{appendix}
 
 \clearpage
 \printbibliography[title=Additional References]

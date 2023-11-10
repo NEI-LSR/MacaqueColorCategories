@@ -1,6 +1,6 @@
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          % \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/chromaticity231109.svg}
@@ -8,7 +8,7 @@
          \label{fig:StimuliChromaticities}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.65\textwidth}
+    \begin{subfigure}[t]{0.65\textwidth}
          \centering
          \caption{}
          % \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/epochs230620.svg}
@@ -16,7 +16,7 @@
          \label{fig:epochs}
     \end{subfigure}
 
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[t]{0.45\textwidth}
          \centering
          \caption{}
          % \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias1-230620.svg}
@@ -24,22 +24,21 @@
          \label{fig:Bias1}
     \end{subfigure}
     %     \hfill
-    % \begin{subfigure}[b]{0.20\textwidth}
+    % \begin{subfigure}[t]{0.20\textwidth}
     %      \centering
     %      \caption{}
     %      % \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F1_ParadigmPredictions/bias2-230620.svg}
-
     %      \label{fig:Bias2}
     % \end{subfigure}
     % \hfill
-    % \begin{subfigure}[b]{0.20\textwidth}
+    % \begin{subfigure}[t]{0.20\textwidth}
     %      \centering
     %      \caption{}
     %      \includegraphics[width=\textwidth]{example-image-a}
     %      \label{fig:BiasLinear}
     % \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[t]{0.45\textwidth}
          \centering
          \caption{}
          % \includegraphics[width=\textwidth]{example-image-a}
@@ -85,7 +84,7 @@ A match-to-sample paradigm using colors defined in a perceptually uniform color 
 But to test for consistent color categories across animals, we need not only to ensure precision in the matched colors but also to avoid the possibility of reinforcing biases acquired while the animals perform the task. 
 So, rather than having animals match a cued color to a spot on a continuous ring of colors and occasionally rewarding them for inaccurate matches as in the established paradigm, we adapted it into an alternative-forced-choice task in which a direct match to the cue was available in every trial and the monkeys were only rewarded for making the direct match (\autoref{fig:epochs}). 
 One consequence of the adapted paradigm is that it requires considerable data to satisfactorily sample category performance across the space of colors. 
-Four animals performed the task, completing at total of 299,690 trials over 232 sessions (\autoref{fig:Indi_difficulty}).
+Four animals performed the task, completing at total of 299,690 trials over 232 sessions (\ref{fig:Indi_difficulty}).
 
 \begin{figure}
     \centering
@@ -109,7 +108,10 @@ Four animals performed the task, completing at total of 299,690 trials over 232 
          \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_polar_231110-001903.svg}
          \label{fig:CombinedPolar}
     \end{subfigure}
-    \caption{\textbf{Bias as a function of hue, for data collapsed over 4 animals.} 
+    \caption{\textbf{Task performance, and bias as a function of hue.}
+    \emph{A.} Accuracy as a function of difficulty (where we define difficulty as the angular chromatic distance between the cue color and the closest incorrect choice option).
+    \emph{B.} Bias as a function of hue (filled colored circles), smoothed (black line), with 95\% confidence intervals (grey filled area) and nominal categories highlighted by colored vertical stripes (where the width describes the 90\% confidence interval). The nominal categories occur at zero-crossing with negative slope.
+    \emph{B.} As \autoref{fig:CombinedLinear} but in polar coordinates.
     }
     \label{fig:AvResults}
 \end{figure}
