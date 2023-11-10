@@ -1,5 +1,6 @@
 *.asv
 *.mat
+*$*
 
 !Data/MixtureModels/**
 #!Analyses/TCCModels/**
