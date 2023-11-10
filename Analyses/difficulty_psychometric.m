@@ -109,13 +109,15 @@ if 1
 
     ci = confint(f); % TODO Check CI type (simultaneous or not etc.)
 
+    try
     text(100,60,[...
         upper(filename(16:17)),newline...
         'Trials: ',num2str(size(cues,1)),newline...
         'Sessions: ', num2str(length(unique(cleandata.trialdata.dirname))),newline,...
         'Duration: ', char(between(startDate, endDate)), newline,...
         'Ceiling: ', num2str(100-f.ceil','%.1f'),'% (+/- ',num2str(f.ceil-ci(1,4),'%.1f'),')'])
-
+    catch
+    end
 end
 %% 
 
