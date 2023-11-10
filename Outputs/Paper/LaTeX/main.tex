@@ -85,7 +85,7 @@ breaklines=true
     \clearfield{urlyear}
     \clearfield{urlmonth}
     \clearlist{language}
-    \clearfield{url}
+   % \clearfield{url}
    % \clearfield{issn}
 }
 
@@ -113,13 +113,12 @@ breaklines=true
 \metadata[]{\Letter\hspace{.5ex} For correspondence}{ \href{mailto:danny.garside@nih.gov}{danny.garside@nih.gov} or \href{mailto:bevil@nih.gov}{bevil@nih.gov}}
 
 %\metadata[\authfn{1}\authfn{2}\authfn{3}]{}{Here's a few symbols to denote contribution specifics, e.g. authors who contributed equally to the work.} %!!!!!!!!!!!!!
-\metadata[]{Present address}{49 Convent Drive, Bethesda, MD-20892-4435, USA} %check !!!!!!!!!!!!!!
-\metadata[]{Data availability}{Data availability statement. 
-Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.} %!!!!!!!!!!!!!!!!
+\metadata[]{Present address}{49 Convent Drive, Bethesda, MD-20892-4435, USA} 
+% \metadata[]{Data availability}{Data availability statement. 
+% Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.} %!!!!!!!!!!!!!!!!
 \metadata[]{Code availability}{Code for this project is available at \href{https://github.com/NEI-LSR/MacaqueColorCategories}{github.com/NEI-LSR/MacaqueColorCategories}}
-\metadata[]{Funding}{MRA was supported by funding from the Lorem Ipsum Foundation. The funders had no role in the template design or decision to publish.} %!!!!!!!!!!!!!!!!!!
-\metadata[]{Competing interests}{The author declare no competing interests.} %!!!!!!!!!!!!!!!
-
+\metadata[]{Funding}{This research was supported by the Intramural Research Program of the NIH, National Eye Institute.}
+\metadata[]{Competing interests}{The authors declare no competing interests.} 
 
 % Surname of the lead author(s) for the running footer
 \leadauthor{Garside}
@@ -212,22 +211,22 @@ Writing – review \& editing & \cellcolor[HTML]{000000} & \cellcolor[HTML]{C0C0
 %% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
 \begin{appendix}
 
-\begin{appendixbox}[Individual Data]\label{app:IndDiffs}
-    \input{Appendices/IndDiffs.tex}
+\begin{appendixbox}[Individual Difficulty Analayses]\label{app:Indi_difficulty}          \input{Outputs/Paper/LaTeX/Appendices/Indi_difficulty}
 \end{appendixbox}
 
-\begin{appendixbox}[Longitudinal Analysis]\label{app:LongAnal}
-    \input{Appendices/LongAnal.tex}
+\begin{appendixbox}[Individual Data]\label{app:IndDiffs}
+    \input{Appendices/IndDiffs.tex}
 \end{appendixbox}
 
 \begin{appendixbox}[Mixture Modelling Break Out]\label{app:mixMod_BreakOut}      
     \input{Appendices/mixMod_BreakOut.tex}
 \end{appendixbox}
 
-\begin{appendixbox}[Individual Difficulty Analayses]\label{app:Indi_difficulty}          \input{Outputs/Paper/LaTeX/Appendices/Indi_difficulty}
+\begin{appendixbox}[Individual TCC Model Summaries]\label{app:TCCModelSummaries}          \input{Outputs/Paper/LaTeX/Appendices/TCCModelSummaries}
 \end{appendixbox}
 
-\begin{appendixbox}[Individual TCC Model Summaries]\label{app:TCCModelSummaries}          \input{Outputs/Paper/LaTeX/Appendices/TCCModelSummaries}
+\begin{appendixbox}[Longitudinal Analysis]\label{app:LongAnal}
+    \input{Appendices/LongAnal.tex}
 \end{appendixbox}
 
 \end{appendix}
