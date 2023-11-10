@@ -134,74 +134,83 @@ These categories are not obviously aligned with either of the cone-opponent mech
 \begin{figure}
     \centering
 
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
-         \includegraphics[width=\textwidth]{example-image-a}
+       \includegraphics[height=4cm]{../Figures/working/F3_TCCModel/a.png}
          \label{fig:TCCCartoonA}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
-         \includegraphics[width=\textwidth]{example-image-a}
+       \includegraphics[height=4cm]{../Figures/working/F3_TCCModel/b.png}
          \label{fig:TCCCartoonB}
     \end{subfigure}
     
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/F3_TCCModel_og_Output_fromPreProcessedData_postCombined_MixMod_polar_231110-022720.svg}
          \label{fig:TCCModel_og}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/TCCDemo_ssnu_fromModelOutput_MixMod_polar_231110-022647.svg}
          \label{fig:TCCModel_ssnu}
     \end{subfigure}
 
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includegraphics[width=\textwidth,trim={2cm 0.5cm 2 0},clip]{../Figures/working/F3_TCCModel/sm_og_231110-022722.png}
          \label{fig:TCCModel_og_sm}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includegraphics[width=\textwidth,trim={2cm 0.5cm 2 0},clip]{../Figures/working/F3_TCCModel/sm_ssnu_231110-022643.png}
          \label{fig:TCCModel_ssnu_sm}
     \end{subfigure}
     
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/og_SimilarityFunction_231110-022716.svg}
          \label{fig:TCCModel_ssnu_sm}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/ssnu_SimilarityFunction_231110-022641.svg}
          \label{fig:TCCModel_ssnu_sm}
     \end{subfigure}
 
-    % \begin{subfigure}[b]{0.45\textwidth}
+    % \begin{subfigure}[t]{0.45\textwidth}
     %      \centering
     %      \caption{}
     %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/sg_SimilarityFunction_230807-153339.svg}
     %      %\label{fig:JustBias_subset}
     % \end{subfigure}
     % \hfill
-    % \begin{subfigure}[b]{0.45\textwidth}
+    % \begin{subfigure}[t]{0.45\textwidth}
     %      \centering
     %      \caption{}
     %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/ssnu_SimilarityFunction_230731-150035}\llap{\raisebox{3cm}{\includesvg[pretex=\tiny, width=2.5cm]{../Figures/working/F6_ColSpace/combined_TCC-0att_fullremap-workspace_230510_behaviorally-derived-colorspace_everySecond230818-114423.svg}}} 
     %      % h/t: https://tex.stackexchange.com/a/89778/169285 
     %      %\label{fig:JustColSpace_subset}
     % \end{subfigure}
-        \caption{\textbf{Distinguishing between different sources of bias using TCC-MAT models: cognitive bias vs. non-uniformity of stimulus space.} Similarity matrices representing different theoretically driven mechanisms can result in the same average bias value. A mixture model cannot distinguish between these different sources, whereas a TCC-MAT model readily can. \ref{fig:TCCModel_og}: an example of how cognitive bias might appear - each row of the matrix is shifted leftwards or rightwards. \ref{fig:TCCModel_ssnu}: an example of how non-uniformity in stimulus space might appear - the similarity between each cue and its neighbors is increased or decreased, resulting in an expansion of the higher similarity region of the matrix symmetrically around the negative diagonal for colors which are more similar to their neighbors than average, and a contraction for colors that are less similar to their neighbors than average. \ref{fig:TCCModel_og_sm}: The values representing the similarity function for cue 20 (the row highlighted in red in \ref{fig:TCCModel_ssnu_sm}), with the circular median shown as a vertical dashed line. \ref{fig:TCCModel_ssnu_sm}: As in \ref{fig:TCCModel_og_sm} but for \ref{fig:TCCModel_ssnu}. Note how the circular median of \emph{both} functions is 25.}
+        \caption{\textbf{Distinguishing between different sources of bias using TCC-MAT models: cognitive bias vs. non-uniformity of stimulus space.} Caption on following page.}
         \label{fig:TCCDemo}
+\end{figure}
+
+\begin{figure}[t]
+  \contcaption{
+  \emph{A and B.} Bias can be produced by two distinct mechanisms. \emph{A.} Where memory is encoded jointly as a continuous variable and a categorical variable, and decoding considers both, the resulting memory shall be biased towards the category center. 
+  \emph{B.} Where the set of potential choices contains more plausible options on one side of the cue than on the other, as would be the case with a non-uniform stimulus-space, bias will be introduced towards the denser-populated part of space.
+  \emph{C and D.} Simulated data using models implementing each of these mechanisms, analyzed using a mixture model, results in near-identical interpretations.
+  
+  Similarity matrices representing different theoretically driven mechanisms can result in the same average bias value. A mixture model cannot distinguish between these different sources, whereas a TCC-MAT model readily can. \ref{fig:TCCModel_og}: an example of how cognitive bias might appear - each row of the matrix is shifted leftwards or rightwards. \ref{fig:TCCModel_ssnu}: an example of how non-uniformity in stimulus space might appear - the similarity between each cue and its neighbors is increased or decreased, resulting in an expansion of the higher similarity region of the matrix symmetrically around the negative diagonal for colors which are more similar to their neighbors than average, and a contraction for colors that are less similar to their neighbors than average. \ref{fig:TCCModel_og_sm}: The values representing the similarity function for cue 20 (the row highlighted in red in \ref{fig:TCCModel_ssnu_sm}), with the circular median shown as a vertical dashed line. \ref{fig:TCCModel_ssnu_sm}: As in \ref{fig:TCCModel_og_sm} but for \ref{fig:TCCModel_ssnu}. Note how the circular median of \emph{both} functions is 25.}% Continued caption
 \end{figure}
 
 
@@ -233,21 +242,21 @@ This allows for a somewhat "model-free" model - it includes no assumptions about
 
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F4_TCCResults/sm_combined_TCC-FreeSimilarityMatrix-workspace_230214cool_230818-111211.svg}
          \label{fig:SimilarityMatrixCombined_Cool}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F4_TCCResults/sm_combined_TCC-FreeSimilarityMatrix-workspace_230214warm_230818-111210.svg}
          \label{fig:SimilarityMatrixCombined_Warm}
     \end{subfigure}
     \hfill
-       \begin{subfigure}[b]{0.3\textwidth}
+       \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F4_TCCResults/BIC_Combined_230907-051338.svg}
@@ -267,21 +276,21 @@ The behavioral data are best explained by the stimulus-space non-uniformity mode
 
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.2\textwidth}
+    \begin{subfigure}[t]{0.2\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/SI/SI1_IndiMM/210517--211108_Castor_data_fromPreProcessedData_MixMod_polar_230803-000637.svg}
          \label{fig:CastorMM}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.38\textwidth}
+    \begin{subfigure}[t]{0.38\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F5_CastorCogBias/sm_18_230731-150331.svg}
          \label{fig:Castor-FreeSimilarity}
     \end{subfigure}
     \hfill
-       \begin{subfigure}[b]{0.38\textwidth}
+       \begin{subfigure}[t]{0.38\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F5_CastorCogBias/BIC_Castor_230907-052020.svg}         \label{fig:fig:Castor-ModelFitAnalysis}
@@ -300,21 +309,21 @@ The free similarity matrix for the data from this animal shows an asymmetry abou
 
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/colorspace_everySecond230818-114428.svg}
          \label{fig:CIELUV}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/combined_TCC-0att_fullremap-workspace_230510_behaviorally-derived-colorspace_everySecond230818-114423.svg}
          \label{fig:MACBEHspace}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/newEqualSampling230818-170747.svg}
