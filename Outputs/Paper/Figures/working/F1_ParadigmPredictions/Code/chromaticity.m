@@ -29,15 +29,23 @@ stimCols_sRGB = im2double(LuvTosRGB([repelem(Lstar, 65); stimCols(1,:); stimCols
 hold on
 scatter(stimCols(1,:),stimCols(2,:),100,stimCols_sRGB',"filled")
 
-xticks([-40,0,40])
-yticks([-40,0,40])
+xticks([-38,0,38])
+yticks([-38,0,38])
+
+axis equal
+
+xlim([-45,45])
+ylim([-45,45])
 
 xlabel('u*')
 ylabel('v*')
 
-%%
+hYLabel = get(gca,'YLabel');
+set(hYLabel,'rotation',0,'VerticalAlignment','middle')
 
-axis equal square
+hYticks = get(gca,'YTick');
+
+%%
 
 saveas(gcf,fullfile(['../','chromaticity', datestr(now,'yymmdd'), '.svg']))
 
