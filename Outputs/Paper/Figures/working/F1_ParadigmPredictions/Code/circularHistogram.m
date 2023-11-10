@@ -10,6 +10,11 @@
 
 clear, clc, close all
 
+rng(0)
+
+addpath(genpath(['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
+    'Analyses']))
+
 nBig = 64;
 
 PointCue = 20; % selected cue
@@ -18,6 +23,8 @@ PointChoice = 20; % peak of response histogram
 stimCols = generateStimCols('nBig',nBig,'sat',37);
 stimCols_sRGB = LabTosRGB([repelem(76.0693, nBig); stimCols]);
 
+
+figure,
 
 %%
 
