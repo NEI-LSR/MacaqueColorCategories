@@ -1,0 +1,61 @@
+\begin{figure}
+\includesvg[inkscapelatex=false, width=\textwidth]{../../Figures/working/Old/F1_StimuliAndParadigm_v3.svg}
+\caption{\textbf{4-Alternative Forced Choice (4-AFC), Delayed Match to Sample Paradigm.}
+\emph{A.} Cue and choice colors in the $u^*v^*$ plane of CIELUV. Colors were defined to be equi-luminant and equi-saturated in CIELUV.
+\emph{B.} Cue and choice colors in DKL colorspace.
+\emph{C.} The timing and visual organization of the delayed match-to-sample task that the animals performed.
+} 
+\label{fig:StimuliAndParadigm}
+\end{figure}
+
+\paragraph{Stimuli} 
+
+Stimuli were discs presented on a CRS Display++ screen.
+The color of stimuli varied only in hue, and were sampled from 64 equally spaced points on a circle in CIELUV space (\autoref{fig:StimuliAndParadigm}%, \autoref*{fig:suppTest}
+), with a white point of XXX (xy), a radius of 37, and a luminance of XXX (L* = 76.0693). 
+These values were chosen to maximize gamut while maintaining a fixed saturation and luminance. 
+The background was XXX.
+% g_astrctAllParadigms{1, 1}.m_strctConversionMatrices.RGBToXYZ
+% Kofiko\Paradigms\CommonFunctions\luv2rgb.m
+CIELUV was used, in contrast to previous work which has used CIELAB, because CIELUV has the benefit of an associated chromaticity diagram. 
+We also noted that nominally equi-saturated stimuli defined in CIELAB tended to have significant variation in apparent saturation, whereas the same in CIELUV were much closer to visually equi-saturated. 
+Luminance noise was added by XXX to the extent of YYY.
+% Kofiko\Paradigms\CommonFunctions\fnGenerateNoisePattern.m
+% Kofiko\Paradigms\TouchForceChoiceColorCategories\fnInitializeCueTrainingTextures.m (line 144)
+% Kofiko\Paradigms\TouchForceChoiceColorCategories\fnParadigmTouchForceChoiceColorCategories\Callbacks.m (line 613)
+
+The experiment was controlled by multiple computers running `Kofiko' (a MATLAB/Psychtoolbox based software for working with monkeys %\citep{Brainard_Psychophysics_1997,Pelli_PsychoPhysics_1997}
+).
+
+\paragraph{4-Alternative Forced Choice (4-AFC): Non-human primates} \label{para:4AFC}
+Non-human primates were trained on a color-matching task. 
+Trials begin with fixation (50 ms) on a white cross in the center of the screen. 
+A cue stimulus (colored disc) is shown to one side of the fixation cross (750 ms). 
+The position of the cue is invariant throughout a daily session. 
+Following cue presentation, the monkey must maintain fixation (600-900 ms) before the choice stimuli appear on the screen alongside the fixation cross (500-1000 ms). 
+The choices are positioned at constant eccentricity and with equal spacing in the hemifield opposite the cue stimulus, with the exact positions of the stimuli varying randomly trial-to-trial. 
+One choice is always a direct match to the cue, and the other three are randomly sampled from the remaining stimuli, without replacement.
+Upon offset of the fixation cross, the animal makes a selection by saccade, and is rewarded for selecting the choice that is identical to the cue. 
+Animals were head-fixed at a distance of XXX from the screen. 
+Stimuli had a radius of XXX degrees of visual angle, at an eccentricity of XXX/degrees from a central fixation.
+% Diameter of cue/choice discs: 2.89 degrees (100 px)
+% Distance between cue and choice: 5.79 degrees (200 px - g_astrctAllParadigms{1, 1}.m_strctCurrentTrial.m_strctChoiceVars.choiceRhos)
+% Diameter of “fixation window”: 1.58 degrees (50 px)
+% Audrey going to re-check
+
+\paragraph{4-Alternative Forced Choice: Human participants} 
+Human participants were recruited via Amazon Mechanical Turk to perform an analogous version of the non-human primate 4-AFC task. 
+Participants click on an initial fixation cross to request a trial, after which a cue is shown to one side of the fixation cross (750 ms). 
+After cue offset, a fixation cross is shown and the cursor is hidden to de-incentivize mouse movement (1500 ms). 
+Four choices are then shown, and participants make their selection by clicking. 
+
+%\paragraph{Pseudo-continuous color matching task: Human participants.} All 64 stimuli were displayed in a ring at XXX eccentricity. 
+
+
+
+%\paragraph{Color-naming task} %[DANNY - get info from Sihan?]
+
+
+
+% Distance between cue and choice: 5.79 degrees (200 px - g_astrctAllParadigms{1, 1}.m_strctCurrentTrial.m_strctChoiceVars.choiceRhos)
+
