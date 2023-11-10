@@ -281,6 +281,10 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
         polarplot(deg2rad(interp_crossing(k)), 0 + axisoffset, 'ko','MarkerFaceColor','k')
     end
 
+    polarplot([deg2rad(180) deg2rad(180)],[0 axlims*2],...
+        'Color',rstimCols_sRGB(round(180/interval),:),...
+        'LineStyle','--','LineWidth',2);
+   
     ax = gca;
     ax.Color = 'none';
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};

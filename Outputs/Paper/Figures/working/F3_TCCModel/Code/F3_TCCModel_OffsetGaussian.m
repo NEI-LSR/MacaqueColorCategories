@@ -61,7 +61,7 @@ OGdata.trialdata.chosen = OGdata.trialdata.chosen';
 
 save('OGdata.mat')
 
-figure(3)
+figure(6)
 saveas(gcf,['../og_SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
 
 OG_model = fitMixtureModel(OGdata,[],lengthOfSlidingWindow);
@@ -74,5 +74,5 @@ plotMixtureModel(OG_model,...
 %%
 
 plotSimilarityMatrix(OGdata.trialdata.similarityMatrix,...
-    'og','../')
+    'og','../',32)
 

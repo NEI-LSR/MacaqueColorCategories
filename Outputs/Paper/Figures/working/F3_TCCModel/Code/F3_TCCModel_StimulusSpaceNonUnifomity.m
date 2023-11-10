@@ -50,11 +50,11 @@ f = @(x)GenerativeModel(x,'choiceInds',choiceInds,'cueInd',cueInd,'response',res
     'pltSimFigs', true, 'gaussianWidth', 25); % this is available in the load file, but I want to add `pltSimFigs` to it
 
 [~,simdata] = f(x); 
-figure(2)
+figure(5)
 saveas(gcf,['../ssnu_SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
 
 plotSimilarityMatrix(simdata.trialdata.similarityMatrix,...
-    'ssnu','../')
+    'ssnu','../',32)
 
 %%
 
