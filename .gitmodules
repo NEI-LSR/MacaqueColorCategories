@@ -4,3 +4,9 @@
 [submodule "Analyses/spatialmath-matlab"]
 	path = Analyses/spatialmath-matlab
 	url = https://github.com/petercorke/spatialmath-matlab.git
+[submodule "Analyses/CircHist"]
+	path = Analyses/CircHist
+	url = https://github.com/zifredder/CircHist
+[submodule "Analyses/circstat-matlab"]
+	path = Analyses/circstat-matlab
+	url = https://github.com/circstat/circstat-matlab

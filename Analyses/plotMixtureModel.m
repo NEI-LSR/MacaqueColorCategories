@@ -1,6 +1,6 @@
 function plotMixtureModel(model, whichFigures, filename)
 
-forBevil = true;
+forBevil = false;
 axlims = 40;
 
 PotentialDistances  = model.PotentialDistances;
@@ -289,10 +289,10 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     if forBevil
         rticklabels({'','','','',''});
     else
-        rticklabels({'-40','-20','0','+20','+40'}); % Could use `axisoffset`?
+        rticklabels({'','-20','0','+20',''}); % Could use `axisoffset`?
     end
 
-    % ax.RAxisLocation = 235;
+    ax.RAxisLocation = 45;
     % ax.FontSize = 8;
     % ax.Units = 'normalized';
     %ax.Position = [0.3734375,0.212952799121844,0.2890625,0.609220636663008];
