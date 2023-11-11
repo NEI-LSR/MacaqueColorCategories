@@ -22,10 +22,14 @@ plotSimilarityMatrix(x, [filename,'cool'], '../', 38)
 %     'This will take roughly 45 minutes.',newline,...
 %     'Press enter to continue.'])
 
-realOrSimData = 'real';
+% realOrSimData = 'real';
+% 
+% % rn = 0;
+% for rn = 1:9
+%     RecoveryTesting(realOrSimData,rn)
+% end
 
-% rn = 0;
-for rn = 1:9
-    RecoveryTesting(realOrSimData,rn)
-end
+%%
+
+plotbar_NLL_AIC_BIC('Combined','../')
 
