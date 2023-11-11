@@ -35,10 +35,10 @@ hold on
 plot([1,nBig],[1,nBig],'k--')
 
 if exist('categoryCenter','var') % Add center lines
-    % xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
-    % yline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
+    xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
+    yline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
 
-    xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2,'LineStyle','--')
+    % xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2,'LineStyle','--')
 end
 
 cb1 = colorbar;

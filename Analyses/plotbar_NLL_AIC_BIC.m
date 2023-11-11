@@ -37,15 +37,16 @@ end
 
 figure('Name','NLL'),
 try
-    b = bar(diag(NLL([1,3,2,4,5,6])),'stacked');
+    b = bar(diag(NLL([1,3,2])),'stacked');
 catch
-    b = bar(diag(NLL([1,3,2,4,5])),'stacked');
+    b = bar(diag(NLL([1,3,2])),'stacked');
 end
 if strcmp(p,'Combined')
-    ylim([92e3,100e3])
-    yticks(92e3:2e3:100e3)
-    yticklabels({'92K',[],[],[],'100K'})
-    set(b(6),'facecolor',[0.3,0.3,0.3])
+    b = bar(diag(NLL([1,3,2])),'stacked');
+    ylim([98e3,100e3])
+    yticks(98e3:1e3:100e3)
+    yticklabels({'98K',[],'100K'})
+    % set(b(6),'facecolor',[0.3,0.3,0.3])
 elseif strcmp(p,'Castor')
     ylim([46e3,50e3])
     yticks(46e3:2e3:50e3)
@@ -71,25 +72,28 @@ set(b(3),'facecolor',[0,0,0])
 % set(b(2),'EdgeColor','none')
 xticks([])
 grid()
+ylabel('NLL')
+
 try
-    text(1:length(NLL([1,3,2,4,5,6])), NLL([1,3,2,4,5,6])', ...
-        num2str(NLL([1,3,2,4,5,6])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+    text(1:length(NLL([1,3,2])), NLL([1,3,2])', ...
+        num2str(NLL([1,3,2])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
 catch
-    text(1:length(NLL([1,3,2,4,5])), NLL([1,3,2,4,5])', ...
-        num2str(NLL([1,3,2,4,5])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+    text(1:length(NLL([1,3,2])), NLL([1,3,2])', ...
+        num2str(NLL([1,3,2])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
 end
 
 figure('Name','AIC'),
 try
-    b = bar(diag(AIC([1,3,2,4,5,6])),'stacked');
+    b = bar(diag(AIC([1,3,2])),'stacked');
 catch
-    b = bar(diag(AIC([1,3,2,4,5])),'stacked');
+    b = bar(diag(AIC([1,3,2])),'stacked');
 end
 if strcmp(p,'Combined')
-    ylim([194e3,200e3])
-    yticks(194e3:1e3:200e3)
-    yticklabels({'194K',[],[],[],[],[],'200K'})
-    set(b(6),'facecolor',[0.3,0.3,0.3])
+    b = bar(diag(AIC([1,3,2])),'stacked');
+    ylim([196e3,200e3])
+    yticks(196e3:1e3:200e3)
+    yticklabels({'196K',[],[],[],'200K'})
+    % set(b(6),'facecolor',[0.3,0.3,0.3])
 elseif strcmp(p,'Castor')
     ylim([94e3,100e3])
     yticks(94e3:1e3:100e3)
@@ -115,27 +119,28 @@ set(b(3),'facecolor',[0,0,0])
 % set(b(2),'EdgeColor','none')
 xticks([])
 grid()
-% text(1:length(AIC([1,3,2,4,5,6])), AIC([1,3,2,4,5,6])', ...
-% num2str(AIC([1,3,2,4,5,6])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+ylabel('AIC')
+% text(1:length(AIC([1,3,2])), AIC([1,3,2])', ...
+% num2str(AIC([1,3,2])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
 try
-    text(1:length(AIC([1,3,2,4,5,6])), AIC([1,3,2,4,5,6])', ...
-        num2str(AIC([1,3,2,4,5,6])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+    text(1:length(AIC([1,3,2])), AIC([1,3,2])', ...
+        num2str(AIC([1,3,2])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
 catch
-    text(1:length(AIC([1,3,2,4,5])), AIC([1,3,2,4,5])', ...
-        num2str(AIC([1,3,2,4,5])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+    text(1:length(AIC([1,3,2])), AIC([1,3,2])', ...
+        num2str(AIC([1,3,2])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
 end
 
 figure('Name','BIC'),
 try
-    b = bar(diag(BIC([1,3,2,4,5,6])),'stacked');
+    b = bar(diag(BIC([1,3,2])),'stacked');
 catch
-    b = bar(diag(BIC([1,3,2,4,5])),'stacked');
+    b = bar(diag(BIC([1,3,2])),'stacked');
 end
 if strcmp(p,'Combined')
     ylim([194e3,200e3])
     yticks(194e3:1e3:200e3)
     yticklabels({'194K',[],[],[],[],[],'200K'})
-    set(b(6),'facecolor',[0.3,0.3,0.3])
+    % set(b(6),'facecolor',[0.3,0.3,0.3])
 elseif strcmp(p,'Castor')
     ylim([94e3,100e3])
     yticks(94e3:1e3:100e3)
@@ -161,12 +166,13 @@ set(b(3),'facecolor',[0,0,0])
 % set(b(2),'EdgeColor','none')
 xticks([])
 grid()
+ylabel('BIC')
 try
-    text(1:length(BIC([1,3,2,4,5,6])), BIC([1,3,2,4,5,6])', ...
-        num2str(BIC([1,3,2,4,5,6])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+    text(1:length(BIC([1,3,2])), BIC([1,3,2])', ...
+        num2str(BIC([1,3,2])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
 catch
-    text(1:length(BIC([1,3,2,4,5])), BIC([1,3,2,4,5])', ...
-        num2str(BIC([1,3,2,4,5])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
+    text(1:length(BIC([1,3,2])), BIC([1,3,2])', ...
+        num2str(BIC([1,3,2])'/1000,'%0.1fK'),'HorizontalAlignment','center','VerticalAlignment','bottom')
 end
 
 %% Save
