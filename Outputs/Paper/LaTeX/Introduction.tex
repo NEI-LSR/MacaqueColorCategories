@@ -84,7 +84,7 @@ A match-to-sample paradigm using colors defined in a perceptually uniform color 
 But to test for consistent color categories across animals, we need not only to ensure precision in the matched colors but also to avoid the possibility of reinforcing biases acquired while the animals perform the task. 
 So, rather than having animals match a cued color to a spot on a continuous ring of colors and occasionally rewarding them for inaccurate matches as in the established paradigm, we adapted it into an alternative-forced-choice task in which a direct match to the cue was available in every trial and the monkeys were only rewarded for making the direct match (\autoref{fig:epochs}). 
 One consequence of the adapted paradigm is that it requires considerable data to satisfactorily sample category performance across the space of colors. 
-Four animals performed the task, completing at total of 299,690 trials over 232 sessions (\ref{fig:Indi_difficulty}).
+Four animals performed the task, completing at total of 299,690 trials over 232 sessions (\autoref{fig:Indi_difficulty}).
 
 \begin{figure}
     \centering
@@ -177,13 +177,13 @@ These categories are not obviously aligned with either of the cone-opponent mech
          \centering
          \caption{}
          \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F3_TCCModel/og_SimilarityFunction_231110-183536.svg}
-         \label{fig:TCCModel_ssnu_sm}
+         \label{fig:TCCModel_og_sf}
     \end{subfigure}
     \begin{subfigure}[t]{0.3\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F3_TCCModel/ssnu_SimilarityFunction_231110-184008.svg}
-         \label{fig:TCCModel_ssnu_sm}
+         \label{fig:TCCModel_ssnu_sf}
     \end{subfigure}
 
     % \begin{subfigure}[t]{0.45\textwidth}
@@ -244,54 +244,49 @@ This allows for a somewhat "model-free" model - it includes no assumptions about
 
 \begin{figure}
     \centering
-    \begin{subfigure}[t]{0.35\textwidth}
+    \begin{subfigure}[t]{0.33\textwidth}
          \centering
          \caption{}
-         \includegraphics[width=\textwidth]{../Figures/working/F4_TCCResults/a.png}         \label{fig:SimilarityMatrixCombined_Cool}
+         \includegraphics[height=5cm]{../Figures/working/F4_TCCResults/a.png}         \label{fig:SimilarityMatrixCombined_Cool}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.35\textwidth}
+    \begin{subfigure}[t]{0.33\textwidth}
          \centering
          \caption{}
-         \includegraphics[width=\textwidth]{../Figures/working/F4_TCCResults/b.png}   \label{fig:SimilarityMatrixCombined_Warm}
+         \includegraphics[height=5cm]{../Figures/working/F4_TCCResults/b.png}   \label{fig:SimilarityMatrixCombined_Warm}
     \end{subfigure}
     \hfill
        \begin{subfigure}[t]{0.29\textwidth}
          \centering
          \caption{}
-         \includegraphics[width=\textwidth]{../Figures/working/F4_TCCResults/c.png}   
+         \includegraphics[height=5cm]{../Figures/working/F4_TCCResults/c.png}   
          \label{fig:Combined-ModelFitAnalysis}
     \end{subfigure}
-    \caption{\textbf{Free Similarity model fit for combined data from all animals.}
-    Similarity between stimulus $i$ and stimulus $j$, where one is the cue and one is the choice. This is a ``free'' similarity matrix - in that no particular relationship is pre-supposed between any of the stimuli (such as, for example: closer stimuli will be more similar). 
+    \caption{\textbf{Model comparison.}
+    \emph{A and B.} Free similarity matrices for combined data, centered on the "cool" category and the "warm" attractor points. In this type of model, no particular relationship is pre-supposed between any of the stimuli. 
+    If the underlying mechanism for the attractor points were cognitive bias, we would see an asymmetry around the diagonal (as in \autoref{fig:TCCModel_og_sm}), whereas if the underlying mechanism were stimulus-space non-uniformity we would see bulges away from the diagonal at the attractor points which would be symmetric about the diagonal (as in \autoref{fig:TCCModel_ssnu_sm}).
+    \emph{C.} Quantitative comparison between models. Negative log likelihood of a null model (no bias), the cognitive bias model, and a stimulus-space non-uniformity model. Lower negative log likelihoods indicate a better fit to the data. BIC values allow us to compare performance taking into account the number of model parameters and the number of trials, and also provide a unit by which the confidence of model superiority can be judged. Lower BIC values indicate a better fit to the data. BIC differences of between 6 and 10 are generally interpreted as strong evidence that one model is better than another; here we see a BIC difference of roughly 1200.
     } 
     \label{fig:TCCOutput}
 \end{figure}
 
-To determine which model better explains the macaque behavioral data, we quantitatively compared the different versions of the model (including also a null-model which does not allow for any biases).
-
-The behavioral data are best explained by the stimulus-space non-uniformity model, as quantified by negative log-likelihood and AIC (\autoref{fig:Combined-ModelFitAnalysis}). 
+To determine which model better explains the macaque behavioral data, we quantitatively compared the different versions of the model, including also a null-model which does not allow for any biases (\autoref{fig:Combined-ModelFitAnalysis}). 
+The behavioral data are best explained by the stimulus-space non-uniformity model, as quantified by negative log-likelihood and BIC. 
 
 \begin{figure}
     \centering
-    \begin{subfigure}[t]{0.2\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
          \centering
          \caption{}
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/SI/SI1_IndiMM/210517--211108_Castor_data_fromPreProcessedData_MixMod_polar_230803-000637.svg}
          \label{fig:CastorMM}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.38\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F5_CastorCogBias/sm_18_230731-150331.svg}
+         \includegraphics[idth=\textwidth]{../Figures/working/SI/SI1_IndiMM/sm_18_231110-202911.png}
          \label{fig:Castor-FreeSimilarity}
-    \end{subfigure}
-    \hfill
-       \begin{subfigure}[t]{0.38\textwidth}
-         \centering
-         \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F5_CastorCogBias/BIC_Castor_230907-052020.svg}         \label{fig:fig:Castor-ModelFitAnalysis}
     \end{subfigure}
     \caption{\textbf{Lorem}
     Ipsum}
@@ -299,10 +294,10 @@ The behavioral data are best explained by the stimulus-space non-uniformity mode
 \end{figure}
 
 \paragraph{Idiosyncratic categories in individual animals}
-But does the TCC-c model have sufficient sensitivity to discover a cognitive bias should one exist? 
-The data for individual animals shows that it does. 
-By mixture-model analysis, one animal showed not only the two consensus choice biases for “warm” and “cool” but also a strong choice bias for pea green (\autoref{fig:CastorMM}). 
-The free similarity matrix for the data from this animal shows an asymmetry about the diagonal corresponding to this color (\autoref{fig:Castor-FreeSimilarity}), providing the hallmark of a cognitive color bias that is confirmed by negative log-likelihood and AIC quantification (\autoref{fig:fig:Castor-ModelFitAnalysis}).
+The data we have presented thus far is for four animals combined, and our analysis strongly suggests that the source of biases is not cognitive bias but rather stimulus-space non-uniformity.
+However, by mixture-model analysis, one animal showed not only the two consensus choice biases for “warm” and “cool” but also a strong choice bias for pea green (\autoref{fig:CastorMM}). 
+The free similarity matrix for the data from this animal shows an asymmetry about the diagonal corresponding to this color (\autoref{fig:Castor-FreeSimilarity}), providing the hallmark of a cognitive color bias.
+% that is confirmed by negative log-likelihood and BIC quantification (\autoref{fig:fig:Castor-ModelFitAnalysis}).
 
 
 \begin{figure}
