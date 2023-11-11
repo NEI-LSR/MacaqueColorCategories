@@ -16,11 +16,11 @@ load('../../../../../../Analyses/TCCModels/Castor/211108_090705_Castor/220517--2
 
 %%
 
-% categoryCenter = 18;
-% plotSimilarityMatrix(x,'18','../',categoryCenter)
+categoryCenter = 18;
+plotSimilarityMatrix(x,'18','../',categoryCenter)
 
-plotSimilarityMatrix(x,'','../')
+% plotSimilarityMatrix(x,'','../')
 
 %%
 
-plotbar_NLL_AIC_BIC('Castor','../')
+% plotbar_NLL_AIC_BIC('Castor','../')
