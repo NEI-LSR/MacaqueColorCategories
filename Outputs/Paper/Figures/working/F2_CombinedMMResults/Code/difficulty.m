@@ -1,21 +1,31 @@
 clear, clc, close all
 
+% csv or mat?
+csv = 0;
+
 %%
 
-% TODO Replace with `loadData.m`
-
 filename = 'combinedData';
-% TODO Replace with CSVs
+repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
+addpath(genpath([repoHomeDir,filesep,'Analyses']))
 
-addpath(genpath('C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses'))
+if csv
+    warning('Code for using csv is not complete')
 
+    loadedData = readtable([repoHomeDir,filesep,'Data',filesep,'combinedData.csv']);
 
-load(['C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\data\',...
-    filename,'.mat'])
+    for i = 1:size(loadedData,1)
+        data.trialdata.cues{i,1} = table2array(loadedData(i,2));
+        data.trialdata.choices{i,1} = table2array(loadedData(i,4:7));
+        data.trialdata.chosen{i,1} = table2array(loadedData(i,3));
+    end
+else
+    load([repoHomeDir,filesep,'Data',filesep,'combinedData.mat']);
+end
+
+%%
 
 difficulty_psychometric(cleandata,filename);
 
-
-%%
 
 

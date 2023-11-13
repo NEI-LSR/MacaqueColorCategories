@@ -1,6 +1,7 @@
 *.asv
 *.mat
 *$*
+*DS_Store
 
 !Data/MixtureModels/**
 #!Analyses/TCCModels/**
