@@ -1,0 +1,9 @@
+clear, clc, close all
+
+addpath(genpath('.'))
+
+GenerativeModel([],...
+    'pltSimFigs',true,...
+    'shiftedGaussians',sin(1:64)*12,...
+    'gaussianWidth',5)
+
