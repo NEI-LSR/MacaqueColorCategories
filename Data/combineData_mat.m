@@ -10,7 +10,7 @@ filename{3} = '220322--220823_Morty_data.mat';
 filename{4} = '210428--210609_Buster_data';
 
 for dataset = 1:length(filename)
-    tempdata{dataset} = load([dirname,filename{dataset}]);
+    tempdata{dataset} = load([dirname,filesep,filename{dataset}]);
 end
 
 %% Strip out aborts
