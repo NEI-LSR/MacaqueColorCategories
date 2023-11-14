@@ -2,7 +2,9 @@ function plotbar_NLL_AIC_BIC(p,filedir)
 
 %% Load data
 
-d = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\';
+% d = ['.',filesep,'TCCModels',filesep];
+
+d = ['Y:\PROJECTS\MacaqueColorCategories_test\MacaqueColorCategories\Analyses',filesep,'TCCModels',filesep];
 
 % p = 'Combined'; % participant
 % p = 'Castor';
@@ -22,8 +24,11 @@ elseif strcmp(p,'Morty')
     NLLfiles = {'\NLL_230903-000444.csv','\NLL_230903-023202.csv'};
 end
 
-NLL = table2array([min(readtable([d,p,NLLfiles{1}])),...
-    readtable([d,p,NLLfiles{2}])]);
+for i = 1:4
+    t = readtable([d,p,NLLfiles{1}]);
+    NLL(i) = min(table2array(t(:,i)));
+end
+NLL(end+1) = table2array(readtable([d,p,NLLfiles{2}]));
 
 if strcmp(p,'Combined')
     NLL = [NLL,table2array(readtable([d,p,NLLfiles{3}]))];
