@@ -1,6 +1,9 @@
-function plotMixtureModel(model, whichFigures, filename)
+function plotMixtureModel(model, whichFigures, filename, withLabels)
 
-forBevil = false;
+if ~exist('withLabels','var')
+    withLabels = true;
+end
+
 axlims = 40;
 
 PotentialDistances  = model.PotentialDistances;
@@ -293,7 +296,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
     ax.ThetaTickLabel = {};
     ax.RTick = [0:20:axlims*2];
-    if forBevil
+    if ~withLabels
         rticklabels({'','','','',''});
     else
         rticklabels({'','-20','0','+20',''}); % Could use `axisoffset`?

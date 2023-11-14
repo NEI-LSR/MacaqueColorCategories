@@ -1,6 +1,10 @@
-function plotSimilarityMatrix(x,filename,OutPutFileDir,categoryCenter)
+function plotSimilarityMatrix(x,filename,OutPutFileDir,categoryCenter,withLabels)
 
 %clear, clc, close all
+
+if ~exist('withLabels','var')
+    withLabels = true;
+end
 
 if min(size(x)) == 1 % if we pass a vector rather than a matrix, assume it needs reshaping
     nBig = sqrt(length(x));
@@ -10,7 +14,7 @@ else
     sm = x; % Similarity Matrix
 end
 
-if exist('categoryCenter','var')
+if exist('categoryCenter','var') && ~isempty(categoryCenter)
     sm = circshift(sm,[nBig/2-categoryCenter,nBig/2-categoryCenter]);
 end
 
@@ -31,22 +35,26 @@ colormap('gray')
 axis off
 ax1.Box = 'off';
 
+if withLabels
+    xlabel('Cue')
+    ylabel('Choice')
+end
+
 hold on
 plot([1,nBig],[1,nBig],'k--')
 
-if exist('categoryCenter','var') % Add center lines
-    xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
-    yline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
-
-    % xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2,'LineStyle','--')
-end
+% if exist('categoryCenter','var') && ~isempty(categoryCenter) % Add center lines
+%     xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
+%     yline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2)
+% 
+%     % xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',2,'LineStyle','--')
+% end
 
 cb1 = colorbar;
 cb1.Ticks = [];
 cb1.Label.String = "Similarity";
 caxis([0 1])
-%xlabel('Choice')
-%ylabel('Cue')
+
 %rectangle('Position',[0.5,19.5,nBig,1],'EdgeColor','w')
 
 xticklabels([]);
