@@ -49,20 +49,18 @@ moving_bias = model.moving_bias;
 whichFigures.MixMod_polar = true;
 plotMixtureModel(model,...
     whichFigures,['F3_TCCModel_og_Input_',AnalysisDepth])
+plotMixtureModel(model,...
+    whichFigures,['F3_TCCModel_og_Input_',AnalysisDepth],false)
 
 %% Generate a set of paramters for skewed gaussians that would create this data structure
 
 gaussianWidth = 25;
 
 [~, OGdata] = GenerativeModel([],'offsetGaussians',moving_bias,...
-    'gaussianWidth',gaussianWidth,'nTrials',size(data,1),...
-    'pltSimFigs', true);
+    'gaussianWidth',gaussianWidth,'nTrials',size(data,1));
 OGdata.trialdata.chosen = OGdata.trialdata.chosen';
 
 save('OGdata.mat')
-
-figure(6)
-saveas(gcf,['../og_SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
 
 OG_model = fitMixtureModel(OGdata,[],lengthOfSlidingWindow);
 OG_moving_bias = OG_model.moving_bias;
@@ -70,9 +68,13 @@ OG_moving_bias = OG_model.moving_bias;
 whichFigures.MixMod_polar = true;
 plotMixtureModel(OG_model,...
     whichFigures,['F3_TCCModel_og_Output_',AnalysisDepth])
+plotMixtureModel(OG_model,...
+    whichFigures,['F3_TCCModel_og_Output_',AnalysisDepth],false)
 
 %%
 
 plotSimilarityMatrix(OGdata.trialdata.similarityMatrix,...
-    'og','../',32)
+    'og','../')
+plotSimilarityMatrix(OGdata.trialdata.similarityMatrix,...
+    'og','../',[],false)
 

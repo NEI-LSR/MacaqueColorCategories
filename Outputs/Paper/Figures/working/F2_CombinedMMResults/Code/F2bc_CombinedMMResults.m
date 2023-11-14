@@ -28,9 +28,9 @@ rng(0)
 if strcmp(AnalysisDepth,'fromRawData')
 
     if csv
-        data = combineData_mat([repoHomeDir,filesep,'Data'])
+        data = combineData([repoHomeDir,filesep,'Data'])
     else
-        data = combineData([repoHomeDir,filesep,'Data']);
+        data = combineData_mat([repoHomeDir,filesep,'Data']);
     end
        
     saveDataFile = 0;

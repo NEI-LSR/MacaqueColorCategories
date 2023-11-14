@@ -4,7 +4,10 @@ addpath(genpath('../../../../../../Analyses/'))
 
 %% Load data
 
-DataDir = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Analyses\TCCModels\combined\';
+repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
+addpath(genpath([repoHomeDir,filesep,'Analyses']))
+DataDir = [repoHomeDir,filesep,'Analyses',filesep,'TCCModels',filesep,'combined',filesep];
+
 filename = 'combined_TCC-FreeSimilarityMatrix-workspace_230214';
 
 load([DataDir,filename,'.mat'],'x')

@@ -4,7 +4,8 @@ clear, clc, close all
 csv = 0;
 
 %%
-
+%%file gets the raw behavioral data which includes 
+%% sets paths
 filename = 'combinedData';
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
 addpath(genpath([repoHomeDir,filesep,'Analyses']))
@@ -25,7 +26,32 @@ end
 
 %%
 
-difficulty_psychometric(cleandata,filename);
+difficulty_psychometric(data,filename);
+
+%%
+%% to get the number of cues per animal that have been subsampled to match Buster
+cues = cell2mat(data.trialdata.cues);
+
+
+for i = 1:64
+    t(i,1) = sum(cues(1:24526) == i);
+end
+
+for i = 1:64
+    t(i,2) = sum(cues(24527:49052) == i);
+end
+
+for i = 1:64
+    t(i,3) = sum(cues(49053:73578) == i);
+end
+
+for i = 1:64
+    t(i,4) = sum(cues(73579:end) == i);
+end
+
+
+
+sum(t(:)) == size(cues,1)
 
 
 

@@ -54,7 +54,7 @@ figure(5)
 saveas(gcf,['../ssnu_SimilarityFunction_',datestr(now,'yymmdd-HHMMSS'),'.svg']);
 
 plotSimilarityMatrix(simdata.trialdata.similarityMatrix,...
-    'ssnu','../',32)
+    'ssnu','../',[])
 
 %%
 
@@ -65,3 +65,5 @@ model = fitMixtureModel(simdata,[],lengthOfSlidingWindow);
 whichFigures.MixMod_polar = true;
 plotMixtureModel(model,...
     whichFigures,['TCCDemo_ssnu_',AnalysisDepth])
+plotMixtureModel(model,...
+    whichFigures,['TCCDemo_ssnu_',AnalysisDepth],false)
