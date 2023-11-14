@@ -110,21 +110,21 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     % set(axes1,'XColor','none','YColor','none')
 
     axes('PositionConstraint','innerposition',...
-    'Position',[0.13 0.19 0.82 0.75])
-    
+        'Position',[0.13 0.19 0.82 0.75])
+
     hold on
 
     x = 0;
     for i = 2:2:length(interp_ci)
         x = x+1;
         if interp_ci(i) > interp_ci(i-1)
-        fill([interp_ci(i-1) interp_ci(i) interp_ci(i) interp_ci(i-1)],...
-            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);%opacity(x))
+            fill([interp_ci(i-1) interp_ci(i) interp_ci(i) interp_ci(i-1)],...
+                [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);%opacity(x))
         elseif interp_ci(i) < interp_ci(i-1)
             fill([interp_ci(i-1) 360 360 interp_ci(i-1)],...
-            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
+                [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
             fill([0 interp_ci(i) interp_ci(i) 0],...
-            [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
+                [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
         end
     end
 
@@ -281,10 +281,13 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
         polarplot(deg2rad(interp_crossing(k)), 0 + axisoffset, 'ko','MarkerFaceColor','k')
     end
 
-    polarplot([deg2rad(180) deg2rad(180)],[0 axlims*2],...
-        'Color',rstimCols_sRGB(round(180/interval),:),...
-        'LineStyle','--','LineWidth',2);
-   
+    plotDemoLine = 0;
+    if plotDemoLine
+        polarplot([deg2rad(180) deg2rad(180)],[0 axlims*2],...
+            'Color',rstimCols_sRGB(round(180/interval),:),...
+            'LineStyle','--','LineWidth',2);
+    end
+
     ax = gca;
     ax.Color = 'none';
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};

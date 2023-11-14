@@ -2,36 +2,53 @@
 
 %% Options
 
+clc, clear, close all
+
 % Determine the depth of the analysis that you would like to reproduce
 
 % fromRawData:               % Generate figures from the raw data (slowest)
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromModelOutput';
+AnalysisDepth = 'fromPreProcessedData';
+csv = 0; % csv or mat?
 
 %% Behind the scenes...
 
 % Add path to required script
-addpath(genpath('../../../../../../Analyses/'))
 
-
-modelOutputDir = '../../../../../../Analyses';
+repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
+addpath(genpath([repoHomeDir,filesep,'Analyses']))
+modelOutputDir = [repoHomeDir,filesep,'Analyses'];
 
 rng(0)
 
 %% Load/process data
 
 if strcmp(AnalysisDepth,'fromRawData')
-    error('not coded yet')
-    % load data
-    % save data (?)
+
+    if csv
+        data = combineData_mat([repoHomeDir,filesep,'Data'])
+    else
+        data = combineData([repoHomeDir,filesep,'Data']);
+    end
+       
+    saveDataFile = 0;
+    if saveDataFile
+        save([repoHomeDir,filesep,'Data',filesep,'combinedData.mat'])
+    end
+
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
-    data = combineData();
-    save('../../../../../../Data/combinedData.mat','data');
-    warning('If combinedData.mat previously existed, it has been overwritten')
+ 
+    if csv
+        warning('Using csv method currently results in different output. It should not. Work in progress.')
+        loadedData = readtable([repoHomeDir,filesep,'Data',filesep,'combinedData.csv']);
+        data = loadedData;
+    else
+        load([repoHomeDir,filesep,'Data',filesep,'combinedData.mat']);
+    end
 
     rng(0) % the modelling might be probabilistic - TODO check this
 
