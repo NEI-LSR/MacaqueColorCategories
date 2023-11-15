@@ -15,6 +15,6 @@ cleandata = analysis('dirname',{'220322_091149_Morty', '220823_081207_Morty'}, '
 save('/Volumes/bc6/PROJECTS/MacaqueColorCategories/Data/220322--220823_Morty_data.mat','cleandata')
 
 
-%%
-clc
-cleandata = analysis('dirname',{'210422_135417_Pollux'}, 'heatmapfig', true, 'choicefixfig', true, 'makefigs', false);
+%% Testing getting more variables...
+
+% cleandata = analysis('dirname',{'210422_135417_Pollux'}, 'heatmapfig', true, 'choicefixfig', true, 'locationfig', true, 'makefigs', false);
