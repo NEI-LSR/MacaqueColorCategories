@@ -10,13 +10,12 @@ if ~exist('bootstrap','var')
     boostrap = false;
 end
 
-
 %% Load data
 
 filename{1} = '210422--211012_Pollux_data';
 filename{2} = '210517--211108_Castor_data.mat';
-filename{3} = '220322--220823_Morty_data.mat';
-filename{4} = '210428--210609_Buster_data';
+filename{3} = '210428--210609_Buster_data';
+filename{4} = '220322--220823_Morty_data.mat';
 
 for dataset = 1:length(filename)
     tempdata{dataset} = load([dirname,filesep,filename{dataset}]);
@@ -42,7 +41,6 @@ end
 for dataset = 1:length(filename)
     nTrials(dataset) = length(tempdata{1,dataset}.trialdata.cues);
 end
-
 
 for dataset = 1:length(filename)
     if ~boostrap
