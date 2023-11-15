@@ -43,7 +43,7 @@ for dataset = 1:length(filename)
 end
 
 for dataset = 1:length(filename)
-    if ~boostrap
+    if ~bootstrap
         idx(dataset,:) = randsample(nTrials(dataset),min(nTrials));
     elseif bootstrap
         idx(dataset,:) = randi(nTrials(dataset),min(nTrials),1);
