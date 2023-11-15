@@ -34,49 +34,58 @@ The values, for each stimulus, are plotted as the black lines in \autoref{fig:Co
 Where this line falls closer to the center of the figure than the 0deg line, there is negative bias (which per convention is counter-clockwise), and vice versa for values above the 0deg line. Confidence intervals were directly extracted from the model fit.
 
 \paragraph{Modified Target Confusability Competition Model (TCC-MAT)}\label{para:TCC}
-One disadvantage of the mixture model for our analysis is that we can only use it to analyze the subset of trials where the animal made an incorrect response.
-This is a consequence of the 4-AFC paradigm, where across all trials, correct choices will be over-represented; there is no straightforward way to establish chance level when including trials with correct choices. 
-In order to use the full dataset (incorrect and correct trials), we developed a generative model, based on the Target Confusability Competition (TCC) model of \cite{schurgin_psychophysical_2020}. 
+In order to investigate the source of the biases recovered through Mixture Modeling, we developed a generative model, based on the Target Confusability Competition (TCC) model of \citet{schurgin_psychophysical_2020}. 
 The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ through a non-linear mapping of distance to similarity, and a value of $d'$, which can be thought of as describing the amount of noise acting in the system. 
-These two elements can be used to predict the probability that a choice of colour $s_j$ will be picked from the set of $[s_j1...s_jn ]$, on a trial where the cue is $s_i$. 
-Our implementation of the model includes some important modifications required for our purpose.
-First, our model does not assume that the underlying function is the same for each stimulus. 
-The standard TCC model obtains a single similarity function averaged across stimuli, but it does not have to, as \cite{schurgin_psychophysical_2020} demonstrate (see Figures 1D and Extended Data Figure 5 of \cite{schurgin_psychophysical_2020}). 
+These two elements can be used to predict the probability that a choice of colour $s_j$ will be picked from the set of $[j1...jn ]$, on a trial where the cue is $i$. 
+Our implementation of the model includes some important modifications required for our purposes.
+
+In general, our model does not assume that the underlying function is the same for each stimulus. 
+The standard TCC model obtains a single similarity function averaged across stimuli, but it does not have to, as \citet{schurgin_psychophysical_2020} demonstrate (see Figures 1D and Extended Data Figure 5 of \citet{schurgin_psychophysical_2020}). 
 Since we are most interested in the differences between the functions for the different stimuli, we allow the similarity function to differ for each stimulus. 
-Second, our model makes no assumptions about the underlying function that determines similarity. 
-The standard TCC model uses an exponential function with additional perceptual noise (see Figure 1F of \cite{schurgin_psychophysical_2020}), based on observations gained from collecting data on various simultaneous judgment tasks. 
-Our model does not do this because we expect that, if choice biases are present, they will require a differently shaped similarity function for different stimuli to be discovered. 
-Third, we refer to fits made this way as “free” fits (and the corresponding similarity matrix as “free”), since each element of the matrix is “free” to be fit optimally, independently of all other colors. 
-Fourth, we fit our model on single datasets at a time, whereas the standard TCC model derives the similarity functions and values for $d'$ from independent datasets.
 
-In fitting a free similarity matrix, noise in the system can either be represented by the value of $d'$ or by modifying the “contrast” of the similarity matrix (the relationship between the highest values and the lowest values in the matrix), since we apply no constraints on the floor or peak of the function. We therefore assume a value of $d'=1$ for the similarity matrix fits.
-Since we use an AFC method, as opposed to a pseudo-continuous response space, we are able to take advantage of an alternative computational method for computing the probabilities of a particular choice being made. 
-We use the correction factors of \cite{mcgraw_common_1992} (their Table 3) to estimate the probability $P(X_1>max(X_2,X_3,X_4 ))$, where $X_(1:4)$ are samples from independent normal variables, with means representing the pairwise similarity values between $s_i$ and $s_j$, and variances determined by $d'$. 
-This decreases the runtime of our model by several orders of magnitude compared to the standard TCC method of \cite{schurgin_psychophysical_2020} (See the function \verb|modelPDF| in \verb|TCC_Code_InManuscriptOrder|\verb|\Model| \verb|\TCCUncorrelated.m| from \url{https://osf.io/j2h65/} for comparison).
+For the similarity function, the standard TCC model uses an exponential function convolved with an additional function representing perceptual noise (see Figure 1F of \citet{schurgin_psychophysical_2020}). 
+The cognitive bias model and stimulus-space non-uniformity models we have developed use a simpler approximation to this: a gaussian.
+This reduces model complexity with no apparent drop in model efficacy.
+Our "free-similarity" model does not pre-suppose any specific similarity function; every cell in the similarity matrix is an independent parameter.
+This flexibility allows for patterns of similarity that are not captured by our hypotheses.
 
-\paragraph{Determining Cognitive Bias vs. Stimulus-Space Non-Uniformity using TCC-MAT}
+% In fitting a free similarity matrix, noise in the system can either be represented by the value of $d'$ or by modifying the “contrast” of the similarity matrix (the relationship between the highest values and the lowest values in the matrix), since we apply no constraints on the floor or peak of the function. We therefore assume a value of $d'=1$ for the similarity matrix fits.
+Since we use an AFC method, as opposed to a (pseudo-)continuous response space, we are able to take advantage of an alternative computational method for computing the probabilities of a particular choice being made. 
+We use the correction factors of \citet{mcgraw_common_1992} (their Table 3) to estimate the probability $P(X_1>max(X_2,X_3,X_4 ))$, where $X_(1:4)$ are samples from independent normal variables, with means representing the pairwise similarity values between $s_i$ and $s_j$, and variances determined by $d'$. 
+This decreases the compute time of our model fitting by several orders of magnitude compared to the standard TCC method of \citet{schurgin_psychophysical_2020} (See the function \verb|modelPDF| in \verb|TCC_Code_InManuscriptOrder|\verb|\Model| \verb|\TCCUncorrelated.m| from \url{https://osf.io/j2h65/} for comparison).
 
-For these experiments, we used a nominally perceptually uniform color space: CIELUV. 
-This space has been derived psychophysically, with the goal of minimizing differences in perceptual non-uniformity across the space, for color differences of small magnitudes.
+% \paragraph{Cognitive Bias Model}
+% Our cognitive bias model is based on the CATMET model of \citet{bae_why_2015} and the attractor model of \citet{panichello_error-correcting_2019}.
+% In this model, the peak of the gaussian representing the similarity function is allowed to freely float to higher and lower hue angles.
+% This can be thought of as a shifting upwards and downwards of the columns in the similarity matrix. % TODO Change if we transpose
 
-However, non-uniformities within the space are thought to exist \citep{stockman_colorimetry_2010}; and uniformity for small color differences does not assure uniformity for larger color differences \citep{judd_ideal_1968}. 
-Moreover, uniformity for the conditions under which the psychometric measurements from which the space was determined does not assure uniformity across all viewing conditions \citep{siuda-krzywicka_biological_2019}. 
-Non-uniformities in color space could lead to choice biases that manifest in a similar way to true cognitive biases when analyzed with a mixture model (\autoref{fig:TCCDemo}). 
-Distinguishing between the alternative sources of the choice biases can be accomplished with the TCC-MAT model analysis. 
-We define “true cognitive bias” as when an agent is more likely to pick choice $s_2$ as a match to cue $s_1$ than they are to select choice $s_1$ as a match to cue $s_1$, and that this behavior would not be reciprocal (they would not be more likely to pick choice $s_1$ as a match to cue $s_2$ than they are to select choice $s_2$ as a match to cue $s_2$). 
-By this definition, this type of bias would appear as an asymmetric spread away from the negative diagonal in the similarity matrix; symmetry across the diagonal would represent reciprocity. 
+% \paragraph{Stimulus-space non-uniformity model}
+% Our stimulus-space non-uniformity model
 
-Variations in the symmetric spread around the negative diagonal in the similarity matrix would represent non-uniformity of the stimulus space. 
-In areas where the behavioral space is oversampled, one would see spread away from the negative diagonal (adjacent colors are more similar than the average). 
-In areas that are undersampled, one would see a pinch into the negative diagonal (adjacent colors are less similar than the average). 
 
-To estimate how much of the bias in the similarity matrix of the macaque behavior data could be attributed to non-uniformity of color space, we fit a version of the TCC-MAT model using a single similarity function (itself defined by two parameters: gaussian width and $d'$) and allow the stimuli chromaticities to float. 
-Fitting such a model is akin to asking: what set of relationships between the stimuli in stimulus space can best explain the data we observe?
+% \paragraph{Determining Cognitive Bias vs. Stimulus-Space Non-Uniformity using TCC-MAT}
 
-%$$\label{eq:SimilarityFunction}     \eqnmarkbox[purple]{explambda}{\exp(x\cdot\lambda)}     \eqnmarkbox[cyan]{convolution}{\circledast}     \eqnmarkbox[blue]{Gilbert,  \#6818}{\mathcal{N}(0,\sigma^2)}$$
+% For these experiments, we used a nominally perceptually uniform color space: CIELUV. 
+% This space has been derived psychophysically, with the goal of minimizing differences in perceptual non-uniformity across the space, for color differences of small magnitudes.
+
+% However, non-uniformities within the space are thought to exist \citep{stockman_colorimetry_2010}; and uniformity for small color differences does not assure uniformity for larger color differences \citep{judd_ideal_1968}. 
+% Moreover, uniformity for the conditions under which the psychometric measurements from which the space was determined does not assure uniformity across all viewing conditions \citep{siuda-krzywicka_biological_2019}. 
+% Non-uniformities in color space could lead to choice biases that manifest in a similar way to true cognitive biases when analyzed with a mixture model (\autoref{fig:TCCDemo}). 
+% Distinguishing between the alternative sources of the choice biases can be accomplished with the TCC-MAT model analysis. 
+% We define “true cognitive bias” as when an agent is more likely to pick choice $s_2$ as a match to cue $s_1$ than they are to select choice $s_1$ as a match to cue $s_1$, and that this behavior would not be reciprocal (they would not be more likely to pick choice $s_1$ as a match to cue $s_2$ than they are to select choice $s_2$ as a match to cue $s_2$). 
+% By this definition, this type of bias would appear as an asymmetric spread away from the negative diagonal in the similarity matrix; symmetry across the diagonal would represent reciprocity. 
+
+% Variations in the symmetric spread around the negative diagonal in the similarity matrix would represent non-uniformity of the stimulus space. 
+% In areas where the behavioral space is oversampled, one would see spread away from the negative diagonal (adjacent colors are more similar than the average). 
+% In areas that are undersampled, one would see a pinch into the negative diagonal (adjacent colors are less similar than the average). 
+
+% To estimate how much of the bias in the similarity matrix of the macaque behavior data could be attributed to non-uniformity of color space, we fit a version of the TCC-MAT model using a single similarity function (itself defined by two parameters: gaussian width and $d'$) and allow the stimuli chromaticities to float. 
+% Fitting such a model is akin to asking: what set of relationships between the stimuli in stimulus space can best explain the data we observe?
+
+% %$$\label{eq:SimilarityFunction}     \eqnmarkbox[purple]{explambda}{\exp(x\cdot\lambda)}     \eqnmarkbox[cyan]{convolution}{\circledast}     \eqnmarkbox[blue]{Gilbert,  \#6818}{\mathcal{N}(0,\sigma^2)}$$
 
 \paragraph{Reverse-engineering a uniform color space from the macaque color-matching data }
 
-Following the fitting of the model described above, the set of modified stimuli chromaticities can be extracted (\autoref{fig:MACBEHcolorspace}). 
+Following the fitting of the stimulus-space non-uniformity model, the set of modified stimuli chromaticities can be extracted (\autoref{fig:MACBEHcolorspace}). 
 These can be thought of as the chromaticity values for the stimuli that we used, no longer represented in CIELUV, but now in a behaviorally derived color space instead (\autoref{fig:MACBEHspace}). 
 It is then possible to define a uniformly distributed set of colors in this new space, reparameterize them by their relationship to the original colors in the new space (e.g. new chromaticity $b$ is 60\% of the angular distance on the path between stimulus $a$ and stimulus $c$), and then determine where this new set of colors would be in CIELUV (\autoref{fig:UniformStimsInCIELUV}).
