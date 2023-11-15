@@ -70,7 +70,7 @@ Another hypothesis is that color categories emerge in development, instructed by
 This hypothesis is promoted by variability in color naming patterns across languages and individuals \citep{davidoff_colour_1999,roberson_color_2000,paramei_online_2018,webster_variations_2002}.
 Current consensus is that some aspect of adult color category behavior is acquired through experience; but the extent to which the origin of color categories is innate remains unresolved \citep{davidoff_nature_2009,skelton_colour_2023}.
 
-One approach to the origin of color categories that sidesteps difficulties working with human infants is studies of trichromatic non-human primates. 
+One approach to investigate the origin of color categories that sidesteps difficulties working with human infants is studies of trichromatic non-human primates. 
 The few studies on this topic have come to different conclusions: one found color categories in macaques consistent with categories in human adults \citep{sandell_color_1979}; one tested for a blue-green category boundary and found it in humans but not in baboons \citep{fagot_cross-species_2006}; and one found different categories in the two macaques tested, apparently dependent on the animals’ experiences \citep{panichello_error-correcting_2019}.
 
 \paragraph{Measuring color categories in macaque monkeys}
@@ -196,7 +196,7 @@ These categories are not obviously aligned with either of the cone-opponent mech
     % \begin{subfigure}[t]{0.45\textwidth}
     %      \centering
     %      \caption{}
-    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/ssnu_SimilarityFunction_230731-150035}\llap{\raisebox{3cm}{\includesvg[pretex=\tiny, width=2.5cm]{../Figures/working/F6_ColSpace/combined_TCC-0att_fullremap-workspace_230510_behaviorally-derived-colorspace_everySecond230818-114423.svg}}} 
+    %      \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F3_TCCModel/ssnu_SimilarityFunction_230731-150035}\llap{\raisebox{3cm}{\includesvg[pretex=\tiny, width=2.5cm]{../Figures/working/F6_ColSpace/combined_TCC-0att_fullremap-workspace_230510_behaviorally derived-colorspace_everySecond230818-114423.svg}}} 
     %      % h/t: https://tex.stackexchange.com/a/89778/169285 
     %      %\label{fig:JustColSpace_subset}
     % \end{subfigure}
@@ -224,22 +224,24 @@ One might even suppose that if language influences color perception, as stipulat
 Could the macaque consensus color categories be attributed not to a true “cognitive” category (\autoref{fig:TCCCartoonA}) but to unrecognized distortions in the presumed uniform space of colors (\autoref{fig:TCCCartoonB})? 
 
 The central difference in the two explanations can be understood by considering the relationship between two neighboring colors. 
-For the cognitive-bias account, there is an asymmetry between the colors if there is a category center nearby - the color further from the category center will be more likely mistaken for the color closer to the category center than the other way around. 
-Whereas for the non-uniform color space, there is no asymmetry in mismatches between neighboring pairs of colors - if these two colors were more easily confused with eachother than their other neighbors, then on average the response to either would be biased towards a point between them.
+For the cognitive bias account, there is an asymmetry between the colors if there is a category center nearby - the color further from the category center will be more likely mistaken for the color closer to the category center than vice versa, and as a result there will be a bias in responses towards the category center. 
+In contrast, for the non-uniform color space account, if two neighboring colors were perceptually closer to each other than their other neighbors, and thus they were more likely to be confused with each other than average, a bias would arise towards a point between these two neighbors. At a larger scale, biases would occur towards areas of high density of stimuli and away from areas of low density.
 
-To illustrate that the behavioral data could be caused by either a cognitive-bias account or a stimulus-space non-uniformity, we generated two sets of simulated data for our task. 
-One simulation used a uniform space with the types of biases that might arise due to categorical encoding, and the other used a distorted color space with two foci of distortion but with explicit biases. 
-Both simulations give rise to the same pattern of results when analyzed with a mixture model, and we can generate simulated data such that the pattern qualitatively matches the real behavioral data (\autoref{fig:TCCCartoonA} and \autoref{fig:TCCCartoonB}; compare these simulations with \autoref{fig:CombinedPolar}). 
+To illustrate that the behavioral data could be accounted for by either a cognitive-bias account or a stimulus-space non-uniformity, we generated two sets of simulated data for our task (\autoref{fig:TCCDemo}). 
+One simulation used a uniform space with the types of biases that might arise due to categorical encoding, and the other used a distorted color space with two foci of distortion. 
+Both simulations give rise to the same pattern of results when analyzed with a mixture model, and we can generate simulated data such that the pattern qualitatively matches the real behavioral data (\autoref{fig:TCCModel_og} and \autoref{fig:TCCModel_ssnu}; compare these simulations with \autoref{fig:CombinedPolar}). 
 So, to tease apart the possible underlying causes of the behavioral results, we developed a generative model based on the Target Confusability Competition (TCC) model \citep{schurgin_psychophysical_2020}. 
 The key development of our model over that of \cite{schurgin_psychophysical_2020} is that it does not assume the same underlying similarity function for each color - whereas \cite{schurgin_psychophysical_2020} use a similarity function to map distances to similarity scores, we introduce the concept of a similarity matrix, which can be thought of as a unique similarity function per stimulus. 
 To recognize this conceptual difference, we refer to these types of models as ``TCC-MAT``.
 
 We consider three versions of this model: a cognitive bias version, a stimulus-space non-uniformity version, and a free-similarity version.
-In the cognitive bias TCC-MAT model, the gaussian which defines the similarity function is allowed to float such that the peak need not be at 0, independently for each stimulus (\autoref{fig:TCCModel_og_sm}).
-This results in a similarity matrix that is asymmetric about the diagonal.
-In the stimulus-space non-uniformity TCC-MAT model, the gaussian is fixed to peak at 0, but the angular distances between each stimulus and the next successive stimulus are allowed to float, again independently for each stimulus (\autoref{fig:TCCModel_ssnu_sm}).
-This results in a similarity matrix that is symmetric about the diagonal, but which can bulge out around the diagonal in areas where there is higher than average similarity between neighboring stimuli.
+In the cognitive bias TCC-MAT model, the gaussian which defines the similarity function is allowed to float such that the peak need not be at 0, independently for each stimulus (\autoref{fig:TCCModel_og_sf}).
+This results in a similarity matrix that is asymmetric about the diagonal (\autoref{fig:TCCModel_og_sm}).
+In the stimulus-space non-uniformity TCC-MAT model, the gaussian is fixed to peak at 0, but the angular distances between each stimulus and the next successive stimulus are allowed to float, again independently for each stimulus (\autoref{fig:TCCModel_ssnu_sm}). 
+%To visualise what it means to allow stimuli to float see \autoref{fig:MACBEHcolorspace}).
+This results in a similarity matrix that is symmetric about the diagonal, but which can bulge out around the diagonal in areas where there is higher than average similarity between neighboring stimuli (\autoref{fig:TCCModel_ssnu_sm}).
 In the most flexible version of TCC-MAT, every cell in the similarity matrix is an independent model parameter.
+We refer to this type of model as a "free-similarity" model.
 This allows for a somewhat "model-free" model - it includes no assumptions about the underlying mechanisms that determine the similarity between stimulus $i$ and stimulus $j$, which allows us to assess how well the mechanisms implemented in the more constrained models capture the gross structure of the data.
 
 \begin{figure}
@@ -263,7 +265,8 @@ This allows for a somewhat "model-free" model - it includes no assumptions about
          \label{fig:Combined-ModelFitAnalysis}
     \end{subfigure}
     \caption{\textbf{Model comparison.}
-    \emph{A and B.} Free similarity matrices for combined data, centered on the "cool" category and the "warm" attractor points. In this type of model, no particular relationship is pre-supposed between any of the stimuli. 
+    \emph{A and B.} "Free similarity" model similarity matrices for combined data, centered on the "cool" and the "warm" attractor points. 
+    In this type of model, no particular relationship is pre-supposed between any of the stimuli. 
     If the underlying mechanism for the attractor points were cognitive bias, we would see an asymmetry around the diagonal (as in \autoref{fig:TCCModel_og_sm}), whereas if the underlying mechanism were stimulus-space non-uniformity we would see bulges away from the diagonal at the attractor points which would be symmetric about the diagonal (as in \autoref{fig:TCCModel_ssnu_sm}).
     \emph{C.} Quantitative comparison between models. Negative log likelihood of a null model (no bias), the cognitive bias model, and a stimulus-space non-uniformity model. Lower negative log likelihoods indicate a better fit to the data. BIC values allow us to compare performance taking into account the number of model parameters and the number of trials, and also provide a unit by which the confidence of model superiority can be judged. Lower BIC values indicate a better fit to the data. BIC differences of between 6 and 10 are generally interpreted as strong evidence that one model is better than another; here we see a BIC difference of roughly 1200.
     } 
@@ -278,25 +281,26 @@ The behavioral data are best explained by the stimulus-space non-uniformity mode
     \begin{subfigure}[t]{0.49\textwidth}
          \centering
          \caption{}
-         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/SI/SI1_IndiMM/210517--211108_Castor_data_fromPreProcessedData_MixMod_polar_230803-000637.svg}
+         \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/SI/SI1_IndiMM/210517--211108_Castor_data_fromModelOutput_MixMod_polar_231105-230855.svg}
          \label{fig:CastorMM}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
          \centering
          \caption{}
-         \includegraphics[idth=\textwidth]{../Figures/working/SI/SI1_IndiMM/sm_18_231110-202911.png}
+         \includegraphics[width=\textwidth]{../Figures/working/F5_CastorCogBias/sm_18_231110-202911.png}
          \label{fig:Castor-FreeSimilarity}
     \end{subfigure}
-    \caption{\textbf{Lorem}
-    Ipsum}
+    \caption{\textbf{Idiosyncratic cognitive bias at the individual level.} 
+    \emph{A.} Mixture model for animal CA. In addition to the shared "warm" and "cool" attractor points, another attractor point is recovered in the yellow/green region.
+    \emph{B.} TCC-MAT modeling reveals an asymmetry indicative of a cognitive bias which is shifting higher hue angles to lower values.}
     \label{fig:IndiDataCogBias}
 \end{figure}
 
 \paragraph{Idiosyncratic categories in individual animals}
-The data we have presented thus far is for four animals combined, and our analysis strongly suggests that the source of biases is not cognitive bias but rather stimulus-space non-uniformity.
-However, by mixture-model analysis, one animal showed not only the two consensus choice biases for “warm” and “cool” but also a strong choice bias for pea green (\autoref{fig:CastorMM}). 
-The free similarity matrix for the data from this animal shows an asymmetry about the diagonal corresponding to this color (\autoref{fig:Castor-FreeSimilarity}), providing the hallmark of a cognitive color bias.
+The data we have presented thus far is for four animals combined, and our analysis strongly suggests that the source of bias is not cognitive bias but rather stimulus-space non-uniformity.
+However, by mixture-model analysis, one animal showed not only the two consensus choice biases for “warm” and “cool” but also a bias for pea green (\autoref{fig:CastorMM}). 
+The free similarity matrix for the data from this animal shows an asymmetry about the diagonal corresponding to this color (\autoref{fig:Castor-FreeSimilarity}), suggesting that this individual has a cognitive bias for pea green in addition to the stimulus-space non-uniformity driven biases for warm and cool.
 % that is confirmed by negative log-likelihood and BIC quantification (\autoref{fig:fig:Castor-ModelFitAnalysis}).
 
 
@@ -322,7 +326,10 @@ The free similarity matrix for the data from this animal shows an asymmetry abou
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/newEqualSampling230818-170747.svg}
          \label{fig:UniformStimsInCIELUV}
     \end{subfigure}
-           \caption{\textbf{A behaviorally-derived colorspace.} Stimuli in CIELUV. Stimuli in behaviorally-derived space. Stimuli sampled in behaviorally-derived space, projected back into CIELUV.}
+           \caption{\textbf{A behaviorally derived colorspace.} 
+           \emph{A.} Stimuli in CIELUV. 
+           \emph{B.} Stimuli in behaviorally derived space, extracted from the TCC-MAT stimulus-space non-uniformity model for combined data. 
+           \emph{C.} Stimuli sampled uniformly in behaviorally derived space, projected back into CIELUV.}
         \label{fig:MACBEHcolorspace}
     
 \end{figure}
@@ -334,14 +341,14 @@ The behavioral data in macaques provide a rare opportunity to reconstruct a perc
 We computed, empirically, a transformed colorspace such that the macaques would, on average, show no choice bias.
 When colors evenly sampled from the purportedly uniform CIELUV space (\autoref{fig:CIELUV}) are plotted within this macaque-derived uniform color space, colors around the teal part of the space collect, and to a lesser extent, so do colors in the salmon-peach part of the space (\autoref{fig:MACBEHspace}). 
 
-\paragraph{Categorical intrusion in the creation of colorspaces}
+% \paragraph{Categorical intrusion in the creation of colorspaces}
 
-The non-uniformities in the CIE CIELUV space implied by these results raise a question about their origin. 
-Given color categories can be learned, as evident in at least one macaque in our study (\autoref{fig:Castor-FreeSimilarity}, and \autoref{fig:SimilarityMatrixIndividual}) and two macaques in another study \citep{panichello_error-correcting_2019}, coupled with the likely possibility that this learning reflects colors of environmental or behavioral relevance, we wondered whether the distortions in the presumed uniform color space could be attributed to the warm and cool color categories manifest in apparently all human cultures \citep{gibson_color_2017} and hypothesized to be caused by the non-arbitrary color statistics of objects and backgrounds \citep{rosenthal_color_2018}
-— objects are more likely to be warm-colored and backgrounds, cool-colored. 
-To test this idea, we ran a simulation in which the macaque uniform color space was used in a color-matching task by an agent with cognitive biases for warm and cool colors defined by the average colors of objects and backgrounds. 
-The resulting similarity space of colors shows a distortion — a non-uniformity — that corresponds to the distortion inferred from the macaque behavioral data. 
-These results provide a plausible mechanism by which the distortions in the color space arise and suggest that all color spaces made by human observers are inexorably impacted by the universally behaviorally relevant categories of warm and cool. 
+% The non-uniformities in the CIELUV space implied by these results raise a question about their origin. 
+% Given color categories can be learned, as evident in at least one macaque in our study (\autoref{fig:Castor-FreeSimilarity}, and \autoref{fig:SimilarityMatrixIndividual}) and two macaques in another study \citep{panichello_error-correcting_2019}, coupled with the likely possibility that this learning reflects colors of environmental or behavioral relevance, we wondered whether the distortions in the presumed uniform color space could be attributed to the warm and cool color categories manifest in apparently all human cultures \citep{gibson_color_2017} and hypothesized to be caused by the non-arbitrary color statistics of objects and backgrounds \citep{rosenthal_color_2018}
+% — objects are more likely to be warm-colored and backgrounds, cool-colored. 
+% To test this idea, we ran a simulation in which the macaque uniform color space was used in a color-matching task by an agent with cognitive biases for warm and cool colors defined by the average colors of objects and backgrounds. 
+% The resulting similarity space of colors shows a distortion — a non-uniformity — that corresponds to the distortion inferred from the macaque behavioral data. 
+% These results provide a plausible mechanism by which the distortions in the color space arise and suggest that all color spaces made by human observers are inexorably impacted by the universally behaviorally relevant categories of warm and cool. 
 
 % Left to incorporate: 
 % different colorspaces, optimised for different tasks, could exist at different levels of the visual hierarchy. 
