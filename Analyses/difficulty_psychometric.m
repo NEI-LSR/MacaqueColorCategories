@@ -1,6 +1,6 @@
 function [unique_difficulties,pct_correct,...
     difficulties_completed_counts, f]...
-    = difficulty_psychometric(cleandata,filename)
+    = difficulty_psychometric(cleandata,filename,allOnOneGraph)
 %% PURPOSE:
 %Error analysis by difficulty
 %Get difficulty for each trial, plot errors by difficulty
@@ -67,11 +67,14 @@ f = fit(unique_difficulties',pct_correct,...
 
 %% FIGURES
 
-% figure(1) % Uncomment this to get them all on the same graph
-figure,
+if exist('allOnOneGraph','var') && allOnOneGraph
+    figure(1), hold on % Uncomment this to get them all on the same graph
+else
+    figure,
+end
 
-axes('PositionConstraint','innerposition',...
-    'Position',[0.13 0.19 0.82 0.75])
+% axes('PositionConstraint','innerposition',...
+%     'Position',[0.13 0.19 0.82 0.75])
 
 hold on
 plot(unique_difficulties, pct_correct, '.','MarkerEdgeColor','none'); % this is invisible, yet neccessary, for reasons I don't understand
@@ -80,9 +83,12 @@ xlim([min(unique_difficulties), max(unique_difficulties)]); % this determines th
 plot(f,'k')
 
 p22 = predint(f,unique_difficulties,0.95,'functional','on');
-x_plot =[unique_difficulties, fliplr(unique_difficulties)]; % h/t https://www.mathworks.com/matlabcentral/answers/425206-plot-of-confidence-interval-with-fill
-y_plot=[p22(:,1)', flipud(p22(:,2))'];
-fill(x_plot, y_plot, 1,'facecolor', 'k', 'edgecolor', 'none', 'facealpha', 0.2);
+x_plot = [unique_difficulties, fliplr(unique_difficulties)]; % h/t https://www.mathworks.com/matlabcentral/answers/425206-plot-of-confidence-interval-with-fill
+y_plot = [p22(:,1)', flipud(p22(:,2))'];
+
+if ~exist('allOnOneGraph','var')
+    fill(x_plot, y_plot, 1,'facecolor', 'k', 'edgecolor', 'none', 'facealpha', 0.2);
+end
 
 xlim([0,180])
 xticks([0,interval,45:45:180])
@@ -98,7 +104,7 @@ xlabel('Distance of Closest Distractor');
 ylabel('Accuracy');
 legend('off')
 
-if 1
+if ~exist('allOnOneGraph','var')
     startDate = datetime(str2double([num2str(20),(cleandata.trialdata.dirname{1}(1:2))]),...
         str2double(cleandata.trialdata.dirname{1}(3:4)),...
         str2double(cleandata.trialdata.dirname{1}(5:6)));
