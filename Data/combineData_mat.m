@@ -1,6 +1,15 @@
-function cleandata = combineData_mat(dirname)
+function cleandata = combineData_mat(dirname,rn,bootstrap)
 
-rng(2); % fix random number generator for reproducibility
+if ~exist('rn','var')
+    rn = 2;
+    warning('Using default random number')
+end
+rng(rn); % fix random number generator for reproducibility
+
+if ~exist('bootstrap','var')
+    boostrap = false;
+end
+
 
 %% Load data
 
@@ -34,8 +43,13 @@ for dataset = 1:length(filename)
     nTrials(dataset) = length(tempdata{1,dataset}.trialdata.cues);
 end
 
+
 for dataset = 1:length(filename)
-    idx(dataset,:) = randsample(nTrials(dataset),min(nTrials));
+    if ~boostrap
+        idx(dataset,:) = randsample(nTrials(dataset),min(nTrials));
+    elseif bootstrap
+        idx(dataset,:) = randi(nTrials(dataset),min(nTrials),1);
+    end
 end
 
 %% Subset
