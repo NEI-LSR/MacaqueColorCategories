@@ -154,7 +154,7 @@ if exist('filename','var')
     if ~exist('OutPutFileDir','var')
         OutPutFileDir = './'; % if `OutPutFileDir` not passed, save here
     end
-    saveas(f,[OutPutFileDir,'sm_',filename,'_',datestr(now,'yymmdd-HHMMSS'),'.png'])
+    saveas(f,[OutPutFileDir,'sm_',filename,'_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 end
 
 
