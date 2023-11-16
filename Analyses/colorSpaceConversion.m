@@ -1,6 +1,22 @@
 function indexedLocation = colorSpaceConversion(requestedHueAngles)
 
+% This function generates colors sampled uniformly in the empirically
+% derived uniform colorspace from behavioral data obtained in macaque monkeys
+% (computed by fitting an stimulus-space non-uniformity model).
+% See, Garside et al. "The Origin of Color Categories" (2023).
+
+% It requires the model output:
+% "combined_TCC-0att_fullremap-x_230510.csv"
+
+% Function usage
+% > colorSpaceConversion(0:1:359)
+% would provide 360 uniformly spaced samples
+
+%% Notes
+
 % It is assumed that the first value in `requestedHueAngles` will be 0
+% degrees in CIELUV (roughly red), with increasing numbers progressing
+% counter-clockwise (through orange, yellow, green, blue, purple etc).
 
 % TODO Build in rotation (I don't think this is here yet?)
 
