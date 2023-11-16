@@ -8,7 +8,7 @@ n = 32; % number of points
 %%
 requestedHueAngles = linspace(0,360,n+1);
 requestedHueAngles = requestedHueAngles(1:end-1);
-indexedLocation = colorSpaceConversion(requestedHueAngles);
+indexedLocation = MUCS(requestedHueAngles);
 
 %%
 
