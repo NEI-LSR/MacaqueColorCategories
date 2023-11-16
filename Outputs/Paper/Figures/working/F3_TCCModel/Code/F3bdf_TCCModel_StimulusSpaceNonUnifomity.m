@@ -32,7 +32,7 @@ end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
     load('../../../../../../Analyses/TCCModels/Combined/combined_TCC-fullremap-workspace_2300708.mat') % TODO Investigate "Warning: Could not find appropriate function on path loading function handle" (still seems to work though...)
-end 
+end % TODO Remove this dependency
 
 % figure, hold on
 % plot(x)
