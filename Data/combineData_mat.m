@@ -24,6 +24,12 @@ end
 %% Strip out aborts
 
 for i = 1:length(tempdata)
+    nTrialsAll(i) = size(tempdata{1,i}.trialdata.chosen_idx,1);
+    nAborts(i) = sum(isnan(cell2mat(tempdata{1,i}.trialdata.chosen_idx)));
+    abortRate(i) = nAborts(i)/nTrialsAll(i);
+end
+
+for i = 1:length(tempdata)
     abortIndex = isnan(cell2mat(tempdata{1,i}.trialdata.chosen_idx));
     tempdata{1,i}.trialdata.allchoices  = tempdata{1,i}.trialdata.allchoices(~abortIndex);
     tempdata{1,i}.trialdata.dirname     = tempdata{1,i}.trialdata.dirname(~abortIndex);
