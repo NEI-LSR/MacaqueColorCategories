@@ -1,10 +1,10 @@
 clc, clear, close all
 
-addpath(genpath('..'))
+addpath(genpath('../..'))
 
 %%
 
-dirname = ['..',filesep,'Data'];
+dirname = ['..',filesep,'..',filesep,'Data'];
 rng(0)
 bootstrap_ = true;
 
@@ -41,3 +41,4 @@ figure, hold on
 plot(nll_reloaded(:,1),'DisplayName','Offset Gaussian')
 plot(nll_reloaded(:,2),'DisplayName','SSNU')
 legend('Location','best')
+
