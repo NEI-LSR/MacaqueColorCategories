@@ -1,14 +1,19 @@
 function cleandata = processBaeData()
 
-% Load Bae data
-% filepath = 'C:\Users\selwynhm\Documents\MATLAB\nAFC\analysis\';
-%filepath = 'C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\protocol\categories\Reference_Data\Bae_2015\processed_data\';
-% filepath = 'C:\Users\garsidedj\Documents\CausalGlobs\protocol\categories\Reference_Data\Bae_2015\processed_data\';
-filepath = 'C:\Users\cege-user\Dropbox\Documents\MATLAB\CausalGlobs\protocol\categories\Reference_Data\Bae_2015\processed_data\';
+%% Load Bae data
+
+% clear, clc, close all
+
+% TODO How did we go from the csvs to the .mat file?
+
+repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
+filepath = [repoHomeDir,'Data',filesep,'secondaryData',filesep,'Bae_2015',filesep,'processed_data\'];
 
 filename = 'bae_human_data.mat';
 
 load([filepath,filename])
+
+%%
 
 % target color = cue index
 % cue angle = angle of target color on each trial

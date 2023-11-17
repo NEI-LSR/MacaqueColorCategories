@@ -27,7 +27,7 @@ if isfield(whichFigures,'all') && whichFigures.all == true
 end
 
 %%
-nBig = 64;
+nBig = size(model.gaussfits,2);
 interval = 360/nBig;
 
 %% Colors

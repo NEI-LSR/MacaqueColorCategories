@@ -1,7 +1,7 @@
-function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow)
+function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,excludeCorrect)
 
-nBig = 64;
-nSmall = 4;
+nBig = size(cleandata.trialdata.allchoices{1,1},2);
+nSmall = size(cleandata.trialdata.choices{1,1},2);
 interval = 360/nBig;
 
 %% Filter data
@@ -19,7 +19,11 @@ end
 
 abortIndex = or(isnan(chosen),any(isnan(choices'))');
 correctIndex = cues == chosen;
-filter = or(abortIndex,correctIndex);
+if excludeCorrect
+    filter = or(abortIndex,correctIndex);
+elseif ~excludeCorrect
+    filter = abortIndex;
+end
 
 cues_filtered       = cues(~filter);
 choices_filtered    = choices(~filter,:);
@@ -37,7 +41,7 @@ nTrials_filtered = sum(~filter);
 %% Calculate Angular Error
 
 % Distance values
-PotentialDistances = (-180+interval:interval:180)';                         % TODO: Double check the logic that this married with "32" being treated as the zero point in the rest of this function
+PotentialDistances = (-180+interval:interval:180)';
 hue_angle_by_index = 0:interval:360-interval;
 
 % Calculate angular error (distance) between incorrect choice and cue
@@ -49,7 +53,7 @@ for trial = 1:nTrials_filtered
         deg2rad(cues_filtered(trial)  *interval)));
 end
 d_index = round(d/interval);
-d_index(d_index == -32) = 32;
+d_index(d_index == -nBig/2) = nBig/2;
 d = d_index*interval;
 
 % Count of number of times each color (by distance from cue) was chosen
@@ -93,8 +97,8 @@ for cueIndex = 1:nBig
                 deg2rad(hue_angle_by_index(choices_filtered_forThisCueIndex(trial,choice))),...
                 deg2rad(hue_angle_by_index(cueIndex))));
             choices_filtered_forThisCueIndex(trial,choice) = round(choices_filtered_forThisCueIndex(trial,choice)/interval);
-            if choices_filtered_forThisCueIndex(trial,choice) == -32
-               choices_filtered_forThisCueIndex(trial,choice) = 32;
+            if choices_filtered_forThisCueIndex(trial,choice) == -nBig/2 
+               choices_filtered_forThisCueIndex(trial,choice) = nBig/2;
             end
             choices_filtered_forThisCueIndex(trial,choice) = choices_filtered_forThisCueIndex(trial,choice)*interval;
         end
@@ -131,8 +135,11 @@ choice_probability = choice_counts./presentation_counts;
 % axis square
 
 % Replace value at 0 (correct choice) to exclude from curve fit
-choice_probability(nBig/2,:) = NaN;
-presentation_counts(nBig/2,:) = NaN;
+if excludeCorrect
+    choice_probability(nBig/2,:) = NaN;
+    presentation_counts(nBig/2,:) = NaN;
+else
+end
 
 %% Fit Gaussian to error distribution for each cue to get bias value
 
@@ -164,7 +171,7 @@ end
 
 %% Category center locations
 
-if ~exist('lengthOfSlidingWindow','var')
+if ~exist('lengthOfSlidingWindow','var') || isempty(lengthOfSlidingWindow)
     lengthOfSlidingWindow = 3; % moving average input
 end
 
@@ -303,8 +310,5 @@ model.bias = bias;
 model.be_w = be_w;
 model.ci = ci;
 model.moving_bias = moving_bias;
-
-% save? !!!!!!!!!!!!!
-
 
 end
