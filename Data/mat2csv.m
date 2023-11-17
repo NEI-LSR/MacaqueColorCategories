@@ -1,6 +1,10 @@
 % For converting files from `.mat` files to `.csv` format
 
-datafiles = dir('2*.mat');
+clear, clc, close all
+
+%%
+
+datafiles = dir('2*.mat'); % exclude combinedData, and also hidden files on mac
 
 for observer = 1:4
     load(datafiles(observer).name)
@@ -14,3 +18,18 @@ for observer = 1:4
         [datafiles(observer).name(1:end-4),'.csv'])
 end
 
+%%
+
+datafiles = dir('combinedData.mat'); % for combinedData
+
+for observer = 1
+    load(datafiles(observer).name)
+
+    writetable(cell2table(...
+        [cleandata.trialdata.dirname',...
+        cleandata.trialdata.cues,...
+        cleandata.trialdata.chosen,...
+        cleandata.trialdata.choices],...
+        'VariableNames', {'dirname', 'cues', 'chosen', 'choices'}),...
+        [datafiles(observer).name(1:end-4),'.csv'])
+end
