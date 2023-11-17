@@ -18,7 +18,7 @@ csv = 0; % csv or mat?
 % Add path to required script
 
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
-addpath(genpath([repoHomeDir,filesep,'Analyses']))
+addpath(genpath(repoHomeDir))
 modelOutputDir = [repoHomeDir,filesep,'Analyses'];
 
 rng(0)
@@ -53,6 +53,10 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
     rng(0) % the modelling might be probabilistic - TODO check this
 
     model = fitMixtureModel(data,0);
+
+    if ~exist([modelOutputDir,'/MixtureModels/'],"dir")
+        mkdir([modelOutputDir,'/MixtureModels/'])
+    end
 
     save([modelOutputDir,'/MixtureModels/','combined_',...                  % TODO Add a better filename (that includes info about the data)
         datestr(now,'yymmdd-HHMMSS'),'.mat'],...
