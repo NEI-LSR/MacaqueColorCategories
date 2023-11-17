@@ -20,18 +20,32 @@ addpath(genpath('../../../../../../Analyses/'))
 
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
 addpath(genpath([repoHomeDir,filesep,'Analyses']))
-DataDir = [repoHomeDir,filesep,'Analyses',filesep,'TCCModels',filesep,'combined',filesep];
+DataDir =  [repoHomeDir,filesep,'Data',filesep];
+ModelDir = [repoHomeDir,filesep,'Analyses',filesep,'TCCModels',filesep,'combined',filesep];
 
 %% Load/process data
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
-    [x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,dim1,dim2,varargin);
+
+    load([DataDir,'combinedData.mat'],'data')
+    data.trialdata.nBig = 64;
+    data.trialdata.nSmall = 4;
+    data.trialdata.nTrials = size(data.trialdata.cues,1);
+
+    params = [1,0,0,0,0,0,0]; % telling the model that we want to fit a free similarity matrix model
+    rn = 0; % random number for reproducibility
+    dim1 = []; % parameters for dimensionality reduction, left empty here
+    dim2 = [];
+
+    x = ParameterEstimator(data,params,rn,dim1,dim2);
+
+    filename = ['combined_TCC-FreeSimilarityMatrix_',datestr(now,'yymmdd-HHMMSS'), '.mat'];
+    save(filename,'x')    
 end
 
-
 if strcmp(AnalysisDepth,'fromModelOutput')
-    filename = 'combined_TCC-FreeSimilarityMatrix-workspace_230214';
-    load([DataDir,filename,'.mat'],'x')
+    filename = 'combined_TCC-FreeSimilarityMatrix_231116-190823';
+    load([filename,'.mat'],'x')
 end
 
 %% Plot model outputs
