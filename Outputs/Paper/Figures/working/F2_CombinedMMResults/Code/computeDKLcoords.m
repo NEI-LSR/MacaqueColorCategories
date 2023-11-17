@@ -246,11 +246,12 @@ disp(s_minus)
 
 
 stimCols = generateStimCols('nBig',64,'showFig',true);
-scatter(stimCols(1,lm_plus),stimCols(2,lm_plus),'r','filled','DisplayName','lm\_plus')
-scatter(stimCols(1,lm_minus),stimCols(2,lm_minus),'g','filled','DisplayName','lm\_minus')
-scatter(stimCols(1,s_plus),stimCols(2,s_plus),'b','filled','DisplayName','s\_plus')
-scatter(stimCols(1,s_minus),stimCols(2,s_minus),'y','filled','DisplayName','s\_minus')
-legend('location','best')
+s1 = scatter(stimCols(1,lm_plus),stimCols(2,lm_plus),'r','filled','DisplayName','lm\_plus');
+s2 = scatter(stimCols(1,lm_minus),stimCols(2,lm_minus),'g','filled','DisplayName','lm\_minus');
+s3 = scatter(stimCols(1,s_plus),stimCols(2,s_plus),'b','filled','DisplayName','s\_plus');
+s4 = scatter(stimCols(1,s_minus),stimCols(2,s_minus),'y','filled','DisplayName','s\_minus');
+legend([s1,s2,s3,s4],'location','best')
+title('CIELUV')
 
 saveas(gcf,['../','stimInLUVwithDKLpolesHighlighted_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 
