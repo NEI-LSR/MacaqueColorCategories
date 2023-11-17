@@ -6,8 +6,8 @@ csv = 0;
 %% sets paths
 
 filename = 'combinedData';
-repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
-addpath(genpath([repoHomeDir,filesep,'Analyses']))
+repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
+addpath(genpath([repoHomeDir,'Analyses']))
 
 if csv
     warning('Code for using csv is not complete')
