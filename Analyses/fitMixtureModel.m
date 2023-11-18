@@ -12,9 +12,15 @@ if istable(cleandata)
     choices = [cleandata.choices_1,cleandata.choices_2,cleandata.choices_3,cleandata.choices_4];
     chosen  = cleandata.chosen;
 else
-    cues    = cell2mat(cleandata.trialdata.cues);
-    choices = cell2mat(cleandata.trialdata.choices);
-    chosen  = cell2mat(cleandata.trialdata.chosen);
+    try
+        cues    = cell2mat(cleandata.trialdata.cues);
+        choices = cell2mat(cleandata.trialdata.choices);
+        chosen  = cell2mat(cleandata.trialdata.chosen);
+    catch % for Panichello data
+        cues    = cleandata.trialdata.cues;
+        choices = cell2mat(cleandata.trialdata.choices);
+        chosen  = cleandata.trialdata.chosen;
+    end
 end
 
 abortIndex = or(isnan(chosen),any(isnan(choices'))');
