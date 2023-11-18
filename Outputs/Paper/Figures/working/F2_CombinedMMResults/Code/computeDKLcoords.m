@@ -17,6 +17,8 @@ whiteXYZ = XYZ(:,430)*2; % where the measurement had looped and I was measuring 
 % load C:\Users\cege-user\Documents\Kofiko\calibrationData\conversionMatrices.mat
 
 Luv = XYZToLuv(XYZ,whiteXYZ);
+
+xyY = XYZToxyY(XYZ);
 %%
 scatter3(Luv(2,:),Luv(3,:),1:size(Luv,2))
 
@@ -67,6 +69,8 @@ plot(SPD(:,1:51),'k')
 
 XYZ_background = mean(XYZ_indep(:,550:600),2);
 XYZ_indep = XYZ_indep(:,[1:350,700:end]);
+
+xyY_background = XYZToxyY(XYZ_background);
 
 figure,
 scatter3(Luv(2,:),Luv(3,:),Luv(1,:))
