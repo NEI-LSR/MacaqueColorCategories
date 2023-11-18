@@ -7,7 +7,7 @@ function cleandata = processBaeData()
 % TODO How did we go from the csvs to the .mat file?
 
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
-filepath = [repoHomeDir,'Data',filesep,'secondaryData',filesep,'Bae_2015',filesep,'processed_data\'];
+filepath = [repoHomeDir,'Data',filesep,'secondaryData',filesep,'Bae_2015',filesep,'processed_data',filesep];
 
 filename = 'bae_human_data.mat';
 

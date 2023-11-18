@@ -1,6 +1,11 @@
-function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,excludeCorrect)
+function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,includeCorrect)
 
-nBig = 64;%size(cleandata.trialdata.allchoices{1,1},2);
+try
+    nBig = size(cleandata.trialdata.allchoices{1,1},2);
+catch
+    nBig = 64;
+    warning('Assuming nBig = 64')
+end
 nSmall = size(cleandata.trialdata.choices{1,1},2);
 interval = 360/nBig;
 
@@ -25,7 +30,7 @@ end
 
 abortIndex = or(isnan(chosen),any(isnan(choices'))');
 correctIndex = cues == chosen;
-if exist("excludeCorrect","var") && excludeCorrect
+if ~exist('includeCorrect','var') || ~includeCorrect
     filter = or(abortIndex,correctIndex);
 else
     filter = abortIndex;
@@ -140,8 +145,8 @@ choice_probability = choice_counts./presentation_counts;
 % colorbar
 % axis square
 
-% Replace value at 0 (correct choice) to exclude from curve fit
-if exist("excludeCorrect","var") && excludeCorrect
+% Replace value at 0 (correct choice) to include from curve fit
+if ~exist('includeCorrect','var') || ~includeCorrect
     choice_probability(nBig/2,:) = NaN;
     presentation_counts(nBig/2,:) = NaN;
 else

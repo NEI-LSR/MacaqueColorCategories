@@ -1,4 +1,4 @@
-% clear, clc, close all
+clear, clc, close all
 
 %%
 
@@ -11,10 +11,10 @@ data = processBaeData();
 %%
 
 Lab = 1;
-excludeCorrect = false;
+includeCorrect = true;
 lengthOfSlidingWindow = 9; % we set our sliding window to 3, and their stimulus interval is roughly 3 times as small as ours, so this means that they get roughly the same smoothing treatment
 
-model = fitMixtureModel(data,Lab,lengthOfSlidingWindow,excludeCorrect);
+model = fitMixtureModel(data,Lab,lengthOfSlidingWindow,includeCorrect);
 
 %%
 
