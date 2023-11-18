@@ -19,9 +19,9 @@ end
 
 %% Load data
 
-filename{1} = '210422--211012_Pollux_data';
+filename{1} = '210422--211012_Pollux_data.mat';
 filename{2} = '210517--211108_Castor_data.mat';
-filename{3} = '210428--210609_Buster_data';
+filename{3} = '210428--210609_Buster_data.mat';
 filename{4} = '220322--220823_Morty_data.mat';
 
 for dataset = 1:length(filename)

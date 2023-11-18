@@ -38,6 +38,7 @@ if strcmp(AnalysisDepth,'fromRawData')
         save([repoHomeDir,filesep,'Data',filesep,'combinedData.mat'])
     end
 
+    AnalysisDepth = 'fromPreProcessedData'; % so that it progresses onto the next section
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
