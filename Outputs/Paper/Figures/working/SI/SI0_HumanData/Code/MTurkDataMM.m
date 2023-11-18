@@ -17,9 +17,9 @@ load([dataDir,filesep,'211112--220507_MTurk.mat'])
 
 Lab = 0;
 lengthOfSlidingWindow = [];
-excludeCorrect = true;
+includeCorrect = false;
 
-model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,excludeCorrect);
+model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,includeCorrect);
 
 %%
 
