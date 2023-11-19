@@ -86,7 +86,7 @@ view(2)
 %%
 
 % stimCols = generateStimCols('nBig',64);
-addpath('C:\Users\cege-user\Documents\TCC_AFC')
+addpath(genpath(['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep]))
 stimCols = generateStimCols('nBig',64,'showFig',true);
 hold on
 scatter(stimCols(1,:),stimCols(2,:))
@@ -265,7 +265,19 @@ saveas(gcf,['../','stimInLUVwithDKLpolesHighlighted_',datestr(now,'yymmdd-HHMMSS
 % lmsmat2 = H*XYZ;
 
 
-%%
+%% Compute background luminance
+
+lumFunc = 683*T_xyz1931(2,:);
+
+SPDbackground_int = SplineSpd(S_SPD,SPDbackground,S_xyz1931);
+figure, hold on
+plot(SToWls(S_SPD),SPDbackground)
+plot(SToWls(S_xyz1931),SPDbackground_int)
+
+lumBackground = lumFunc*SPDbackground_int;
+
+
+
 
 
 
