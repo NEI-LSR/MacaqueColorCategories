@@ -10,7 +10,7 @@ clc, clear, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromPreProcessedData';
+AnalysisDepth = 'fromRawData';
 csv = 0; % csv or mat?
 
 %% Behind the scenes...
@@ -28,12 +28,12 @@ rng(0)
 if strcmp(AnalysisDepth,'fromRawData')
 
     if csv
-        data = combineData([repoHomeDir,filesep,'Data'])
+        cleandata = combineData([repoHomeDir,filesep,'Data'])
     else
-        data = combineData_mat([repoHomeDir,filesep,'Data']);
+        cleandata = combineData_mat([repoHomeDir,filesep,'Data'],5);
     end
        
-    saveDataFile = 0;
+    saveDataFile = 1;
     if saveDataFile
         save([repoHomeDir,filesep,'Data',filesep,'combinedData.mat'])
     end
@@ -46,7 +46,7 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
     if csv
         warning('Using csv method currently results in different output. It should not. Work in progress.')
         loadedData = readtable([repoHomeDir,filesep,'Data',filesep,'combinedData.csv']);
-        data = loadedData;
+        cleandata = loadedData;
     else
         load([repoHomeDir,filesep,'Data',filesep,'combinedData.mat']);
     end
