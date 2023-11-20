@@ -52,7 +52,9 @@ plot([1,nBig],[1,nBig],'k--')
 
 cb1 = colorbar;
 cb1.Ticks = [];
-cb1.Label.String = "Similarity";
+if withLabels
+    cb1.Label.String = "Similarity";
+end
 caxis([0 1])
 
 %rectangle('Position',[0.5,19.5,nBig,1],'EdgeColor','w')
