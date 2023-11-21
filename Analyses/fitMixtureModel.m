@@ -6,7 +6,12 @@ catch
     nBig = 64;
     warning('Assuming nBig = 64')
 end
-nSmall = size(cleandata.trialdata.choices{1,1},2);
+try
+    nSmall = size(cleandata.trialdata.choices{1,1},2);
+catch
+    nSmall = 4;
+    warning('Assuming nSmall = 4')
+end
 interval = 360/nBig;
 
 %% Filter data
@@ -100,7 +105,7 @@ cues_completed    = cues(~abortIndex);
 choices_completed = choices(~abortIndex,:);
 
 for cueIndex = 1:nBig
-    
+
     choices_filtered_forThisCueIndex = choices_completed(cues_completed == cueIndex,:); % choices for (completed) trials matching this cueIndex
     for choice = 1:nSmall
         for trial = 1:size(choices_filtered_forThisCueIndex,1)
@@ -108,8 +113,8 @@ for cueIndex = 1:nBig
                 deg2rad(hue_angle_by_index(choices_filtered_forThisCueIndex(trial,choice))),...
                 deg2rad(hue_angle_by_index(cueIndex))));
             choices_filtered_forThisCueIndex(trial,choice) = round(choices_filtered_forThisCueIndex(trial,choice)/interval);
-            if choices_filtered_forThisCueIndex(trial,choice) == -nBig/2 
-               choices_filtered_forThisCueIndex(trial,choice) = nBig/2;
+            if choices_filtered_forThisCueIndex(trial,choice) == -nBig/2
+                choices_filtered_forThisCueIndex(trial,choice) = nBig/2;
             end
             choices_filtered_forThisCueIndex(trial,choice) = choices_filtered_forThisCueIndex(trial,choice)*interval;
         end
@@ -124,7 +129,7 @@ end
 % imagesc(presentation_counts')
 % colorbar
 % axis square
-% 
+%
 % figure,
 % presentation_counts_midExtract = [...
 %     presentation_counts(1:31,:); ...
@@ -258,7 +263,7 @@ if ~isempty(ci)
 
         change_range = change_range([1:end 1]);
 
-        crossings = interp_crossing / interval; 
+        crossings = interp_crossing / interval;
 
         for i = 1:length(crossings)
             for j = 1:sum(changes)
