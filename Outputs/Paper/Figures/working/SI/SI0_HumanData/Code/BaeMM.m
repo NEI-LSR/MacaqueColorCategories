@@ -16,6 +16,13 @@ lengthOfSlidingWindow = 9; % we set our sliding window to 3, and their stimulus 
 
 model = fitMixtureModel(data,Lab,lengthOfSlidingWindow,includeCorrect);
 
+%% For direct comparison to Bae+ 2015 F8b
+
+% figure, 
+% plot(0:2:358,-model.bias)
+% xticks(0:60:360)
+% yticks([-17,-11,-6,0,6,11,17])
+
 %%
 
 whichFigures.MixMod_polar    = true;

@@ -39,26 +39,19 @@ for i = 1:size(colresp,1)% for trial
     end
 end
 
-chosen = cues_degrees + error;
-chosen(chosen > 360) = chosen(chosen > 360) - 360;
-chosen(chosen < 0) = chosen(chosen < 0) + 360;
+chosen_degrees = cues_degrees + error;
+chosen_degrees(chosen_degrees > 360 - interval) = chosen_degrees(chosen_degrees > 360 - interval) - 360;
+chosen_degrees(chosen_degrees < 0) = chosen_degrees(chosen_degrees < 0) + 360;
 
-chosen = chosen/2; % chosen = chosen/2;
-chosen = round(chosen);
-
-chosen(chosen == 0) = 1;
-
+chosen_ind = round(chosen_degrees/interval) + 1;
+% chosen_ind = round(chosen_degrees/interval);
 
 choices = repmat({1:180},length(cues),1);
-
-% cues = cues/4;
-% cues = round(cues);
-% cues(cues == 0) = 1;
 
 nTrials = size(colresp,1);
 
 cleandata.trialdata.cues = num2cell(cues);
-cleandata.trialdata.chosen = num2cell(chosen);
+cleandata.trialdata.chosen = num2cell(chosen_ind);
 cleandata.trialdata.choices = choices;
 cleandata.trialdata.dirname = repmat({'Bae_Humans'},nTrials,1);
 cleandata.trialdata.paradigm = repmat({'Bae_Humans'},nTrials,1);
