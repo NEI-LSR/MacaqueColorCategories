@@ -1,7 +1,7 @@
 clc, clear, close all
 
 % Script for computing the DKL axis locations for F2C
-% Copy of CausalGlobs\protocol\calibration\20230108\Analysis20230108.m
+% Modified/extended copy of CausalGlobs\protocol\calibration\20230108\Analysis20230108.m
 
 %%
 
@@ -177,11 +177,11 @@ T_Y = SplineCmf(S_xyzJuddVos,T_Y,S_cones_sp);
 
 bgLMS   = T_cones_sp * SplineSpd(S_SPD,SPDbackground,S_cones_sp);
 % LMS     = (T_cones_sp * SplineSpd(S_SPD,SPD,S_cones_sp)) - bgLMS;
-LMS     = (T_cones_sp * SplineSpd(S_SPD,SPD_avs,S_cones_sp)) - bgLMS;
+LMSinc  = (T_cones_sp * SplineSpd(S_SPD,SPD_avs,S_cones_sp)) - bgLMS;
 
 [M_ConeIncToDKL,LMLumWeights] = ComputeDKL_M(bgLMS,T_cones_sp,T_Y);
 
-DKL = M_ConeIncToDKL*LMS;
+DKL = M_ConeIncToDKL*LMSinc;
 
 % sRGBlin = XYZToSRGBPrimary(XYZ_indep/(XYZ_background(2)*2)); % TODO Hacky whitepoint, visualization only though
 % sRGB = uint8(SRGBGammaCorrect(sRGBlin,0)');
@@ -259,10 +259,53 @@ title('CIELUV')
 
 saveas(gcf,['../','stimInLUVwithDKLpolesHighlighted_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 
-%% TODO
+%% Parallel conversion: using XYZtoLMS conversion matrix instead of independent spectral measurements
 
-% H = [0.38971, 0.68898, -0.07868; -0.22981 1.18340, 0.04641; 0, 0, 1];
-% lmsmat2 = H*XYZ;
+XYZtoLMS_HPEee = [0.38971, 0.68898, -0.07868;...
+                 -0.22981, 1.18340,  0.04641;...
+                  0,       0,        1]; 
+%Hunt-Pointer-Estevez (equi-energy) - https://en.wikipedia.org/wiki/LMS_color_space#Hunt,_RLAB
+
+bgLMS2  = XYZtoLMS_HPEee*XYZ_background;
+LMSinc2  = XYZtoLMS_HPEee*XYZ;
+
+[M_ConeIncToDKL2] = ComputeDKL_M(bgLMS2,T_cones_sp,T_Y);
+
+DKL2 = M_ConeIncToDKL2*LMSinc2;
+
+figure,
+scatter3(DKL2(2,:),DKL2(3,:),DKL2(1,:))
+xlabel('L-M')
+ylabel('S-(L+M)')
+zlabel('L+M')
+title('DKL (by HPE)')
+
+%%
+
+load('T_cones_ss2')
+load('T_ss2000_Y2.mat')
+T_ss2000_Y2 = 683*T_ss2000_Y2;
+
+
+XYZtoLMS_SS = [ 0.210576,   0.855098,  -0.0396983;
+               -0.417076,   1.177260,   0.0786283;
+                0,          0,          0.5168350];
+% Stockman Sharpe 2000 (https://en.wikipedia.org/wiki/LMS_color_space#Stockman_&_Sharpe_(2000))
+
+
+bgLMS3  = XYZtoLMS_SS*XYZ_background;
+LMSinc3 = XYZtoLMS_SS*XYZ;
+
+[M_ConeIncToDKL3] = ComputeDKL_M(bgLMS3,T_cones_ss2,T_ss2000_Y2);
+
+DKL3 = M_ConeIncToDKL3*LMSinc3;
+
+figure,
+scatter3(DKL3(2,:),DKL3(3,:),DKL3(1,:))
+xlabel('L-M')
+ylabel('S-(L+M)')
+zlabel('L+M')
+title('DKL (by SS)')
 
 
 %% Compute background luminance
