@@ -3,7 +3,7 @@ function plotColorspace(x,filename)
 %% Load default data
 
 if nargin == 0
-    error('filename input required')
+    error('Input required')
 end
 
 %%
@@ -54,7 +54,7 @@ cla
 scatter(stimCols_x(1,1:2:end),stimCols_x(2,1:2:end),200,colvals(1:2:end,:),"filled")
 
 % saveas(gcf,fullfile([filename,'_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
-saveas(gcf,['../',filename,'_behaviorally-derived-colorspace_everySecond', datestr(now,'yymmdd-HHMMSS'), '.svg'])
+saveas(gcf,fullfile(['../',filename,'_behaviorally-derived-colorspace_everySecond', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %%
 
