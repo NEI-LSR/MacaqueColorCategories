@@ -15,7 +15,7 @@ addpath(genpath([repoHomeDir,'Analyses']))
 
 for participant = 1:length(filename)
 
-    load([repoHomeDir,filesep,'Data',filesep,filename{participant},'.mat']);
+    cleandata = load([repoHomeDir,filesep,'Data',filesep,filename{participant},'.mat']);
 
     difficulty_psychometric(cleandata,filename{participant},true); % all on one graph
     % this saves each intermediary figure too
