@@ -25,11 +25,11 @@ end
 
 %%
 
-difficulty_psychometric(data,filename);
+difficulty_psychometric(cleandata,filename);
 
 %% to get the number of cues per animal that have been subsampled to match Buster
 
-cues = cell2mat(data.trialdata.cues);
+cues = cell2mat(cleandata.trialdata.cues);
 
 for i = 1:64
     t(i,1) = sum(cues(1:24526) == i);
