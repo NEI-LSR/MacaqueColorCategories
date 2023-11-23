@@ -2,9 +2,9 @@ function plotbar_NLL_AIC_BIC(p,filedir)
 
 %% Load data
 
-% d = ['.',filesep,'TCCModels',filesep];
+repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',];
 
-d = ['Y:\PROJECTS\MacaqueColorCategories_test\MacaqueColorCategories\Analyses',filesep,'TCCModels',filesep];
+d = [repoHomeDir,filesep,'Analyses',filesep,'TCCModels',filesep];
 
 % p = 'Combined'; % participant
 % p = 'Castor';
