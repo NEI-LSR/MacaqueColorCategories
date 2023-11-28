@@ -1,31 +1,29 @@
 clear, clc, close all
 
-% csv or mat?
-csv = 0;
+filename{1} = '210422--211012_Pollux_data';
+filename{2} = '210517--211108_Castor_data';
+filename{3} = '210428--210609_Buster_data';
+filename{4} = '220322--220823_Morty_data';
 
-%% sets paths
-
-filename = 'combinedData';
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
 addpath(genpath([repoHomeDir,'Analyses']))
 
-if csv
-    warning('Code for using csv is not complete')
-
-    loadedData = readtable([repoHomeDir,filesep,'Data',filesep,'combinedData.csv']);
-
-    for i = 1:size(loadedData,1)
-        data.trialdata.cues{i,1} = table2array(loadedData(i,2));
-        data.trialdata.choices{i,1} = table2array(loadedData(i,4:7));
-        data.trialdata.chosen{i,1} = table2array(loadedData(i,3));
-    end
-else
-    load([repoHomeDir,filesep,'Data',filesep,'combinedData.mat']);
-end
 
 %%
 
-difficulty_psychometric(cleandata,filename);
+% TODO Add in CSV option
+
+for participant = 1:length(filename)
+
+    cleandata = load([repoHomeDir,filesep,'Data',filesep,filename{participant},'.mat']);
+
+    difficulty_psychometric(cleandata,filename{participant},true); % all on one graph
+    % this saves each intermediary figure too
+    % so they need manually deleting afterwards
+
+    difficulty_psychometric(cleandata,filename{participant});
+
+end
 
 %% to get the number of cues per animal that have been subsampled to match Buster
 
