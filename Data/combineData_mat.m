@@ -38,13 +38,11 @@ end
 
 for i = 1:length(tempdata)
     abortIndex = isnan(cell2mat(tempdata{1,i}.cleandata.trialdata.chosen_idx));
-    tempdata{1,i}.cleandata.trialdata.allchoices  = tempdata{1,i}.cleandata.trialdata.allchoices(~abortIndex);
     tempdata{1,i}.cleandata.trialdata.dirname     = tempdata{1,i}.cleandata.trialdata.dirname(~abortIndex);
     tempdata{1,i}.cleandata.trialdata.paradigm    = tempdata{1,i}.cleandata.trialdata.paradigm(~abortIndex);
     tempdata{1,i}.cleandata.trialdata.choices     = tempdata{1,i}.cleandata.trialdata.choices(~abortIndex);
     tempdata{1,i}.cleandata.trialdata.chosen_idx  = tempdata{1,i}.cleandata.trialdata.chosen_idx(~abortIndex);
     tempdata{1,i}.cleandata.trialdata.cues        = tempdata{1,i}.cleandata.trialdata.cues(~abortIndex);
-    tempdata{1,i}.cleandata.trialdata.stimCols_raw= tempdata{1,i}.cleandata.trialdata.stimCols_raw(~abortIndex);
     tempdata{1,i}.cleandata.trialdata.chosen      = tempdata{1,i}.cleandata.trialdata.chosen(~abortIndex);
     tempdata{1,i}.cleandata.trialdata.stimCols    = tempdata{1,i}.cleandata.trialdata.stimCols(~abortIndex);
 end
