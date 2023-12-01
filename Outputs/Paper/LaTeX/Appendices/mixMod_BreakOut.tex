@@ -1,0 +1,40 @@
+\begin{minipage}{0.9\textwidth}
+
+%h/t: https://stackoverflow.com/a/5958641/6464224
+% alternative if this doesn't work: https://tex.stackexchange.com/questions/122786/align-16-small-images-in-a-4-x-4-grid
+
+\fontsize{2}{4}\selectfont
+
+\foreach \n in {1,5,9,13,17,21,25,29}{
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\n_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\the\numexpr \n + 1\relax_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\the\numexpr \n + 2\relax_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\the\numexpr \n + 3\relax_mixMod_BreakOut.svg}
+}
+
+\captionof{figure}{\textbf{Lorem.} Part 1!}
+%\label{fig:BiasCurvesIndividual}
+\end{minipage}
+
+
+
+\begin{minipage}{0.9\textwidth}
+
+\fontsize{2}{4}\selectfont
+
+\foreach \n in {33,37,41,45,49,53,57,61}{
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\n_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\the\numexpr \n + 1\relax_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\the\numexpr \n + 2\relax_mixMod_BreakOut.svg}
+\hfill
+\includesvg[width=0.24\textwidth]{../../../Outputs/Paper/Figures/working/SI/SI4_MMBreakOut/\the\numexpr \n + 3\relax_mixMod_BreakOut.svg}
+}
+
+\captionof{figure}{\textbf{Lorem.} Part 2!}
+%\label{fig:BiasCurvesIndividual}
+\end{minipage}

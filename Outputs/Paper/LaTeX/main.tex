@@ -1,0 +1,260 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Based on LaPreprint: PREPRINT TEMPLATE
+%%% Source: https://github.com/roaldarbol/LaPreprint/tree/b32e34b797298ed151e979e0871b36ec06108110
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Declare document class
+\documentclass[9pt,biorxiv,lineno,onehalfspacing]{lapreprint}
+% Choose between "biorxiv", "medrxiv", "arxiv" and "chemrxiv". Otherwise defaults "Preprint".
+% Choose between "blue" and "red" colour scheme. Defaults to "blue".
+% Use the "onehalfspacing" option for 1.5 line spacing.
+% Use the "doublespacing" option for 2.0 line spacing.
+% Use the "lineno" option for line numbers.
+% Use the "endfloat" option to place floats after the bibliography.
+
+% Import packages
+\usepackage{pdflscape}  % For putting pages in landscape mode
+\usepackage{rotating}   % For rotating specific elements
+\usepackage{textgreek}  % Greek symbols
+\usepackage{gensymb}    % Symbols
+\usepackage[misc]{ifsym} % For the \Letter symbol
+\usepackage{orcidlink}  % For the \orcidlink
+\usepackage{listings}   % For inserting code chunks
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\usepackage{colortbl}   % For Knitr table colouring
+\usepackage{tabularx}   % For making Knitr tables compatible
+\usepackage{longtable}  % For multi-page tables
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{multirow}
+\usepackage{snotez}     % For sidenote environments. enotez for endnotes
+\usepackage{csquotes}   % For language-based quote rules (helps BiBLaTeX)
+
+%\usepackage[table,xcdraw]{xcolor}
+\usepackage[utf8]{inputenc}
+%\usepackage[all]{hypcap}
+\usepackage{microtype} %makes text formatting slightly more readable
+\usepackage{libertine} %uses open source font
+\usepackage{svg}
+\usepackage{authblk}
+\usepackage[labelfont=bf]{caption}
+\usepackage{adjustbox}
+\usepackage{pgffor}
+\usepackage{ccaption}
+
+% for annotated equations
+\usepackage{annotate-equations}
+\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{tikzmark} % for \tikzmarknode
+\usetikzlibrary{calc} % for computing the midpoint between two nodes, e.g. at ($(p1.north)!0.5!(p2.north)$) 
+\newcommand{\highlight}[2]{\colorbox{#1!17}{$#2$}}
+\newcommand{\highlightdark}[2]{\colorbox{#1!47}{$#2$}}
+\newcommand\ttiny{\fontsize{4}{5}\selectfont}
+\newcommand\tttiny{\fontsize{2}{3}\selectfont}
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = gray, %Colour of internal links
+  citecolor    = gray  %Colour of citations
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[			% use biblatex for bibliography
+	backend=biber,      % use biber or bibtex backend
+    style=numeric-comp,   % choose style
+	natbib=true,		% allow natbib commands
+	hyperref=true,	    % activate hyperref support
+	alldates=year,      % only show year (not month)
+    uniquename=false,   % don't add firstnames when citing multiple sources by the same author
+    maxbibnames=12,     % maximum number of author names to list in bibliography before 'et al' is used instead
+    sorting=none,       % sort by order of appearance
+]{biblatex}
+
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearlist{language}
+    \clearfield{url}
+   % \clearfield{issn}
+}
+
+% Update to your bibliography file
+\addbibresource{bib.bib}
+
+\captionsetup[sub]{font=Large,labelfont=bf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Paper title
+\title{The origin of color categories}
+
+\author[ \orcidlink{0000-0002-4579-003X} 1 \Letter]{Daniel J. Garside}
+\author[ \orcidlink{0000-0002-2532-9780} 1,2]{Audrey L.Y. Chang}
+\author[ \orcidlink{0000-0003-1570-9576} 1]{Hannah M. Selwyn}
+\author[ \orcidlink{0000-0001-7715-9253} 1,3 \Letter]{Bevil R. Conway}
+
+% Affiliations
+\affil[1]{Lab of Sensorimotor Research, National Eye Institute, National Institutes of Health}
+\affil[2]{Vilcek Institute of Graduate Biomedical Sciences, New York University}
+\affil[3]{National Institute of Mental Health}
+
+% Other metadata. Feel free to add your own
+\metadata[]{\Letter\hspace{.5ex} For correspondence}{ \href{mailto:danny.garside@nih.gov}{danny.garside@nih.gov} or \href{mailto:bevil@nih.gov}{bevil@nih.gov}}
+
+%\metadata[\authfn{1}\authfn{2}\authfn{3}]{}{Here's a few symbols to denote contribution specifics, e.g. authors who contributed equally to the work.} %!!!!!!!!!!!!!
+\metadata[]{Present address}{49 Convent Drive, Bethesda, MD-20892-4435, USA} 
+% \metadata[]{Data availability}{Data availability statement. 
+% Preprocessed data could be available e.g. on \href{https://zenodo.org/}{Zenodo}.} %!!!!!!!!!!!!!!!!
+\metadata[]{Code availability}{Code for this project is available at \href{https://github.com/NEI-LSR/MacaqueColorCategories}{github.com/NEI-LSR/MacaqueColorCategories}}
+\metadata[]{Funding}{This research was supported by the Intramural Research Program of the NIH, National Eye Institute.}
+\metadata[]{Competing interests}{The authors declare no competing interests.} 
+
+% Surname of the lead author(s) for the running footer
+\leadauthor{Garside}
+\shorttitle{The origin of color categories}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE START
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\maketitle
+\begin{refsection}
+
+\input{abstract.tex}
+
+%\section{Introduction}
+\input{Introduction.tex}
+
+%\section{Results}
+%\input{Results.tex}
+
+%\clearpage
+%\section{Discussion}
+%\input{Discussion.tex}
+
+%\section{Limitations}
+
+%\section{Conclusion}
+
+% \section{Acknowledgments} %!!!! where should this go?
+
+% - Animals
+% - Animal staff
+% - LSR
+% - Riley, Shriya, Whitney, Josh?
+% - Tim Brady
+
+\newpage
+\section{Author contributions}
+
+% table? e.g. https://twitter.com/AnneEUrai/status/1361356189284581387
+
+% 'CRediT' (https://casrai.org/credit/)
+
+\begin{table}[h!]
+\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+\hline
+ & DJG & ALCY & HMS & BRC \\ \hline
+%Conceptualization & \cellcolor[HTML]{000000} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{C0C0C0} &  \\ \hline
+Conceptualization  & \cellcolor[HTML]{000000} & \cellcolor[HTML]{000000} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{000000} \\ \hline
+Data curation & \cellcolor[HTML]{000000} &  &  &  \\ \hline
+Formal Analysis & \cellcolor[HTML]{000000} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{000000} &  \\ \hline
+Funding acquisition &  &  &  & \cellcolor[HTML]{000000} \\ \hline
+Investigation &  &  &  &  \\ \hline
+Methodology & \cellcolor[HTML]{000000} & \cellcolor[HTML]{000000} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} \\ \hline
+Project administration &  &  &  &  \\ \hline
+Resources &  &  &  &  \\ \hline
+Software &  &  &  &  \\ \hline
+Supervision & \cellcolor[HTML]{C0C0C0} &  &  & \cellcolor[HTML]{000000} \\ \hline
+Validation &  &  &  &  \\ \hline
+Visualization & \cellcolor[HTML]{000000} & \cellcolor[HTML]{000000} & \cellcolor[HTML]{000000} &  \\ \hline
+Writing – original draft & \cellcolor[HTML]{000000} &  & \cellcolor[HTML]{C0C0C0} &  \\ \hline
+Writing – review \& editing & \cellcolor[HTML]{000000} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{000000} \\ \hline
+\end{tabularx}
+\end{table}
+
+\noindent
+\textit{Level of contribution: \textcolor[HTML]{000000}{lead}, \textcolor[HTML]{C0C0C0}{support}.}
+
+\clearpage
+\printbibliography[title=Main Text References]
+\end{refsection}
+
+% DON'T EDIT. If "endfloat" option is enabled all floats appear before appendices
+\if@endfloat\clearpage\processdelayedfloats\clearpage\fi 
+
+\begin{refsection}
+\newpage
+\section{Methods}
+\subsection{Subjects}
+\input{Subject Details.tex}
+\subsection{Behavioral task}
+\input{Behavioral task.tex}
+\subsection{Data Analysis}
+\input{Data Analysis.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% SUPPLEMENTARY MATERIAL / APPENDICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sadly, we can't use floats in the appendix boxes. So they don't "float", but use \captionof{figure}{...} and \captionof{table}{...} to get them properly caption.
+
+% \begin{appendix}
+
+% \renewcommand{\figurename}{Supplementary Figure}
+% \setcounter{figure}{0}
+
+% \begin{appendixbox}[Individual Difficulty Analayses]\label{app:Indi_difficulty}  
+
+% \section{Individual Difficulty Analyses}
+\label{app:Indi_difficulty}
+\input{Outputs/Paper/LaTeX/Appendices/Indi_difficulty}
+
+% \section{Individual Data}
+\label{app:IndDiffs}
+\input{Appendices/IndDiffs.tex}
+
+% TODO: Convert this into subfigure format
+% \begin{appendixbox}[Mixture Modelling Break Out]\label{app:mixMod_BreakOut}      
+%     \input{Appendices/mixMod_BreakOut.tex}
+% \end{appendixbox}
+
+% \section{Individual TCC Model Summaries}
+% \label{app:TCCModelSummaries} 
+% \input{Outputs/Paper/LaTeX/Appendices/TCCModelSummaries}
+
+% \begin{appendixbox}[Longitudinal Analysis]\label{app:LongAnal}
+%     \input{Appendices/LongAnal.tex}
+% \end{appendixbox}
+
+% \end{appendix}
+
+\clearpage
+\printbibliography[title=Methods References]
+\end{refsection}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE END
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+
