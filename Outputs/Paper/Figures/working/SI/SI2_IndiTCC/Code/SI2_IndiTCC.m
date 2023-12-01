@@ -38,13 +38,14 @@ if strcmp(AnalysisDepth,'fromModelOutput')
 
     modelOutputDir = '../../../../../../../Analyses/TCCModels';
     modelOutputFiles = {...
-        'Pollux/211012_124119_Pollux/210422--211012_Pollux_TCC-FreeSimilarityMatrix-workspace_230222_x.mat',...
-        'Castor/211108_090705_Castor/220517--211108_Castor_TCC-FreeSimilarityMatrix-workspace_230225_x.mat',...
-        'Morty/220823_081207_Morty/220322--220823_Morty_TCC-FreeSimilarityMatrix-workspace_230213_x.mat',...
-        'Buster/210609_124628_Buster/210428--210609_Buster_TCC-FreeSimilarityMatrix-workspace_230213_x.mat'};
+        'Pollux/211012_124119_Pollux/210422--211012_Pollux_TCC-FreeSimilarityMatrix-workspace_230222.mat',...
+        'Castor/211108_090705_Castor/220517--211108_Castor_TCC-FreeSimilarityMatrix-workspace_230225.mat',...
+        'Morty/220823_081207_Morty/220322--220823_Morty_TCC-FreeSimilarityMatrix-workspace_230213.mat',...
+        'Buster/210609_124628_Buster/210428--210609_Buster_TCC-FreeSimilarityMatrix-workspace_230213.mat',...
+        'Combined/combined_TCC-FreeSimilarityMatrix-workspace_230509.mat'};
 
-    filename = cell(1,length(modelOutputFiles));
-    for participant = 1:length(modelOutputFiles)
+    filename = cell(1,5);
+    for participant = 1:5
         x(participant) = load([modelOutputDir,filesep,modelOutputFiles{participant}], 'x');
         [~,filename{participant}] = fileparts(modelOutputFiles{participant});
     end
@@ -52,6 +53,6 @@ end
 
 %% Plot data
 
-for participant = 1:length(modelOutputFiles)
+for participant = 1:5
     plotSimilarityMatrix(x(participant).x,filename{participant},'../')
 end
