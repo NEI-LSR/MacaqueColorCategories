@@ -11,15 +11,16 @@ clear, clc, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromModelOutput';
+AnalysisDepth = 'fromPreProcessedData';
 
 %% Behind the scenes...
 
 % Add path to required script
 addpath(genpath('../../../../../../../Analyses/'))
 
-DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
-    'Data'];
+repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..'];
+addpath(genpath(repoHomeDir))
+modelOutputDir = [repoHomeDir,filesep,'Analyses'];
 
 filename{1} = '210422--211012_Pollux_data';
 filename{2} = '210517--211108_Castor_data';
@@ -40,14 +41,15 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 
     % Load data
     for participant = 1:4
-        data{participant} = readtable([DataDir,filesep,filename{participant},'.csv']);
+        data{participant} = load([repoHomeDir,filesep,'Data',filesep,filename{participant},'.mat']);
+        % data{participant} = readtable([DataDir,filesep,filename{participant},'.csv']);
     end
 
     % Fit model, save model data
     for participant = 1:4
         rng(0) % the modelling might be probabilistic - TODO check this
         model = fitMixtureModel(data{participant},0);
-        save([DataDir,filesep,'MixtureModels',filesep,filename{participant},'_',...
+        save([modelOutputDir,filesep,'MixtureModels',filesep,filename{participant},'_',...
             datestr(now,'yymmdd-HHMMSS'),'.mat'],...
             'model')
         allModels{participant} = model;
