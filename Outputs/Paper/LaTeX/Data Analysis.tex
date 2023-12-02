@@ -1,9 +1,21 @@
+\paragraph{Psychometric functions}
+
+Psychometric functions (see Figure 2a, SI Figure 2) were estimated with a Weibull cumulative density function: %!!!!
+
+\begin{equation} \label{eq:Weibull}
+    y=\zeta+(100-\zeta-\gamma) *\left(1-e^{-(\omega / \lambda)^k}\right) 
+\end{equation}
+
+Where animal performance (y) is a function of trial difficulty ($\omega$), computed for each trial as the angular difference between the color of the cue and the color of the foil with the closest color to the cue. 
+The other parameters are the floor of the function ($\zeta$), the ceiling ($\gamma$), slope ($\lambda$), and inflection point ($k$). 
+All completed trials were included in the analysis of the psychometric functions. 
+The number of completed trials for each animal were: 76121 (PO); 54555 (CA); 24526 (BU); 54252 (MO). 
+
 \paragraph{Mixture Modeling}\label{para:MixtureModeling}
 
-To assess the bias in responses for each cue, we computed the distribution of responses on trials where the monkey made an incorrect choice. 
-For each completed trial, we calculated the error as the angular difference between the correct option and the chosen option. 
-For each cue, we computed the number of times the monkey selected each incorrect choice, normalized by the number of times each choice color was available as a choice option for all completed trials of the given cue (this was approximately uniformly distributed). 
-We then fit a Gaussian with a variable floor (\autoref{eq:GaussianEquation}) to the error distribution for each cue, using the MATLAB \lstinline{fit} function with the equation defined as \lstinline{a*exp(-(((x-b)^2)/(2*c^2)))+d}. 
+Following experiments in human subjects, we analyzed the distribution of color matches made to each color using a mixture model {Zhang, 2008 #18741;Bae, 2015 #9761}; this model assumes that the shape of the distribution is normal and provides an estimate of the width of the distribution, the offset of its peak relative to the target color, and the guess rate.  %!!!!!
+Prior work has done this analysis with a von Mises distribution {Zhang, 2008 #18741;Bae, 2015 #9761}. %!!!!!
+We found it simpler to implement it with a Gaussian function, $f(\theta)$, centered at each target color ($\theta$):
 
 % demo annotated-equation code from here: https://mirrors.concertpass.com/tex-archive/macros/latex/contrib/annotate-equations/annotate-equations.pdf
 
@@ -11,81 +23,133 @@ We then fit a Gaussian with a variable floor (\autoref{eq:GaussianEquation}) to 
 
 \vspace{2em} 
 \begin{equation} \label{eq:GaussianEquation}
-    \eqnmarkbox[purple]{p1}{a}
+    f(\theta) = 
+    \eqnmarkbox[purple]{alpha}{\alpha}
     \cdot
-    \exp
-    \frac{-(x-
+    e^{
+    -\frac{(x-
     \eqnmarkbox[violet]{mu}{\mu}
     )^2}{2 
-    \eqnmarkbox[blue]{sigma}{\sigma}^2}
+    \eqnmarkbox[blue]{sigma}{\sigma}^2}}
     +
-    \eqnmarkbox[gray]{d}{d}        
+    \eqnmarkbox[gray]{zeta}{\zeta}        
 \end{equation}
 
-\annotate[yshift=1em]{above,left}{p1}{height of the curve's peak}
+\annotate[yshift=1em]{above,left}{alpha}{height of the curve's peak}
 \annotate[yshift=1em]{above}{mu}{position of the center of the peak}
 \annotate[yshift=-0.75em]{below,left}{sigma}{standard deviation}
-\annotate[yshift=-1em]{below}{d}{floor}
+\annotate[yshift=-1em]{below}{zeta}{floor}
 \vspace{2em} 
 
-This fit was weighted by the number of times each choice color was an option for the given cue across all completed trials. 
-Bias was taken as the difference between the cue and the peak of the corresponding gaussian, for each cue color ($b$, \autoref{eq:GaussianEquation}). 
-The values, for each stimulus, are plotted as the black lines in \autoref{fig:CombinedLinear} and \autoref{fig:CombinedPolar}. 
-Where this line falls closer to the center of the figure than the 0deg line, there is negative bias (which per convention is counter-clockwise), and vice versa for values above the 0deg line. Confidence intervals were directly extracted from the model fit.
+where α is the height of the curve’s peak; $\sigma$ is the standard deviation (width), $\mu$ is the position of the center of the peak (so the offset is $\theta$-$\mu$)%!!!!!!
+, and $\zeta$ is the floor (guess rate). 
+To do the analysis, we used the MATLAB fit function, which was provided with the number of times each choice color was an option for the given cue across all completed trials and produced the best-fitting function along with the 95\% CI values for those parameters (SI Figure 3; note that the tails of the distributions in SI Figure 3 reach an asymptotic floor, justifying the use of the simpler Gaussian fitting procedure). %!!!!!
+The offset values for each cue were smoothed with a moving average spanning three colors (16.875o) (Figure 2bc and Figure 5a, and SI Figure 4). Negative-slope zero-crossings in which the 95\% CI exceeded the zero crossing were considered category centers (see Figure 1). %!!!!!
 
-\paragraph{Modified Target Confusability Competition Model (TCC-MAT)}\label{para:TCC}
-In order to investigate the source of the biases recovered through Mixture Modeling, we developed a generative model, based on the Target Confusability Competition (TCC) model of \citet{schurgin_psychophysical_2020}. 
-The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ through a non-linear mapping of distance to similarity, and a value of $d'$, which can be thought of as describing the amount of noise acting in the system. 
-These two elements can be used to predict the probability that a choice of colour $s_j$ will be picked from the set of $[j1...jn ]$, on a trial where the cue is $i$. 
-Our implementation of the model includes some important modifications required for our purposes.
+The width of distribution of matches varied among the colors; this was also observed by Bae et al (2015) (see their Figure 7). 
+This variation implies that the assumption of uniformity of the colorspace is not valid. 
+Moreover, such a non-uniformity could yield an offset in the mixture model (see Figure 3ab), so any offsets recovered by the mixture model need not require a cognitive origin.  
+The alternative hypotheses for the origin of offsets recovered by the mixture model (a cognitive origin versus a stimulus-space non-uniformity), prompted us to analyze the data with a more sensitive model, the Target Confusability Competition model {Schurgin, 2020 #17999}. %!!!!!
+We recognize that in principle, the mixture model could distinguish these alternative hypotheses, but we encountered some limitations using the mixture model that were readily overcome by the TCC model. 
 
-In general, our model does not assume that the underlying function is the same for each stimulus. 
-The standard TCC model obtains a single similarity function averaged across stimuli, but it does not have to, as \citet{schurgin_psychophysical_2020} demonstrate (see Figures 1D and Extended Data Figure 5 of \citet{schurgin_psychophysical_2020}). 
-Since we are most interested in the differences between the functions for the different stimuli, we allow the similarity function to differ for each stimulus. 
+\paragraph{Modified Target Confusability Competition Model (TCC-v)}\label{para:TCC}
 
-For the similarity function, the standard TCC model uses an exponential function convolved with an additional function representing perceptual noise (see Figure 1F of \citet{schurgin_psychophysical_2020}). 
-The cognitive bias model and stimulus-space non-uniformity models we have developed use a simpler approximation to this: a gaussian.
-This reduces model complexity with no apparent drop in model efficacy.
-Our "free-similarity" model does not pre-suppose any specific similarity function; every cell in the similarity matrix is an independent parameter.
-This flexibility allows for patterns of similarity that are not captured by our hypotheses.
+The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ through a non-linear mapping of distance in colorspace to perceptual similarity, and a value of d$\prime$, which can be thought of as describing the amount of noise acting in the system. These two elements can be used to predict the probability that a choice of colour $s_j$ will be picked from the set of $\left[s_{j1}...s_{jn}\right]$, on a trial where the cue is $s_i$. 
+The TCC model has been deployed with the assumption that the colorspace is perceptually uniform; this assumption is implemented as a single similarity function fit for all stimuli. 
+But, as Schurgin et al. {Schurgin, 2020 #17999} demonstrate the similarity function need not be fixed (see their Figures 1D and Extended Data Figure 5 of ref). 
+Our implementation of the model, which we call TCC-v, permits the similarity function to vary for each cue (the “v” is for vary). 
 
-% In fitting a free similarity matrix, noise in the system can either be represented by the value of $d'$ or by modifying the “contrast” of the similarity matrix (the relationship between the highest values and the lowest values in the matrix), since we apply no constraints on the floor or peak of the function. We therefore assume a value of $d'=1$ for the similarity matrix fits.
-Since we use an AFC method, as opposed to a (pseudo-)continuous response space, we are able to take advantage of an alternative computational method for computing the probabilities of a particular choice being made. 
-We use the correction factors of \citet{mcgraw_common_1992} (their Table 3) to estimate the probability $P(X_1>max(X_2,X_3,X_4 ))$, where $X_(1:4)$ are samples from independent normal variables, with means representing the pairwise similarity values between $s_i$ and $s_j$, and variances determined by $d'$. 
-This decreases the compute time of our model fitting by several orders of magnitude compared to the standard TCC method of \citet{schurgin_psychophysical_2020} (See the function \verb|modelPDF| in \verb|TCC_Code_InManuscriptOrder|\verb|\Model| \verb|\TCCUncorrelated.m| from \url{https://osf.io/j2h65/} for comparison).
+In the standard TCC model, the similarity function uses two parameters which define a Gaussian function representing perceptual noise and an exponential function; these two functions are convolved (see Figure 1F of {Schurgin, 2020 #17999}). 
+We simplify the similarity function such that it is defined by a Gaussian alone. 
+The cost of this is that it does not allow for a distinction between the impact of perceptual noise (where the curve flattens off approaching perceptual distances of 0) and similarity (the general shape of the function). 
+In practice, we found that these parameters were highly correlated, and that reduction to a single parameter substantially reduced the computational cost of model fitting, and produced parameter estimates that were more resistant to variation in model-fitting starting values. This simplification also made it easier to modify the model; for example, to allow for the peak of the function to not be at 0 (this affords the TCC-v model the same ability as the mixture model to capture offsets).  
 
-% \paragraph{Cognitive Bias Model}
-% Our cognitive bias model is based on the CATMET model of \citet{bae_why_2015} and the attractor model of \citet{panichello_error-correcting_2019}.
-% In this model, the peak of the gaussian representing the similarity function is allowed to freely float to higher and lower hue angles.
-% This can be thought of as a shifting upwards and downwards of the columns in the similarity matrix. % TODO Change if we transpose
+We created four versions of the TCC-v model: the “null model” (with only parameters for the Gaussian width of the similarity function and d-prime, and thus no allowance for bias), the “cognitive bias” model (with 64 parameters corresponding to offset values shifting the peak of the similarity function for each stimulus to higher or lower hue angles, in addition to d-prime and gaussian width), and the “stimulus-space non-uniformity model” (with 64 parameters corresponding to the relative distance between each pair of neighboring stimuli, in addition to d-prime and gaussian width). 
+Finally, the “free-similarity” model, does not pre-suppose any specific similarity function; every cell in the similarity matrix is an independent parameter. 
+This flexibility allows for patterns of similarity that are not captured by our hypotheses. 
 
-% \paragraph{Stimulus-space non-uniformity model}
-% Our stimulus-space non-uniformity model
+In fitting the model parameters, our goal is to minimize the negative log likelihood (NLL) of the observed data. 
+The NLL is computed as the sum of the negated log of the probabilities of the choices that were selected being selected. 
+The probability of a particular choice being selected on a particular trial ($p_t(\text{selecting choice}_n)$) is dependent on the cue, the set of choices, the similarity function ($f(x)$), the value of d-prime (d’), and the perceptual distance between stimuli (D).
+
+\begin{equation} \label{eq:pt}
+    p_t\left(\text{selecting choice}_n \mid \text{cue},\text{choices}_{i:j}, f(x), d^{\prime}\right)
+\end{equation}
+
+Where $f(x)$ is the Gaussian equation (\autoref{eq:GaussianEquation}).
+
+\begin{equation}
+    \text{NLL} = \operatorname{sum}\left(-\left(\log \left(p_t\left(\text {selecting choice}_x\right)\right)\right)\right)
+\end{equation}
+
+Where $\text{choice}_x$ was the choice that was selected on each trial
+
+The parameter estimates for the free parameters used by the model are iteratively updated until the model reaches a stable minimum NLL. 
+
+% all of this needs math mode updating!!!!!!!!
+The “null model” is defined by $f(x)$ (where a = 1, d = 0, μ = 0) and d’, and assumes D to be uniform. 
+The “cognitive bias” model is defined by f(x) (with 64 parameters for μ, 1 parameter for σ, a = 1, d = 0) and d’, and also assumes D to be uniform. 
+The “stimulus-space non-uniformity” model is defined f(x) (where a = 1, d = 0, μ = 0) but specifies for each stimulus a unique value for D (64 parameters). Note that the cognitive bias model and the stimulus-space non-uniformity have the same total number of parameters (66). 
+The “free similarity model” is not defined by f(x); it is defined by d’ and the similarity matrix. 
+The similarity matrix is defined by 4096 (64$^$2) parameters, one for each combination of cue and possible choice (note that the free similarity matrix is not required to be symmetric).
+
+$p_t(\text{selecting choice}_n)$ is the probability that a sample drawn from an independent normal distribution $(X_i ~ N)$ is the highest of such samples drawn for all the choices ($i:j$) on a particular trial. 
+The mean (m) of each distribution is defined by the similarity value for that cue/choice combination, multiplied by d-prime, and has a variance of 1.
+
+\begin{multline}
+    p\left(\text{selecting choice}_n\right)=p\left(X_i \sim \mathcal{N}\left(m_n \cdot d^{\prime}, 1\right)>\max \left(X_{i+1: n} \sim \mathcal{N}\left(m_n \cdot d^{\prime}, 1\right)\right)\right. \\
+    \text{where} m_{i: j}=\mathrm{f}\left(\mid\right. cue _{\mathrm{i}}- choices \left._{\mathrm{i}: \mathrm{j}} \mid\right)
+\end{multline}
+
+We used an AFC paradigm as opposed to a continuous response space, so we can take advantage of an alternative computational method for estimating $p_t(\text{selecting choice}_n)$, using correction factors provided by \citet{mcgraw_common_1992} (their Table 3). 
+This decreases the amount of time taken to fit the TCC-v models. 
+The method for computing $p_t(\text{selecting choice}_n)$ in the original TCC model of Schurgin et al. is provided here: \verb|modelPDF| in \verb|TCC_Code_InManuscriptOrder|\verb|\Model| \verb|\TCCUncorrelated.m| from \url{https://osf.io/j2h65/}. 
+The method we used is provided here: \url{https://github.com/NEI-LSR/TCC_AFC}.
+
+When fitting the free similarity matrix model, we fix d-prime to provide a constraint on the floor and ceiling of values in the similarity matrix.
+D-prime is strongly correlated with the range of the values in the similarity matrix; the range of similarity values in the similarity matrix has a maximum span of 0 to 1. 
+Equivalent NLL values can be obtained either by restricting the range (e.g. 0.49 to 0.51) and a high value of d-prime (e.g. 20), or by having a larger range (e.g. the full 0 to 1) and a low value of d-prime (e.g. 0.1). 
+If d’ is not fixed, the model is as likely to assume a restricted range as it is a larger range (though still bounded between 0 and 1) but will take a long time to converge. 
+Fixing d-prime impacts the specific values (akin to increasing or decreasing the contrast of the similarity matrix image) but it does not impact the interpretation of the similarity matrix. 
+We chose a d-prime value of 1 which is a reasonable estimate for our task {Schurgin, 2020 #17999}.
+
+\paragraph{Quantitative Model Comparison}
+To compare the relative performance of models, we computed Bayesian Information Criterion (BIC) values for each model from the NLL. 
+The BIC values provide a unit by which we can assess whether the differences between NLL are meaningful, penalizing for number of parameters and number of trials. 
+BIC also allows us to compare models with differing numbers of parameters (though note that the “cognitive bias” and “stimulus-space non-uniformity” models have the same number of parameters).
+
+\begin{equation}
+    \text{BIC} = k\ln(n)-2\ln(\hat{L})
+\end{equation}
+
+Where $\hat{L}$ is the un-negated and exponentiated NLL, n is the number of trials, and k is the number of parameters.
+
+To compare the relative performance of the cognitive bias and stimulus-space non-uniformity models we performed 100 bootstrap iterations of the analysis. 
+Each bootstrap drew 24526 trials from the total number of completed trials for each animal (24526 was the minimum number of trials of completed trials among the 4 animals). 
+Both models were then fit to each bootstrap iteration, and the BIC values were computed (see Figure 4d).  %!!!!!!
+
+\paragraph{Reverse-engineering a uniform color space from the macaque color-matching data}
+
+The present results imply that CIELUV is perceptually non-uniform; that is, that it samples with variable density the true underlying perceptual colorspace. 
+The parameters of the stimulus-space non-uniformity model describe the relative positions of the stimuli, as determined empirically. 
+After converting from relative angular distances to cartesian coordinates, these can be thought of as the hue angles for the stimuli that we used, represented now in a behaviorally derived color space which we refer to as the Macaque Uniform Color Space (MUCS) (Figure 6B). 
+The inverse transformation is also possible; we can define a set of hue angles that are uniformly distributed in MUCS and convert them into CIELUV. 
+For example, if we define hue angle i in MUCS, we can transform that hue angle such that it is defined by its angle relative to the two experimental stimuli on either side of it (hue angle i is at y\% of the angular distance on the path between experimental stimuli a and b). 
+We can then plot MUCS hue angle i in CIELUV by plotting it at the location which is y\% along the path between experimental stimuli a and b in CIELUV. Such a set of hue angles is shown in Figure 6c. 
+
+The MATLAB script MUCS.m will generate a user-defined number of colors sampled evenly from the behaviorally generated color space. 
 
 
-% \paragraph{Determining Cognitive Bias vs. Stimulus-Space Non-Uniformity using TCC-MAT}
 
-% For these experiments, we used a nominally perceptually uniform color space: CIELUV. 
-% This space has been derived psychophysically, with the goal of minimizing differences in perceptual non-uniformity across the space, for color differences of small magnitudes.
 
-% However, non-uniformities within the space are thought to exist \citep{stockman_colorimetry_2010}; and uniformity for small color differences does not assure uniformity for larger color differences \citep{judd_ideal_1968}. 
-% Moreover, uniformity for the conditions under which the psychometric measurements from which the space was determined does not assure uniformity across all viewing conditions \citep{siuda-krzywicka_biological_2019}. 
-% Non-uniformities in color space could lead to choice biases that manifest in a similar way to true cognitive biases when analyzed with a mixture model (\autoref{fig:TCCDemo}). 
-% Distinguishing between the alternative sources of the choice biases can be accomplished with the TCC-MAT model analysis. 
-% We define “true cognitive bias” as when an agent is more likely to pick choice $s_2$ as a match to cue $s_1$ than they are to select choice $s_1$ as a match to cue $s_1$, and that this behavior would not be reciprocal (they would not be more likely to pick choice $s_1$ as a match to cue $s_2$ than they are to select choice $s_2$ as a match to cue $s_2$). 
-% By this definition, this type of bias would appear as an asymmetric spread away from the negative diagonal in the similarity matrix; symmetry across the diagonal would represent reciprocity. 
 
-% Variations in the symmetric spread around the negative diagonal in the similarity matrix would represent non-uniformity of the stimulus space. 
-% In areas where the behavioral space is oversampled, one would see spread away from the negative diagonal (adjacent colors are more similar than the average). 
-% In areas that are undersampled, one would see a pinch into the negative diagonal (adjacent colors are less similar than the average). 
 
-% To estimate how much of the bias in the similarity matrix of the macaque behavior data could be attributed to non-uniformity of color space, we fit a version of the TCC-MAT model using a single similarity function (itself defined by two parameters: gaussian width and $d'$) and allow the stimuli chromaticities to float. 
-% Fitting such a model is akin to asking: what set of relationships between the stimuli in stimulus space can best explain the data we observe?
 
-% %$$\label{eq:SimilarityFunction}     \eqnmarkbox[purple]{explambda}{\exp(x\cdot\lambda)}     \eqnmarkbox[cyan]{convolution}{\circledast}     \eqnmarkbox[blue]{Gilbert,  \#6818}{\mathcal{N}(0,\sigma^2)}$$
 
-\paragraph{Reverse-engineering a uniform color space from the macaque color-matching data }
 
-Following the fitting of the stimulus-space non-uniformity model, the set of modified stimuli chromaticities can be extracted (\autoref{fig:MACBEHcolorspace}). 
-These can be thought of as the chromaticity values for the stimuli that we used, no longer represented in CIELUV, but now in a behaviorally derived color space instead (\autoref{fig:MACBEHspace}). 
-It is then possible to define a uniformly distributed set of colors in this new space, reparameterize them by their relationship to the original colors in the new space (e.g. new chromaticity $b$ is 60\% of the angular distance on the path between stimulus $a$ and stimulus $c$), and then determine where this new set of colors would be in CIELUV (\autoref{fig:UniformStimsInCIELUV}).
+
+
+
+
+
+
