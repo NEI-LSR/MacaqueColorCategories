@@ -48,13 +48,16 @@
 
     % \includegraphics[width=\textwidth,trim={0 12cm 0 0},clip]{../Figures/flat/F1_ParadigmPredictions_3.jpg}
     
-    \caption{\textbf{4-Alternative Forced Choice (4-AFC), Delayed Match to Sample Paradigm.}
-    \emph{A.} Cue and choice colors in the $u^*v^*$ plane of CIELUV. Colors were defined to be equi-luminant and equi-saturated in CIELUV.
-    \emph{B.} The epochs of the paradigm: a trial is initiated when fixation upon a fixation cross is maintained for 50ms. Following this a cue color is shown. This disappears and the animal must remember this color. 4 options appear on the screen, with 1 being a direct match to the cue. Once the fixation cross disappears, the monkey is allowed to make a choice by looking at the their choice, and they are rewarded if they select the choice which matches the cue for that trial.
-    \emph{C.} The presence of color categories can cause bias. This bias will be in the direction of the category center.
-    Where the magnitude of bias crosses zero from anticlockwise to clockwise bias, we label this as the center of the category.
-    \emph{D.} Competing hypotheses for the structure of biases, based on existing theories.
-} 
+    \caption{\textbf{Non-verbal paradigm to recover color categories in non-human primates}
+    \emph{a}, Colors defined in CIELUV color space. 
+	\emph{b}, Animals were trained to initiate a trial by fixating a small cross on a computer monitor and to maintain fixation throughout the trial until the fixation cross disappeared, which was their instruction to make a choice; trials in which the animals broke fixation were aborted. 
+	A 3-degree diameter cue was presented within the central 2.5 – 6-degrees, followed by a variable memory delay (600-900ms) and the presentation of the choice options. 
+	To mitigate impulsive choices, the choice options were shown for a variable amount of time (500-1000 ms) during which the animals needed to maintain fixation to avoid aborting the trial. After the fixation cross disappeared, the animals were free to make their selection. 
+	\emph{c}, Predicted distribution of choices for two cues if a color category exists at the specified location in the color space (dashed arrow). 
+	The average of the distribution of choices will be shifted counterclockwise from the cue if the cue is displaced clockwise to the category center (top) and shifted clockwise from the cue if the cue is displaced counterclockwise to the category center (bottom). This pattern of results would be captured as the zero-crossing of the negative slope in a plot of the choice bias versus cue color (right). 
+	\emph{d}, Predicted pattern of results for three hypotheses: no categories (top); the four most prominent basic color categories (also called the unique hues, middle); and the colors corresponding to the cone-opponent retinal encoding mechanisms (bottom). 
+	\emph{e}, Data obtained in prior work on a related task in human subjects (see SI Figure 1 for three other data sets in human subjects, showing consistent pattern of results). Category centers seem to exist for colors that would be labeled in English as orange, green, blue, and purple. 
+	In the polar plot, the negative slopes demarking category centers are recovered by tracing the line in a counterclockwise direction, at points where it crosses the dashed circle marking zero choice bias. Repeller points (zero crossings of positive slope) appear to align with the -S, +S, and M-L poles of the cone-opponent axes (solid arrowheads), but not the L-M pole (open arrowhead).} 
     \label{fig:ParadigmAnalysisPredictions}
     
 \end{figure}
@@ -114,11 +117,12 @@ Four animals performed the task, completing a total of 209456 trials over 232 se
          \includesvg[pretex=\ttiny, width=\textwidth]{../Figures/working/F2_CombinedMMResults/F2_CombinedMMResults_fromModelOutput_MixMod_polar_231110-001903.svg}
          \label{fig:CombinedPolar}
     \end{subfigure}
-    \caption{\textbf{Task performance, and bias as a function of hue.}
-    \emph{A.} Accuracy as a function of difficulty (where we define difficulty as the angular chromatic distance between the cue color and the closest incorrect choice option).
-    \emph{B.} Bias as a function of hue (filled colored circles), smoothed (black line), with 95\% confidence intervals (grey filled area) and nominal categories highlighted by colored vertical stripes (where the width describes the 90\% confidence interval). The nominal categories occur at zero-crossing with negative slope.
-    \emph{B.} As \autoref{fig:CombinedLinear} but in polar coordinates.
-    }
+    \caption{\textbf{Macaque monkeys appear to show two consensus color categories when the data are analyzed with a mixture model that computes the average distribution of the choices for each cue.}
+	\emph{a}, Psychometric functions for the four animals showing the accuracy of the matches as a function of the difference in hue angle between the cue and the foil that is closest in color to the cue. 
+	The easiest trials were defined as those where the foil color nearest to the cue color were almost on the opposite side of the color circle. See SI Figure 2 for 95% CI. 
+	\emph{b}, Mixture model results averaged across the four animals. The data were subsampled so that the same number of completed trials for each animal (24526) were included in the analysis. Error shading shows 95 %CI. 
+	The data recover two significant negative-slope zero-crossings (black dots), corresponding to two color categories. 
+	\emph{c}, Polar plot of the results in (b) with the zero crossings of the negative slope (following the trace counterclockwise) again indicated by black dots. The angle of the two inferred color categories [95 % C.I.] are 13 [6, 20] (a peach color) and 211 [206, 216] (a teal color). }
     \label{fig:AvResults}
 \end{figure}
 
@@ -209,20 +213,23 @@ The two category centers recovered in the monkeys, at angle 13 (a peach color) a
     %      % h/t: https://tex.stackexchange.com/a/89778/169285 
     %      %\label{fig:JustColSpace_subset}
     % \end{subfigure}
-        \caption{\textbf{Distinguishing between different sources of bias using TCC-MAT models: cognitive bias vs. non-uniformity of stimulus space.} Caption on following page.}
+        \caption{\textbf{Behavioral data showing that putative color categories in macaque monkey can be explained by stimulus-space non-uniformities.} Caption on following page.}
         \label{fig:TCCDemo}
 \end{figure}
 
 \begin{figure}[t]
   \contcaption{
-  \emph{A and B.} Bias can be produced by two distinct mechanisms. \emph{A.} Where memory is encoded jointly as a continuous variable and a categorical variable, and decoding considers both, the resulting memory shall be biased towards the category center. 
-  \emph{B.} Where the set of potential choices contains more plausible options on one side of the cue than on the other, as would be the case with a non-uniform stimulus-space, bias will be introduced towards the denser-populated part of space.
-  \emph{C and D.} Simulated data using models implementing each of these mechanisms, analyzed using a mixture model, can result in identical representations. The dashed line in turquoise, at 180 degrees/stimulus number 32, will be used for demonstration purposes in the following panels.
-  \emph{E and F.} Similarity matrices. These matrices represent the perceptual similarity between stimulus $i$ and stimulus $j$ (where the stimulus used as the cue is represented on the x-axis% TODO change if we change this
-  and the stimulus used as the choice is represented on the y-axis.
-  \emph{E.} Similarity matrix for a cognitive bias model. Here, asymmetric deviations away from the diagonal represent biases.
-  \emph{F.} Similarity matrix for a stimulus-space non-uniformity model. Here, similarity is symmetric about the diagonal (stimulus $i$ is as similar to stimulus $j$, as stimulus $j$ is as similar to stimulus $i$).
-  \emph{G and H.} Extracting single similarity functions from panels E and F we can see that both are biased towards higher stimuli. The cognitive bias model results in an offset gaussian, whereas the stimulus-space non-uniformity results in a skewed distribution.}% Continued caption
+	\emph{a}, Color matches made by an agent with a cognitive color category, using a paradigm with stimuli that uniformly sample a truly uniform underlying perceptual color space (gray circle). 
+	The distribution of matches comprises a similarity function (turquoise Gaussian) that is symmetric but with a peak deviated towards the category center. 
+	\emph{b}, Color matches made by an agent lacking cognitive color categories, using a paradigm with stimuli that non-uniformly sample a truly uniform underlying perceptual color space (gray circle). 
+	The distribution of matches comprises a similarity function (turquoise asymmetric Gaussian) that is biased towards the more densely sampled region of the color space. 
+	The bias arises simply because there are more choice options close to the cue color counterclockwise to the cue. 
+	Note that in both a and b, the average of the distribution of matches is similarly deviated counterclockwise to the cue although the similarity functions differ. 
+	\emph{c}, Mixture-model analysis of a simulated data set with a cognitive bias. 
+	\emph{d}, Mixture-model analysis of a simulated data set with a stimulus space non-uniformity. 
+	\emph{e}, Similarity matrix for the same simulated data set analyzed in panel c. 
+	\emph{f,g}, Similarity matrix for the same simulated data set analyzed in d,e. 
+	The turquoise-colored traces shows the similarity functions for the cue in a,b. 
 \end{figure}
 
 
@@ -281,11 +288,12 @@ The data presented so far are for the four animals combined. The individual anim
          \includegraphics[height=5cm]{../Figures/working/F4_TCCResults/c.png}   
          \label{fig:Combined-ModelFitAnalysis}
     \end{subfigure}
-    \caption{\textbf{Model comparison.}
-    \emph{A and B.} "Free similarity" model similarity matrices for combined data, centered on the "cool" and the "warm" attractor points. 
-    In this type of model, no particular relationship is pre-supposed between any of the stimuli. 
-    If the underlying mechanism for the attractor points were cognitive bias, we would see an asymmetry around the diagonal (as in \autoref{fig:TCCModel_og_sm}), whereas if the underlying mechanism were stimulus-space non-uniformity we would see bulges away from the diagonal at the attractor points which would be symmetric about the diagonal (as in \autoref{fig:TCCModel_ssnu_sm}).
-    \emph{C.} Quantitative comparison between models. Negative log likelihood of a null model (no bias), the cognitive bias model, and a stimulus-space non-uniformity model. Lower negative log likelihoods indicate a better fit to the data. BIC values allow us to compare performance taking into account the number of model parameters and the number of trials, and also provide a unit by which the confidence of model superiority can be judged. Lower BIC values indicate a better fit to the data. BIC differences of between 6 and 10 are generally interpreted as strong evidence that one model is better than another; here we see a BIC difference of roughly 1200.
+    \caption{\textbf{Similarity matrices for behavioral data averaged across four monkeys show that stimulus-space non-uniformities explain apparent color categories in monkeys}
+    \emph{a}, Data are centered on the teal-colored category recovered in the mixture model. 
+	\emph{b}, Data are centered on the peach-colored category recovered in the mixture model. 
+	\emph{c}, Negative Log Likelihood (left) and Bayesian Inference Criterion (BIC, right) of the fit of the null model and the stimulus-space non-uniformity model. 
+	\emph{d}, BIC estimates of the fit provided by the stimulus-space non-uniformity model were always lower than BIC estimates of the fit for the cognitive bias model for 100 bootstrap repeats of the analysis (note that the stimulus space non-uniformity model and the cognitive bias model have the same number of parameters). 
+	Each data point shows one bootstrap repeat of the analysis. For each boostrap repeat, the number of trials for each animal were the same, set by the animal that completed the smallest total number of completed trials, and that number of trials was drawn with replacement from the total number of completed trials for each animal. 
     } 
     \label{fig:TCCOutput}
 \end{figure}
@@ -305,9 +313,9 @@ The data presented so far are for the four animals combined. The individual anim
          \includegraphics[width=\textwidth]{../Figures/working/F5_CastorCogBias/sm_18_231110-202911.png}
          \label{fig:Castor-FreeSimilarity}
     \end{subfigure}
-    \caption{\textbf{Idiosyncratic cognitive bias at the individual level.} 
-    \emph{A.} Mixture model for animal CA. In addition to the shared "warm" and "cool" attractor points, another attractor point is recovered in the yellow/green region.
-    \emph{B.} TCC-MAT modeling reveals an asymmetry indicative of a cognitive bias which is shifting higher hue angles to lower values.}
+    \caption{\textbf{Color-matching data for one monkey showing evidence for a cognitive color category bias.} 
+    \emph{a}, Mixture-model analysis (same format as Figure 2c). 
+	\emph{b}, Free-similarity matrix (same format as Figure 4a,b) with an asymmetry in the green region indicated by the cross.
     \label{fig:IndiDataCogBias}
 \end{figure}
 
@@ -333,11 +341,11 @@ The data presented so far are for the four animals combined. The individual anim
          \includesvg[pretex=\tiny, width=\textwidth]{../Figures/working/F6_ColSpace/newEqualSampling230818-170747.svg}
          \label{fig:UniformStimsInCIELUV}
     \end{subfigure}
-           \caption{\textbf{A behaviorally derived colorspace.} 
-           \emph{A.} Stimuli in CIELUV. 
-           \emph{B.} Stimuli in behaviorally derived space, extracted from the TCC-MAT stimulus-space non-uniformity model for combined data. 
-           \emph{C.} Stimuli sampled uniformly in behaviorally derived space, projected back into CIELUV.}
-        \label{fig:MACBEHcolorspace}
+           \caption{\textbf{Perceptually uniform color space derived from the color-matching data in macaque monkeys.} 
+			\emph{a}, CIELUV color space with 64 color samples at even intervals in hue angle. 
+			\emph{b}, The same color samples plotted in the uniform color space derived from macaque monkeys; note that the axes are not CIELUV but MUCS (macaque uniform color space). 
+			\emph{c}, Colors sampled from evenly from the uniform color space derives from macaque monkeys, projected into CIELUV.
+		\label{fig:MACBEHcolorspace}
     
 \end{figure}
 
