@@ -7,15 +7,17 @@ clear, clc, close all
 %     0,0,20,0,-20];
 
 addpath(genpath(['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'Analyses']))
-Lab = [ones(1,64)*60;generateStimCols('nBig',64,'sat',20)];
+[cart,pol] = generateStimCols('nBig',64,'sat',20);
+LXX = [ones(1,64)*60;cart];
 
-Lab(:,end+1) = [60;0;0];
+LXX(:,end+1) = [60;0;0];
 
 % figure,
 % scatter(Lab(2,:),Lab(3,:),Lab(1,:))
 
 whiteXYZ = [95.04;100;108.88];
-XYZ = LabToXYZ(Lab,whiteXYZ);
+% XYZ = LabToXYZ(LXX,whiteXYZ);
+XYZ = LuvToXYZ(LXX,whiteXYZ);
 
 load T_cones_sp
 load T_xyzJuddVos
@@ -25,10 +27,6 @@ T_Y = 683*T_xyzJuddVos(2,:);
 S_Y = S_xyzJuddVos;
 T_Y = SplineCmf(S_Y,T_Y,S_cones);
 
-XYZtoLMS_HPEee = [0.38971, 0.68898, -0.07868;...
-                 -0.22981, 1.18340,  0.04641;...
-                  0,       0,        1]; 
-%Hunt-Pointer-Estevez (equi-energy) - https://en.wikipedia.org/wiki/LMS_color_space#Hunt,_RLAB
 
 M_XYZToLMS = (T_xyzJuddVos'\T_cones')';  
 T_cones_chk = M_XYZToLMS*T_xyzJuddVos;
@@ -37,26 +35,48 @@ T_cones_chk = M_XYZToLMS*T_xyzJuddVos;
 % plot(T_cones','k')
 % plot(T_cones_chk','r--')
 
-bgLMS_HPEee  = XYZtoLMS_HPEee * XYZ(:,1);
-LMSinc_HPEee = XYZtoLMS_HPEee * (XYZ - XYZ(:,1));
-bgLMS_sc  = M_XYZToLMS * XYZ(:,end);
-LMSinc_sc = M_XYZToLMS * (XYZ - XYZ(:,end));
+bgLMS  = M_XYZToLMS * XYZ(:,end);
+LMSinc = M_XYZToLMS * (XYZ - XYZ(:,end));
 
-[M_ConeIncToDKL_HPEee] = ComputeDKL_M(bgLMS_HPEee, T_cones, T_Y);
-DKL_HPEee = M_ConeIncToDKL_HPEee * LMSinc_HPEee;
-[M_ConeIncToDKL_sc] = ComputeDKL_M(bgLMS_sc, T_cones, T_Y);
-DKL_sc = M_ConeIncToDKL_sc * LMSinc_sc;
+[M_ConeIncToDKL] = ComputeDKL_M(bgLMS, T_cones, T_Y);
+DKL = M_ConeIncToDKL * LMSinc;
 
-figure, hold on
-scatter3(DKL_HPEee(2,:),DKL_HPEee(3,:),DKL_HPEee(1,:),'DisplayName','DKL (via HPEee)')
-xlabel('L-M')
-ylabel('S-(L+M)')
-zlabel('L+M')
-
-scatter3(DKL_sc(2,:),DKL_sc(3,:),DKL_sc(1,:),'DisplayName','DKL (self-computed)')
+scatter3(DKL(2,:),DKL(3,:),DKL(1,:),'DisplayName','DKL (self-computed)')
 xlabel('L-M')
 ylabel('S-(L+M)')
 zlabel('L+M')
 view(2)
 
 legend
+
+%%
+
+lm_temp = DKL(3,1:64);
+lm_temp(:,DKL(2,:) < 0) = inf;
+[~,lm_plus]  = min(abs(lm_temp));
+lm_temp = DKL(3,1:64); 
+lm_temp(:,DKL(2,:) > 0) = inf;
+[~,lm_minus]  = min(abs(lm_temp));
+
+s_temp = DKL(2,1:64);
+s_temp(:,DKL(3,:) < 0) = inf;
+[~,s_plus]  = min(abs(s_temp));
+s_temp = DKL(2,1:64); 
+s_temp(:,DKL(3,:) > 0) = inf;
+[~,s_minus]  = min(abs(s_temp));
+
+figure, hold on
+scatter3(DKL(2,lm_plus),DKL(3,lm_plus),lm_plus,'r','filled','DisplayName','lm\_plus')
+scatter3(DKL(2,lm_minus),DKL(3,lm_minus),lm_minus,'g','filled','DisplayName','lm\_minus')
+scatter3(DKL(2,s_plus),DKL(3,s_plus),s_plus,'b','filled','DisplayName','s\_plus')
+scatter3(DKL(2,s_minus),DKL(3,s_minus),s_minus,'y','filled','DisplayName','s\_minus')
+legend('AutoUpdate','off')
+scatter3(DKL(2,:),DKL(3,:),1:65,'k')
+
+xlabel('L-M')
+ylabel('S-(L+M)')
+zlabel('StimIndex')
+title('DKL')
+
+xline(0)
+yline(0)
