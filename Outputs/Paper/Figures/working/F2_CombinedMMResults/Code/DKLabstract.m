@@ -20,20 +20,24 @@ whiteXYZ = [95.04;100;108.88];
 XYZ = LuvToXYZ(LXX,whiteXYZ);
 
 load T_cones_sp
-load T_xyzJuddVos
+load T_xyz1931.mat
 S_cones = S_cones_sp;
 T_cones = T_cones_sp;
-T_Y = 683*T_xyzJuddVos(2,:);
-S_Y = S_xyzJuddVos;
+T_xyz = T_xyz1931;
+S_xyz = S_xyz1931;
+
+T_Y = 683*T_xyz(2,:);
+S_Y = S_xyz;
 T_Y = SplineCmf(S_Y,T_Y,S_cones);
 
+T_xyz = SplineCmf(S_xyz,T_xyz,S_cones);
 
-M_XYZToLMS = (T_xyzJuddVos'\T_cones')';  
-T_cones_chk = M_XYZToLMS*T_xyzJuddVos;
+M_XYZToLMS = (T_xyz'\T_cones')';  
+T_cones_chk = M_XYZToLMS*T_xyz;
 
-% figure, hold on
-% plot(T_cones','k')
-% plot(T_cones_chk','r--')
+figure, hold on
+plot(T_cones','k')
+plot(T_cones_chk','r--')
 
 bgLMS  = M_XYZToLMS * XYZ(:,end);
 LMSinc = M_XYZToLMS * (XYZ - XYZ(:,end));
@@ -41,6 +45,7 @@ LMSinc = M_XYZToLMS * (XYZ - XYZ(:,end));
 [M_ConeIncToDKL] = ComputeDKL_M(bgLMS, T_cones, T_Y);
 DKL = M_ConeIncToDKL * LMSinc;
 
+figure,
 scatter3(DKL(2,:),DKL(3,:),DKL(1,:),'DisplayName','DKL (self-computed)')
 xlabel('L-M')
 ylabel('S-(L+M)')
@@ -80,3 +85,8 @@ title('DKL')
 
 xline(0)
 yline(0)
+
+disp(lm_plus)
+disp(lm_minus)
+disp(s_plus)
+disp(s_minus)
