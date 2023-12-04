@@ -122,7 +122,7 @@ Four animals performed the task, completing a total of 209456 trials over 232 se
 	The easiest trials were defined as those where the foil color nearest to the cue color were almost on the opposite side of the color circle. See SI Figure 2 for 95% CI. 
 	\emph{b}, Mixture model results averaged across the four animals. The data were subsampled so that the same number of completed trials for each animal (24526) were included in the analysis. Error shading shows 95 %CI. 
 	The data recover two significant negative-slope zero-crossings (black dots), corresponding to two color categories. 
-	\emph{c}, Polar plot of the results in (b) with the zero crossings of the negative slope (following the trace counterclockwise) again indicated by black dots. The angle of the two inferred color categories [95 % C.I.] are 13 [6, 20] (a peach color) and 211 [206, 216] (a teal color). }
+	\emph{c}, Polar plot of the results in (b) with the zero crossings of the negative slope (following the trace counterclockwise) again indicated by black dots. The angle of the two inferred color categories [95 \% C.I.] are 13 [6, 20] (a peach color) and 211 [206, 216] (a teal color). }
     \label{fig:AvResults}
 \end{figure}
 
@@ -136,11 +136,11 @@ and third, that macaque color categories would align with repellants marked by t
 Results in human participants, across multiple variants of the color-matching task in studies from different groups, clearly show evidence for four categories \citep{bae_why_2015,panichello_error-correcting_2019}, matching the number of categories stipulated in the second and third hypotheses but not clearly distinguishing them (\autoref{fig:humanData}; \autoref{fig:SIhumanData}) — the categories correspond to green, blue, orange, and pink. 
 One possibility raised by the prior literature is that these differ from the canonical set of four basic colors (green, blue, yellow, red) because of limitations imposed by ensuring equal saturation and luminance among the colors (see \citep{bae_why_2015}). 
 
-In the present experiments, the four animals performed well on the task, achieving a lapse rate if 7\%, 7.1\%, 5.8\%, 14.3\% (\autoref{fig:CombinedDifficulty}; the average performance across animals along with plots of individual animals showing 95\% CI are provided in \autoref{fig:Indi_difficulty}). % Currently there's only the individual in the SI, not the combined !!!!!!
+In the present experiments, the four animals performed well on the task, achieving a lapse rate of 7\%, 7.1\%, 5.8\%, 14.3\% (\autoref{fig:CombinedDifficulty}; the average performance across animals along with plots of individual animals showing 95\% CI are provided in \autoref{fig:Indi_difficulty}). % Currently there's only the individual in the SI, not the combined !!!!!!
 The results provided clear evidence of choice biases in all four animals (\autoref{fig:AvResults}).
-But the inferred color categories, averaged across the four animals, do not support any of the predictions (\autoref{fig:AvResults}): the animals appeared to show two consensus color categories,not four as in humans. 
+But the inferred color categories, averaged across the four animals, do not support any of the predictions (\autoref{fig:AvResults}): the animals appeared to show two consensus color categories, not four as in humans. 
 To the extent that the macaque is an accurate model of the human, these results show that the four color categories manifest in humans are not innate. 
-The two category centers recovered in the monkeys, at angle 13 (a peach color) and 211 (a teal color), were not  aligned with either of the cone-opponent mechanisms (arrowheads, \autoref{fig:CombinedPolar}); data for individual animals is shown in \autoref{fig:BiasCurvesIndividual}).
+The two category centers recovered in the monkeys, at angle 13 (a peach color) and 211 (a teal color), were not aligned with either of the cone-opponent mechanisms (arrowheads, \autoref{fig:CombinedPolar}); data for individual animals is shown in \autoref{fig:BiasCurvesIndividual}).
 
 \paragraph{Two possible explanations for choice biases in macaque monkeys}
 
@@ -213,8 +213,8 @@ The two category centers recovered in the monkeys, at angle 13 (a peach color) a
     %      % h/t: https://tex.stackexchange.com/a/89778/169285 
     %      %\label{fig:JustColSpace_subset}
     % \end{subfigure}
-        \caption{\textbf{Behavioral data showing that putative color categories in macaque monkey can be explained by stimulus-space non-uniformities.} Caption on following page.}
-        \label{fig:TCCDemo}
+    \caption{\textbf{Behavioral data showing that putative color categories in macaque monkey can be explained by stimulus-space non-uniformities.} Caption on following page.}
+    \label{fig:TCCDemo}
 \end{figure}
 
 \begin{figure}[t]
@@ -229,7 +229,7 @@ The two category centers recovered in the monkeys, at angle 13 (a peach color) a
 	\emph{d}, Mixture-model analysis of a simulated data set with a stimulus space non-uniformity. 
 	\emph{e}, Similarity matrix for the same simulated data set analyzed in panel c. 
 	\emph{f,g}, Similarity matrix for the same simulated data set analyzed in d,e. 
-	The turquoise-colored traces shows the similarity functions for the cue in a,b. 
+	The turquoise-colored traces shows the similarity functions for the cue in a,b.} 
 \end{figure}
 
 
@@ -251,7 +251,7 @@ We refer to the distributions of matches for a cue as its similarity function (h
 To illustrate that the behavioral data could be explained by either a cognitive-bias account or a stimulus-space non-uniformity, we generated two sets of simulated data. 
 One data set was generated with a simulation that used a uniform space and a bias arising from cognitive categories, and the other data set was generated with a simulation that used non-uniform sampling of an underlying uniform color space and no cognitive categories.
 The data sets from both simulations gave rise to the same pattern of results when analyzed with a mixture model (\autoref{fig:TCCModel_og,fig:TCCModel_ssnu}).
-These simulated data sets were chosen for illustration purposes because they correspond to the pattern of behavioral results (compare the simulated results with \autoref{fig:CombinedPolar). 
+These simulated data sets were chosen for illustration purposes because they correspond to the pattern of behavioral results (compare the simulated results with \autoref{fig:CombinedPolar}). 
 The simulations show that the results recovered by the mixture model could be explained by stimulus space non-uniformities without appeal to cognitive color categories. 
 
 To tease apart the possible underlying causes of the behavioral results, we extended the Target Confusability Competition (TCC) generative model \citep{schurgin_psychophysical_2020} (see Methods). % Was it previously a generative model? I think technically not...
@@ -259,7 +259,14 @@ The standard implementation of the TCC model assumes the same similarity functio
 The extended version developed presently, which we call TCC-v, allows the similarity function to vary as a function of color.
 We introduce the concept of a similarity matrix, which captures the set of unique similarity functions for all colors in the space (the ``v'' in TCC-v is for ``vary'').
 Let's consider three versions of the TCC-v model.
-The simplest (“null”) model has the same two-parameter similarity function for each color, centered on the target color (this is conceptually equivalent to the standard TCC model).  The cognitive bias version specifies similarity functions for each color with peaks that can deviate from the target color (Figure 3e). The result is a similarity matrix that has a band of constant width along the inverse diagonal but deviates to one side at color-category locations in the color space. The stimulus-space non-uniformity version of the model, meanwhile, has a similarity function where the peak is fixed to the target color but where the angular distances between the colors can vary (Figure 3f). This results in a similarity matrix that is symmetric about the inverse diagonal, but which bulges at locations in the color space that are oversampled. The shape of the distribution of matches for a cue corresponding to the zero-crossing of the negative slope in the mixture model is indicated by the turquoise line in the cognitive bias and stimulus space non-uniformity versions of the TCC-v model. To recap, the similarity matrix in 3e is constructed using the same data as the polar plot in 3c; and the similarity matrix in 3f is constructed using the same data as the polar plot in 3d. These results show that different underlying mechanisms could explain the appearance of choice biases in color-matching tasks.
+The simplest (“null”) model has the same two-parameter similarity function for each color, centered on the target color (this is conceptually equivalent to the standard TCC model).  
+The cognitive bias version specifies similarity functions for each color with peaks that can deviate from the target color (Figure 3e). 
+The result is a similarity matrix that has a band of constant width along the inverse diagonal but deviates to one side at color-category locations in the color space. 
+The stimulus-space non-uniformity version of the model, meanwhile, has a similarity function where the peak is fixed to the target color but where the angular distances between the colors can vary (Figure 3f). 
+This results in a similarity matrix that is symmetric about the inverse diagonal, but which bulges at locations in the color space that are oversampled. 
+The shape of the distribution of matches for a cue corresponding to the zero-crossing of the negative slope in the mixture model is indicated by the turquoise line in the cognitive bias and stimulus space non-uniformity versions of the TCC-v model. 
+To recap, the similarity matrix in 3e is constructed using the same data as the polar plot in 3c; and the similarity matrix in 3f is constructed using the same data as the polar plot in 3d. 
+These results show that different underlying mechanisms could explain the appearance of choice biases in color-matching tasks.
 
 Next, we quantitatively compare the best fitting versions of each model to the behavioral data. To facilitate this comparison, we plot the behavioral data with a free-similarity version of the TCC-v model in which every cell in the similarity matrix is an independent model parameter (Figure 4a, 4b; the data for both panels are the same, centered on one or the other of the putative category centers recovered in the mixture model). The resulting matrix makes no assumptions about the underlying mechanisms that determine the similarity between any pair of stimuli. Now we can ask, are the data illustrated by the free similarity matrix better explained by the stimulus space non-uniformity model or the cognitive bias model? In other words, do the panels in Figure 4a,b show mirror symmetry with bulges about the diagonal (like Figure 3f) or asymmetry about the diagonal without bulges (like Figure 3e)? By visual inspection, the data are better explained by the stimulus space non-uniformity model, a conclusion affirmed by statistical tests. 
 
@@ -315,7 +322,7 @@ The data presented so far are for the four animals combined. The individual anim
     \end{subfigure}
     \caption{\textbf{Color-matching data for one monkey showing evidence for a cognitive color category bias.} 
     \emph{a}, Mixture-model analysis (same format as Figure 2c). 
-	\emph{b}, Free-similarity matrix (same format as Figure 4a,b) with an asymmetry in the green region indicated by the cross.
+	\emph{b}, Free-similarity matrix (same format as Figure 4a,b) with an asymmetry in the green region indicated by the cross.}
     \label{fig:IndiDataCogBias}
 \end{figure}
 
@@ -344,7 +351,7 @@ The data presented so far are for the four animals combined. The individual anim
            \caption{\textbf{Perceptually uniform color space derived from the color-matching data in macaque monkeys.} 
 			\emph{a}, CIELUV color space with 64 color samples at even intervals in hue angle. 
 			\emph{b}, The same color samples plotted in the uniform color space derived from macaque monkeys; note that the axes are not CIELUV but MUCS (macaque uniform color space). 
-			\emph{c}, Colors sampled from evenly from the uniform color space derives from macaque monkeys, projected into CIELUV.
+			\emph{c}, Colors sampled from evenly from the uniform color space derives from macaque monkeys, projected into CIELUV.}
 		\label{fig:MACBEHcolorspace}
     
 \end{figure}
