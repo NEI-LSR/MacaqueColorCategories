@@ -103,7 +103,7 @@ The mean (m) of each distribution is defined by the similarity value for that cu
 
 We used an AFC paradigm as opposed to a continuous response space, so we can take advantage of an alternative computational method for estimating $p_t(\text{selecting choice}_n)$, using correction factors provided by \citet{mcgraw_common_1992} (their Table 3). 
 This decreases the amount of time taken to fit the TCC-v models. 
-The method for computing $p_t(\text{selecting choice}_n)$ in the original TCC model of Schurgin et al. is provided here: \verb|modelPDF| in \verb|TCC_Code_InManuscriptOrder|\verb|\Model| \verb|\TCCUncorrelated.m| from \url{https://osf.io/j2h65/}. 
+The method for computing $p_t(\text{selecting choice}_n)$ in the original TCC model of Schurgin et al. is provided here: \verb|modelPDF| in \verb|TCC_Code_InManuscriptOrder |\verb|\Model| \verb|\TCCUncorrelated.m| from \url{https://osf.io/j2h65/}. 
 The method we used is provided here: \url{https://github.com/NEI-LSR/TCC_AFC}.
 
 When fitting the free similarity matrix model, we fix d-prime to provide a constraint on the floor and ceiling of values in the similarity matrix.
@@ -138,6 +138,28 @@ For example, if we define hue angle i in MUCS, we can transform that hue angle s
 We can then plot MUCS hue angle i in CIELUV by plotting it at the location which is y\% along the path between experimental stimuli a and b in CIELUV. Such a set of hue angles is shown in Figure 6c. 
 
 The MATLAB script MUCS.m will generate a user-defined number of colors sampled evenly from the behaviorally generated color space. 
+
+\section{Author contributions}
+
+% table? e.g. https://twitter.com/AnneEUrai/status/1361356189284581387
+
+% 'CRediT' (https://casrai.org/credit/)
+
+Conceptualization: BRC, DJG\newline
+Data curation: DJG\newline
+Formal Analysis: DJG, HMS, ALYC\newline
+Funding acquisition: BRC\newline
+Investigation: all authors\newline
+Methodology: all authors\newline
+Project administration: BRC\newline
+Resources: BRC\newline
+Software: DJG, HMS, ALYC\newline
+Supervision: BRC\newline
+Validation: DJG\newline
+Visualization: all authors\newline
+Writing – original draft: BRC, DJG\newline
+Writing – review \& editing: BRC, DJG\newline
+
 
 
 
