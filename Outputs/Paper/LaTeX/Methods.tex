@@ -112,11 +112,11 @@ We found it simpler to implement it with a Gaussian function, $f(\theta)$:
 
 where $\alpha$ is the height of the curve’s peak, $\theta$ is the hue angle, $\sigma$ is the standard deviation (width), $\mu$ is the center of the peak (so the offset is $\theta$-$\mu$), and $\zeta$ is the floor (guess rate). 
 To do the analysis, we used the MATLAB fit function, which was provided with the number of times each choice color was an option for the given cue across all completed trials and produced the best-fitting function along with the 95\% CI values for those parameters (SI Figure 3; note that the tails of the distributions in SI Figure 3 reach an asymptotic floor, justifying the use of the simpler Gaussian fitting procedure). 
-The offset values for each cue were smoothed with a moving average spanning three colors (16.875 degrees) (Figure 2bc and Figure 5a, and SI Figure 4). Negative-slope zero-crossings in which the 95\% CI exceeded the zero crossing were considered category centers (see Figure 1).
+The offset values for each cue were smoothed with a moving average spanning three colors (16.875 degrees) (Figure 2b and 2c and Figure 5a, and SI Figure 4). Negative-slope zero-crossings in which the 95\% CI exceeded the zero crossing were considered category centers (see Figure 1).
 
 The width of distribution of matches varied among the colors; this was also observed by Bae et al (2015) (see their Figure 7). 
 This variation implies that the assumption of uniformity of the colorspace is not valid. 
-Moreover, such a non-uniformity could yield an offset in the mixture model (see Figure 3ab), so any offsets recovered by the mixture model need not require a cognitive origin.  
+Moreover, such a non-uniformity could yield an offset in the mixture model (see Figure 3a and 3b), so any offsets recovered by the mixture model need not require a cognitive origin.  
 The alternative hypotheses for the origin of offsets recovered by the mixture model (a cognitive origin versus a stimulus-space non-uniformity), prompted us to analyze the data with a more sensitive model, the Target Confusability Competition model \citep{schurgin_psychophysical_2020}.
 We recognize that in principle, the mixture model could distinguish these alternative hypotheses, but we encountered some limitations using the mixture model that were readily overcome by the TCC model. 
 
@@ -124,10 +124,10 @@ We recognize that in principle, the mixture model could distinguish these altern
 
 The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ through a non-linear mapping of distance in colorspace to perceptual similarity, and a value of d$\prime$, which can be thought of as describing the amount of noise acting in the system. These two elements can be used to predict the probability that a choice of colour $s_j$ will be picked from the set of $\left[s_{j1}...s_{jn}\right]$, on a trial where the cue is $s_i$. 
 The TCC model has been deployed with the assumption that the colorspace is perceptually uniform; this assumption is implemented as a single similarity function fit for all stimuli. 
-But, as Schurgin et al. \citep{schurgin_psychophysical_2020} demonstrate the similarity function need not be fixed (see their Figures 1D and Extended Data Figure 5 of ref). 
+But, as Schurgin et al. \citep{schurgin_psychophysical_2020} demonstrate the similarity function need not be fixed (see their Figures 1d and Extended Data Figure 5 of ref). 
 Our implementation of the model, which we call TCC-v, permits the similarity function to vary for each cue (the “v” is for vary). 
 
-In the standard TCC model, the similarity function uses two parameters which define a Gaussian function representing perceptual noise and an exponential function; these two functions are convolved (see Figure 1F of \citep{schurgin_psychophysical_2020}). 
+In the standard TCC model, the similarity function uses two parameters which define a Gaussian function representing perceptual noise and an exponential function; these two functions are convolved (see Figure 1f of \citep{schurgin_psychophysical_2020}). 
 We simplify the similarity function such that it is defined by a Gaussian alone. 
 The cost of this is that it does not allow for a distinction between the impact of perceptual noise (where the curve flattens off approaching perceptual distances of 0) and similarity (the general shape of the function). 
 In practice, we found that these parameters were highly correlated, and that reduction to a single parameter substantially reduced the computational cost of model fitting, and produced parameter estimates that were more resistant to variation in model-fitting starting values. This simplification also made it easier to modify the model; for example, to allow for the peak of the function to not be at 0 (this affords the TCC-v model the same ability as the mixture model to capture offsets).  
@@ -201,7 +201,7 @@ Both models were then fit to each bootstrap iteration, and the BIC values were c
 
 The present results imply that CIELUV is perceptually non-uniform; that is, that it samples with variable density the true underlying perceptual colorspace. 
 The parameters of the stimulus-space non-uniformity model describe the relative positions of the stimuli, as determined empirically. 
-After converting from relative angular distances to cartesian coordinates, these can be thought of as the hue angles for the stimuli that we used, represented now in a behaviorally derived color space which we refer to as the Macaque Uniform Color Space (MUCS) (Figure 6B). 
+After converting from relative angular distances to cartesian coordinates, these can be thought of as the hue angles for the stimuli that we used, represented now in a behaviorally derived color space which we refer to as the Macaque Uniform Color Space (MUCS) (Figure 6b). 
 The inverse transformation is also possible; we can define a set of hue angles that are uniformly distributed in MUCS and convert them into CIELUV. 
 For example, if we define hue angle i in MUCS, we can transform that hue angle such that it is defined by its angle relative to the two experimental stimuli on either side of it (hue angle i is at y\% of the angular distance on the path between experimental stimuli a and b). 
 We can then plot MUCS hue angle i in CIELUV by plotting it at the location which is y\% along the path between experimental stimuli a and b in CIELUV. Such a set of hue angles is shown in Figure 6c. 
