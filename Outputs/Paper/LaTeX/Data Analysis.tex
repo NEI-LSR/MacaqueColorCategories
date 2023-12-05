@@ -13,38 +13,41 @@ The number of completed trials for each animal were: 76121 (PO); 54555 (CA); 245
 
 \paragraph{Mixture Modeling}\label{para:MixtureModeling}
 
-Following experiments in human subjects, we analyzed the distribution of color matches made to each color using a mixture model \citep{zhang_discrete_2008,bae_why_2015}; this model assumes that the shape of the distribution is normal and provides an estimate of the width of the distribution, the offset of its peak relative to the target color, and the guess rate.
+Following experiments in human subjects, we analyzed the distribution of color matches made to each color using a mixture model \citep{zhang_discrete_2008,bae_why_2015}; this model assumes that the shape of the distribution is normal and provides an estimate of the width of the distribution, the offset (or bias) of its peak relative to the target color, and the guess rate.
 Prior work has done this analysis with a von Mises distribution \citep{zhang_discrete_2008,bae_why_2015}.
-We found it simpler to implement it with a Gaussian function, $f(\theta)$, centered at each target color ($\theta$):
+We found it simpler to implement it with a Gaussian function, $f(\theta)$:
 
 % demo annotated-equation code from here: https://mirrors.concertpass.com/tex-archive/macros/latex/contrib/annotate-equations/annotate-equations.pdf
 
 %\newpage %Sometimes the annotations don't show up, the hacky solution is to force them onto a new page
 
-\vspace{2em} 
 \begin{equation} \label{eq:GaussianEquation}
-    f(\theta) = 
-    \eqnmarkbox[purple]{alpha}{\alpha}
-    \cdot
-    e^{
-    -\frac{(x-
-    \eqnmarkbox[violet]{mu}{\mu}
-    )^2}{2 
-    \eqnmarkbox[blue]{sigma}{\sigma}^2}}
-    +
-    \eqnmarkbox[gray]{zeta}{\zeta}        
+    f(\theta) = {\alpha} \cdot e^{-\frac{(\theta-{\mu})^2}{2{\sigma}^2}} + {\zeta}        
 \end{equation}
 
-\annotate[yshift=1em]{above,left}{alpha}{height of the curve's peak}
-\annotate[yshift=1em]{above}{mu}{position of the center of the peak}
-\annotate[yshift=-0.75em]{below,left}{sigma}{standard deviation}
-\annotate[yshift=-1em]{below}{zeta}{floor}
-\vspace{2em} 
+% \vspace{2em} 
+% \begin{equation} \label{eq:GaussianEquation}
+%     f(\theta) = 
+%     \eqnmarkbox[purple]{alpha}{\alpha}
+%     \cdot
+%     e^{
+%     -\frac{(x-
+%     \eqnmarkbox[violet]{mu}{\mu}
+%     )^2}{2 
+%     \eqnmarkbox[blue]{sigma}{\sigma}^2}}
+%     +
+%     \eqnmarkbox[gray]{zeta}{\zeta}        
+% \end{equation}
 
-where $\alpha$ is the height of the curve’s peak; $\sigma$ is the standard deviation (width), $\mu$ is the position of the center of the peak (so the offset is $\theta$-$\mu$)%!!!!!!
-, and $\zeta$ is the floor (guess rate). 
-To do the analysis, we used the MATLAB fit function, which was provided with the number of times each choice color was an option for the given cue across all completed trials and produced the best-fitting function along with the 95\% CI values for those parameters (SI Figure 3; note that the tails of the distributions in SI Figure 3 reach an asymptotic floor, justifying the use of the simpler Gaussian fitting procedure). %!!!!!
-The offset values for each cue were smoothed with a moving average spanning three colors (16.875o) (Figure 2bc and Figure 5a, and SI Figure 4). Negative-slope zero-crossings in which the 95\% CI exceeded the zero crossing were considered category centers (see Figure 1). %!!!!!
+%\annotate[yshift=1em]{above,left}{alpha}{height of the curve's peak}
+%\annotate[yshift=1em]{above}{mu}{position of the center of the peak}
+%\annotate[yshift=-0.75em]{below,left}{sigma}{standard deviation}
+%\annotate[yshift=-1em]{below}{zeta}{floor}
+%\vspace{2em} 
+
+where $\alpha$ is the height of the curve’s peak, $\theta$ is the hue angle, $\sigma$ is the standard deviation (width), $\mu$ is the center of the peak (so the offset is $\theta$-$\mu$), and $\zeta$ is the floor (guess rate). 
+To do the analysis, we used the MATLAB fit function, which was provided with the number of times each choice color was an option for the given cue across all completed trials and produced the best-fitting function along with the 95\% CI values for those parameters (\autoref{fig:MMBreakOut}; note that the tails of the distributions in \autoref{fig:MMBreakOut} reach an asymptotic floor, justifying the use of the simpler Gaussian fitting procedure). 
+The offset values for each cue were smoothed with a moving average spanning three colors (16.875 degrees) (Figure 2bc and Figure 5a, and SI Figure 4). Negative-slope zero-crossings in which the 95\% CI exceeded the zero crossing were considered category centers (see Figure 1). %!!!!!
 
 The width of distribution of matches varied among the colors; this was also observed by Bae et al (2015) (see their Figure 7). 
 This variation implies that the assumption of uniformity of the colorspace is not valid. 
