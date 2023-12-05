@@ -1,3 +1,68 @@
+\subsection{Subjects}
+
+Data were collected in four adult male rhesus macaques (Macaca mulatta)(“PO, CA, BU, and MO”) weighing 8–10 kg. 
+All experimental procedures were approved by the Animal Care and Use Committee of the National Eye Institute and complied with the regulations of the National Institutes of Health. 
+Plastic headposts were mounted with sterile surgical procedures, using procedures described in detail elsewhere \citep{lafer-sousa_parallel_2013}. 
+The animals were acclimatized with positive reinforcement to sit in a custom-made chair positioned with the eyes 70cm in front of a computer monitor and to perform visual tasks as described below. 
+At the beginning of each testing session, we positioned a mouthpiece to deliver fluid reward to the animal. 
+An infra-red camera was directed at the eye to monitor eye position with the ISCAN system. 
+The precision of the eye tracking was \textasciitilde0.3 degrees. 
+
+\subsection{Behavioral task}
+
+The animals were trained to perform a 4-Alternative Forced Choice (4-AFC), Delayed Match to Sample task, in which they were shown a colored cue and rewarded for selecting the match option that had the identical color (see Figure 1). 
+The colors, described in more detail below, were drawn from a set of 64 colors that evenly sample hue angle of CIELUV color space. 
+Each trial was initiated when the animal fixated a small cross at the center of the screen; trials were aborted if the animal did not maintain fixation until the fixation cross disappeared toward the end of the trial. 
+Fixation was defined as within a 1.5 degree wide area centered on the fixation cross, well within the precision of the eye tracker.
+The trial sequence was as follows. 
+Fifty ms after initiating the trial by fixating the central cross, a 3-degree-diameter “cue”  of a color randomly drawn from the set of 64 colors appeared for 750ms. 
+The cue was positioned on the monitor at the same location for the whole session on a given day.
+From day to day, the center of the cue could vary from 2.5-degrees to 6-degrees eccentricity and be at any angle from fixation.
+The cue was followed by a gray screen for a brief “memory” period of 600-900ms, after which four match options appeared along an arc at an eccentricity of 6-degrees. 
+
+The match options had the same shape and size as the cue (3-degree-diameter discs); they were evenly spaced along the arc, with a gap of 2 degrees separating each option. 
+The order of the match options on the arc was random. %TODO DG to confirm
+In all animals except one (CA), the arc along which the match options were placed was in the visual hemifield opposite to the cue. 
+The exact position of the arc within the hemifield varied from trial to trial, so the animals could not anticipate where the choice options would appear. 
+Animal CA had a small scotoma spanning \textasciitilde3degrees of visual angle in a quarter of the visual field as the result of a \textasciitilde3mm diameter V1 lesion, so the cue and choices were placed in the same (intact) hemifield, taking care to avoid overlap of the position of the cue and the choices. 
+
+
+One choice option was always a direct match to the cue, and the other three were randomly sampled without replacement from the remaining 63 stimuli. 
+After a random period from 500-1000 ms, the fixation cross disappeared, instructing the monkey to direct its eyes to one of the choices. 
+This random period helped guard against the animals making impulsive responses because they could not anticipate when exactly the choice options would appear.
+Reward was given only if the animal selected with an eye movement the choice that was identical to the cue. 
+If the monkey failed to make a choice within 5 seconds or broke fixation at any point before the termination of the fixation cross, the trial was aborted.
+
+The experiment was controlled with custom software written in MATLAB and Psychtoolbox \citep{noauthor_nei-lsrkofiko_2022, kleiner_whats_2007}.
+
+\paragraph{Stimuli}
+Stimuli were 3-degree diameter discs presented on a Cambridge Research Systems Display++ screen. 
+Colors were defined to be on an equiluminant plane in CIELUV color space, with the luminance matched to the adapting gray background (L* = 76.0693, 38.5cm/m2; adapting field chromaticity was xy\textsubscript{1931}: 0.2684, 0.2409). 
+The stimulus set included 64 colors, evenly sampling CIELUV hue angle (5.625-degrees between adjacent stimuli), of equal CIELUV saturation (radius 37), the highest saturation possible for a set of stimuli of equal saturation and luminance given the gamut of the display.
+Luminance contrast noise was randomly added to each pixel of the cue and the match options to mitigate chromatic aberration. 
+The luminance added to each pixel was updated every frame and drawn uniformly from a continuous range of +/- 5 L* units (the resulting stimulus looks like a colored disc viewed behind a thin veil of television snow). 
+CIELUV was used to define the stimuli because it has an associated chromaticity diagram, but the stimuli can readily be transformed into other spaces such as CIELAB and DKL. 
+
+The color stimuli corresponding to the poles of the cone opponent cardinal axes were computed as follows. 
+First, the spectra of the stimuli and adapting field were measured using a spectroradiometer. 
+These spectra were multiplied by the Smith-Pokorny cone fundamentals to compute the activations for the three classes of cones (LMS), and by the Judd-Vos-modified CIE 2-deg color matching functions to compute luminance. 
+The PsychToolbox function “ComputeDKL\_M” was then used to compute a conversion matrix for converting between LMS and cone opponent cardinal axes that define the DKL colorspace. 
+
+\paragraph{Human Data}
+
+Data from published reports using two related tasks completed in human subjects were kindly provided by Gi-Yeul Bae \citep{bae_why_2015} and Timothy Buschman \citep{panichello_error-correcting_2019}.
+Both these data sets involved a paradigm in which participants matched the color of a cue to a ring of colors showing a continuous progression of colors around the color circle (a ``color wheel''). 
+The results of the two prior studies are consistent with each other: when analyzed with a mixture model, both data sets show four color categories corresponding to blue, green, orange, and pink (SI Figure 1); moreover, the results on a version of the task that omits the memory delay period also recover these four color categories \citep{bae_why_2015}.  %!!!!!!!!!
+This prior work shows that the results on the color-matching task are reproducible and robust. 
+It is therefore likely that the results of the present version of the task, which is distinguished from the prior work by providing as options discrete targets as opposed to a continuous colored wheel, would also be similar. 
+But to test this likelihood, we recruited human participants via Amazon Mechanical Turk to perform the same task used in the macaque monkeys in the present work. 
+To request a trial, participants used a mouse to adjust the location of a cursor to click on a fixation cross, after which a cue was shown to one side of the fixation cross, and the cursor disappeared. The cue was displayed for 750 ms. 
+After the cue was extinguished, a fixation cross was shown but the cursor remained hidden to de-incentivize mouse movement (1500 ms). Four choices were then shown, and the cursor reappeared; participants made their selection by using the mouse to move the cursor to their choice and clicking the mouse. 
+All other aspects of the experimental design were the same as the experiment deployed with the monkeys: 64 colors of equal saturation and luminance (we assumed the monitor that each on-line participant was using matched the sRGB standard), evenly sampling CIELUV. 
+The pattern of results was consistent with the published studies using the continuous ring of colors, recovering four significant color categories corresponding to blue, green, orange, and pink (SI Figure 1; see Data Analysis: Mixture Modeling for a description of how these data were analyzed). %!!!!!!
+
+\subsection{Data Analysis}
+
 \paragraph{Psychometric functions}
 
 Psychometric functions (see Figure 2a, SI Figure 2) were estimated with a Weibull cumulative density function: %!!!!
@@ -46,8 +111,8 @@ We found it simpler to implement it with a Gaussian function, $f(\theta)$:
 %\vspace{2em} 
 
 where $\alpha$ is the height of the curve’s peak, $\theta$ is the hue angle, $\sigma$ is the standard deviation (width), $\mu$ is the center of the peak (so the offset is $\theta$-$\mu$), and $\zeta$ is the floor (guess rate). 
-To do the analysis, we used the MATLAB fit function, which was provided with the number of times each choice color was an option for the given cue across all completed trials and produced the best-fitting function along with the 95\% CI values for those parameters (\autoref{fig:MMBreakOut}; note that the tails of the distributions in \autoref{fig:MMBreakOut} reach an asymptotic floor, justifying the use of the simpler Gaussian fitting procedure). 
-The offset values for each cue were smoothed with a moving average spanning three colors (16.875 degrees) (Figure 2bc and Figure 5a, and SI Figure 4). Negative-slope zero-crossings in which the 95\% CI exceeded the zero crossing were considered category centers (see Figure 1). %!!!!!
+To do the analysis, we used the MATLAB fit function, which was provided with the number of times each choice color was an option for the given cue across all completed trials and produced the best-fitting function along with the 95\% CI values for those parameters (SI Figure 3; note that the tails of the distributions in SI Figure 3 reach an asymptotic floor, justifying the use of the simpler Gaussian fitting procedure). 
+The offset values for each cue were smoothed with a moving average spanning three colors (16.875 degrees) (Figure 2bc and Figure 5a, and SI Figure 4). Negative-slope zero-crossings in which the 95\% CI exceeded the zero crossing were considered category centers (see Figure 1).
 
 The width of distribution of matches varied among the colors; this was also observed by Bae et al (2015) (see their Figure 7). 
 This variation implies that the assumption of uniformity of the colorspace is not valid. 
@@ -141,19 +206,4 @@ The inverse transformation is also possible; we can define a set of hue angles t
 For example, if we define hue angle i in MUCS, we can transform that hue angle such that it is defined by its angle relative to the two experimental stimuli on either side of it (hue angle i is at y\% of the angular distance on the path between experimental stimuli a and b). 
 We can then plot MUCS hue angle i in CIELUV by plotting it at the location which is y\% along the path between experimental stimuli a and b in CIELUV. Such a set of hue angles is shown in Figure 6c. 
 
-The MATLAB script MUCS.m will generate a user-defined number of colors sampled evenly from the behaviorally generated color space. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The MATLAB script MUCS.m will generate a user-defined number of colors sampled evenly from the behaviorally generated color space.
