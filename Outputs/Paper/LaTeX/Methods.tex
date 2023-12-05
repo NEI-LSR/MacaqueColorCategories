@@ -162,7 +162,8 @@ The mean ($m$) of each distribution is defined by the similarity value for that 
 
 \begin{multline}
     p\left(\text{selecting choice}_n\right)=p\left(X_i \sim \mathcal{N}\left(m_n \cdot d^{\prime}, 1\right)>\max \left(X_{i+1: n} \sim \mathcal{N}\left(m_n \cdot d^{\prime}, 1\right)\right)\right. \\
-    \text{where} \ m_{i: j}=\mathrm{f}\left(\mid\right. cue _{\mathrm{i}}- choices \left._{\mathrm{i}: \mathrm{j}} \mid\right)
+    \text{where} \ m_{i:j} 
+    = f\left(|\text{cue}_{i} - \text{choices}_{i:j}|\right)
 \end{multline}
 
 We used an AFC paradigm as opposed to a continuous response space, so we can take advantage of an alternative computational method for estimating $p_t(\text{selecting choice}_n)$, using correction factors provided by \citet{mcgraw_common_1992} (their Table 3). 
@@ -170,22 +171,23 @@ This decreases the amount of time taken to fit the TCC-v models.
 The method for computing $p_t(\text{selecting choice}_n)$ in the original TCC model of Schurgin et al. is provided here: \verb|modelPDF| in \verb|TCC_Code_InManuscriptOrder |\verb|\Model| \verb|\TCCUncorrelated.m| from \url{https://osf.io/j2h65/}. 
 The method we used is provided here: \url{https://github.com/NEI-LSR/TCC_AFC}.
 
-When fitting the free similarity matrix model, we fix d-prime to provide a constraint on the floor and ceiling of values in the similarity matrix.
-D-prime is strongly correlated with the range of the values in the similarity matrix; the range of similarity values in the similarity matrix has a maximum span of 0 to 1. 
-Equivalent NLL values can be obtained either by restricting the range (e.g. 0.49 to 0.51) and a high value of d-prime (e.g. 20), or by having a larger range (e.g. the full 0 to 1) and a low value of d-prime (e.g. 0.1). 
-If d' is not fixed, the model is as likely to assume a restricted range as it is a larger range (though still bounded between 0 and 1) but will take a long time to converge. 
-Fixing d-prime impacts the specific values (akin to increasing or decreasing the contrast of the similarity matrix image) but it does not impact the interpretation of the similarity matrix. 
-We chose a d-prime value of 1 which is a reasonable estimate for our task \citep{schurgin_psychophysical_2020}.
+When fitting the free similarity matrix model, we fix $d'$ to provide a constraint on the floor and ceiling of values in the similarity matrix.
+$d'$ is strongly correlated with the range of the values in the similarity matrix; the range of similarity values in the similarity matrix has a maximum span of 0 to 1. 
+Equivalent NLL values can be obtained either by restricting the range (e.g. 0.49 to 0.51) and a high value of $d'$ (e.g. 20), or by having a larger range (e.g. the full 0 to 1) and a low value of $d'$ (e.g. 0.1). 
+If $d'$ is not fixed, the model is as likely to assume a restricted range as it is a larger range (though still bounded between 0 and 1) but will take a long time to converge. 
+Fixing $d'$ impacts the specific values (akin to increasing or decreasing the contrast of the similarity matrix image) but it does not impact the interpretation of the similarity matrix. 
+We chose a $d'$ value of 1 which is a reasonable estimate for our task \citep{schurgin_psychophysical_2020}.
 
 In the original TCC model, the similarity function uses two parameters that define a Gaussian function representing perceptual noise and an exponential function; these two functions are convolved (see Figure 1f of \citep{schurgin_psychophysical_2020}). 
 We simplify the similarity function such that it is defined by a Gaussian alone. 
 The cost of this is that it does not allow for a distinction between the impact of perceptual noise (where the curve flattens off approaching perceptual distances of 0) and similarity (the general shape of the function). 
-In practice, we found that these parameters were highly correlated, and that reduction to a single parameter substantially reduced the computational cost of model fitting, and produced parameter estimates that were more resistant to variation in model-fitting starting values. This simplification also made it easier to modify the model; for example, to allow for the peak of the function to not be at 0 (this affords the TCC-v model the same ability as the mixture model to capture offsets). 
+In practice, we found that these parameters were highly correlated, and that reduction to a single parameter substantially reduced the computational cost of model fitting, and produced parameter estimates that were more resistant to variation in model-fitting starting values. 
+This simplification also made it easier to modify the model; for example, to allow for the peak of the function to not be at 0 (this affords the TCC-v model the same ability as the mixture model to capture offsets). 
 
 \paragraph{Quantitative Model Comparison}
 To compare the relative performance of models, we computed Bayesian Information Criterion (BIC) values for each model from the NLL. 
 The BIC values provide a unit by which we can assess whether the differences between NLL are meaningful, penalizing for number of parameters and number of trials. 
-BIC also allows us to compare models with differing numbers of parameters (though note that the “cognitive bias” and “stimulus-space non-uniformity” models have the same number of parameters).
+BIC also allows us to compare models with differing numbers of parameters (though note that the "cognitive bias" and "stimulus-space non-uniformity" models have the same number of parameters).
 
 \begin{equation}
     \text{BIC} = k\ln(n)-2\ln(\hat{L})
