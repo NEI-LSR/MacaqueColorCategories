@@ -52,7 +52,7 @@ The PsychToolbox function “ComputeDKL\_M” was then used to compute a convers
 
 Data from published reports using two related tasks completed in human subjects were kindly provided by Gi-Yeul Bae \citep{bae_why_2015} and Timothy Buschman \citep{panichello_error-correcting_2019}.
 Both these data sets involved a paradigm in which participants matched the color of a cue to a ring of colors showing a continuous progression of colors around the color circle (a ``color wheel''). 
-The results of the two prior studies are consistent with each other: when analyzed with a mixture model, both data sets show four color categories corresponding to blue, green, orange, and pink (SI Figure 1); moreover, the results on a version of the task that omits the memory delay period also recover these four color categories \citep{bae_why_2015}.  %!!!!!!!!!
+The results of the two prior studies are consistent with each other: when analyzed with a mixture model, both data sets show four color categories corresponding to blue, green, orange, and pink (SI Figure 1); moreover, the results on a version of the task that omits the memory delay period also recover these four color categories \citep{bae_why_2015}.
 This prior work shows that the results on the color-matching task are reproducible and robust. 
 It is therefore likely that the results of the present version of the task, which is distinguished from the prior work by providing as options discrete targets as opposed to a continuous colored wheel, would also be similar. 
 But to test this likelihood, we recruited human participants via Amazon Mechanical Turk to perform the same task used in the macaque monkeys in the present work. 
@@ -124,47 +124,52 @@ We recognize that in principle, the mixture model could distinguish these altern
 
 The key elements of the TCC model are a similarity function, which determines the similarity between stimulus $s_i$ and stimulus $s_j$ through a non-linear mapping of distance in colorspace to perceptual similarity, and a value of $d'$, which can be thought of as describing the amount of noise acting in the system. 
 These two elements can be used to predict the probability that a choice of colour $s_j$ will be picked from the set of $\left[s_{j1}...s_{jn}\right]$, on a trial where the cue is $s_i$. 
+
+The probability of a particular choice being selected on a particular trial ($p_t(\text{selecting choice}_n)$) is dependent on the cue, the set of choices, the similarity function ($f(\theta)$), the value of $d'$, and the perceptual distances between stimuli ($D$).
+
+\begin{equation} \label{eq:pt}
+    p_t\left(\text{selecting choice}_n \mid \text{cue},\text{choices}_{i:j}, f(\theta), \delta, D\right)
+\end{equation}
+
+where $f(\theta)$ is the Gaussian equation (\autoref{eq:GaussianEquation}), $\delta$ is the value of $d'$, and $D$ is the perceptual distances between stimuli.
+
 The TCC model has been deployed with the assumption that the colorspace is perceptually uniform; this assumption is implemented as a single similarity function fit for all stimuli. 
 But, as \citet{schurgin_psychophysical_2020} demonstrate the similarity function need not be fixed (see their Figures 1d and Extended Data Figure 5). 
 Our implementation of the model, which we call TCC-v, permits the similarity function to vary for each cue (the "v" is for vary). 
 
-We created four versions of the TCC-v model: the "null model" (with only parameters for the Gaussian width of the similarity function and d-prime, and thus no allowance for bias), the "cognitive bias" model (with 64 parameters corresponding to offset values shifting the peak of the similarity function for each stimulus to higher or lower hue angles, in addition to $d'$ and gaussian width), and the "stimulus-space non-uniformity model" (with 64 parameters corresponding to the relative distance between each pair of neighboring stimuli, in addition to d-prime and gaussian width). 
+We created four versions of the TCC-v model: the "null model" (with only parameters for the Gaussian width of the similarity function and $d'$, and thus no allowance for bias), the "cognitive bias" model (with 64 parameters corresponding to offset values shifting the peak of the similarity function for each stimulus to higher or lower hue angles, in addition to $d'$ and gaussian width), and the "stimulus-space non-uniformity model" (with 64 parameters corresponding to the relative distance between each pair of neighboring stimuli, in addition to $d'$ and gaussian width). 
 Finally, the "free-similarity" model, does not pre-suppose any specific similarity function; every cell in the similarity matrix is an independent parameter. 
 This flexibility allows for patterns of similarity that are not captured by our hypotheses. 
 
 In fitting the model parameters, our goal is to minimize the negative log likelihood (NLL) of the observed data. 
 The NLL is computed as the sum of the negated log of the probabilities of the choices that were selected being selected. 
-The probability of a particular choice being selected on a particular trial ($p_t(\text{selecting choice}_n)$) is dependent on the cue, the set of choices, the similarity function ($f(x)$), the value of $d'$, and the perceptual distances between stimuli ($D$).
-
-\begin{equation} \label{eq:pt}
-    p_t\left(\text{selecting choice}_n \mid \text{cue},\text{choices}_{i:j}, f(x), d^{\prime}, D\right)
-\end{equation}
-
-Where $f(x)$ is the Gaussian equation (\autoref{eq:GaussianEquation}).
 
 \begin{equation}
     \text{NLL} = \operatorname{sum}\left(-\left(\log \left(p_t\left(\text {selecting choice}_x\right)\right)\right)\right)
 \end{equation}
 
-Where $\text{choice}_x$ was the choice that was selected on each trial.
+where $\text{choice}_x$ was the choice that was selected on each trial.
 
 The parameter estimates for the free parameters used by the model are iteratively updated until the model reaches a stable minimum NLL. 
 
-The "null model" is defined by $f(x)$ (where $\alpha$ = 1, $\zeta$ = 0, $\mu$ = 0) and $d'$, and assumes $D$ to be uniform. 
-The "cognitive bias" model is defined by $f(x)$ (with 64 parameters for $\mu$, 1 parameter for $\sigma$, $alpha$ = 1, $\zeta$ = 0) and $d'$, and also assumes $D$ to be uniform. 
-The "stimulus-space non-uniformity" model is defined by $f(x)$ (where $\alpha$ = 1, $\zeta$ = 0, $\mu$ = 0) but specifies for each pair of neighboring stimuli a unique value for $D$ (64 parameters). 
+The "null model" is defined by $f(\theta)$ (where $\alpha$ = 1, $\zeta$ = 0, $\mu$ = 0) and $d'$, and assumes $D$ to be uniform. 
+The "cognitive bias" model is defined by $f(\theta)$ (with 64 parameters for $\mu$, 1 parameter for $\sigma$, $alpha$ = 1, $\zeta$ = 0) and $d'$, and also assumes $D$ to be uniform. 
+The "stimulus-space non-uniformity" model is defined by $f(\theta)$ (where $\alpha$ = 1, $\zeta$ = 0, $\mu$ = 0) but specifies for each pair of neighboring stimuli a unique value for $D$ (64 parameters). 
 Note that the cognitive bias model and the stimulus-space non-uniformity have the same total number of parameters (66). 
-The "free similarity model" is not defined by $f(x)$; it is defined by $d'$ and the similarity matrix. 
+The "free similarity model" is not defined by $f(\theta)$; it is defined by $d'$ and the similarity matrix. 
 The similarity matrix is defined by 4096 ($64^2$) parameters, one for each combination of cue and possible choice (note that the free similarity matrix is not required to be symmetric).
 
 $p_t(\text{selecting choice}_n)$ is the probability that a sample drawn from an independent normal distribution $(X_i \sim N)$ is the highest of such samples drawn for all the choices ($i:j$) on a particular trial. 
 The mean ($m$) of each distribution is defined by the similarity value for that cue/choice combination, multiplied by $d'$, and has a variance of 1.
 
-\begin{multline}
-    p\left(\text{selecting choice}_n\right)=p\left(X_i \sim \mathcal{N}\left(m_n \cdot d^{\prime}, 1\right)>\max \left(X_{i+1: n} \sim \mathcal{N}\left(m_n \cdot d^{\prime}, 1\right)\right)\right. \\
-    \text{where} \ m_{i:j} 
-    = f\left(|\text{cue}_{i} - \text{choices}_{i:j}|\right)
-\end{multline}
+\begin{equation}
+    p\left(\text{selecting choice}_n\right) = 
+    p\left(X_i \sim \mathcal{N}\left(m_n \cdot \delta, 1\right)
+    >\max 
+    \left(X_{i+1: n} \sim \mathcal{N}\left(m_n \cdot \delta, 1\right)\right)\right)
+\end{equation}
+
+where $m_{i:j} = f\left(|\text{cue}_{i} - \text{choices}_{i:j}|\right)$, and $\delta$ is the value of $d'$.
 
 We used an AFC paradigm as opposed to a continuous response space, so we can take advantage of an alternative computational method for estimating $p_t(\text{selecting choice}_n)$, using correction factors provided by \citet{mcgraw_common_1992} (their Table 3). 
 This decreases the amount of time taken to fit the TCC-v models. 
@@ -193,19 +198,20 @@ BIC also allows us to compare models with differing numbers of parameters (thoug
     \text{BIC} = k\ln(n)-2\ln(\hat{L})
 \end{equation}
 
-Where $\hat{L}$ is the un-negated and exponentiated NLL, n is the number of trials, and k is the number of parameters.
+Where $\hat{L}$ is the maximised likelihood of the model, $n$ is the number of trials, and $k$ is the number of parameters.
 
 To compare the relative performance of the cognitive bias and stimulus-space non-uniformity models we performed 100 bootstrap iterations of the analysis. 
 Each bootstrap drew 24526 trials from the total number of completed trials for each animal (24526 was the minimum number of trials of completed trials among the 4 animals). 
-Both models were then fit to each bootstrap iteration, and the BIC values were computed (see Figure 4d).  %!!!!!!
+Both models were then fit to each bootstrap iteration, and the BIC values were computed (see Figure 4d).
 
 \paragraph{Reverse-engineering a uniform color space from the macaque color-matching data}
 
 The present results imply that CIELUV is perceptually non-uniform; that is, that it samples with variable density the true underlying perceptual colorspace. 
 The parameters of the stimulus-space non-uniformity model describe the relative positions of the stimuli, as determined empirically. 
-After converting from relative angular distances to cartesian coordinates, these can be thought of as the hue angles for the stimuli that we used, represented now in a behaviorally derived color space which we refer to as the Macaque Uniform Color Space (MUCS) (Figure 6b). 
+After converting from inter-neighbor relative distances to polar angles, these can be thought of as the hue angles for the stimuli that we used, represented now in a behaviorally derived color space which we refer to as the Macaque Uniform Color Space (MUCS) (Figure 6b). 
 The inverse transformation is also possible; we can define a set of hue angles that are uniformly distributed in MUCS and convert them into CIELUV. 
-For example, if we define hue angle i in MUCS, we can transform that hue angle such that it is defined by its angle relative to the two experimental stimuli on either side of it (hue angle i is at y\% of the angular distance on the path between experimental stimuli a and b). 
-We can then plot MUCS hue angle i in CIELUV by plotting it at the location which is y\% along the path between experimental stimuli a and b in CIELUV. Such a set of hue angles is shown in Figure 6c. 
+For example, if we define hue angle $i$ in MUCS, we can reparameterize that hue angle such that it is defined by its angle relative to the two experimental stimuli on either side of it (hue angle $i$ is at y\% of the angular distance on the path between experimental stimuli $a$ and $b$). 
+We can then plot MUCS hue angle $i$ in CIELUV by plotting it at the location which is y\% along the path between experimental stimuli $a$ and $b$ in CIELUV. 
+Such a set of hue angles is shown in Figure 6c. 
 
 The MATLAB script MUCS.m will generate a user-defined number of colors sampled evenly from the behaviorally generated color space.
