@@ -1,7 +1,8 @@
-\begin{figure}
+\begin{figure}[h]
+    \begin{fullwidth}
     \centering
-    \includegraphics[width=\textwidth,trim={0 12cm 0 0},clip]{../Figures/flat/F1_ParadigmPredictions_6.jpg}
-    \caption{\textbf{Non-verbal paradigm to recover color categories in non-human primates}
+    \includegraphics[width=\textwidth+4cm,trim={0 12.5cm 0 0},clip]{../Figures/flat/F1_ParadigmPredictions_6.jpg}
+    \caption{\textbf{Non-verbal paradigm to recover color categories in non-human primates.}
     \emph{a}, Colors defined in CIELUV color space. 
 	\emph{b}, Animals were trained to initiate a trial by fixating a small cross on a computer monitor and to maintain fixation throughout the trial until the fixation cross disappeared, which was their instruction to make a choice; trials in which the animals broke fixation were aborted. 
 	A 3-degree diameter cue was presented within the central 2.5 – 6-degrees, followed by a variable memory delay (600-900ms) and the presentation of the choice options. 
@@ -12,7 +13,7 @@
 	\emph{e}, Data obtained in prior work on a related task in human subjects (see SI Figure 1 for three other data sets in human subjects, showing consistent pattern of results). Category centers seem to exist for colors that would be labeled in English as orange, green, blue, and purple. 
 	In the polar plot, the negative slopes demarking category centers are recovered by tracing the line in a counterclockwise direction, at points where it crosses the dashed circle marking zero choice bias. Repeller points (zero crossings of positive slope) appear to align with the -S, +S, and M-L poles of the cone-opponent axes (solid arrowheads), but not the L-M pole (open arrowhead).} 
     \label{fig:ParadigmAnalysisPredictions}
-    
+    \end{fullwidth}
 \end{figure}
 
 Color categories are identified by color terms, of which the Basic Color Terms are considered prominent \citep{berlin_basic_1969}.
@@ -48,8 +49,10 @@ This task ensures precision in the matched colors and avoids the possibility of 
 One consequence of this adapted paradigm is that it requires considerable data to sample category performance across the space of colors. 
 Four animals performed the task, completing a total of 209456 trials over 232 sessions (see \autoref{fig:Indi_difficulty}).
 
-\begin{figure}
-    \includegraphics[width=\textwidth,trim={0 20cm 0 0},clip]{../Figures/flat/F2_CombinedMMResults_5.jpg}
+\begin{figure}[h]
+    \begin{fullwidth}
+    \centering
+    \includegraphics[width=\textwidth+4cm,trim={0 20cm 0 0},clip]{../Figures/flat/F2_CombinedMMResults_5.jpg}
     \caption{\textbf{Macaque monkeys appear to show two consensus color categories when the data are analyzed with a mixture model that computes the average distribution of the choices for each cue.}
 	\emph{a}, Psychometric functions for the four animals showing the accuracy of the matches as a function of the difference in hue angle between the cue and the foil that is closest in color to the cue. 
 	The easiest trials were defined as those where the foil color nearest to the cue color were almost on the opposite side of the color circle. See SI Figure 2 for 95% CI. 
@@ -57,6 +60,7 @@ Four animals performed the task, completing a total of 209456 trials over 232 se
 	The data recover two significant negative-slope zero-crossings (black dots), corresponding to two color categories. 
 	\emph{c}, Polar plot of the results in (b) with the zero crossings of the negative slope (following the trace counterclockwise) again indicated by black dots. The angle of the two inferred color categories [95 \% C.I.] are 13 [6, 20] (a peach color) and 211 [206, 216] (a teal color). }
     \label{fig:AvResults}
+    \end{fullwidth}
 \end{figure}
 
 If a monkey has a color category, the category center will be an attractor in the color space, captured by a zero-crossing of negative slope in a plot of the choice bias (\autoref{fig:Bias1}). 
@@ -77,15 +81,11 @@ The two category centers recovered in the monkeys, at angle 13 (a peach color) a
 
 \paragraph{Two possible explanations for choice biases in macaque monkeys}
 
-\begin{figure}
+\begin{figure}[h]
+    \begin{fullwidth}
+    \centering
     \includegraphics[width=\textwidth,trim={0 6cm 0 0},clip]{../Figures/flat/F3_TCCModel_6.jpg}
-    \caption{\textbf{Behavioral data showing that putative color categories in macaque monkey can be explained by stimulus-space non-uniformities.} Caption on following page.}
-    \label{fig:TCCDemo}
-\end{figure}
-
-\begin{figure}[t]
-  \contcaption{
-	\emph{a}, Color matches made by an agent with a cognitive color category, using a paradigm with stimuli that uniformly sample a truly uniform underlying perceptual color space (gray circle). 
+    \caption{\textbf{Behavioral data showing that putative color categories in macaque monkey can be explained by stimulus-space non-uniformities.} \emph{a}, Color matches made by an agent with a cognitive color category, using a paradigm with stimuli that uniformly sample a truly uniform underlying perceptual color space (gray circle). 
 	The distribution of matches comprises a similarity function (turquoise Gaussian) that is symmetric but with a peak deviated towards the category center. 
 	\emph{b}, Color matches made by an agent lacking cognitive color categories, using a paradigm with stimuli that non-uniformly sample a truly uniform underlying perceptual color space (gray circle). 
 	The distribution of matches comprises a similarity function (turquoise asymmetric Gaussian) that is biased towards the more densely sampled region of the color space. 
@@ -95,9 +95,10 @@ The two category centers recovered in the monkeys, at angle 13 (a peach color) a
 	\emph{d}, Mixture-model analysis of a simulated data set with a stimulus space non-uniformity. 
 	\emph{e}, Similarity matrix for the same simulated data set analyzed in panel c. 
 	\emph{f,g}, Similarity matrix for the same simulated data set analyzed in d,e. 
-	The turquoise-colored traces shows the similarity functions for the cue in a,b.} 
+	The turquoise-colored traces shows the similarity functions for the cue in a,b.}
+    \label{fig:TCCDemo}
+    \end{fullwidth}
 \end{figure}
-
 
 The colors we used were defined by the International Commission on Illumination (CIE) to be approximately perceptually uniform. 
 But it has long been recognized that there may be non-uniformities in the space \citep{stockman_colorimetry_2010}; some have argued that perceptual uniformity may be task-dependent or simply unattainable \citep{judd_ideal_1969}.
@@ -141,7 +142,7 @@ First, the stimulus space non-uniformity model provides a better fit of the data
 The data presented so far are for the four animals combined. The individual animals showed some idiosyncratic differences (SI Figure 4). By mixture-model analysis, one animal showed not only the two consensus choice biases but also a third bias, for pea green (Figure 5a). The free similarity matrix for the data from this animal shows an asymmetry about the diagonal at this location in the color space (Figure 5b), showing that this animal has a cognitive bias for pea-green in addition to the consensus biases driven by stimulus-space non-uniformities (free similarity matricies for all animals shown in SI Figure 5). These results show that macaque monkeys have the potential to form cognitive color biases, and that the TCC-v model can recover them. The existence of cognitive biases in individual animals is consistent with prior work that observed different patterns of color-matching behavior in two animals using the continuous-matching task that likely reinforces idiosyncratic acquired biases \citep{panichello_error-correcting_2019}.
 
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth,trim={0 18cm 0 0},clip]{../Figures/flat/F4_TCCResults_3.jpg}
     \caption{\textbf{Similarity matrices for behavioral data averaged across four monkeys show that stimulus-space non-uniformities explain apparent color categories in monkeys}
@@ -154,7 +155,7 @@ The data presented so far are for the four animals combined. The individual anim
     \label{fig:TCCOutput}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth,trim={0 18cm 0 0},clip]{../Figures/flat/F5_CastorCogBias_6.jpg}
     \caption{\textbf {Color-matching data for one monkey showing evidence for a cognitive color category bias.} 
@@ -163,7 +164,7 @@ The data presented so far are for the four animals combined. The individual anim
     \label{fig:IndiDataCogBias}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
     \centering
       \includegraphics[width=\textwidth,trim={0 15cm 0 0},clip]{../Figures/flat/F6_ColSpace_2}
            \caption{\textbf{Perceptually uniform color space derived from the color-matching data in macaque monkeys.} 
