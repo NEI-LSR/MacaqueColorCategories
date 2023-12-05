@@ -89,9 +89,10 @@ The parameter estimates for the free parameters used by the model are iterativel
 % all of this needs math mode updating!!!!!!!!
 The “null model” is defined by $f(x)$ (where a = 1, d = 0, μ = 0) and d’, and assumes D to be uniform. 
 The “cognitive bias” model is defined by f(x) (with 64 parameters for μ, 1 parameter for σ, a = 1, d = 0) and d’, and also assumes D to be uniform. 
-The “stimulus-space non-uniformity” model is defined f(x) (where a = 1, d = 0, μ = 0) but specifies for each stimulus a unique value for D (64 parameters). Note that the cognitive bias model and the stimulus-space non-uniformity have the same total number of parameters (66). 
+The “stimulus-space non-uniformity” model is defined f(x) (where a = 1, d = 0, μ = 0) but specifies for each stimulus a unique value for D (64 parameters). 
+Note that the cognitive bias model and the stimulus-space non-uniformity have the same total number of parameters (66). 
 The “free similarity model” is not defined by f(x); it is defined by d’ and the similarity matrix. 
-The similarity matrix is defined by 4096 (64$^$2) parameters, one for each combination of cue and possible choice (note that the free similarity matrix is not required to be symmetric).
+The similarity matrix is defined by 4096 ($64^2$) parameters, one for each combination of cue and possible choice (note that the free similarity matrix is not required to be symmetric).
 
 $p_t(\text{selecting choice}_n)$ is the probability that a sample drawn from an independent normal distribution $(X_i ~ N)$ is the highest of such samples drawn for all the choices ($i:j$) on a particular trial. 
 The mean (m) of each distribution is defined by the similarity value for that cue/choice combination, multiplied by d-prime, and has a variance of 1.
