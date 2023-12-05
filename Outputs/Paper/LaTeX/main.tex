@@ -145,10 +145,25 @@ breaklines=true
 %\section{Results}
 \input{Results.tex}
 
-\section{Discussion}
-\input{Discussion.tex}
+% \section{Discussion}
+% \input{Discussion.tex}
 
 %\section{Conclusion}
+
+\printbibliography[title=Main Text References]
+\end{refsection}
+
+% DON'T EDIT. If "endfloat" option is enabled all floats appear before appendices
+\if@endfloat\clearpage\processdelayedfloats\clearpage\fi 
+
+\begin{refsection}
+\newpage
+
+\section{Methods}
+\input{Methods.tex}
+
+\printbibliography[title=Methods References]
+\end{refsection}
 
 \section{Acknowledgments}
 
@@ -179,22 +194,6 @@ Visualization: all authors\newline
 Writing – original draft: BRC, DJG\newline
 Writing – review \& editing: BRC, DJG\newline
 
-\clearpage
-\printbibliography[title=Main Text References]
-\end{refsection}
-
-% DON'T EDIT. If "endfloat" option is enabled all floats appear before appendices
-\if@endfloat\clearpage\processdelayedfloats\clearpage\fi 
-
-\begin{refsection}
-\newpage
-
-\section{Methods}
-\input{Methods.tex}
-
-\clearpage
-\printbibliography[title=Methods References]
-\end{refsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% SUPPLEMENTARY MATERIAL / APPENDICES
@@ -209,6 +208,8 @@ Writing – review \& editing: BRC, DJG\newline
 
 \supplementarysection
 \input{SI.tex}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
