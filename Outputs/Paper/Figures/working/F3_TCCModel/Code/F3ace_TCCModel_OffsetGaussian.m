@@ -43,7 +43,7 @@ end
 %% 
 
 lengthOfSlidingWindow = 9; %Extra smoothing to simplify visual interpretation of instructive cartoon figures
-model = fitMixtureModel(data,[],lengthOfSlidingWindow);
+model = fitMixtureModel(data,lengthOfSlidingWindow);
 moving_bias = model.moving_bias;
 
 whichFigures.MixMod_polar = true;
@@ -62,7 +62,7 @@ OGdata.trialdata.chosen = OGdata.trialdata.chosen';
 
 save('OGdata.mat')
 
-OG_model = fitMixtureModel(OGdata,[],lengthOfSlidingWindow);
+OG_model = fitMixtureModel(OGdata,lengthOfSlidingWindow);
 OG_moving_bias = OG_model.moving_bias;
 
 whichFigures.MixMod_polar = true;

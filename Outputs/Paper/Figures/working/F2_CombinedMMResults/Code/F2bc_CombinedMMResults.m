@@ -53,7 +53,7 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 
     rng(0) % the modelling might be probabilistic - TODO check this
 
-    model = fitMixtureModel(cleandata,0);
+    model = fitMixtureModel(cleandata);
 
     if ~exist([modelOutputDir,'/MixtureModels/'],"dir")
         mkdir([modelOutputDir,'/MixtureModels/'])

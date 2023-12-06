@@ -51,7 +51,7 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
     % Fit model, save model data
     for participant = 1:length(filename)
         rng(0) % the modelling might be probabilistic - TODO check this
-        model = fitMixtureModel(data{participant},0);
+        model = fitMixtureModel(data{participant});
         save([AnalysisDir,filesep,'MixtureModels',filesep,filename{participant},'_',...
             datestr(now,'yymmdd-HHMMSS'),'.mat'],...
             'model')

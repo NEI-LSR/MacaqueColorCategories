@@ -19,7 +19,7 @@ Lab = 0;
 lengthOfSlidingWindow = [];
 includeCorrect = false;
 
-model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,includeCorrect);
+model = fitMixtureModel(cleandata,lengthOfSlidingWindow,includeCorrect);
 
 %%
 

@@ -60,7 +60,7 @@ plotSimilarityMatrix(simdata.trialdata.similarityMatrix,...
 
 lengthOfSlidingWindow = 9; %Extra smoothing to simplify visual interpretation of instructive cartoon figures
 
-model = fitMixtureModel(simdata,[],lengthOfSlidingWindow);
+model = fitMixtureModel(simdata,lengthOfSlidingWindow);
 
 whichFigures.MixMod_polar = true;
 plotMixtureModel(model,...
