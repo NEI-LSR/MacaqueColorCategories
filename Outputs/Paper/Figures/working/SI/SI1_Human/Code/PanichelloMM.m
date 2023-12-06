@@ -2,50 +2,45 @@ clear, clc, close all
 
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
 
+addpath(genpath([repoHomeDir,'Analyses']))
+
+%% Load data
+
+loadedData = readtable([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Panichello_2019',filesep,'41467_2019_11298_MOESM4_ESM.xlsx'],...
+    'Sheet','Figure1C','Range',"A2:B17777");
+
 %%
 
-load([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Panichello_2019',filesep,'Processed_data',filesep,...
-    'MonkeyE',filesep,'monkeye.mat'])
-% figure, histogram(cleandata.trialdata.chosen,1000)
-data = cleandata;
+% I'm making the assumption that the numbers are hue angles, rather than
+% index numbers (with with interval of 1degree it won't matter much either
+% way)
 
-load([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Panichello_2019',filesep,'Processed_data',filesep,...
-    'MonkeyW',filesep,'monkeyw.mat'])
-% figure, histogram(cleandata.trialdata.chosen,1000)
+for i = 1:size(loadedData,1)
+    data.trialdata.cues(i,1)     = {loadedData.target(i)};
+    data.trialdata.choices(i,:)  = {1:360};
+    if loadedData.response(i) > 360
+        data.trialdata.chosen(i,1)   = {loadedData.response(i) - 360};
+    else
+        data.trialdata.chosen(i,1)   = {loadedData.response(i)};
+    end
+end
 
-data.trialdata.cues     = [data.trialdata.cues;     cleandata.trialdata.cues];
-data.trialdata.chosen   = [data.trialdata.chosen;   cleandata.trialdata.chosen];
-data.trialdata.cond     = []; % removing to avoid confusion
-data.trialdata.dirname  = []; % removing to avoid confusion
-data.trialdata.paradigm = []; % removing to avoid confusion
-
-data.trialdata.allchoices{1,1}  = 1:360;
-data.trialdata.choices = repmat({1:360},length(data.trialdata.cues),1);
-
-% figure, histogram(data.trialdata.chosen,1000)
-
-%% Preprocessing
-
-% It's odd that there are only 64 unique cues
-% but thousands of unique choices.
-
-data.trialdata.chosen = round(data.trialdata.chosen);
-data.trialdata.chosen(data.trialdata.chosen == 0) = 360;
-
+data.nBig   = 360;
+data.nSmall = 360;
 
 %%
 
 Lab = 1;
-excludeCorrect = false;
+includeCorrect = true;
 lengthOfSlidingWindow = 17; % we set our sliding window to 3, and their stimulus interval is roughly 6 times as small as ours, so this means that they get roughly the same smoothing treatment
 
-model = fitMixtureModel(data,Lab,lengthOfSlidingWindow,excludeCorrect);
+model = fitMixtureModel(data,Lab,lengthOfSlidingWindow,includeCorrect);
 
 %%
 
 whichFigures.MixMod_polar    = true;
-% whichFigures.MixMod_linear   = true;
+whichFigures.MixMod_linear   = true;
 
 plotMixtureModel(model,...
-    whichFigures,['bla_'])
+    whichFigures,'Panichello_')
 

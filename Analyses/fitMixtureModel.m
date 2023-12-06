@@ -1,16 +1,22 @@
 function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,includeCorrect)
 
-try
-    nBig = size(cleandata.trialdata.allchoices{1,1},2);
+try nBig = cleandata.nBig;
 catch
-    nBig = 64;
-    warning('Assuming nBig = 64')
+    try
+        nBig = size(cleandata.trialdata.allchoices{1,1},2);
+    catch
+        nBig = 64;
+        warning('Assuming nBig = 64')
+    end
 end
-try
-    nSmall = size(cleandata.trialdata.choices{1,1},2);
+try nSmall = cleandata.nSmall;
 catch
-    nSmall = 4;
-    warning('Assuming nSmall = 4')
+    try
+        nSmall = size(cleandata.trialdata.choices{1,1},2);
+    catch
+        nSmall = 4;
+        warning('Assuming nSmall = 4')
+    end
 end
 interval = 360/nBig;
 
