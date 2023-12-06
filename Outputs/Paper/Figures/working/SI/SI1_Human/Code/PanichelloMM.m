@@ -15,14 +15,18 @@ loadedData = readtable([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Pani
 % index numbers (with with interval of 1degree it won't matter much either
 % way)
 
-for i = 1:size(loadedData,1)
-    data.trialdata.cues(i,1)     = {loadedData.target(i)};
+indexShiftedData = loadedData;
+
+indexShiftedData.target     = loadedData.target   + 1; % this is needed because our model fitting assumes that stimulus #1 is at 0degrees, which does not appear to be the case for this dataset
+indexShiftedData.response   = loadedData.response + 1;
+
+indexShiftedData.target(indexShiftedData.target>360)        = indexShiftedData.target(indexShiftedData.target>360) - 360; % not actually neccessary, but here for completeness
+indexShiftedData.response(indexShiftedData.response>360)    = indexShiftedData.response(indexShiftedData.response>360) - 360; % neccessary, because there are some responses above 360
+
+for i = 1:size(indexShiftedData,1)
+    data.trialdata.cues(i,1)     = {indexShiftedData.target(i)};
     data.trialdata.choices(i,:)  = {1:360};
-    if loadedData.response(i) > 360
-        data.trialdata.chosen(i,1)   = {loadedData.response(i) - 360};
-    else
-        data.trialdata.chosen(i,1)   = {loadedData.response(i)};
-    end
+    data.trialdata.chosen(i,1)   = {indexShiftedData.response(i)};
 end
 
 data.nBig   = 360;
@@ -32,9 +36,12 @@ data.nSmall = 360;
 
 Lab = 1;
 includeCorrect = true;
-lengthOfSlidingWindow = 17; % we set our sliding window to 3, and their stimulus interval is roughly 6 times as small as ours, so this means that they get roughly the same smoothing treatment
+lengthOfSlidingWindow = 29; % picked by hand
 
-model = fitMixtureModel(data,Lab,lengthOfSlidingWindow,includeCorrect);
+model = fitMixtureModel(data,lengthOfSlidingWindow,includeCorrect);
+
+model.stimColorSpace    = 'CIELAB';
+model.stimCols          = [60,52];          %L*, chroma
 
 %%
 

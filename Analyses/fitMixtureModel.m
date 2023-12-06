@@ -1,4 +1,4 @@
-function model = fitMixtureModel(cleandata,Lab,lengthOfSlidingWindow,includeCorrect)
+function model = fitMixtureModel(cleandata,lengthOfSlidingWindow,includeCorrect)
 
 try nBig = cleandata.nBig;
 catch

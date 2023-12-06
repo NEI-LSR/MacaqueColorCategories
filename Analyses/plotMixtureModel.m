@@ -16,7 +16,7 @@ lower_95_w          = model.lower_95_w;
 bias                = model.bias;
 be_w                = model.be_w;
 ci                  = model.ci;
-moving_bias         = model.moving_bias;
+% moving_bias         = model.moving_bias; % currently unused
 
 % request *all* figures
 if isfield(whichFigures,'all') && whichFigures.all == true
@@ -32,15 +32,19 @@ interval = 360/nBig;
 %% Colors
 
 hue_angle = 0:interval:360; %includes wraparound
-stimCols = generateStimCols('nBig',nBig,'sat',37);
+if isfield(model,'stimColorSpace') && strcmp(model.stimColorSpace,'CIELAB')
+    stimCols = generateStimCols('nBig',nBig,'sat',model.stimCols(2));
+else
+    stimCols = generateStimCols('nBig',nBig,'sat',37);
+end
 
 rotVal = interval/2;
 rotationMatrix = [cosd(rotVal), -sind(rotVal); sind(rotVal), cosd(rotVal)]; % h/t: https://www.mathworks.com/matlabcentral/answers/323483-how-to-rotate-points-on-2d-coordinate-systems#answer_253463
 stimCols_rotated = rotationMatrix * stimCols;
 
-if exist('Lab','var') %CIELAB
-    stimCols_sRGB = LabTosRGB([repelem(76.0693, nBig); stimCols]);
-    rstimCols_sRGB = LabTosRGB([repelem(76.0693, nBig); stimCols_rotated]);
+if isfield(model,'stimColorSpace') && strcmp(model.stimColorSpace,'CIELAB')
+    stimCols_sRGB = LabTosRGB([repelem(model.stimCols(1), nBig); stimCols]);
+    rstimCols_sRGB = LabTosRGB([repelem(model.stimCols(1), nBig); stimCols_rotated]);
 else % CIELUV
     stimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols]);
     rstimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols_rotated]);
