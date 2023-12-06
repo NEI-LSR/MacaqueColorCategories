@@ -9,7 +9,6 @@ axlims = 40;
 PotentialDistances  = model.PotentialDistances;
 interp_crossing     = model.interp_crossing;
 interp_ci           = model.interp_ci;
-crossing_colvals    = model.crossing_colvals;
 presentation_counts = model.presentation_counts;
 choice_probability  = model.choice_probability;
 upper_95_w          = model.upper_95_w;
@@ -48,6 +47,11 @@ else % CIELUV
 end
 
 colvals = im2double(stimCols_sRGB);
+
+for i = 1:length(interp_crossing)
+    [~,closestHueAngleToCrossings(i)] = min(abs(interp_crossing(i) - hue_angle));
+end
+interp_crossing_colvals = colvals(closestHueAngleToCrossings,:);
 
 %% Break out figures
 
@@ -122,12 +126,12 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
         x = x+1;
         if interp_ci(i) > interp_ci(i-1)
             fill([interp_ci(i-1) interp_ci(i) interp_ci(i) interp_ci(i-1)],...
-                [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);%opacity(x))
+                [-50 -50 50 50],interp_crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);%opacity(x))
         elseif interp_ci(i) < interp_ci(i-1)
             fill([interp_ci(i-1) 360 360 interp_ci(i-1)],...
-                [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
+                [-50 -50 50 50],interp_crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
             fill([0 interp_ci(i) interp_ci(i) 0],...
-                [-50 -50 50 50],crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
+                [-50 -50 50 50],interp_crossing_colvals(x,:),'EdgeColor','none','FaceAlpha',0.5);
         end
     end
 
@@ -139,7 +143,7 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     % xline(interp_ci,'--');
 
     for i = 1:length(interp_crossing)
-        plot([interp_crossing(i), interp_crossing(i)], ylim(), 'Color', crossing_colvals(i,:));
+        plot([interp_crossing(i), interp_crossing(i)], ylim(), 'Color', interp_crossing_colvals(i,:));
     end
     plot(interp_crossing,0,'ko','MarkerFaceColor','k');
 

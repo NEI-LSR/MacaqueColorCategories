@@ -216,24 +216,11 @@ hue_angle_w = 0:interval:360; %includes wraparound
 
 % Category Center Location Interpolation
 if ~isempty(crossings)
-
     for i = 1:length(crossings)
         x = [hue_angle_w(crossings(i)) hue_angle_w(crossings(i)+1)];
         y = [be_w(crossings(i)) be_w(crossings(i)+1)];
         interp_crossing(i,1) = interp1(y,x,0);
     end
-
-    % Category Center Colors
-    polarAngs = interp_crossing'; %Polar Angles
-    [a,s] = pol2cart(deg2rad(polarAngs),ones(1,length(polarAngs))*37);
-    crossingCols = [a;s];
-    if Lab % CIELAB
-        crossingCols_sRGB = LabTosRGB([repelem(76.0693, length(polarAngs)); crossingCols]);
-    else % CIELUV
-        crossingCols_sRGB = LuvTosRGB([repelem(76.0693, length(polarAngs)); crossingCols]);
-    end
-    crossing_colvals = im2double(crossingCols_sRGB);
-
 else
     interp_crossing = [];
 end
@@ -323,7 +310,6 @@ end
 model.PotentialDistances = PotentialDistances;
 model.interp_crossing = interp_crossing;
 model.interp_ci = interp_ci;
-model.crossing_colvals = crossing_colvals;
 model.presentation_counts = presentation_counts;
 model.choice_probability = choice_probability;
 model.lower_95_w = lower_95_w;
