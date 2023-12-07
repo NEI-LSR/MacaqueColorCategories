@@ -147,7 +147,7 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     set(h, 'facealpha', .1, 'LineStyle', 'none');
 
     scatter(hue_angle,bias([1:end 1]),100,colvals([1:end 1],:),'filled');
-    plot(hue_angle,be_w,'k','LineWidth',2.5);
+    plot(hue_angle,be_w,'k','LineWidth',1.75);
     % xline(interp_ci,'--');
 
     for i = 1:length(interp_crossing)
@@ -282,7 +282,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     rlim([0 axlims*2]);
     hold on
     polarplot(rad_angle, zeros(length(rad_angle),1) + axisoffset,'LineStyle','--','Color',[0.3,0.3,0.3]);
-    polarplot(rad_angle, be_w + axisoffset,'k','Linewidth',2.5);
+    polarplot(rad_angle, be_w + axisoffset,'k','Linewidth',1.75);
     thetaticks(0:45:360)
 
     % if isempty(ci) == 0
