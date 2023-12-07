@@ -48,7 +48,7 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
     % Fit model, save model data
     for participant = 1:4
         rng(0) % the modelling might be probabilistic - TODO check this
-        model = fitMixtureModel(data{participant});
+        model = fitMixtureModel(data{participant}.cleandata);
         save([modelOutputDir,filesep,'MixtureModels',filesep,filename{participant},'_',...
             datestr(now,'yymmdd-HHMMSS'),'.mat'],...
             'model')
@@ -73,15 +73,6 @@ if strcmp(AnalysisDepth,'fromModelOutput')
 end
 
 %% Plot data
-
-% Castor hack (to remove purple category that doesn't cross confidence interval)
-
-allModels{1,2}.interp_crossing(4) = [];
-allModels{1,2}.interp_ci(8) = [];
-allModels{1,2}.interp_ci(7) = [];
-allModels{1,2}.crossing_colvals(4,:) = [];
-allModels{1,2}.ci(:,4) = [];
-
 
 whichFigures.MixMod_polar  = true;
 whichFigures.MixMod_linear = true;
