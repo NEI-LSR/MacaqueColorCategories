@@ -6,7 +6,7 @@ clear, clc, close all
 %     0,20,0,-20,0;...
 %     0,0,20,0,-20];
 
-addpath(genpath(['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'Analyses']))
+addpath(genpath(['..',filesep]))
 [cart,pol] = generateStimCols('nBig',64,'sat',20);
 LXX = [ones(1,64)*60;cart];
 

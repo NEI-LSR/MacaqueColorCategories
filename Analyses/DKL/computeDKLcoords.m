@@ -5,7 +5,7 @@ clc, clear, close all
 
 %%
 
-load(['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,...
+load(['..',filesep,'..',filesep,...
     'Data',filesep,'stimuliMeasurements',filesep,'StimuliMeasurements20230108.mat'])
 
 %%
@@ -86,7 +86,7 @@ view(2)
 %%
 
 % stimCols = generateStimCols('nBig',64);
-addpath(genpath(['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep]))
+addpath(genpath(['..',filesep]))
 stimCols = generateStimCols('nBig',64,'showFig',true);
 hold on
 scatter(stimCols(1,:),stimCols(2,:))
@@ -240,7 +240,7 @@ xline(0)
 yline(0)
 
 
-saveas(gcf,['../','stimInDKL_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
+saveas(gcf,['stimInDKL_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 
 
 disp(lm_plus)
@@ -257,7 +257,7 @@ s4 = scatter(stimCols(1,s_minus),stimCols(2,s_minus),'y','filled','DisplayName',
 legend([s1,s2,s3,s4],'location','best')
 title('CIELUV')
 
-saveas(gcf,['../','stimInLUVwithDKLpolesHighlighted_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
+saveas(gcf,['stimInLUVwithDKLpolesHighlighted_',datestr(now,'yymmdd-HHMMSS'),'.svg'])
 
 %% Parallel conversion: using XYZtoLMS conversion matrix instead of independent spectral measurements
 
