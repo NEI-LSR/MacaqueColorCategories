@@ -11,7 +11,7 @@ cues = cell2mat(cleandata.trialdata.cues);
 choices = cell2mat(cleandata.trialdata.choices);
 chosen = cell2mat(cleandata.trialdata.chosen);
 
-nBig = size(cleandata.trialdata.stimCols{1,1},1);
+nBig = cleandata.nBig;
 
 %% Calculate difficulty
 
@@ -116,7 +116,7 @@ if ~exist('allOnOneGraph','var')
     ci = confint(f); % TODO Check CI type (simultaneous or not etc.)
 
     try
-    text(50,50,[...
+    text(70,50,[...
         upper(filename(16:17)),newline...
         'Completed trials: ',num2str(sum(completed_idx)),newline...
         'Sessions: ', num2str(length(unique(cleandata.trialdata.dirname))),newline,...
