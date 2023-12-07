@@ -94,7 +94,7 @@ if isfield(whichFigures,'mixMod_BreakOut') && whichFigures.mixMod_BreakOut == tr
         % p.Children(1).LineWidth = 1;
         % p.Children(2).LineWidth = 1;
 
-        xline(0,'k--','LineWidth',2)
+        xline(0,'k--','linewidth',1.75)
 
         xlabel('Error distance')
         ylabel('Choice Probability')
@@ -151,7 +151,7 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     % xline(interp_ci,'--');
 
     for i = 1:length(interp_crossing)
-        plot([interp_crossing(i), interp_crossing(i)], ylim(), 'Color', interp_crossing_colvals(i,:),'LineWidth',2);
+        plot([interp_crossing(i), interp_crossing(i)], ylim(), 'Color', interp_crossing_colvals(i,:),'linewidth',1.75);
     end
     plot(interp_crossing,0,'ko','MarkerFaceColor','k');
 
@@ -165,7 +165,7 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     % ax.FontSize = 10;
     xlim([0 360]);
     ylim([-axlims axlims]);
-    yline(0,'LineStyle','--','Color',[0.3,0.3,0.3],'Linewidth',2);
+    yline(0,'LineStyle','--','Color',[0.3,0.3,0.3],'linewidth',1.75);
     xlabel('Hue Angle');
     ylabel('Bias');
 
@@ -281,7 +281,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
     rlim([0 axlims*2]);
     hold on
-    polarplot(rad_angle, zeros(length(rad_angle),1) + axisoffset,'LineStyle','--','Color',[0.3,0.3,0.3]);
+    polarplot(rad_angle, zeros(length(rad_angle),1) + axisoffset,'LineStyle','--','Color',[0.3,0.3,0.3],'Linewidth',1.75);
     polarplot(rad_angle, be_w + axisoffset,'k','Linewidth',1.75);
     thetaticks(0:45:360)
 
@@ -292,7 +292,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
     % add lines
     for k = 1:length(interp_crossing)
-        polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 axlims*2],'Color',rstimCols_sRGB(round(interp_crossing(k)/interval),:),'Linewidth',2);
+        polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 axlims*2],'Color',rstimCols_sRGB(round(interp_crossing(k)/interval),:),'linewidth',1.75);
         polarplot(deg2rad(interp_crossing(k)), 0 + axisoffset, 'ko','MarkerFaceColor','k')
     end
 
@@ -300,7 +300,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     if plotDemoLine
         polarplot([deg2rad(180) deg2rad(180)],[0 axlims*2],...
             'Color',rstimCols_sRGB(round(180/interval),:),...
-            'LineStyle','--','LineWidth',2);
+            'LineStyle','--','linewidth',1.75);
     end
 
     ax = gca;
