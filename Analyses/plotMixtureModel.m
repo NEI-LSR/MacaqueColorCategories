@@ -94,7 +94,7 @@ if isfield(whichFigures,'mixMod_BreakOut') && whichFigures.mixMod_BreakOut == tr
         % p.Children(1).LineWidth = 1;
         % p.Children(2).LineWidth = 1;
 
-        xline(0,'k--','linewidth',1.75)
+        xline(0,'k--')
 
         xlabel('Error distance')
         ylabel('Choice Probability')
@@ -102,7 +102,7 @@ if isfield(whichFigures,'mixMod_BreakOut') && whichFigures.mixMod_BreakOut == tr
         legend('off')
         drawnow
 
-        saveas(gcf,fullfile([filename,num2str(cueIndex),'_mixMod_BreakOut.svg']))
+        saveas(gcf,fullfile([filename,num2str(cueIndex),'_mixMod_BreakOut.svg'])) % TODO Add an argument to num2str that means that each number has 2 significant figures
         close all
     end
 
