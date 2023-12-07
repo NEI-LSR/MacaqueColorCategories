@@ -41,7 +41,7 @@ lengthOfSlidingWindow = 29; % picked by hand
 model = fitMixtureModel(data,lengthOfSlidingWindow,includeCorrect);
 
 model.stimColorSpace    = 'CIELAB';
-model.stimCols          = [60,52];          %L*, chroma
+model.stimCols          = [60,52];      %L*, chroma
 
 %%
 
@@ -50,4 +50,14 @@ whichFigures.MixMod_linear   = true;
 
 plotMixtureModel(model,...
     whichFigures,'Panichello_')
+
+%%
+% 
+% forceCIELUV = true;
+% whichFigures.MixMod_polar    = true;
+% whichFigures.MixMod_linear   = false;
+% 
+% plotMixtureModel(model,...
+%     whichFigures,'Panichello_',[],forceCIELUV)
+
 
