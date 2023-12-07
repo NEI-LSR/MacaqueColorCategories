@@ -29,4 +29,8 @@ whichFigures.MixMod_linear   = true;
 plotMixtureModel(model,...
     whichFigures,'MTurk')
 
+withLabels = false;
+plotMixtureModel(model,...
+    whichFigures,'MTurk',withLabels)
+
 
