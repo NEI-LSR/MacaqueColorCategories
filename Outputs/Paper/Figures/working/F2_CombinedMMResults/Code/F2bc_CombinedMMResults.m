@@ -10,7 +10,7 @@ clc, clear, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromRawData';
+AnalysisDepth = 'fromModelOutput';
 
 %% Behind the scenes...
 
@@ -26,20 +26,20 @@ rng(0)
 
 if strcmp(AnalysisDepth,'fromRawData')
     
-    cleandata = combineData_mat([repoHomeDir,filesep,'Data'],5);
+    cleandata = combineData_mat([repoHomeDir,filesep,'Data'],5); % random number seed picked by hand
        
     saveDataFile = 1;
     if saveDataFile
-        save([repoHomeDir,filesep,'Data',filesep,'combinedData.mat'])
+        save([repoHomeDir,filesep,'Data',filesep,'combinedData.mat'],'cleandata')
     end
-
-    AnalysisDepth = 'fromPreProcessedData'; % so that it progresses onto the next section
 end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
- 
     load([repoHomeDir,filesep,'Data',filesep,'combinedData.mat']);
-    
+end
+
+if strcmp(AnalysisDepth,'fromRawData') || strcmp(AnalysisDepth,'fromPreProcessedData')
+
     rng(0) % the modelling might be probabilistic - TODO check this
 
     model = fitMixtureModel(cleandata);
