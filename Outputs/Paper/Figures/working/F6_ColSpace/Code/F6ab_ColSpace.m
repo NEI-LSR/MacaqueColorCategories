@@ -10,4 +10,4 @@ load([repoHomeDir,'Analyses',filesep,'TCCModels',filesep,'Combined',filesep,'com
 
 %%
 
-plotColorspace(x,'_'); 
+plotColorspace(x,''); 

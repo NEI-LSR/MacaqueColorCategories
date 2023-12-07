@@ -54,7 +54,7 @@ cla
 scatter(stimCols_x(1,1:2:end),stimCols_x(2,1:2:end),200,colvals(1:2:end,:),"filled")
 
 % saveas(gcf,fullfile([filename,'_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
-saveas(gcf,fullfile(['../',filename,'_behaviorally-derived-colorspace_everySecond', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+saveas(gcf,fullfile(['../',filename,'behaviorally-derived-colorspace_everySecond_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %%
 
@@ -62,7 +62,7 @@ cla
 % scatter(stimCols(1,:),stimCols(2,:),100,colvals,"filled")
 scatter(stimCols(1,1:2:end),stimCols(2,1:2:end),200,colvals(1:2:end,:),"filled")
 
-saveas(gcf,fullfile(['../','colorspace_everySecond', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+saveas(gcf,fullfile(['../','colorspace_everySecond_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
 
 %%
 
