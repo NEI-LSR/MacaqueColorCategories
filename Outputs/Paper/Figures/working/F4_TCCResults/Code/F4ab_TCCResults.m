@@ -11,8 +11,6 @@ clc, clear, close all
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
 AnalysisDepth = 'fromModelOutput';
-csv = 0; % csv or mat?
-addpath(genpath('../../../../../../Analyses/'))
 
 %% Behind the scenes...
 
@@ -24,6 +22,11 @@ DataDir =  [repoHomeDir,filesep,'Data',filesep];
 ModelDir = [repoHomeDir,filesep,'Analyses',filesep,'TCCModels',filesep,'combined',filesep];
 
 %% Load/process data
+
+
+if strcmp(AnalysisDepth,'fromRawData')
+    error('Not currently implemented') % TODO
+end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
 
