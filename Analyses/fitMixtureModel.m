@@ -252,7 +252,7 @@ if ~isempty(ci)
     upper_95_w = upper_95([1:end 1]);
     lower_95_w = lower_95([1:end 1]);
 
-    if isempty(change_range) == 0 % if confidence interval spans zero for all values
+    if ~isempty(change_range) % if confidence interval spans zero for all values
 
         change_range = change_range([1:end 1]);
 
