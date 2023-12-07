@@ -51,13 +51,8 @@ whichFigures.MixMod_linear   = true;
 plotMixtureModel(model,...
     whichFigures,'Panichello_')
 
-%%
-% 
-% forceCIELUV = true;
-% whichFigures.MixMod_polar    = true;
-% whichFigures.MixMod_linear   = false;
-% 
-% plotMixtureModel(model,...
-%     whichFigures,'Panichello_',[],forceCIELUV)
-
+withLabels = false;
+DKL = 'Panichello';
+plotMixtureModel(model,...
+    whichFigures,'Panichello_',withLabels,DKL)
 

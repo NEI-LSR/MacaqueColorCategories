@@ -1,8 +1,11 @@
-function plotMixtureModel(model, whichFigures, filename, withLabels, forceCIELUV)
-% Note: forceCIELUV currently only applies to polar plot
+function plotMixtureModel(model, whichFigures, filename, withLabels, DKL)
 
 if ~exist('withLabels','var')
     withLabels = true;
+end
+
+if ~exist('DKL','var')
+    DKL = false;
 end
 
 axlims = 40;
@@ -33,8 +36,7 @@ interval = 360/nBig;
 %% Colors
 
 hue_angle = 0:interval:360; %includes wraparound
-if and(isfield(model,'stimColorSpace') && strcmp(model.stimColorSpace,'CIELAB'),...
-        ~(exist("forceCIELUV",'var') && forceCIELUV))
+if isfield(model,'stimColorSpace') && strcmp(model.stimColorSpace,'CIELAB')
     stimCols = generateStimCols('nBig',nBig,'sat',model.stimCols(2));
 else
     stimCols = generateStimCols('nBig',nBig,'sat',37);
@@ -44,8 +46,7 @@ rotVal = interval/2;
 rotationMatrix = [cosd(rotVal), -sind(rotVal); sind(rotVal), cosd(rotVal)]; % h/t: https://www.mathworks.com/matlabcentral/answers/323483-how-to-rotate-points-on-2d-coordinate-systems#answer_253463
 stimCols_rotated = rotationMatrix * stimCols;
 
-if and(isfield(model,'stimColorSpace') && strcmp(model.stimColorSpace,'CIELAB'),...
-        ~(exist("forceCIELUV",'var') && forceCIELUV))
+if isfield(model,'stimColorSpace') && strcmp(model.stimColorSpace,'CIELAB')
     stimCols_sRGB = LabTosRGB([repelem(model.stimCols(1), nBig); stimCols]);
     rstimCols_sRGB = LabTosRGB([repelem(model.stimCols(1), nBig); stimCols_rotated]);
 else % CIELUV
@@ -338,6 +339,11 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     ylim(ax_cart,[-max(get(ax_polar,'RLim')),max(get(ax_polar,'RLim'))]);
     %axis equal;
     set(ax_cart,'visible','off');
+
+    if DKL
+        DKLpoles = computeDKL_XYZ(DKL);
+        text(60,0,num2str(DKLpoles'))
+    end
 
     % % display fit type
     % axes0 = axes('Position',[0.01 0.95 0.15 0.05]);
