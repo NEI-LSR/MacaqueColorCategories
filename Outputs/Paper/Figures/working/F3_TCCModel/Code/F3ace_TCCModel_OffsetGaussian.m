@@ -11,11 +11,10 @@ rng(0)
 
 % Determine the depth of the analysis that you would like to reproduce
 
-% fromRawData:                          % Generate figures from the raw data (slowest)
-% fromPreProcessedData_preCombined:     % Generate figures from the pre-processed data (before it has been combined across participants)
-% fromPreProcessedData_postCombined:    % Generate figures from the pre-processed data (after it has been combined across participants) (fastest)
+% fromRawData:               % Generate figures from the raw data (slowest)
+% fromPreProcessedData:      % Generate figures from the pre-processed data
 
-AnalysisDepth = 'fromPreProcessedData_postCombined';
+AnalysisDepth = 'fromPreProcessedData';
 
 %%
 
@@ -28,22 +27,18 @@ DataDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..'
 %%
 
 if strcmp(AnalysisDepth,'fromRawData')
-    error('option not implemented yet') %!!!!!!!!!!
-end
-
-if strcmp(AnalysisDepth,'fromPreProcessedData_preCombined')
     addpath(genpath('../../../../../../Data/'))
-    data = combineData(DataDir);
+    cleandata = combineData(DataDir);
 end
 
-if strcmp(AnalysisDepth,'fromPreProcessedData_postCombined')
-    data = readtable([DataDir,filesep,'combinedData.csv']);
+if strcmp(AnalysisDepth,'fromPreProcessedData')
+    load([DataDir,filesep,'combinedData.mat']);
 end
 
 %% 
 
 lengthOfSlidingWindow = 9; %Extra smoothing to simplify visual interpretation of instructive cartoon figures
-model = fitMixtureModel(data,lengthOfSlidingWindow);
+model = fitMixtureModel(cleandata,lengthOfSlidingWindow);
 moving_bias = model.moving_bias;
 
 whichFigures.MixMod_polar = true;
@@ -57,7 +52,7 @@ plotMixtureModel(model,...
 gaussianWidth = 25;
 
 [~, OGdata] = GenerativeModel([],'offsetGaussians',moving_bias,...
-    'gaussianWidth',gaussianWidth,'nTrials',size(data,1));
+    'gaussianWidth',gaussianWidth,'nTrials',size(cleandata.trialdata.cues,1));
 OGdata.trialdata.chosen = OGdata.trialdata.chosen';
 
 save('OGdata.mat')

@@ -10,7 +10,7 @@ clc, clear, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromModelOutput';
+AnalysisDepth = 'fromRawData';
 
 %% Behind the scenes...
 
@@ -26,7 +26,7 @@ rng(0)
 
 if strcmp(AnalysisDepth,'fromRawData')
     
-    cleandata = combineData_mat([repoHomeDir,filesep,'Data'],5); % random number seed picked by hand
+    cleandata = combineData([repoHomeDir,filesep,'Data']);
        
     saveDataFile = 1;
     if saveDataFile
