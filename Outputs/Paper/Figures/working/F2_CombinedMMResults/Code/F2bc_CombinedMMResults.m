@@ -11,7 +11,6 @@ clc, clear, close all
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
 AnalysisDepth = 'fromRawData';
-csv = 0; % csv or mat?
 
 %% Behind the scenes...
 
@@ -26,12 +25,8 @@ rng(0)
 %% Load/process data
 
 if strcmp(AnalysisDepth,'fromRawData')
-
-    if csv
-        cleandata = combineData([repoHomeDir,filesep,'Data'])
-    else
-        cleandata = combineData_mat([repoHomeDir,filesep,'Data'],5);
-    end
+    
+    cleandata = combineData_mat([repoHomeDir,filesep,'Data'],5);
        
     saveDataFile = 1;
     if saveDataFile
@@ -43,14 +38,8 @@ end
 
 if strcmp(AnalysisDepth,'fromPreProcessedData')
  
-    if csv
-        warning('Using csv method currently results in different output. It should not. Work in progress.')
-        loadedData = readtable([repoHomeDir,filesep,'Data',filesep,'combinedData.csv']);
-        cleandata = loadedData;
-    else
-        load([repoHomeDir,filesep,'Data',filesep,'combinedData.mat']);
-    end
-
+    load([repoHomeDir,filesep,'Data',filesep,'combinedData.mat']);
+    
     rng(0) % the modelling might be probabilistic - TODO check this
 
     model = fitMixtureModel(cleandata);
@@ -83,4 +72,9 @@ whichFigures.MixMod_linear   = true;
 
 plotMixtureModel(model,...
     whichFigures,['F2_CombinedMMResults_',AnalysisDepth])
+
+withLabels = false;
+plotMixtureModel(model,...
+    whichFigures,['F2_CombinedMMResults_',AnalysisDepth],withLabels)
+
 
