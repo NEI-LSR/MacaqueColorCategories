@@ -256,7 +256,7 @@ if ~isempty(ci)
 
         change_range = change_range([1:end 1]);
 
-        crossings = interp_crossing / interval;
+        crossings = (interp_crossing / interval) + 1;
 
         for i = 1:length(crossings)
             for j = 1:sum(changes)
