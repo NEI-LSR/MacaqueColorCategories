@@ -45,13 +45,13 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 
     % Load data
     for participant = 1:length(filename)
-        data{participant} = readtable([DataDir,filesep,filename{participant},'.csv']);
+        data{participant} = load([DataDir,filesep,filename{participant},'.mat']);
     end
 
     % Fit model, save model data
     for participant = 1:length(filename)
         rng(0) % the modelling might be probabilistic - TODO check this
-        model = fitMixtureModel(data{participant});
+        model = fitMixtureModel(data{participant}.cleandata);
         save([AnalysisDir,filesep,'MixtureModels',filesep,filename{participant},'_',...
             datestr(now,'yymmdd-HHMMSS'),'.mat'],...
             'model')
