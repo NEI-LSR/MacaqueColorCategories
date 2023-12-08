@@ -1,4 +1,4 @@
-%% Generate simulated data based on a skewed gaussian model
+%% Generate simulated data based on a offset gaussian model
 
 clear, clc, close all
 
