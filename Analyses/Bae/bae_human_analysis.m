@@ -24,44 +24,44 @@ cues(cues==360) = 0; % ????????????????????????????????????????
 cues_cielab = cues;
 
 
-%% Convert CIELAB to CIELUV
-
-sat = 38;
-
-% Convert cues to CIELUV angles
-bae_hueangle = unique(cues);
-bae_lstar = 70;
-[bae_a, bae_b] = pol2cart(deg2rad(bae_hueangle),sat);
-bae_cielab = [ones(1,all_cues)*bae_lstar;bae_a'; bae_b'];
-%XYZ_D65 = [0.95047;1.0;1.08883];
-white_point = xyYToXYZ([0.3118, 0.3119, 48.64]');
-white_point = white_point ./ white_point(2);
-bae_xyz = LabToXYZ(bae_cielab,white_point);
-bae_cieluv = XYZToLuv(bae_xyz,white_point);
-
-stimCols_sRGB = LuvTosRGB(bae_cieluv);
-colvals = im2double(stimCols_sRGB);
-
-rotVal = 360/(all_cues*2);
-rotationMatrix = [cosd(rotVal),-sind(rotVal);sind(rotVal),cosd(rotVal)];
-stimCols_biased = rotationMatrix * bae_cieluv(2:3,:);
-rstimCols_sRGB = LuvTosRGB([bae_cieluv(1,:); stimCols_biased]);
-
-
-degree = rad2deg(cart2pol(bae_cieluv(2,:),bae_cieluv(3,:)));
-degree = degree';
-degree(degree < 0) = degree(degree < 0) + 360;
-
-cues_cieluv = cues;
-
-cue_vals = unique(cues_cielab);
-for i = 1:length(cue_vals)
-    val = cue_vals(i);
-    deg = degree(i);
-cues_cieluv(cues_cieluv == val) = deg;
-end
-
-cues = cues_cieluv;
+% %% Convert CIELAB to CIELUV
+% 
+% sat = 38;
+% 
+% % Convert cues to CIELUV angles
+% bae_hueangle = unique(cues);
+% bae_lstar = 70;
+% [bae_a, bae_b] = pol2cart(deg2rad(bae_hueangle),sat);
+% bae_cielab = [ones(1,all_cues)*bae_lstar;bae_a'; bae_b'];
+% %XYZ_D65 = [0.95047;1.0;1.08883];
+% white_point = xyYToXYZ([0.3118, 0.3119, 48.64]');
+% white_point = white_point ./ white_point(2);
+% bae_xyz = LabToXYZ(bae_cielab,white_point);
+% bae_cieluv = XYZToLuv(bae_xyz,white_point);
+% 
+% stimCols_sRGB = LuvTosRGB(bae_cieluv);
+% colvals = im2double(stimCols_sRGB);
+% 
+% rotVal = 360/(all_cues*2);
+% rotationMatrix = [cosd(rotVal),-sind(rotVal);sind(rotVal),cosd(rotVal)];
+% stimCols_biased = rotationMatrix * bae_cieluv(2:3,:);
+% rstimCols_sRGB = LuvTosRGB([bae_cieluv(1,:); stimCols_biased]);
+% 
+% 
+% degree = rad2deg(cart2pol(bae_cieluv(2,:),bae_cieluv(3,:)));
+% degree = degree';
+% degree(degree < 0) = degree(degree < 0) + 360;
+% 
+% cues_cieluv = cues;
+% 
+% cue_vals = unique(cues_cielab);
+% for i = 1:length(cue_vals)
+%     val = cue_vals(i);
+%     deg = degree(i);
+% cues_cieluv(cues_cieluv == val) = deg;
+% end
+% 
+% cues = cues_cieluv;
 
 %%
 error = zeros(size(cue_angle));
@@ -239,7 +239,7 @@ plot(hue_angle, upper_95([1:end 1]), 'k:');
 h = fill([hue_angle, fliplr(hue_angle)], [lower_95([1:end 1])', fliplr(upper_95([1:end 1])')], 'k');
 set(h, 'facealpha', .1, 'LineStyle', ':');
 %scatter(hue_angle,bias([1:end 1]),100,colvals([1:end 1],:),'filled');
-scatter(unique(cues_cieluv), zeros(1,all_cues),12,colvals,'filled');%, colvals,'filled');
+% scatter(unique(cues_cieluv), zeros(1,all_cues),12,colvals,'filled');%, colvals,'filled');
 scatter(hue_angle, bias([1:end 1]),'filled','k');
 plot(hue_angle,moving_bias([1:end 1]),'k');
 xline(interp_ci(~isnan(interp_ci)),'--');
@@ -268,7 +268,7 @@ figure('WindowState', 'maximized');
 
 hold on
 pie(repelem(degrees,bigN));% pie chart w/ bigN equally sized slices
-colormap(rstimCols_sRGB);
+% colormap(rstimCols_sRGB);
 ax = gca;
 delete(ax.Children([1, 1:2:bigN*2])) % stop displaying % for each slice
 for i = 1:bigN
@@ -345,12 +345,12 @@ for i = 1:2:length(CI_range)-1
        fill([x0,x,x0],[y0,y,y0],'w','FaceAlpha',0.3,'EdgeAlpha',0); %0.3
 end
 
-rotated_colvals = im2double(rstimCols_sRGB);
+% rotated_colvals = im2double(rstimCols_sRGB);
 
-shift_colvals = [colvals(135:end,:); colvals(1:134,:)];
+% shift_colvals = [colvals(135:end,:); colvals(1:134,:)];
 
 [cart,~] = generateStimCols('nBig',180);
-scatter(cart(1,:)./36,cart(2,:)./36,25,shift_colvals,'filled'); % plot all cues around pie chart
+scatter(cart(1,:)./36,cart(2,:)./36,'filled'); % plot all cues around pie chart
 
 set(gca,'visible','off')
 axis equal
@@ -366,7 +366,7 @@ polarplot(rad_angle([1:end 1]), moving_bias([1:end 1])+30,'k');
 polarplot(rad_angle([1:end 1]), lower_95([1:end 1])+30,':k');
 polarplot(rad_angle([1:end 1]), upper_95([1:end 1])+30,':k');
 for k = 1:length(interp_crossing)
-    polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 60],'Color',rotated_colvals(round(crossings(k)*(all_cues/bigN)),:),'LineWidth',1.5);
+    polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 60],'LineWidth',1.5);
 end
 ax = gca;
 ax.Color = 'none';
