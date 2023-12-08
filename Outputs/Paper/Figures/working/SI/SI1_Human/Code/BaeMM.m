@@ -6,31 +6,40 @@ repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,
 addpath(genpath(repoHomeDir));
 
 %%
-data = processBaeData();
-% 
-% % this shifts all values by 1, such that cue #1 is at 0 degrees
-% for i = 1:size(data.trialdata.cues,1) 
-%     if data.trialdata.cues{i} == 180
-%         data.trialdata.cues(i) = {1};
-%         disp('woop1')
-%     else
-%         data.trialdata.cues(i)     = {data.trialdata.cues{i}   + 1};
-%     end
-%     if data.trialdata.chosen{i} == 180
-%         data.trialdata.chosen(i) = {1};
-%         disp('woop2')
-%     else
-%         data.trialdata.chosen(i)   = {data.trialdata.chosen{i} + 1};
-%     end
-% end
 
-% - % max(cell2mat(data.trialdata.chosen))  = 182!!!???
+loadedData = readtable([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Bae_2015',filesep,'raw_data',filesep,'DelayedEstimation data.csv'],...
+    'Range',"D1:F10801");
+
+% loadedData = readtable([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Bae_2015',filesep,'raw_data',filesep,'UndelayedEstimation data.csv'],...
+%     'Range',"D1:F10801");
+
+cue_hueAngle = loadedData.TargetColor*2;
+
+error = loadedData.ClickAngle - loadedData.TargetAngle;
+choice_hueAngle = cue_hueAngle + error;
+choice_hueAngle(choice_hueAngle<0)   = choice_hueAngle(choice_hueAngle<0)+360;
+choice_hueAngle(choice_hueAngle>360) = choice_hueAngle(choice_hueAngle>360)-360;
+
+cue_index = (cue_hueAngle/2) + 1; % to account for the fact that the first angle is 2deg whereas our analyses assume that the first angle is 0deg
+cue_index(cue_index == 181) = 1;
+
+choice_index = (choice_hueAngle/2) + 1; % to account for the fact that the first angle is 2deg whereas our analyses assume that the first angle is 0deg
+choice_index(choice_index == 181) = 1;
+
+
+for i = 1:size(loadedData,1)
+    data.trialdata.cues(i,1)      = {cue_index(i)};
+    data.trialdata.choices(i,:)   = {1:180};
+    data.trialdata.chosen(i,1)    = {choice_index(i)};
+end
+
+data.nBig = 180;
 
 %%
 
 Lab = 1;
 includeCorrect = true;
-lengthOfSlidingWindow = 9; % we set our sliding window to 3, and their stimulus interval is roughly 3 times as small as ours, so this means that they get roughly the same smoothing treatment
+lengthOfSlidingWindow = 15; % picked by hand
 
 model = fitMixtureModel(data,lengthOfSlidingWindow,includeCorrect);
 
@@ -49,6 +58,9 @@ model.stimCols          = [70,38];      %L*, chroma
 whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
 
-plotMixtureModel(model,...
-    whichFigures,'BaeMM')
+axlims = 30;
 
+withLabels = false;
+DKL = 'Bae';
+plotMixtureModel(model,...
+    whichFigures,'Bae_CIELAB_',withLabels,DKL,axlims)

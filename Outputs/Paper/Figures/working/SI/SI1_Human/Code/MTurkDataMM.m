@@ -26,11 +26,10 @@ model = fitMixtureModel(cleandata,lengthOfSlidingWindow,includeCorrect);
 whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
 
-plotMixtureModel(model,...
-    whichFigures,'MTurk')
+axlims = 30;
 
 withLabels = false;
+DKL = 'NIH';
 plotMixtureModel(model,...
-    whichFigures,'MTurk',withLabels)
-
+    whichFigures,'MTurk',withLabels,DKL,axlims)
 

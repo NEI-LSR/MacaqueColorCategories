@@ -1,14 +1,16 @@
-function plotMixtureModel(model, whichFigures, filename, withLabels, DKL)
+function plotMixtureModel(model, whichFigures, filename, withLabels, DKL, axlims)
 
-if ~exist('withLabels','var')
+if ~exist('withLabels','var') || isempty(withLabels)
     withLabels = true;
 end
 
-if ~exist('DKL','var')
+if ~exist('DKL','var')  || isempty(DKL)
     DKL = false;
 end
 
-axlims = 40;
+if ~exist('axlims','var')  || isempty(axlims)
+    axlims = 40;
+end
 
 PotentialDistances  = model.PotentialDistances;
 interp_crossing     = model.interp_crossing;
@@ -156,8 +158,13 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     plot(interp_crossing,0,'ko','MarkerFaceColor','k');
 
     grid on
-    yticks([-axlims,-20:20:20,axlims])
-    yticklabels({'-40','-20','0','+20','+40',''})
+    try
+        yticks([-axlims,-20:20:20,axlims])
+        yticklabels({num2str(-axlims),'-20','0','+20',['+',num2str(axlims)]})
+    catch
+        yticks([-axlims,0,axlims])
+        yticklabels({num2str(-axlims),'0',['+',num2str(axlims)]})
+    end
     xticks(0:45:360);
     ax = gca;
     set(gca,'TickDir','out');
@@ -307,11 +314,11 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     ax.Color = 'none';
     % ax.ThetaTickLabel = {'0','','','90','','','180','','','270','',''};
     ax.ThetaTickLabel = {};
-    ax.RTick = [0:20:axlims*2];
+    ax.RTick = [-fliplr(0:20:axlims),20:20:axlims]+axlims;
     if ~withLabels
         rticklabels({'','','','',''});
     else
-        rticklabels({'','-20','0','+20',''}); % Could use `axisoffset`?
+        rticklabels({'','-20','0','+20',''});
     end
 
     ax.RAxisLocation = 45;
@@ -342,7 +349,7 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
 
     if DKL
         DKLpoles = computeDKL_XYZ(DKL);
-        text(60,0,num2str(DKLpoles'))
+        text(30,20,num2str(DKLpoles'))
     end
 
     % % display fit type
