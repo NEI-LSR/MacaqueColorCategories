@@ -10,87 +10,87 @@ cues(cues(:,1)==360) = 0;
 % for human data 
 chosen(chosen > 360) = chosen(chosen > 360) - 360; % for human data only
 chosen(chosen(:,1)==360) = 0; % for human data only
-% 
-% cues_cielab = cues;
-% 
-% %% Convert CIELAB to CIELUV
-% 
-% % Convert cues to CIELUV angles
+
+cues_cielab = cues;
+
+%% Convert CIELAB to CIELUV
+
+% Convert cues to CIELUV angles
 all_cues = length(unique(cues)); % Number of unique cue colors  
-% 
-% if all_cues == 64 % for monkey data
-%     sat = 57;
-% elseif all_cues == 360 % for human data
-%     sat = 52;
-% end
-% 
-% panichello_hueangle = unique(cues);
-% panichello_lstar = 60;
-% [panichello_a, panichello_b] = pol2cart(deg2rad(panichello_hueangle),sat);
-% panichello_cielab = [ones(1,all_cues)*panichello_lstar;panichello_a'; panichello_b'];
-% XYZ_D65 = [0.95047;1.0;1.08883];
-% panichello_xyz = LabToXYZ(panichello_cielab,XYZ_D65);
-% panichello_cieluv = XYZToLuv(panichello_xyz,XYZ_D65);
-% 
-% stimCols_sRGB = LuvTosRGB(panichello_cieluv);
-% colvals = im2double(stimCols_sRGB);
-% 
-% rotVal = 360/(all_cues*2);
-% rotationMatrix = [cosd(rotVal),-sind(rotVal);sind(rotVal),cosd(rotVal)];
-% stimCols_biased = rotationMatrix * panichello_cieluv(2:3,:);
-% rstimCols_sRGB = LuvTosRGB([panichello_cieluv(1,:); stimCols_biased]);
-% 
-% degrees = rad2deg(cart2pol(panichello_cieluv(2,:),panichello_cieluv(3,:)));
-% degrees = degrees';
-% degrees(degrees < 0) = degrees(degrees < 0) + 360;
-% 
-% cues_cieluv = cues;
-% 
-% cue_vals = unique(cues_cielab);
-% for i = 1:length(cue_vals)
-%     val = cue_vals(i);
-%     deg = degrees(i);
-% cues_cieluv(cues_cieluv == val) = deg;
-% end
-% 
-% cues = cues_cieluv;
-% 
-% %%
-% % Convert chosen values to CIELUV angles 
-% all_chosen = length(unique(chosen));
-% 
-% % Do I need to any shifting with these values?
-% panichello_cielab = generateStimCols('nBig',all_chosen,'sat',sat);
-% panichello_cielab =[ones(1,all_chosen)*60;panichello_cielab];
-% XYZ_D65 = [0.95047;1.0;1.08883];
-% panichello_xyz = LabToXYZ(panichello_cielab,XYZ_D65);
-% panichello_cieluv = XYZToLuv(panichello_xyz,XYZ_D65);
-% 
-% panichello_chosenangle = unique(chosen);
-% panichello_lstar = 60;
-% [chosen_a, chosen_b] = pol2cart(deg2rad(panichello_chosenangle),sat);
-% chosen_cielab = [ones(1,all_chosen)*panichello_lstar;chosen_a'; chosen_b'];
-% XYZ_D65 = [0.95047;1.0;1.08883];
-% chosen_xyz = LabToXYZ(chosen_cielab,XYZ_D65);
-% chosen_cieluv = XYZToLuv(chosen_xyz,XYZ_D65);
-% 
-% chosen_degrees = rad2deg(cart2pol(chosen_cieluv(2,:),chosen_cieluv(3,:)));
-% chosen_degrees = chosen_degrees';
-% chosen_degrees(chosen_degrees < 0) = chosen_degrees(chosen_degrees < 0) + 360;
-% 
-% % Convert choices to cieluv angles 
-% chosen_luv = chosen;
-% chosen_lab = chosen;
-% 
-% chosen_vals = unique(chosen);
-% for i = 1:length(chosen_vals)
-%     val = chosen_vals(i);
-%     deg = chosen_degrees(i);
-% chosen_luv(chosen_luv == val) = deg;
-% end
-% 
-% chosen = chosen_luv;
-% 
+
+if all_cues == 64 % for monkey data
+    sat = 57;
+elseif all_cues == 360 % for human data
+    sat = 52;
+end
+
+panichello_hueangle = unique(cues);
+panichello_lstar = 60;
+[panichello_a, panichello_b] = pol2cart(deg2rad(panichello_hueangle),sat);
+panichello_cielab = [ones(1,all_cues)*panichello_lstar;panichello_a'; panichello_b'];
+XYZ_D65 = [0.95047;1.0;1.08883];
+panichello_xyz = LabToXYZ(panichello_cielab,XYZ_D65);
+panichello_cieluv = XYZToLuv(panichello_xyz,XYZ_D65);
+
+stimCols_sRGB = LuvTosRGB(panichello_cieluv);
+colvals = im2double(stimCols_sRGB);
+
+rotVal = 360/(all_cues*2);
+rotationMatrix = [cosd(rotVal),-sind(rotVal);sind(rotVal),cosd(rotVal)];
+stimCols_biased = rotationMatrix * panichello_cieluv(2:3,:);
+rstimCols_sRGB = LuvTosRGB([panichello_cieluv(1,:); stimCols_biased]);
+
+degrees = rad2deg(cart2pol(panichello_cieluv(2,:),panichello_cieluv(3,:)));
+degrees = degrees';
+degrees(degrees < 0) = degrees(degrees < 0) + 360;
+
+cues_cieluv = cues;
+
+cue_vals = unique(cues_cielab);
+for i = 1:length(cue_vals)
+    val = cue_vals(i);
+    deg = degrees(i);
+cues_cieluv(cues_cieluv == val) = deg;
+end
+
+cues = cues_cieluv;
+
+%%
+% Convert chosen values to CIELUV angles 
+all_chosen = length(unique(chosen));
+
+% Do I need to any shifting with these values?
+panichello_cielab = generateStimCols('nBig',all_chosen,'sat',sat);
+panichello_cielab =[ones(1,all_chosen)*60;panichello_cielab];
+XYZ_D65 = [0.95047;1.0;1.08883];
+panichello_xyz = LabToXYZ(panichello_cielab,XYZ_D65);
+panichello_cieluv = XYZToLuv(panichello_xyz,XYZ_D65);
+
+panichello_chosenangle = unique(chosen);
+panichello_lstar = 60;
+[chosen_a, chosen_b] = pol2cart(deg2rad(panichello_chosenangle),sat);
+chosen_cielab = [ones(1,all_chosen)*panichello_lstar;chosen_a'; chosen_b'];
+XYZ_D65 = [0.95047;1.0;1.08883];
+chosen_xyz = LabToXYZ(chosen_cielab,XYZ_D65);
+chosen_cieluv = XYZToLuv(chosen_xyz,XYZ_D65);
+
+chosen_degrees = rad2deg(cart2pol(chosen_cieluv(2,:),chosen_cieluv(3,:)));
+chosen_degrees = chosen_degrees';
+chosen_degrees(chosen_degrees < 0) = chosen_degrees(chosen_degrees < 0) + 360;
+
+% Convert choices to cieluv angles 
+chosen_luv = chosen;
+chosen_lab = chosen;
+
+chosen_vals = unique(chosen);
+for i = 1:length(chosen_vals)
+    val = chosen_vals(i);
+    deg = chosen_degrees(i);
+chosen_luv(chosen_luv == val) = deg;
+end
+
+chosen = chosen_luv;
+
 nBig = 64;
 colresp = [cues, chosen];
 degree = 360/nBig;
@@ -310,7 +310,7 @@ set(h, 'facealpha', .1, 'LineStyle', ':');
 if all_cues == 64
     scatter(hue_angle,bias([1:end 1]),100,colvals([1:end 1],:),'filled');
 elseif all_cues ==360
-    scatter(1:all_cues, zeros(1,all_cues),8,'filled');
+    scatter(1:all_cues, zeros(1,all_cues),8,colvals,'filled');
 end
 plot(hue_angle,moving_bias([1:end 1]),'k');
 xline(interp_ci,'--');
@@ -344,7 +344,7 @@ figure('WindowState', 'maximized');
 
 hold on
 pie(repelem(interval,nBig));% pie chart w/ nBig equally sized slices
-% colormap(rstimCols_sRGB);
+colormap(rstimCols_sRGB);
 ax = gca;
 delete(ax.Children([1, 1:2:nBig*2])) % stop displaying % for each slice
 for i = 1:nBig
@@ -405,12 +405,12 @@ end
 
 ax.Color = 'none';
 
-% rotated_colvals = im2double(rstimCols_sRGB);
+rotated_colvals = im2double(rstimCols_sRGB);
 
-% shift_colvals = [colvals(all_cues*(3/4):end,:); colvals(1:all_cues*(3/4)-1,:)];
+shift_colvals = [colvals(all_cues*(3/4):end,:); colvals(1:all_cues*(3/4)-1,:)];
 [cart,~] = generateStimCols('nBig',all_cues); % generate values to plot cues
 
-scatter(cart(1,:)./36,cart(2,:)./36,185,'filled'); % plot all cues around pie chart
+scatter(cart(1,:)./36,cart(2,:)./36,185,shift_colvals,'filled'); % plot all cues around pie chart
 
 set(gca,'visible','off')
 axis equal tight
@@ -430,7 +430,7 @@ polarplot(rad_angle, be_w+40,'k','Linewidth',1.75);
 
 % add lines
 for k = 1:length(interp_crossing)
-    polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'LineWidth',1.5);
+    polarplot([deg2rad(interp_crossing(k)) deg2rad(interp_crossing(k))],[0 80],'Color',rotated_colvals(round(crossings(k)*(all_cues/nBig)),:),'LineWidth',1.5);
 end
 
 
