@@ -1,5 +1,7 @@
 clear, clc, close all
 
+convertToCIELUV = false;
+
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
 
 addpath(genpath([repoHomeDir,'Analyses']))
@@ -23,10 +25,57 @@ indexShiftedData.response   = loadedData.response + 1;
 indexShiftedData.target(indexShiftedData.target>360)        = indexShiftedData.target(indexShiftedData.target>360) - 360; % not actually neccessary, but here for completeness
 indexShiftedData.response(indexShiftedData.response>360)    = indexShiftedData.response(indexShiftedData.response>360) - 360; % neccessary, because there are some responses above 360
 
+cue_index       = [indexShiftedData.target];
+choice_index    = [indexShiftedData.response];
+
+%% Convert to CIELUV
+
+if convertToCIELUV
+    % What is the closest analogouse CIELUV value for each of the stimuli?
+    % Requires PsychToolbox
+
+    [cart,pol] = generateStimCols('nBig',360,'sat',52);
+    stimcols_CIELAB = [ones(1,360)*60; cart];
+    whitePoint = xyYToXYZ([0.3184, 0.3119, 48.64]'); % white point not specified in paper, so using same as Bae (2015)
+    whitePoint = whitePoint ./ whitePoint(2);
+    stimcols_XYZ = LabToXYZ(stimcols_CIELAB,whitePoint);
+    stimcols_CIELUV = XYZToLuv(stimcols_XYZ,whitePoint);
+
+    figure, hold on
+    pltCols = double(LabTosRGB(stimcols_CIELAB));
+    scatter(stimcols_CIELAB(2,:),stimcols_CIELAB(3,:),...
+        [],pltCols./255,'filled')
+    scatter(stimcols_CIELUV(2,:),stimcols_CIELUV(3,:),...
+        [],pltCols./255,'filled')
+    axis equal
+    % view(3)
+
+    % What are the closest stimuli?
+    for i = 1:360
+
+        % denote equivalent stimuli (treats the inner ring as CIELAB)
+        plot([stimcols_CIELAB(2,i),stimcols_CIELUV(2,i)],[stimcols_CIELAB(3,i),stimcols_CIELUV(3,i)],'k')
+  
+        dists = sqrt(...
+            (stimcols_CIELUV(2,i)-stimcols_CIELAB(2,:)).^2 +...
+            (stimcols_CIELUV(3,i)-stimcols_CIELAB(3,:)).^2);
+        [~,LUT(i)] = min(abs(dists));
+
+        % denote closest stimuli (treats the inner ring as CIELUV)
+        plot([stimcols_CIELAB(2,LUT(i)),stimcols_CIELUV(2,i)],[stimcols_CIELAB(3,LUT(i)),stimcols_CIELUV(3,i)],'r')
+    end
+
+    cue_index    = LUT(cue_index)';
+    choice_index = LUT(choice_index)';
+end
+
+%%
+
+
 for i = 1:size(indexShiftedData,1)
-    data.trialdata.cues(i,1)     = {indexShiftedData.target(i)};
+    data.trialdata.cues(i,1)     = {cue_index(i)};
     data.trialdata.choices(i,:)  = {1:360};
-    data.trialdata.chosen(i,1)   = {indexShiftedData.response(i)};
+    data.trialdata.chosen(i,1)   = {choice_index(i)};
 end
 
 data.nBig   = 360;
@@ -42,16 +91,25 @@ model = fitMixtureModel(data,lengthOfSlidingWindow,includeCorrect);
 
 %%
 
-model.stimColorSpace    = 'CIELAB';
-model.stimCols          = [60,52];      %L*, chroma
-
 whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
 
+withLabels = false;
 axlims = 30;
 
-withLabels = false;
-DKL = 'Panichello';
-plotMixtureModel(model,...
-    whichFigures,'Panichello_CIELAB_',withLabels,DKL,axlims)
+if convertToCIELUV
+    filename = 'Panichello_CIELUV_';
+    %DKL
 
+    plotMixtureModel(model,...
+    whichFigures,filename,withLabels,[],axlims)
+else
+    filename = 'Panichello_CIELAB_';
+    model.stimColorSpace    = 'CIELAB';
+    model.stimCols          = [60,52];      %L*, chroma
+    DKL = 'Panichello';
+
+    plotMixtureModel(model,...
+    whichFigures,filename,withLabels,DKL,axlims)
+
+end

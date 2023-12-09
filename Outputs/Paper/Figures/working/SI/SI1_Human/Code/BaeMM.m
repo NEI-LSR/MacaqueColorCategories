@@ -107,7 +107,6 @@ if convertToCIELUV
 
     plotMixtureModel(model,...
     whichFigures,filename,withLabels,[],axlims)
-
 else
     filename = 'Bae_CIELAB_';
     model.stimColorSpace    = 'CIELAB';
@@ -116,7 +115,6 @@ else
 
     plotMixtureModel(model,...
     whichFigures,filename,withLabels,DKL,axlims)
-
 end
 
 
