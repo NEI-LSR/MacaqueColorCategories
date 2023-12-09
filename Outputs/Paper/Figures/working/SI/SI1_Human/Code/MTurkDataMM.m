@@ -7,7 +7,8 @@ clc, clear, close all
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
 dataDir = [repoHomeDir,'Data'];
 
-addpath(genpath(repoHomeDir));
+addpath(genpath([repoHomeDir,'Analysis']));
+addpath(genpath(dataDir);
 
 %%
 
