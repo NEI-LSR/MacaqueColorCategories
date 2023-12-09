@@ -8,7 +8,7 @@ repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,
 dataDir = [repoHomeDir,'Data'];
 
 addpath(genpath([repoHomeDir,'Analysis']));
-addpath(genpath(dataDir);
+addpath(genpath(dataDir));
 
 %%
 

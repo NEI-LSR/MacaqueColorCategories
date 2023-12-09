@@ -67,6 +67,10 @@ if convertToCIELUV
 
     cue_index    = LUT(cue_index)';
     choice_index = LUT(choice_index)';
+
+    [~,DKLpolesIndex] = computeDKL_XYZ('Panichello');
+    DKLpolesIndex_CIELUV = LUT(DKLpolesIndex);
+    DKLpolesDegrees_CIELUV = (DKLpolesIndex_CIELUV - 1);
 end
 
 %%
@@ -99,10 +103,9 @@ axlims = 30;
 
 if convertToCIELUV
     filename = 'Panichello_CIELUV_';
-    %DKL
 
     plotMixtureModel(model,...
-    whichFigures,filename,withLabels,[],axlims)
+    whichFigures,filename,withLabels,DKLpolesDegrees_CIELUV,axlims)
 else
     filename = 'Panichello_CIELAB_';
     model.stimColorSpace    = 'CIELAB';
@@ -111,5 +114,5 @@ else
 
     plotMixtureModel(model,...
     whichFigures,filename,withLabels,DKL,axlims)
-
 end
+

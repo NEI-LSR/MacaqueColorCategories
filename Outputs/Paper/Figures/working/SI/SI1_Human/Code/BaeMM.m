@@ -1,6 +1,6 @@
 clear, clc, close all
 
-convertToCIELUV = true;
+convertToCIELUV = false;
 
 %% Add required paths
 
@@ -67,6 +67,10 @@ if convertToCIELUV
 
     cue_index = LUT(cue_index)';
     choice_index = LUT(choice_index)';
+
+    [~,DKLpolesIndex] = computeDKL_XYZ('Bae');
+    DKLpolesIndex_CIELUV = LUT(DKLpolesIndex);
+    DKLpolesDegrees_CIELUV = (DKLpolesIndex_CIELUV - 1) * 2;
 end
 
 %% convert into "cleandata" format
@@ -103,10 +107,9 @@ axlims = 30;
 
 if convertToCIELUV
     filename = 'Bae_CIELUV_';
-    % DKL 
 
     plotMixtureModel(model,...
-    whichFigures,filename,withLabels,[],axlims)
+    whichFigures,filename,withLabels,DKLpolesDegrees_CIELUV,axlims)
 else
     filename = 'Bae_CIELAB_';
     model.stimColorSpace    = 'CIELAB';
@@ -116,5 +119,4 @@ else
     plotMixtureModel(model,...
     whichFigures,filename,withLabels,DKL,axlims)
 end
-
 

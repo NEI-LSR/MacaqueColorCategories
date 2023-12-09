@@ -1,4 +1,4 @@
-function DKLpoles = computeDKL_XYZ(whichDataset)
+function [DKLpolesDegrees,DKLpolesIndex] = computeDKL_XYZ(whichDataset)
 
 if strcmp(whichDataset,'NIH')
     labOrLuv = 'CIELUV';
@@ -118,4 +118,5 @@ s_temp(:,DKL(3,:) > 0) = inf;
 % disp(pol(1,s_plus))
 % disp(pol(1,s_minus))
 
-DKLpoles = [pol(1,lm_plus),pol(1,lm_minus),pol(1,s_plus),pol(1,s_minus)];
+DKLpolesDegrees = [pol(1,lm_plus),pol(1,lm_minus),pol(1,s_plus),pol(1,s_minus)];
+DKLpolesIndex   = [lm_plus,lm_minus,s_plus,s_minus];

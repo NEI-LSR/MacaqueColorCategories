@@ -348,7 +348,11 @@ if isfield(whichFigures,'MixMod_polar') && whichFigures.MixMod_polar == true
     set(ax_cart,'visible','off');
 
     if DKL
-        DKLpoles = computeDKL_XYZ(DKL);
+        if ischar(DKL)
+            DKLpoles = computeDKL_XYZ(DKL);
+        else
+            DKLpoles = DKL;
+        end
         text(30,20,num2str(DKLpoles'))
     end
 
