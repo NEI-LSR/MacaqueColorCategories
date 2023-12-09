@@ -171,6 +171,13 @@ startingPoints = [0.5 0 60 0.1];
 
 for cueIndex = 1:nBig
 
+    if all(isnan(choice_probability(:,cueIndex))) && (exist('includeCorrect','var') && includeCorrect) % if there are NaN columns, and it's not because we're excluding correct options
+        choice_probability(:,cueIndex)  = mean([choice_probability(:,cueIndex-1)';choice_probability(:,cueIndex+1)']); % this is a fragile solution: it will break if it needs to wraparound, or if there are two successive columns that are NaN
+        presentation_counts(:,cueIndex) = mean([presentation_counts(:,cueIndex-1)';presentation_counts(:,cueIndex+1)']); % this is a fragile solution: it will break if it needs to wraparound, or if there are two successive columns that are NaN
+        
+        warning('interpolating data')
+    end
+
     dist_idx = find(~isnan(choice_probability(:,cueIndex))); % Index of distance counts for only colors shown
 
     f = fit(PotentialDistances(dist_idx,:), choice_probability(dist_idx,cueIndex), ...
