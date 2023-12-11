@@ -15,7 +15,7 @@ and then rename and put the old version in `old`.
 ## Code requirements
 
 There are various submodules on this project.
-To fill them, run:
+To fill them, either clone the repo with `git clone --recurse-submodules -j8 git://github.com/foo/bar.git` or clone the repo normally and then run:
 ```
 git submodule init
 git submodule update
