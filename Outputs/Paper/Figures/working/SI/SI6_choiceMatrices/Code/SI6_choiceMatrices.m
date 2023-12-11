@@ -15,6 +15,8 @@ clear, clc, close all
 
 AnalysisDepth = 'fromPreProcessedData';
 
+includeCorrect = true; % include correct trials. Note, setting this to true is unusual for this dataset, and is only included here to visualise the difference between a similarity matrix and choice probability
+
 %% Behind the scenes...
 
 % Add path to required script
@@ -51,7 +53,7 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
     % Fit model, save model data
     for participant = 1:length(filename)
         rng(0) % the modelling might be probabilistic - TODO check this
-        model = fitMixtureModel(data{participant}.cleandata);
+        model = fitMixtureModel(data{participant}.cleandata,[],includeCorrect);
         save([AnalysisDir,filesep,'MixtureModels',filesep,filename{participant},'_',...
             datestr(now,'yymmdd-HHMMSS'),'.mat'],...
             'model')
