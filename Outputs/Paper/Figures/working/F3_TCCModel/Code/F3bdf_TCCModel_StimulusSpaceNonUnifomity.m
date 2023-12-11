@@ -1,5 +1,20 @@
 %% Generate simulated data based on stimulus-space non-uniformity
 
+% This code generates a simulated data set that when analyzed with a 
+% mixture model captures the average pattern of results made by macaque 
+% monkeys in a match-to-sample color-matching task. 
+%
+% The code fits a modified Target Confusability Competition (TCC) model 
+% (Schurgin et al, 2020) of the stimulus-space non-uniformity type
+% to behavioral data, smooths the output model parameters (which correspond
+% to the distance between neighboring points in the space), and then plots
+% both the similarity matrix and mixture model polar visualisation for this
+% smoothed dataset.
+%
+% The simulated data set captures the results of an agent with a true 
+% cognitive bias when assessed using a paradigm that uniformly samples 
+% colors from a truly uniform perceptual color space.
+
 clear, clc, close all
 
 % !

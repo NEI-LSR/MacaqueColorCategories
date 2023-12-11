@@ -1,4 +1,5 @@
-%% Generate simulated data based on a offset gaussian model
+%% Generate simulated data based on a cognitive bias model
+% (using offset gaussians)
 
 % This code generates a simulated data set that when analyzed with a 
 % mixture model captures the average pattern of results made by macaque 
