@@ -10,7 +10,7 @@ bootstrap_ = true;
 
 for i = 1:100
     rn = i; % use i as a random number generator so that new starting values are used each
-    data = combineData_mat(dirname,rn,bootstrap_);
+    data = combineData(dirname,rn,bootstrap_);
 
     data.trialdata.nBig = 64;
     data.trialdata.nSmall = 4;

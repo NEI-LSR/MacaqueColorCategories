@@ -25,7 +25,7 @@ ylim([0,3]) % TODO Normalise stimulusRemapping values for easier comparison
 addpath(genpath('C:\Users\cege-user\Documents\MacaqueColorCategories'))
 DataDir = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Data\';
 if ~exist('data','var')
-    data = combineData_mat(DataDir); % TODO Switch to csv
+    data = combineData(DataDir); % TODO Switch to csv
 end
 
 data.trialdata.nBig = 64;

@@ -16,7 +16,7 @@ elseif strcmp(realOrSimData,'real')
     addpath(genpath('C:\Users\cege-user\Documents\MacaqueColorCategories'))
     DataDir = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Data\';
     if ~exist('data','var')
-        data = combineData_mat(DataDir); % TODO Switch to csv
+        data = combineData(DataDir); % TODO Switch to csv
     end
 
     % data = load([DataDir,'210517--211108_Castor_data.mat']);

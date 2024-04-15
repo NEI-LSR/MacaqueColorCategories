@@ -4,7 +4,7 @@ addpath(genpath('C:\Users\cege-user\Documents\MacaqueColorCategories'))
 
 % from ParameterEstimator_caller.m
 DataDir = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Data\';
-data = combineData_mat(DataDir); % TODO Switch to csv
+data = combineData(DataDir); % TODO Switch to csv
 
 %% From PE_caller_caller
 

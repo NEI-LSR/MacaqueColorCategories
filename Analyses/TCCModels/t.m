@@ -4,7 +4,7 @@ clc, clear, close all
 
 addpath(genpath('C:\Users\cege-user\Documents\MacaqueColorCategories'))
 DataDir = 'C:\Users\cege-user\Documents\MacaqueColorCategories\Data\';
-% data = combineData_mat(DataDir);
+% data = combineData(DataDir);
 data = load([DataDir,'210517--211108_Castor_data.mat']);
 
 if any(any(isnan(cell2mat(data.trialdata.choices))))
