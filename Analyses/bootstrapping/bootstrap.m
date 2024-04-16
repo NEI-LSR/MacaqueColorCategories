@@ -2,7 +2,10 @@ clc, clear, close all
 
 addpath(genpath('../..'))
 
-monkey_or_humanMTurk = 'humanMTurk'; % which dataset?
+monkey_or_humanMTurk = 'monkey'; % which dataset?
+
+TCC = 0;
+mixtureModel = 1;
 
 %%
 
@@ -39,11 +42,22 @@ for i = 1:100
 
     end
 
-    [~,~,~,nll(i).single_og,~]      = ParameterEstimator_caller(rn,data,'single-og');
-    [~,~,~,nll(i).single_ssnu,~]    = ParameterEstimator_caller(rn,data,'single-ssnu');
+    if TCC
+        [~,~,~,nll(i).single_og,~]      = ParameterEstimator_caller(rn,data,'single-og');
+        [~,~,~,nll(i).single_ssnu,~]    = ParameterEstimator_caller(rn,data,'single-ssnu');
+        close all
+    end
 
-    close all
+    if mixtureModel
+        model(i) = fitMixtureModel(data);
+        nCrossings(i) = size(model(i).interp_crossing,1);
+    end
+    
+end
 
+%%
+if mixtureModel
+    save([monkey_or_humanMTurk,'_mixtureModel_bootstrap'],'nCrossings')
 end
 
 %% Reload everything in from the saved model fits and plot
@@ -65,3 +79,16 @@ plot(nll_reloaded(:,1),'DisplayName','Offset Gaussian')
 plot(nll_reloaded(:,2),'DisplayName','SSNU')
 legend('Location','best')
 
+%%
+if mixtureModel
+    load('monkey_mixtureModel_bootstrap')
+    monkeynCrossings = nCrossings;
+    load('humanMTurk_mixtureModel_bootstrap')
+    humanMTurknCrossings = nCrossings;
+
+    figure,
+    hist(categorical([monkeynCrossings',humanMTurknCrossings']))
+    legend('monkey','human')
+
+    [h,p] = ttest2(monkeynCrossings,humanMTurknCrossings,'Vartype','unequal');
+end
