@@ -87,11 +87,31 @@ data.nSmall = 360;
 
 %%
 
-Lab = 1;
 includeCorrect = true;
 lengthOfSlidingWindow = 29; % picked by hand
 
 model = fitMixtureModel(data,lengthOfSlidingWindow,includeCorrect);
+
+%% Bootstrap 
+
+rng(0);
+
+for bs = 1:100
+    nTrials = size(data.trialdata.cues,1);
+    idx = randi(nTrials,nTrials,1);
+    tempdata.trialdata.cues = data.trialdata.cues(idx);
+    tempdata.trialdata.choices = data.trialdata.choices(idx);
+    tempdata.trialdata.chosen = data.trialdata.chosen(idx);
+    tempdata.nBig = 360;
+    tempdata.nSmall = 360;
+
+    model(bs) = fitMixtureModel(tempdata,lengthOfSlidingWindow,includeCorrect);
+
+    nCrossings(bs) = size(model(bs).interp_crossing,1);
+end
+
+figure,
+hist(nCrossings)
 
 %%
 

@@ -2,7 +2,7 @@ clc, clear, close all
 
 addpath(genpath('../..'))
 
-monkey_or_humanMTurk = 'monkey'; % which dataset?
+whichData = 'monkey'; % which dataset?
 
 TCC = 0;
 mixtureModel = 1;
@@ -15,14 +15,14 @@ bootstrap_ = true;
 
 for i = 1:100
     rn = i; % use i as a random number generator so that new starting values are used each
-    if strcmp(monkey_or_humanMTurk,'monkey')
+    if strcmp(whichData,'monkey')
         data = combineData(dirname,rn,bootstrap_);
 
         data.trialdata.nBig = 64;
         data.trialdata.nSmall = 4;
         data.trialdata.nTrials = 98104;
 
-    elseif strcmp(monkey_or_humanMTurk,'humanMTurk')
+    elseif strcmp(whichData,'humanMTurk')
 
         repoHomeDir = ['..',filesep,'..'];
         DataDir = [repoHomeDir,filesep,'Data',filesep];
@@ -39,7 +39,6 @@ for i = 1:100
         data.trialdata.nBig = 64;
         data.trialdata.nSmall = 4;
         data.trialdata.nTrials = nTrials;
-
     end
 
     if TCC
@@ -57,7 +56,7 @@ end
 
 %%
 if mixtureModel
-    save([monkey_or_humanMTurk,'_mixtureModel_bootstrap'],'nCrossings')
+    save([whichData,'_mixtureModel_bootstrap'],'nCrossings')
 end
 
 %% Reload everything in from the saved model fits and plot
