@@ -1,10 +1,10 @@
-function cleandata = combineData(dirname,rn,bootstrap)
+function cleandata = combineData_mat(dirname,rn,bootstrap)
 
 % To combine data from individual files into one
 % matching number of trials so that each monkey is equally represented
 %
 % Standard usage:
-% > cleandata = combineData('.')
+% > cleandata = combineData_mat('.')
 % > save("combinedData.mat","cleandata")
 
 if ~exist('rn','var')
