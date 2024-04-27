@@ -31,7 +31,7 @@ choice_index(choice_index == 181) = 1;
 %% Convert to CIELUV
 
 if convertToCIELUV
-    % What is the closest analogouse CIELUV value for each of the stimuli?
+    % What is the closest analogous CIELUV value for each of the stimuli?
     % Requires PsychToolbox
 
     [cart,pol] = generateStimCols('nBig',180,'sat',38);
@@ -84,7 +84,6 @@ data.nBig = 180;
 
 %%
 
-Lab = 1;
 includeCorrect = true;
 lengthOfSlidingWindow = 15; % picked by hand
 
@@ -96,6 +95,26 @@ model = fitMixtureModel(data,lengthOfSlidingWindow,includeCorrect);
 % plot(0:2:358,-model.bias)
 % xticks(0:60:360)
 % yticks([-17,-11,-6,0,6,11,17])
+
+%% Bootstrap 
+
+rng(0);
+
+for bs = 1:100
+    nTrials = size(data.trialdata.cues,1);
+    idx = randi(nTrials,nTrials,1);
+    tempdata.trialdata.cues = data.trialdata.cues(idx);
+    tempdata.trialdata.choices = data.trialdata.choices(idx);
+    tempdata.trialdata.chosen = data.trialdata.chosen(idx);
+    tempdata.nBig = 180;
+
+    model(bs) = fitMixtureModel(tempdata,lengthOfSlidingWindow,includeCorrect);
+
+    nCrossings(bs) = size(model(bs).interp_crossing,1);
+end
+
+figure,
+hist(nCrossings)
 
 %%
 
@@ -119,4 +138,31 @@ else
     plotMixtureModel(model,...
     whichFigures,filename,withLabels,DKL,axlims)
 end
+
+%% Plot choice probability matrix
+% Code copied from SI6_choiceMatrices.m
+
+try
+    choiceProb_diag = model.choice_probability'; % transposing to match similarity matrix (so cue on x-axis, choice on y-axis)
+catch
+    % choiceProb_diag = model{1,1}.choice_probability;
+    error('model variable structure is nested') % TODO work out why
+end
+
+for i = 1:size(choiceProb_diag,1)
+    choiceProb_diag(i,:) = circshift(choiceProb_diag(i,:),i-(size(choiceProb_diag,1))/2);
+end
+
+choiceProb_diag = choiceProb_diag/max(choiceProb_diag(:));
+
+filename = 'CP_Bae';
+
+% plotSimilarityMatrix(model.choice_probability) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+plotSimilarityMatrix(choiceProb_diag,filename,'../',[],false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+
+% TODO Relabel similarity as choice probability
+
+% h = findobj;
+% h(n).Label = 'Choice Probability'; % doesn't work
+
 

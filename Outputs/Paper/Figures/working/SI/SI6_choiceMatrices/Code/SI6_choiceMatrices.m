@@ -89,7 +89,7 @@ for participant = 1:length(filename)
     end
 
     for i = 1:size(choiceProb_diag,1)
-        choiceProb_diag(i,:) = circshift(choiceProb_diag(i,:),i-32);
+        choiceProb_diag(i,:) = circshift(choiceProb_diag(i,:),i-(size(choiceProb_diag,1))/2);
     end
 
     filename = ['CP_',ModelFile{participant}.name(1:end-4)];
