@@ -35,10 +35,11 @@ Luminance contrast noise was randomly added to each pixel of the cue and the mat
 The luminance added to each pixel was updated every frame and drawn uniformly from a continuous range of +/- 5 L* units (the resulting stimulus looks like a colored disc viewed behind a thin veil of television snow). 
 CIELUV was used to define the stimuli because it has an associated chromaticity diagram, but the stimuli can readily be transformed into other spaces such as CIELAB and DKL. 
 
-The color stimuli corresponding to the poles of the cone opponent cardinal axes were computed as follows. 
-First, the spectra of the stimuli and adapting field were measured using a spectroradiometer. 
-These spectra were multiplied by the Smith-Pokorny cone fundamentals to compute the activations for the three classes of cones (LMS), and by the Judd-Vos-modified CIE 2-deg color matching functions to compute luminance. 
+The color stimuli corresponding to the poles of the cone opponent cardinal axes, labeled in the polar mixture model plots, were computed as follows. 
+CIELAB and CIELUV values were transformed to XYZ coordinates using the PsychToolbox functions “LabToXYZ” and “LuvToXYZ” respectively.
+An XYZToLMS matrix was constructed using MATLAB's “mldivide” function with the Smith-Pokorny cone fundamentals and the CIE XYZ standard observer color matching functions as inputs.
 The PsychToolbox function “ComputeDKL\_M” was then used to compute a conversion matrix for converting between LMS and cone opponent cardinal axes that define the DKL colorspace. 
+The code which accomplishes the above is available \href{https://github.com/NEI-LSR/MacaqueColorCategories/blob/main/Analyses/DKL/computeDKL_XYZ.m}{here}.
 
 \paragraph{Human Data}
 
