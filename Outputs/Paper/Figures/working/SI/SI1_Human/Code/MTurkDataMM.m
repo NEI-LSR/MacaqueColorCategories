@@ -61,5 +61,14 @@ plotSimilarityMatrix(choiceProb_diag,filename,'../',[],false) % using the same f
 % h(n).Label = 'Choice Probability'; % doesn't work
 
 
+%% How many trials from each participant
 
+[C,ia,ic] = unique(cleandata.trialdata.WorkerID);
+
+for i = 1:length(C)
+    t(i) = sum(strcmp(cleandata.trialdata.WorkerID,C(i)));
+end
+
+figure, histogram(categorical(t))
+% figure, plot(t)
 
