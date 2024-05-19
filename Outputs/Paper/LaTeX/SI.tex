@@ -72,3 +72,24 @@
     \end{fullwidth}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \begin{fullwidth}
+    \includegraphics[width=\textwidth+4cm]{../Figures/flat/SI7_distanceMetricComparison.png}
+    \caption{\textbf{Comaparing distance metrics: angular distance vs Euclidian distance.}
+    We inherit the practice of using angular distance as our distance metric from prior work \citep{bae_why_2015,panichello_error-correcting_2019}, but another reasonable distance metric exists: the Euclidian distance in CIELAB and CIELUV is referred to as “Delta E”. 
+	These two metrics are closely correlated at lower values, diverging increasingly at higher values. 
+	Using either in our model makes negligible difference, and so in this paper we choose to use angular distance. 
+	However, if one were to use a TCC-v model to analyse multi-dimensional data (as opposed to our one-dimensional ring of stimuli) Delta E it seems reasonable that a switch to Delta E would be a sensible path.
+	\textbf{a}, Angular distance (hue angle difference) and cartesian distance (Delta E) as a function of stimulus index difference. 
+	\textbf{b}, Gaussian fits parameterized by each distance metric. 
+	Translucent colored lines are the columns from F4a/b, colored by cue. 
+	Dotted and dashed lines are gaussian fits where the gaussian is computed as a function of hue angle and Delta E respectively. 
+	Note how they diverge, but only slightly, and that both align well with the mean and the mode.
+    } 
+    \label{fig:choiceProbabilityMatrices}
+    \end{fullwidth}
+\end{figure}
+
+
+
