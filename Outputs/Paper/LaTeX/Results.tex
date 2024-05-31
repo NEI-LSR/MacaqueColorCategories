@@ -37,12 +37,15 @@ To illustrate that the behavioral data could be explained by either a cognitive-
 
 To decide which of these explanations best accounts for the macaque behavioral data, we developed computational simulations and analyzed the data with an extension of the Target Confusability Competition (TCC) model \citep{schurgin_psychophysical_2020} (see Methods). 
 The standard implementation of the TCC model assumes the same similarity function for each color. 
-The version developed presently starts with a simpler version of the TCC model (replacing the two parameters for the similarity function with one, see Methods), and then allowing the shape and/or location of the similarity function relative to the cue to vary as a function of color (we refer to the modified TCC model as TCC-v, for "vary"). 
+The version developed presently allows the shape and/or location of the similarity function to vary per color (we refer to the modified TCC model as TCC-v, for "vary"). 
 Let's consider three versions of the TCC-v model. 
-First, the simplest (“null”) model has the same similarity function for each color, centered on the target color (this is conceptually equivalent to the original TCC model). 
+First, the simplest ("null") model has the same similarity function for each color, centered on the target color (this is conceptually equivalent to the original TCC model). 
+This model has two free parameters ($\sigma$, $d'$) which control the width of the Gaussian similarity function and the amount of noise present in the system respectively.
 Second, the "cognitive bias" version of the model specifies similarity functions for each color with peaks that can deviate from the target color but in which all similarity functions for the set of colors have the same symmetric (Gaussian) shape (Figure 3a). 
-The result is a similarity matrix that has a band of constant width along the inverse diagonal but deviates to one side near color-category locations in the color space (Figure 3e). 
-Third, the "stimulus-space non-uniformity" version of the model has a similarity function for each target color that fixes the peak to the target color but where the angular distances between the colors can differ for different colors. 
+In addition to $\sigma$ and $d'$, this model has an additional set of 64 parameters which control the offset of the peak of the similarity function - one for each color.
+The result is a similarity matrix that has a band of constant height along the inverse diagonal but deviates to one side near color-category locations in the color space (Figure 3e). 
+Third, the "stimulus-space non-uniformity" version of the model has a fixed similarity function across colors (recall that the similarity function is a function of distance), but the angular distances between the colors can differ, which results in a similarity function which is distorted when it is plotted as a function of stimulus index.
+In addition to $\sigma$ and $d'$, this model has an additional set of 64 parameters which control the relative angular distance between each successive color.
 This results in a similarity matrix that is symmetric about the inverse diagonal, but which bulges out away from the diagonal at locations in the color space that are oversampled (Figure 3f). 
 The stimulus-space non-uniformity model and the cognitive-bias model have the same number of parameters. 
 
