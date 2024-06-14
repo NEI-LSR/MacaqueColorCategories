@@ -1,6 +1,8 @@
 clear, clc, close all
 
-convertToCIELUV = false;
+convertToCIELUV = true;
+bootstrap_      = false;
+downsampleTo64  = true;
 
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
 
@@ -41,11 +43,16 @@ if convertToCIELUV
     stimcols_XYZ = LabToXYZ(stimcols_CIELAB,whitePoint);
     stimcols_CIELUV = XYZToLuv(stimcols_XYZ,whitePoint);
 
-    figure, hold on
     pltCols = double(LabTosRGB(stimcols_CIELAB));
-    scatter(stimcols_CIELAB(2,:),stimcols_CIELAB(3,:),...
-        [],pltCols./255,'filled')
+
+    figure, hold on
     scatter(stimcols_CIELUV(2,:),stimcols_CIELUV(3,:),...
+        [],pltCols./255,'filled')
+    if downsampleTo64
+        stimcols_CIELAB = [ones(1,64)*70; generateStimCols('nBig',64,'sat',52)];
+        pltCols = double(LabTosRGB(stimcols_CIELAB));
+    end
+    scatter(stimcols_CIELAB(2,:),stimcols_CIELAB(3,:),...
         [],pltCols./255,'filled')
     axis equal
     % view(3)
@@ -54,8 +61,8 @@ if convertToCIELUV
     for i = 1:360
 
         % denote equivalent stimuli (treats the inner ring as CIELAB)
-        plot([stimcols_CIELAB(2,i),stimcols_CIELUV(2,i)],[stimcols_CIELAB(3,i),stimcols_CIELUV(3,i)],'k')
-  
+        % plot([stimcols_CIELAB(2,i),stimcols_CIELUV(2,i)],[stimcols_CIELAB(3,i),stimcols_CIELUV(3,i)],'k')
+
         dists = sqrt(...
             (stimcols_CIELUV(2,i)-stimcols_CIELAB(2,:)).^2 +...
             (stimcols_CIELUV(3,i)-stimcols_CIELAB(3,:)).^2);
@@ -78,40 +85,56 @@ end
 
 for i = 1:size(indexShiftedData,1)
     data.trialdata.cues(i,1)     = {cue_index(i)};
-    data.trialdata.choices(i,:)  = {1:360};
+    if downsampleTo64
+        data.trialdata.choices(i,:)   = {1:64};
+    else
+        data.trialdata.choices(i,:)   = {1:360};
+    end
     data.trialdata.chosen(i,1)   = {choice_index(i)};
 end
 
-data.nBig   = 360;
-data.nSmall = 360;
+if downsampleTo64
+    data.nBig = 64;
+else
+    data.nBig = 360;
+end
 
 %%
 
 includeCorrect = true;
-lengthOfSlidingWindow = 29; % picked by hand
+
+if downsampleTo64
+    lengthOfSlidingWindow = 9; % picked by hand
+else
+    lengthOfSlidingWindow = 29; % picked by hand
+end
 
 model = fitMixtureModel(data,lengthOfSlidingWindow,includeCorrect);
 
-%% Bootstrap 
+%% Bootstrap
 
-rng(0);
+if bootstrap_
 
-for bs = 1:100
-    nTrials = size(data.trialdata.cues,1);
-    idx = randi(nTrials,nTrials,1);
-    tempdata.trialdata.cues = data.trialdata.cues(idx);
-    tempdata.trialdata.choices = data.trialdata.choices(idx);
-    tempdata.trialdata.chosen = data.trialdata.chosen(idx);
-    tempdata.nBig = 360;
-    tempdata.nSmall = 360;
+    rng(0);
 
-    model(bs) = fitMixtureModel(tempdata,lengthOfSlidingWindow,includeCorrect);
+    for bs = 1:100
+        nTrials = size(data.trialdata.cues,1);
+        idx = randi(nTrials,nTrials,1);
+        tempdata.trialdata.cues = data.trialdata.cues(idx);
+        tempdata.trialdata.choices = data.trialdata.choices(idx);
+        tempdata.trialdata.chosen = data.trialdata.chosen(idx);
+        tempdata.nBig = 360;
+        tempdata.nSmall = 360;
 
-    nCrossings(bs) = size(model(bs).interp_crossing,1);
+        model(bs) = fitMixtureModel(tempdata,lengthOfSlidingWindow,includeCorrect);
+
+        nCrossings(bs) = size(model(bs).interp_crossing,1);
+    end
+
+    figure,
+    hist(nCrossings)
+
 end
-
-figure,
-hist(nCrossings)
 
 %%
 
@@ -125,7 +148,7 @@ if convertToCIELUV
     filename = 'Panichello_CIELUV_';
 
     plotMixtureModel(model,...
-    whichFigures,filename,withLabels,DKLpolesDegrees_CIELUV,axlims)
+        whichFigures,filename,withLabels,DKLpolesDegrees_CIELUV,axlims)
 else
     filename = 'Panichello_CIELAB_';
     model.stimColorSpace    = 'CIELAB';
@@ -133,7 +156,7 @@ else
     DKL = 'Panichello';
 
     plotMixtureModel(model,...
-    whichFigures,filename,withLabels,DKL,axlims)
+        whichFigures,filename,withLabels,DKL,axlims)
 end
 
 %% Plot choice probability matrix
