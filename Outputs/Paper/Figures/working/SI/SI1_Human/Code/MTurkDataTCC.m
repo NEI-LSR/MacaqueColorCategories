@@ -10,7 +10,7 @@ clc, clear, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'PreProcessedData';
+AnalysisDepth = 'fromPreProcessedData';
 
 %% Behind the scenes...
 
