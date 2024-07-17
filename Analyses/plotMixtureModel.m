@@ -149,6 +149,7 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     set(h, 'facealpha', .1, 'LineStyle', 'none');
 
     scatter(hue_angle,bias([1:end 1]),100,colvals([1:end 1],:),'filled');
+
     plot(hue_angle,be_w,'k','LineWidth',1.75);
     % xline(interp_ci,'--');
 
@@ -177,6 +178,43 @@ if isfield(whichFigures,'MixMod_linear') && whichFigures.MixMod_linear == true
     ylabel('Bias');
 
     saveas(gcf,fullfile('../',[filename,'_MixMod_linear_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+
+end
+
+%% Gaussian width variation
+
+if isfield(whichFigures,'GaussianWidth')
+
+    figure
+
+    axes('PositionConstraint','innerposition',...
+        'Position',[0.13 0.19 0.82 0.75])
+
+    hold on
+
+    plot(hue_angle,model.moving_gw([1:end 1]),'k','LineWidth',1.75);
+
+    grid on
+    try
+        yticks([-axlims,-20:20:20,axlims])
+        yticklabels({num2str(-axlims),'-20','0','+20',['+',num2str(axlims)]})
+    catch
+        yticks([-axlims,0,axlims])
+        yticklabels({num2str(-axlims),'0',['+',num2str(axlims)]})
+    end
+    xticks(0:45:360);
+    ax = gca;
+    set(gca,'TickDir','out');
+    % ax.TickLength = [0.025 0.025];
+    % ax.FontSize = 10;
+    xlim([0 360]);
+    ylim([-axlims axlims]);
+    yline(0,'LineStyle','--','Color',[0.3,0.3,0.3],'linewidth',1.75);
+    xlabel('Hue Angle');
+    ylabel('Gaussian width');
+
+    saveas(gcf,fullfile('../',[filename,'_MixMod_linear_gw_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+
 
 end
 

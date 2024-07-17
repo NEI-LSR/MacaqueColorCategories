@@ -186,6 +186,7 @@ for cueIndex = 1:nBig
 
     model.gaussfits{cueIndex} = f; % model output                                        % TODO Ideally this would happen at the model fitting stage rather than being tagged on here
     bias(cueIndex) = f.b;
+    gw(cueIndex) = f.c; %gaussian width
 
     ci = confint(f,0.95);
     ci_lower_95(cueIndex,1) = ci(1,2);
@@ -210,6 +211,9 @@ end
 
 moving_bias = movmean(padarray(bias',lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
 moving_bias = moving_bias(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
+
+moving_gw = movmean(padarray(gw',lengthOfSlidingWindow,"circular"),lengthOfSlidingWindow,'Endpoints','discard');
+moving_gw = moving_gw(ceil(lengthOfSlidingWindow/2)+1:end-ceil(lengthOfSlidingWindow/2));
 
 be_w = moving_bias([1:end,1]); % bias estimates including wraparound
 
@@ -325,5 +329,6 @@ model.bias = bias;
 model.be_w = be_w;
 model.ci = ci;
 model.moving_bias = moving_bias;
+model.moving_gw = moving_gw;
 
 end
