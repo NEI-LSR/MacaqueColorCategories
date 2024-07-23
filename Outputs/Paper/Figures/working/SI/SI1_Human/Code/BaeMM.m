@@ -1,8 +1,8 @@
 clear, clc, close all
 
-convertToCIELUV = true;
+convertToCIELUV = false;
 bootstrap_      = false;
-downsampleTo64  = true;
+downsampleTo64  = false;
 
 %% Add required paths
 
@@ -144,6 +144,7 @@ end
 
 whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
+whichFigures.GaussianWidth   = true;
 
 withLabels = false;
 axlims = 30;
@@ -167,14 +168,14 @@ end
 % Code copied from SI6_choiceMatrices.m
 
 try
-    choiceProb_diag = model.choice_probability'; % transposing to match similarity matrix (so cue on x-axis, choice on y-axis)
+    choiceProb = model.choice_probability'; % transposing to match similarity matrix (so cue on x-axis, choice on y-axis)
 catch
     % choiceProb_diag = model{1,1}.choice_probability;
     error('model variable structure is nested') % TODO work out why
 end
 
-for i = 1:size(choiceProb_diag,1)
-    choiceProb_diag(i,:) = circshift(choiceProb_diag(i,:),i-(size(choiceProb_diag,1))/2);
+for i = 1:size(choiceProb,1)
+    choiceProb_diag(i,:) = circshift(choiceProb(i,:),i-(size(choiceProb,1))/2);
 end
 
 choiceProb_diag = choiceProb_diag/max(choiceProb_diag(:));
@@ -182,11 +183,117 @@ choiceProb_diag = choiceProb_diag/max(choiceProb_diag(:));
 filename = 'CP_Bae';
 
 % plotSimilarityMatrix(model.choice_probability) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
-plotSimilarityMatrix(choiceProb_diag,filename,'../',[],false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+plotSimilarityMatrix(choiceProb_diag*2,filename,'../',[],false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
 
 % TODO Relabel similarity as choice probability
 
 % h = findobj;
 % h(n).Label = 'Choice Probability'; % doesn't work
+
+%% Plot gaussians for specific areas
+
+% Modified from `plotMixtureModel.m`
+hueIndex = 0:2:358;
+[~,closestToZero] = min(abs(hueIndex - model.interp_crossing)')
+
+for i = 1:length(closestToZero)
+    % plotSimilarityMatrix(choiceProb_diag*2,...
+    %     [filename,'_',num2str(closestToZero(i))],'../',...
+    %     closestToZero(i),false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+
+    % figure,
+    % hold on
+    % plot(hueIndex-180,mean(choiceProb),'k--','DisplayName','Whole space average')
+    % plot(hueIndex-180,mean(choiceProb(closestToZero(i)-25:1:closestToZero(i)+25,:)),'DisplayName','Around attractor')
+    % plot(hueIndex-180,mean(choiceProb(closestToZero(i)+1:1:closestToZero(i)+25,:)),'DisplayName','After attractor')
+    % plot(hueIndex-180,mean(choiceProb(closestToZero(i)-1:-1:closestToZero(i)-25,:)),'DisplayName','Before attractor')
+    % 
+    % legend('AutoUpdate','off')
+    % xline(0,'k:')
+    % xlim([-60,60])
+end
+
+plotSimilarityMatrix(choiceProb_diag*2,...
+    [filename,'_',num2str(closestToZero)],'../',...
+    closestToZero,false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+
+
+%%
+
+
+figure,
+hold on
+axis tight
+% ylim([0,1])
+
+for cueIndex = closestToZero
+
+
+figure,
+hold on
+axis tight
+% ylim([0,1])
+
+    s = scatter(model.PotentialDistances, model.choice_probability(:,cueIndex),'filled');
+
+    % plot(f,PotentialDistances,choice_probability(:,cueIndex),'k.')
+    plot(model.gaussfits{cueIndex},...
+        model.PotentialDistances(~isnan(model.choice_probability(:,cueIndex))),...
+        model.choice_probability(~isnan(model.choice_probability(:,cueIndex)),cueIndex),'k.');
+
+    p = gca;
+    p.Children(2).Marker = 'none'; % turn off data, so that we can replot it how we like...
+    % p.Children(1).LineWidth = 3;
+
+    p11 = predint(model.gaussfits{cueIndex},model.PotentialDistances,0.95,'functional','off');                         %TODO: Check whether this is the appropriate type of interval: https://www.mathworks.com/help/curvefit/confidence-and-prediction-bounds.html
+    plot(model.PotentialDistances,p11,'k:',...
+        'DisplayName','Nonsimultaneous Functional Bounds')
+    % p.Children(1).LineWidth = 1;
+    % p.Children(2).LineWidth = 1;
+
+    xline(0,'k--')
+
+    xlabel('Error distance')
+    ylabel('Choice Probability')
+    % text(-90,0.9,num2str(cueIndex))
+    legend('off')
+    drawnow
+
+end
+% saveas(gcf,fullfile([filename,num2str(cueIndex),'_mixMod_BreakOut.svg'])) % TODO Add an argument to num2str that means that each number has 2 significant figures
+
+%% TCC Models
+
+data.trialdata.nBig   = 180;
+data.trialdata.nSmall = 180;
+data.trialdata.nTrials = size(data.trialdata.cues,1);
+rn = 0;
+
+params = [0,1,0,0,1,0,0];
+
+[x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn);
+
+% save([SaveDir, filesep,...
+%     fittingType,num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+%     '-regexp', '^(?!(data)$).')
+% % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+disp(x(1))
+disp(x(2))
+
+params = [0,0,0,1,0,0,0];
+
+[x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+    'dPrime',           x(1),...
+    'gaussianWidth',    x(2));
+
+save(['Bae_TCC_ssnu_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+
+%% Plot model outputs
+
+plotSimilarityMatrix(x, filename, '../')
 
 
