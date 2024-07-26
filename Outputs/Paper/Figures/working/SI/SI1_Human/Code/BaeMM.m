@@ -269,31 +269,83 @@ data.trialdata.nSmall = 180;
 data.trialdata.nTrials = size(data.trialdata.cues,1);
 rn = 0;
 
+%% D-prime and gaussian width
+
 params = [0,1,0,0,1,0,0];
 
-[x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn);
+[x_dpgw,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn);
 
-% save([SaveDir, filesep,...
-%     fittingType,num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
-%     '-regexp', '^(?!(data)$).')
-% % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+save(['Bae_TCC_dpgw_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
 
-disp(x(1))
-disp(x(2))
+disp(x_dpgw(1))
+disp(x_dpgw(2))
+
+%% SSNU model
 
 params = [0,0,0,1,0,0,0];
 
-[x,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
-    'dPrime',           x(1),...
-    'gaussianWidth',    x(2));
+[x_ssnu,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
 
 save(['Bae_TCC_ssnu_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+%% Offset gaussian model
+
+params = [0,0,0,0,0,0,1];
+
+[x_og,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Bae_TCC_og_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+%% SSNU model
+
+params = [0,0,0,1,0,0,0];
+
+[x_ssnu16,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,16,[],...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Bae_TCC_ssnu16_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+%% Offset gaussian model
+
+params = [0,0,0,0,0,0,1];
+
+[x_og16,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],16,...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Bae_TCC_og16_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+
+%% Both
+
+params = [0,0,0,1,0,0,1];
+
+[x_both16,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,16,16,...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Bae_TCC_both_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
     '-regexp', '^(?!(data)$).')
 % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
 
 
 %% Plot model outputs
 
-plotSimilarityMatrix(x, filename, '../')
+% plotSimilarityMatrix(x, filename, '../')
 
 
