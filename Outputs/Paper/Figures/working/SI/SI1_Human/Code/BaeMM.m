@@ -306,7 +306,7 @@ save(['Bae_TCC_og_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
     '-regexp', '^(?!(data)$).')
 % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
 
-%% SSNU model
+%% SSNU model (reduced)
 
 params = [0,0,0,1,0,0,0];
 
@@ -318,7 +318,7 @@ save(['Bae_TCC_ssnu16_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
     '-regexp', '^(?!(data)$).')
 % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
 
-%% Offset gaussian model
+%% Offset gaussian model (reduced)
 
 params = [0,0,0,0,0,0,1];
 
@@ -331,7 +331,7 @@ save(['Bae_TCC_og16_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
 % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
 
 
-%% Both
+%% Both (reduced)
 
 params = [0,0,0,1,0,0,1];
 
