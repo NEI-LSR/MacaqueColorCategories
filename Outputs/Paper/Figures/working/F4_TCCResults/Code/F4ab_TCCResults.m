@@ -42,12 +42,12 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 
     x = ParameterEstimator(data,params,rn,dim1,dim2);
 
-    filename = ['combined_TCC-FreeSimilarityMatrix_',datestr(now,'yymmdd-HHMMSS'), '.mat'];
+    filename = ['combined_TCC-FreeSimilarityMatrix_',datestr(now,'yymmdd-HHMMSS'), '.mat']; % TODO Add ModelDir
     save(filename,'x')    
 end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
-    filename = 'combined_TCC-FreeSimilarityMatrix_231116-190823';
+    filename = 'combined_TCC-FreeSimilarityMatrix_231116-190823'; % TODO Add ModelDir
     load([filename,'.mat'],'x')
 end
 

@@ -59,7 +59,7 @@ end
 if strcmp(AnalysisDepth,'fromModelOutput')
     % Load models
     for participant = 1:4
-        ModelFile = dir([DataDir,filesep,'MixtureModels',filesep,...
+        ModelFile = dir([modelOutputDir,filesep,'MixtureModels',filesep,...
             filename{participant},'*.mat']);
         if length(ModelFile) > 1
             warning('Multiple model files for this participant. Using most recent.')
@@ -67,7 +67,7 @@ if strcmp(AnalysisDepth,'fromModelOutput')
             ModelFile = ModelFile(idx);
             ModelFile = ModelFile(end);
         end
-        load([DataDir,filesep,'MixtureModels',filesep,ModelFile.name],'model')
+        load([modelOutputDir,filesep,'MixtureModels',filesep,ModelFile.name],'model')
         allModels{participant} = model;
     end
 end

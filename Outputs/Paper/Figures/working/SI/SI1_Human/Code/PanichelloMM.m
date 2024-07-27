@@ -1,8 +1,8 @@
 clear, clc, close all
 
-convertToCIELUV = true;
+convertToCIELUV = false;
 bootstrap_      = false;
-downsampleTo64  = true;
+downsampleTo64  = false;
 
 repoHomeDir = ['..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep,'..',filesep];
 
@@ -140,6 +140,7 @@ end
 
 whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
+whichFigures.GaussianWidth   = true;
 
 withLabels = false;
 axlims = 30;
@@ -184,6 +185,13 @@ plotSimilarityMatrix(choiceProb_diag,filename,'../',[],false) % using the same f
 
 % h = findobj;
 % h(n).Label = 'Choice Probability'; % doesn't work
+
+hueIndex = 0:1:359;
+[~,closestToZero] = min(abs(hueIndex - model.interp_crossing)')
+
+plotSimilarityMatrix(choiceProb_diag*2,...
+    [filename,'_',num2str(closestToZero)],'../',...
+    closestToZero,false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
 
 
 

@@ -207,7 +207,7 @@ for i = 1:length(closestToZero)
     % plot(hueIndex-180,mean(choiceProb(closestToZero(i)-25:1:closestToZero(i)+25,:)),'DisplayName','Around attractor')
     % plot(hueIndex-180,mean(choiceProb(closestToZero(i)+1:1:closestToZero(i)+25,:)),'DisplayName','After attractor')
     % plot(hueIndex-180,mean(choiceProb(closestToZero(i)-1:-1:closestToZero(i)-25,:)),'DisplayName','Before attractor')
-    % 
+    %
     % legend('AutoUpdate','off')
     % xline(0,'k:')
     % xlim([-60,60])
@@ -228,11 +228,10 @@ axis tight
 
 for cueIndex = closestToZero
 
-
-figure,
-hold on
-axis tight
-% ylim([0,1])
+    figure,
+    hold on
+    axis tight
+    % ylim([0,1])
 
     s = scatter(model.PotentialDistances, model.choice_probability(:,cueIndex),'filled');
 
@@ -261,6 +260,87 @@ axis tight
 
 end
 % saveas(gcf,fullfile([filename,num2str(cueIndex),'_mixMod_BreakOut.svg'])) % TODO Add an argument to num2str that means that each number has 2 significant figures
+
+%% Plot some gaussians to show the difference between the two situations (cherry pick for explanatory benefit)
+
+stimCols = generateStimCols('nBig',180,'sat',model.stimCols(2));
+stimCols_sRGB = LabTosRGB([repelem(model.stimCols(1), 180); stimCols]);
+
+% for i = [1:15]
+%     figure, hold on
+%     xlim([-90,90])
+%     ylim([0,0.1])
+%     plot(model.gaussfits{closestToZero(1)+i},'r');
+%     plot(model.gaussfits{closestToZero(1)-i},'b');
+%     xline(0)
+%     title(i)
+% end
+
+figure, hold on
+xlim([-90,90])
+ylim([0,0.1])
+xline(0,'k:','LineWidth',2,'HandleVisibility','off')
+
+for i = [-8,8]
+    p = plot(model.gaussfits{closestToZero(1)+i});
+    p.Color = stimCols_sRGB(closestToZero(1)+i,:);
+    p.LineWidth = 2;
+    if i == -8
+        p.LineStyle = '--';
+    elseif i == 8
+        p.LineStyle = '-.';
+    end
+end
+
+% title(i)
+
+yticks([0,0.1])
+ylabel('Choice Probability')
+xticks(-90:45:90)
+% xlabel() % TODO Is the x-axis interval or degree here?
+
+
+% legend({['Gaussian at ',num2str((closestToZero(1)-8)*2),' deg'],...
+%     ['Gaussian at ',num2str((closestToZero(1))*2),' deg'],...
+%     ['Gaussian at ',num2str((closestToZero(1)+8)*2),' deg']})
+
+legend({['Gaussian for cue ',num2str((closestToZero(1)-8)*2)],...
+    ['Gaussian for cue ',num2str((closestToZero(1)+8)*2)]})
+
+
+figure, hold on
+xlim([-90,90])
+ylim([0,0.1])
+p = plot(model.gaussfits{closestToZero(2)});
+p.Color = stimCols_sRGB(closestToZero(2),:);
+p.LineWidth = 2;
+
+xline(0,'k:','LineWidth', 2, 'HandleVisibility','off')
+
+avmodel = model.gaussfits{closestToZero(2)};
+
+for i = 1:180
+    a(i) = model.gaussfits{i}.a;
+    b(i) = model.gaussfits{i}.b;
+    c(i) = model.gaussfits{i}.c;
+    d(i) = model.gaussfits{i}.d;
+end
+avmodel.a = median(a);
+avmodel.b = median(b);
+avmodel.c = median(c);
+avmodel.d = median(d);
+
+p = plot(avmodel,'k--');
+p.LineWidth = 2;
+
+yticks([0,0.1])
+ylabel('Choice Probability')
+xticks(-90:45:90)
+% xlabel() % TODO Is the x-axis interval or degree here?
+
+legend({['Gaussian for cue ',num2str(closestToZero(2))],...
+    'Average gaussian'})
+
 
 %% TCC Models
 

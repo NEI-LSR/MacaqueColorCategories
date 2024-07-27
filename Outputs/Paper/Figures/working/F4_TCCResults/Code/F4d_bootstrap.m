@@ -52,7 +52,9 @@ xlabel('og')
 ylabel('ssnu')
 title('BIC')
 
+xlim_ = xlim;
 % plot([1.955,2]*10^5,[1.955,2]*10^5,'k')
+plot([min(xlim_),max(xlim_)],[min(xlim_),max(xlim_)],'k')
 
 axis equal square tight
 

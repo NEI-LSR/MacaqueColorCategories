@@ -26,6 +26,7 @@ model = fitMixtureModel(cleandata,lengthOfSlidingWindow,includeCorrect);
 
 whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
+whichFigures.GaussianWidth   = true;
 
 axlims = 30;
 

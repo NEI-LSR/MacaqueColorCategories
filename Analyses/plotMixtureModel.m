@@ -195,21 +195,21 @@ if isfield(whichFigures,'GaussianWidth')
     plot(hue_angle,model.moving_gw([1:end 1]),'k','LineWidth',1.75);
 
     grid on
-    try
-        yticks([-axlims,-20:20:20,axlims])
-        yticklabels({num2str(-axlims),'-20','0','+20',['+',num2str(axlims)]})
-    catch
-        yticks([-axlims,0,axlims])
-        yticklabels({num2str(-axlims),'0',['+',num2str(axlims)]})
-    end
+    % try
+    %     yticks([-axlims,-20:20:20,axlims])
+    %     yticklabels({num2str(-axlims),'-20','0','+20',['+',num2str(axlims)]})
+    % catch
+    %     yticks([-axlims,0,axlims])
+    %     yticklabels({num2str(-axlims),'0',['+',num2str(axlims)]})
+    % end
     xticks(0:45:360);
     ax = gca;
     set(gca,'TickDir','out');
     % ax.TickLength = [0.025 0.025];
     % ax.FontSize = 10;
     xlim([0 360]);
-    ylim([-axlims axlims]);
-    yline(0,'LineStyle','--','Color',[0.3,0.3,0.3],'linewidth',1.75);
+    ylim([0 max(ylim)]);
+    % yline(0,'LineStyle','--','Color',[0.3,0.3,0.3],'linewidth',1.75);
     xlabel('Hue Angle');
     ylabel('Gaussian width');
 
