@@ -357,8 +357,12 @@ This is important not simply because it confirms that the ability to form cognit
     \begin{fullwidth}
     \centering
     \includegraphics[width=\textwidth+4cm,trim={0 18cm 0 0},clip]{Outputs/Paper/Figures/flat/F5b_HumanMainText_1.png}
-    \caption{\textbf {Human}}
-    \textbf{a}, bla
+    \caption{\textbf {Reanalysis of the data of \citet{bae_why_2015} - what mechanisms underly the observed biases?}
+    \textbf{a}, Mixture model analysis of the data of \citet{bae_why_2015} (as in Figure 1e, reproduced for easy reference).
+    \textbf{b}, Choice probability matrix of the same data, with the attractor points recovered by the mixture modeling analysis highlighted.
+    \textbf{c}, Gaussian fits extracted from the mixture model. 
+    Above: Gaussians at the attractor points, showing a range of widths. 
+    Below: Gaussians at either side (right, 38\degree{} and left, 70\degree{}) of the orange attractor (54\degree{}), showing offsets towards the attractor.}
     \label{fig:HumanMainText}
     \end{fullwidth}
 \end{figure}
@@ -366,10 +370,13 @@ This is important not simply because it confirms that the ability to form cognit
 \paragraph{Revisiting the human data}
 
 Is it possible that the prior studies performed in humans misidentified attractor biases caused by stimulus-space non-uniformities as color-category-driven cognitive biases?
-We apply a version of our TCC-v method to the data of \citet{bae_why_2015} (see SIX for an analogous analysis of the data of \citet{panichello_error-correcting_2019}% and for new data collected in humans on a task more similar to that deployed in monkeys by the present authors
-) and find evidence for both types of mechanism (Fig X).
-Attractor points, recovered using a mixture modeling analysis, are highlighted in choice probability matrix in Fig Xn (Our use of choice probabililty matrices rather than similarity matrices for this analysis is the result of a computational limitation, see Methods).
-Visual inspection of this choice probability matrix reveals the presence of both the structure associated with stimulus-space non-uniformity and also the structure associated with cognitive bias - to the left of the orange category the responses appear to drop below the unity diagonal and to the right they appear to rise above, whereas for the blue category we see a general dilation of responses away from the diagonal (possibly in combination with a cognitive bias offset).
+We apply a version of our TCC-v method to the data of \citet{bae_why_2015} 
+%(see SIX for an analogous analysis of the data of \citet{panichello_error-correcting_2019}% and for new data collected in humans on a task more similar to that deployed in monkeys by the present authors) 
+and find evidence for both types of mechanism (Figure 6).
+Attractor points, recovered using a mixture modeling analysis, are highlighted in choice probability matrix in Figure 6b (Our use of choice probability matrices rather than similarity matrices for this analysis is the result of a computational limitation, see Methods).
+Visual inspection of this choice probability matrix reveals the presence of both the structure associated with stimulus-space non-uniformity and the structure associated with cognitive bias - the blue category seems to be predominantly driven by the former whereas the orange category seems to be driven predominantly by the latter.
+For the blue category we see a general dilation of responses away from the diagonal (resulting in a similarity function fit by a wider Gaussian, see upper panel of Figure 6c), whereas for the orange category we see a fairly narrow Gaussian (upper panel, Figure 6c) but with nearby hues having offset responses (lower panel, Figure 6c)
+to the left of the orange category the responses appear to drop below the unity diagonal and to the right they appear to rise above (highlighted in the lower panel of Figure 6c), whereas .
 For quantitative assessment, we can fit both stimulus-space non-uniformity and cognitive bias models to this data - and we find XXXXX.
 %Ideally we would fit a model which did both at the same time...
 
@@ -744,7 +751,7 @@ Writing – review \& editing: BRC, DJG\newline
     \includegraphics[width=\textwidth+4cm,trim={0 11cm 0 0},clip]{Outputs/Paper/Figures/flat/SI_Human_2.jpg}
     \caption{\textbf{Color categories assessed in human participants with a nonverbal paradigm. }
     Prior work by \citet{bae_why_2015} and \citet{panichello_error-correcting_2019} has used a task in which participants match the color of a cue to a continuous ring of colors; those published results were obtained with a combination of in-person experiments and on-line experiment, with a memory delay and without. The results are broadly consistent, recovering four color categories by mixture-model analysis, corresponding to blue, green, orange and pink. 
-    Note that the data from \citep{bae_why_2015} shown in the figure were from just three participants, engaged in a task that had a memory delay; those authors confirmed the results in more subjects with a version of the task that omitted the memory delay period (the cue and the match-option color wheel were presented simultaneously). The present work adapted the paradigm so that the match options in each trial were four discrete targets randomly drawn from 64 colors sampling the color space. The data shown in this figure were obtained in human participants, with experiments conducted online with Amazon Mechanical Turk. These results are again broadly consistent with the prior work using the continuous-matching ring in recovering, by mixture analysis, four significant categories corresponding to blue, green, orange, and pink. We note that the discrete-matching task recovers a trend for a fifth category that would correspond to "purple"; close inspection of the results in \citep{bae_why_2015, panichello_error-correcting_2019} and in studies of human infants \citep{skelton_biological_2017} also show evidence of this trend. The stimuli in the \citep{bae_why_2015, panichello_error-correcting_2019} were defined in CIELAB, while the stimuli in the present work were defined in CIELUV; this difference in color space is associated with a slight clockwise rotation of the cone-opponent axes. The S axis poles provide a useful landmark; they are associated with negative slopes in all three data sets.
+    Note that the data from \citep{bae_why_2015} shown in the figure were from just three participants, engaged in a task that had a memory delay; those authors confirmed the results in more subjects with a version of the task that omitted the memory delay period (the cue and the match-option color wheel were presented simultaneously). The present work adapted the paradigm so that the match options in each trial were four discrete targets randomly drawn from 64 colors sampling the color space. The data shown in this figure were obtained in human participants, with experiments conducted online with Amazon Mechanical Turk. These results are again broadly consistent with the prior work using the continuous-matching ring in recovering, by mixture analysis, four significant categories corresponding to blue, green, orange, and pink. We note that the discrete-matching task recovers a trend for a fifth category that would correspond to "purple"; close inspection of the results in \citep{bae_why_2015, panichello_error-correcting_2019} and in studies of human infants \citep{skelton_biological_2017} also show evidence of this trend. The stimuli in the \citep{bae_why_2015, panichello_error-correcting_2019} were defined in CIELAB, while the stimuli in the present work were defined in CIELUV; this difference in color space is associated with a slight clockwise rotation of the cone-opponent axes. The S axis poles provide a useful landmark; they are associated with positive slopes in all three data sets.
     } 
     \label{fig:Human}
     \end{fullwidth}
