@@ -143,7 +143,7 @@ breaklines=true
 To what extent does concept formation require language? 
 Here we exploit color to address this question and ask if macaque monkeys have color concepts evident as categories. 
 Macaques have similar cone photoreceptors and central visual circuits to humans, yet they lack language. 
-Whether Old World monkeys such as macaques have consensus color categories is unresolved, but if they do, then language cannot be required; if they do not, then color categories in humans cannot be innate. 
+Whether Old World monkeys such as macaques have consensus color categories is unresolved, but if they do, then language cannot be required; if they do not, then color categories in humans are probably not innate. 
 We tested macaques by adapting a match-to-sample paradigm used in humans to uncover color categories from errors in matches, and analyzed the data using computational simulations that assess the possibility of unrecognized distortions in the perceptual uniformity of color space. 
 The results show that macaques do not have any consensus color categories, and imply that consensus color categories in humans, for which there is ample evidence, must depend upon language.
 
@@ -187,13 +187,14 @@ A later study tested for the existence of color categories across a limited rang
 
 Addressing the question of color categories in monkeys requires overcoming several challenges. 
 First, how can color categories be measured non-verbally, without teaching the animals the categories or reinforcing idiosyncratic biases \citep{essock_color_1977,matsuno_color_2004}? 
-Second, how should the color stimuli be specified \citep{siuda-krzywicka_biological_2019}? 
-For example, specifying the colors as wavelengths \citep{sandell_color_1979} is not appropriate \citep{davidoff_cross-species_2010}. 
+Second, how should the color stimuli be chosen \citep{siuda-krzywicka_biological_2019}?
+For example, choosing colors according to their wavelength equivalent 
+\citep{sandell_color_1979} is not appropriate 
+\citep{davidoff_cross-species_2010}.
 Third, how can data across the full circle of hues be obtained so as to avoid missing categories \citep{fagot_cross-species_2006}? 
 A match-to-sample paradigm, using colors defined in a perceptually uniform color space \citep{stockman_colorimetry_2010} (Figure 1a), provides a potential solution to these challenges, because, as demonstrated for human subjects, color categories introduce biases in the distribution of matches \citep{bae_why_2015}. 
 So color categories could be inferred from any observed biases across the space of colors without requiring participants to understand or produce linguistic labels.  
 
-In the standard paradigm used in many experiments on working memory \citep{wilken_detection_2004,zhang_discrete_2008,panichello_error-correcting_2019,schurgin_psychophysical_2020} and adopted by \citet{bae_why_2015} to infer color categories, the subject is asked to match the color of a cue to a continuous ring of colors. 
 This works in human participants who can follow instructions but introduces complications in monkeys because it is not clear how to reward the animals. 
 Rewarding them for picking a color in the vicinity of the color of the cue could reinforce idiosyncratic biases, which is not a problem for addressing certain questions \citep{panichello_error-correcting_2019} but would be a problem for recovering consensus categories; moreover, the response metric (an eye movement or pointed finger) could confound the perceptual decision with motor noise. 
 To overcome these complications, we adapted the paradigm as an alternative-forced-choice task in which a direct match to the cue was available in every trial and the monkeys were only rewarded for making the direct match with an eye movement (Figure 1b). 
@@ -209,8 +210,8 @@ First, that the monkeys would show no color categories, predicted by the work sa
 Second, that the monkeys would show four color categories, predicted by attractor points defined by the four putatively universal basic color terms (Figure 1d, middle). 
 Third, that the monkeys would show four color categories, but predicted by data in human infants corresponding to repellor points defined by physiological cone-opponent mechanisms not basic color terms \citep{skelton_biological_2017} (Figure 1d, bottom).
 
-For reference, Figure 1e shows the results of a prior study in human adults \citep{bae_why_2015}, where the results are compatible with the second and third possibilities outlined above.
-Though there are only three zero-crossings identified in that dataset, we agree with the original authors that the data is best explained by a model with four attractors - the structure of the biases clearly shows a periodic function with four cycles.
+For reference, Figure 1e shows the results of a prior study in human adults \citep{bae_why_2015}, where the results are compatible with the second and third possibilities outlined above. 
+Note that the authors of the original study show that the data is best explained by a model with four attractors, even though there are only three zero-crossings. 
 The four recovered color categories do not perfectly line up with the four common basic terms; instead they correspond to pink, orange, green, blue.
 The discrepancy may arise because of limitations imposed by ensuring equal saturation and luminance among the colors (the resulting set of stimuli has neither a good red nor a good yellow) (see \citep{bae_why_2015}). 
 The four categories could also be seen as corresponding to the physiological cone-opponent mechanisms - each pole (denoted by labeled arrowheads) seems to roughly correspond to a repellor point (positive zero-crossing), with the exception of the L-M pole.
@@ -272,7 +273,7 @@ Both explanations could introduce biases in the distribution of matches (the mea
 The difference in the two explanations can be understood by considering the relationship between two neighboring colors in the color space. 
 For the cognitive-bias account, there is an asymmetry between neighbors if there is a category center nearby. 
 The color further from the category center will be more likely mistaken for the color closer to the category center than the other way around. 
-In the the non-uniform color space explanation however, there is no asymmetry in mismatches between neighboring colors, but if a neighbor on one side is more confusable than a neighbor on the other side then a bias will be introduced. 
+In the non-uniform color space explanation however, there is no asymmetry in mismatches between neighboring colors, but if a neighbor on one side is more confusable than a neighbor on the other side then a bias will be introduced. 
 Both explanations lead to a distribution of matches that is shifted away from the cue. 
 We refer to the distributions of matches for a given cue, plotted in CIELUV, as the similarity function for that cue, and the family of similarity functions for all cues as the similarity matrix.
 A cognitive bias would yield similarity functions of constant width for all cues around the color circle, but the function peaks would deviate from their respective cues depending on the proximity of the category center. 
@@ -325,7 +326,7 @@ In other words, do the panels in Figure 4a and 4b show mirror symmetry with bulg
     \end{fullwidth}
 \end{figure}
 
-By visual inspection, the data are better explained by the stimulus space non-uniformity model, a conclusion affirmed by statistical tests. 
+By visual inspection, the data are better explained by the stimulus space non-uniformity model, a conclusion affirmed by statistical tests (AIC/BIC for null, cognitive bias, and stimulus-space non-uniformity models respectively are: [199397,198005,196792]/[199416,198616,197402]). 
 First, the stimulus space non-uniformity model provides a better fit of the data than the null model (Figure 4c). 
 Second, the data are better explained by the stimulus-space non-uniformity model than the cognitive bias model (Figure 4d). 
 These results show that the apparent two consensus color categories recovered by the mixture model are explained by a non-uniformity in the underlying color space, and that there is a non-linear mapping of a true perceptually uniform color space and the presumed uniform color space we used. 
@@ -349,9 +350,10 @@ The data presented so far are for the four animals combined, which allowed us to
 But we noted that the individual animals showed some idiosyncratic patterns of results (SI Figure 4, SI Figure 5). 
 By mixture-model analysis, one animal showed not only the two consensus choice biases that are explained by stimulus space non-uniformities but also a third bias, for pea green (Figure 5a). 
 The free similarity matrix for the data from this animal shows an asymmetry about the diagonal at this location in the color space (Figure 5b), showing that this animal has a cognitive bias---a true color category---for pea-green, in addition to the consensus biases driven by stimulus-space non-uniformities. 
-Curiously however, in contrast to our models, this attractor point does not appear to exert pressure equally in both directions - while there is a clear asymmetry for hues of higher hue angle (greener) there does not appear to be a corresponding asymmetry at lower hue angles (pinker) (Figure 5b,c).
 The result in this animal, and trends that the other animals also have idiosyncratic cognitive biases, show that macaque monkeys have the potential to form cognitive color biases, and that the TCC-v model can recover them. 
 This is important not simply because it confirms that the ability to form cognitive categories does not require language, as suggested previously \citep{panichello_error-correcting_2019}, but also because it shows that if macaques had consensus color categories, we would have been able to observe them.
+AIC/BIC for null, cognitive bias, and stimulus-space non-uniformity models, fit to just this animal's data, are: [97181,96352,95242]/[97200,96962,95853] respectively.
+Ideally we would fit a model which allows for the presence of multiple mechanisms simultaneously - while this is already possible in our computational model, there are currently unresolved challenges involved in fitting such a model to real data due to the increased dimensionality. 
 
 \begin{figure}
     \begin{fullwidth}
@@ -369,16 +371,19 @@ This is important not simply because it confirms that the ability to form cognit
 
 \paragraph{Revisiting the human data}
 
-Is it possible that the prior studies performed in humans misidentified attractor biases caused by stimulus-space non-uniformities as color-category-driven cognitive biases?
-We apply a version of our TCC-v method to the data of \citet{bae_why_2015} 
-%(see SIX for an analogous analysis of the data of \citet{panichello_error-correcting_2019}% and for new data collected in humans on a task more similar to that deployed in monkeys by the present authors) 
-and find evidence for both types of mechanism (Figure 6).
+The analysis of the average data collected in monkeys shows no evidence for cognitive biases and strong evidence for stimulus-space non-uniformities, which suggest there are no consensus color categories in monkeys, in contrast with humans. 
+But this conclusion depends on (1) the capacity of the task and analysis to recover cognitive biases; and (2) the existence of consensus cognitive color categories in humans, recoverable with the task/analysis. 
+Regarding (1), the data in one individual monkey shows clear evidence for an idiosyncratic cognitive bias (Figure 5). 
+Regarding (2), we re-analyzed the data collected by \citet{bae_why_2015} in human subjects using a TCC-v model to investigate the mechanisms underlying the response biases they recovered. 
+The average across human participants shows strong evidence for cognitive cognitive biases (Figure 6b,d). 
+It also shows evidence for biases being driven by stimulus-space non-uniformities (Figure 6b,c).
+
 Attractor points, recovered using a mixture modeling analysis, are highlighted in choice probability matrix in Figure 6b (Our use of choice probability matrices rather than similarity matrices for this analysis is the result of a computational limitation, see Methods).
-Visual inspection of this choice probability matrix reveals the presence of both the structure associated with stimulus-space non-uniformity and the structure associated with cognitive bias - the blue category seems to be predominantly driven by the former whereas the orange category seems to be driven predominantly by the latter.
-For the blue category we see a general dilation of responses away from the diagonal (resulting in a similarity function fit by a wider Gaussian, see upper panel of Figure 6c), whereas for the orange category we see a fairly narrow Gaussian (upper panel, Figure 6c) but with nearby hues having offset responses (lower panel, Figure 6c)
-to the left of the orange category the responses appear to drop below the unity diagonal and to the right they appear to rise above (highlighted in the lower panel of Figure 6c), whereas .
-For quantitative assessment, we can fit both stimulus-space non-uniformity and cognitive bias models to this data - and we find XXXXX.
-%Ideally we would fit a model which did both at the same time...
+Visual inspection of this choice probability matrix reveals the presence of both the structure associated with stimulus-space non-uniformity and the structure associated with cognitive bias - the blue attractor seems to be predominantly driven by the former whereas the orange attractor seems to be driven predominantly by the latter.
+For the blue attractor we see a general dilation of responses away from the diagonal (resulting in a similarity function fit by a wider Gaussian, see upper panel of Figure 6c), whereas for the orange attractor we see a fairly narrow Gaussian (upper panel, Figure 6c) but with nearby hues having offset responses (lower panel, Figure 6c) to the left of the orange attractor the responses appear to drop below the unity diagonal and to the right they appear to rise above (highlighted in the lower panel of Figure 6c).
+For quantitative assessment, we can fit generative models to this data. 
+For a "null" model, a "cognitive" bias model, and a "stimulus-space non-uniformity" model we find AIC values of [76563,74864,75585] respectively, which suggests that both mechanistic models explain the data better than a null model to the extent that the increased parameter dimensionality is worthwhile, and that of the two mechanistic models the cognitive bias model performs better than a stimulus space non-uniformity model for this dataset.
+BIC values ([76577,76191,76912]) suggest that when the number of trials is factored in, the stimulus-space non-uniformity model is not sufficiently superior to the null model to justify the increased parameter dimensionality in this case.
 
 \paragraph{The potential impact of task differences}
 
@@ -407,10 +412,10 @@ Ample behavioral and neurophysiological data support the hypothesis that the per
 
 The mixture-model results in macaque monkeys are strikingly different from those in humans, but are similar in one regard: they both show repeller points aligned with the poles of the S-cone axis (compare the zero-crossings of the positive slopes in Figure 1e with those in Figure 2c; SI Figure 2) \citep{skelton_biological_2017,bae_why_2015,panichello_error-correcting_2019}. This commonality supports the idea that the present results apply to the human case, and suggests that the non-uniformity in CIELUV arises because the contribution of S-cone signals to supra-threshold color matching (in monkeys or humans) has not been accurately estimated. Such an inaccuracy may reflect differences between threshold measurements (such as those used to construct CIELUV) versus appearance measurements (such as those made presently), along with differences in the neural circuits that handle S versus L/M signals \citep{RN655, conway_color_2014}. 
 
-The present results are consistent with the idea that color ordering and the capacity to form color categories are innate - if the monkeys showed no capacity for color ordering, their pattern of errors would be entirely random and there would be no structure in the choice probability matrices, i.e. the matrices would be uniform across the whole square and wouldn't show strong clustering along the diagonal. 
+The present results are consistent with the idea that color ordering and the capacity to form color categories are innate - if the monkeys showed no capacity for color ordering, their pattern of errors would be entirely random and there would be no structure in the similarity matrices, i.e. the matrices would be uniform across the whole square and wouldn't show strong clustering along the diagonal. 
 But contrary to longstanding arguments in empirical philosophy \citep{RN18743}, the present results imply that perception by itself is not sufficient to generate consensus color categories. Prior work with congenitally blind people has shown that color perception is unnecessary for people to generate rich conceptual knowledge of color, including color categories \citep{kim_shared_2021}. The prior work and the present work taken together show that perception is neither necessary nor sufficient for the emergence of consensus color categories, and consensus color categories are therefore likely not innate. 
 
-Stimulus-space non-uniformities are unlikely to explain away all the evidence for color categories in humans, since the weight of that evidence is great. If color categories are not innate, where do they come from? Color categories appear to reflect the behavioral relevance of colors in the world \citep{RN18616,gibson_color_2017}; the relevance of things is partially culturally determined, introducing a role for language in shaping consensus color categories. Given that color categories can be learned, as clearly evident in at least one macaque in our study (Figure 5) and two macaques in another study \citep{panichello_error-correcting_2019}, the introduction of language provides a mechanism by which cultures can form consensus about color categories. For example, universal patterns in color naming predict which parts of scenes are labeled as objects \citep{gibson_color_2017}. We speculate that the choice biases in humans will partially reflect the stimulus-space non-uniformities observed in monkeys as well as cognitive biases that have achieved consensus through shared behavioral relevance communicated by language \citep{RN18511,RN18514,RN18602}. 
+If color categories are not innate, where do they come from? Color categories appear to reflect the behavioral relevance of colors in the world \citep{RN18616,gibson_color_2017}; the relevance of things is partially culturally determined, introducing a role for language in shaping consensus color categories. Given that color categories can be learned, as clearly evident in at least one macaque in our study (Figure 5) and two macaques in another study \citep{panichello_error-correcting_2019}, the introduction of language provides a mechanism by which cultures can form consensus about color categories. For example, universal patterns in color naming predict which parts of scenes are labeled as objects \citep{gibson_color_2017}. We speculate that the choice biases in humans will partially reflect the stimulus-space non-uniformities observed in monkeys as well as cognitive biases that have achieved consensus through shared behavioral relevance communicated by language \citep{RN18511,RN18514,RN18602}. 
 
 
 \printbibliography[title=Main Text References]
@@ -563,7 +568,7 @@ The TCC model has been deployed with the assumption that the colorspace is perce
 But, as \citet{schurgin_psychophysical_2020} demonstrate the similarity function need not be fixed (see their Figures 1d and Extended Data Figure 5). 
 Our implementation of the model, which we call TCC-v, permits the similarity function to vary for each cue (the "v" is for vary). 
 
-We created four versions of the TCC-v model: the "null model" (with only parameters for the Gaussian width of the similarity function and $d'$, and thus no allowance for bias), the "cognitive bias" model (with 64 parameters corresponding to offset values shifting the peak of the similarity function for each stimulus to higher or lower hue angles, in addition to $d'$ and gaussian width), and the "stimulus-space non-uniformity model" (with 64 parameters corresponding to the relative distance between each pair of neighboring stimuli, in addition to $d'$ and gaussian width). 
+We created four versions of the TCC-v model: the "null" model (with only parameters for the Gaussian width of the similarity function and $d'$, and thus no allowance for bias), the "cognitive bias" model (with 64 parameters corresponding to offset values shifting the peak of the similarity function for each stimulus to higher or lower hue angles, in addition to $d'$ and gaussian width), and the "stimulus-space non-uniformity model" (with 64 parameters corresponding to the relative distance between each pair of neighboring stimuli, in addition to $d'$ and gaussian width). 
 Finally, the "free-similarity" model, does not pre-suppose any specific similarity function; every cell in the similarity matrix is an independent parameter. 
 This flexibility allows for patterns of similarity that are not captured by our hypotheses. 
 
@@ -578,7 +583,7 @@ where $\text{choice}_x$ was the choice that was selected on each trial.
 
 The parameter estimates for the free parameters used by the model are iteratively updated until the model reaches a stable minimum NLL. 
 
-The "null model" is defined by $f(\theta)$ (where $\alpha$ = 1, $\zeta$ = 0, $\mu$ = 0, $\sigma$ is 1 free parameter) and $d'$ (free parameter), and assumes $D$ to be uniform. 
+The "null" model is defined by $f(\theta)$ (where $\alpha$ = 1, $\zeta$ = 0, $\mu$ = 0, $\sigma$ is 1 free parameter) and $d'$ (free parameter), and assumes $D$ to be uniform. 
 The "cognitive bias" model is defined by $f(\theta)$ ($\alpha$ = 1, $\zeta$ = 0, $\mu$ is 64 free parameters, $\sigma$ is 1 free parameter) and $d'$ (free parameter), and also assumes $D$ to be uniform. 
 The "stimulus-space non-uniformity" model is defined by $f(\theta)$ (where $\alpha$ = 1, $\zeta$ = 0, $\mu$ = 0) and $d'$ (free parameter), but specifies for each pair of neighboring stimuli a unique value for $D$ (64 free parameters). 
 Note that the cognitive bias model and the stimulus-space non-uniformity have the same total number of free parameters (66). 
