@@ -3,6 +3,8 @@
 *$*
 *DS_Store
 *._*
+*.psd
+*.xcf
 
 !Data/MixtureModels/**
 #!Analyses/TCCModels/**
