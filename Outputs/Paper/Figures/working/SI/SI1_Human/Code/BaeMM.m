@@ -15,7 +15,7 @@ loadedData = readtable([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Bae_
     'Range',"D1:F10801");
 
 % loadedData = readtable([repoHomeDir,'Data',filesep,'secondaryData',filesep,'Bae_2015',filesep,'raw_data',filesep,'UndelayedEstimation data.csv'],...
-%     'Range',"D1:F10801");
+%     'Range',"D1:F8641");
 
 cue_hueAngle = loadedData.TargetColor*2;
 
@@ -266,15 +266,31 @@ end
 stimCols = generateStimCols('nBig',180,'sat',model.stimCols(2));
 stimCols_sRGB = LabTosRGB([repelem(model.stimCols(1), 180); stimCols]);
 
-% for i = [1:15]
-%     figure, hold on
-%     xlim([-90,90])
-%     ylim([0,0.1])
-%     plot(model.gaussfits{closestToZero(1)+i},'r');
-%     plot(model.gaussfits{closestToZero(1)-i},'b');
-%     xline(0)
-%     title(i)
-% end
+figure, hold on
+xlim([-90,90])
+ylim([0,0.1])
+
+xline(0,'k:','LineWidth', 2, 'HandleVisibility','off')
+
+for i = [1,2,3]
+    p = plot(model.gaussfits{closestToZero(i)});
+    p.Color = stimCols_sRGB(closestToZero(i),:);
+    p.LineWidth = 2;
+    p.DisplayName = ['Gaussian for cue ',num2str(closestToZero(i))];
+    % if i == 1
+    %     p.LineStyle = '-';
+    % elseif i == 2
+    %     p.LineStyle = '-.';
+    % elseif i == 3
+    %     p.LineStyle = '--';
+    % end
+end
+
+yticks([0,0.1])
+ylabel('Choice Probability')
+xticks(-90:45:90)
+% xlabel() % TODO Is the x-axis interval or degree here?
+saveas(gcf,['..',filesep,'exGaus1.svg'])
 
 figure, hold on
 xlim([-90,90])
@@ -292,54 +308,15 @@ for i = [-8,8]
     end
 end
 
-% title(i)
-
 yticks([0,0.1])
 ylabel('Choice Probability')
 xticks(-90:45:90)
 % xlabel() % TODO Is the x-axis interval or degree here?
 
+legend({['Gaussian for cue ',num2str((closestToZero(1)-8))],...
+    ['Gaussian for cue ',num2str((closestToZero(1)+8))]})
 
-% legend({['Gaussian at ',num2str((closestToZero(1)-8)*2),' deg'],...
-%     ['Gaussian at ',num2str((closestToZero(1))*2),' deg'],...
-%     ['Gaussian at ',num2str((closestToZero(1)+8)*2),' deg']})
-
-legend({['Gaussian for cue ',num2str((closestToZero(1)-8)*2)],...
-    ['Gaussian for cue ',num2str((closestToZero(1)+8)*2)]})
-
-
-figure, hold on
-xlim([-90,90])
-ylim([0,0.1])
-p = plot(model.gaussfits{closestToZero(2)});
-p.Color = stimCols_sRGB(closestToZero(2),:);
-p.LineWidth = 2;
-
-xline(0,'k:','LineWidth', 2, 'HandleVisibility','off')
-
-avmodel = model.gaussfits{closestToZero(2)};
-
-for i = 1:180
-    a(i) = model.gaussfits{i}.a;
-    b(i) = model.gaussfits{i}.b;
-    c(i) = model.gaussfits{i}.c;
-    d(i) = model.gaussfits{i}.d;
-end
-avmodel.a = median(a);
-avmodel.b = median(b);
-avmodel.c = median(c);
-avmodel.d = median(d);
-
-p = plot(avmodel,'k--');
-p.LineWidth = 2;
-
-yticks([0,0.1])
-ylabel('Choice Probability')
-xticks(-90:45:90)
-% xlabel() % TODO Is the x-axis interval or degree here?
-
-legend({['Gaussian for cue ',num2str(closestToZero(2))],...
-    'Average gaussian'})
+saveas(gcf,['..',filesep,'exGaus2.svg'])
 
 
 %% TCC Models
@@ -426,6 +403,26 @@ save(['Bae_TCC_both_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
 
 %% Plot model outputs
 
+clear, clc, close all
+
+nTrials = 10800;
+
+load('Bae_TCC_dpgw_0240725-154248.mat')
 % plotSimilarityMatrix(x, filename, '../')
+nParam = 2;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('Bae_TCC_ssnu_0240725-144142.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 182;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('Bae_TCC_og_0240725-183015.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 182;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+
+
 
 

@@ -24,6 +24,11 @@ model = fitMixtureModel(cleandata,lengthOfSlidingWindow,includeCorrect);
 
 %%
 
+hueIndex = 0:360/64:360-(360/64);
+[~,closestToZero] = min(abs(hueIndex - model.interp_crossing)')
+
+%%
+
 whichFigures.MixMod_polar    = true;
 whichFigures.MixMod_linear   = true;
 whichFigures.GaussianWidth   = true;

@@ -179,7 +179,7 @@ choiceProb_diag = choiceProb_diag/max(choiceProb_diag(:));
 filename = 'CP_Panichello';
 
 % plotSimilarityMatrix(model.choice_probability) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
-plotSimilarityMatrix(choiceProb_diag,filename,'../',[],false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+plotSimilarityMatrix(choiceProb_diag*2,filename,'../',[],false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
 
 % TODO Relabel simaility as choice probability
 
@@ -189,7 +189,7 @@ plotSimilarityMatrix(choiceProb_diag,filename,'../',[],false) % using the same f
 hueIndex = 0:1:359;
 [~,closestToZero] = min(abs(hueIndex - model.interp_crossing)')
 
-plotSimilarityMatrix(choiceProb_diag*2,...
+plotSimilarityMatrix(choiceProb_diag*2,... % multiplying by 2 just to increase visibility
     [filename,'_',num2str(closestToZero)],'../',...
     closestToZero,false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
 

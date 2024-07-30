@@ -10,7 +10,7 @@ clc, clear, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromPreProcessedData';
+AnalysisDepth = 'fromModelOutput';
 
 %% Behind the scenes...
 
@@ -55,3 +55,10 @@ end
 %% Plot model outputs
 
 plotSimilarityMatrix(x, filename, '../')
+
+closestToZero = [7,30,38,61]; % from MTurkDataMM.m
+
+plotSimilarityMatrix(x,... 
+    [filename,'_',num2str(closestToZero)],'../',...
+    closestToZero,false) 
+
