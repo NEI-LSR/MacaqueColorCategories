@@ -46,31 +46,57 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
 % 
 %     filename = ['MTurk_TCC-FreeSimilarityMatrix_',datestr(now,'yymmdd-HHMMSS')];
 %     save([ModelDir,filename],'x')    
-    
-    %-% D-prime and gaussian width
-    
-    params = [0,1,0,0,1,0,0];
-    
-    
-    [x_dpgw,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn);
-    
-    filename = ['MTurk_TCC-dpgw_',datestr(now,'yymmdd-HHMMSS')];
-    save([ModelDir,filename],...
-        '-regexp', '^(?!(data)$).')
-    % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
-    
-    disp(x_dpgw(1))
-    disp(x_dpgw(2))
-    
-    %-% SSNU model
+%     
+%     %-% D-prime and gaussian width
+%     
+%     params = [0,1,0,0,1,0,0];
+%     
+%     
+%     [x_dpgw,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn);
+%     
+%     filename = ['MTurk_TCC-dpgw_',datestr(now,'yymmdd-HHMMSS')];
+%     save([ModelDir,filename],...
+%         '-regexp', '^(?!(data)$).')
+%     % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+%     
+%     disp(x_dpgw(1))
+%     disp(x_dpgw(2))
+%     
+%     %-% SSNU model
+%     
+%     params = [0,0,0,1,0,0,0];
+%     
+%     [x_ssnu,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+%         'dPrime',           x_dpgw(1),...
+%         'gaussianWidth',    x_dpgw(2));
+%     
+%     filename = ['MTurk_TCC-ssnu_',datestr(now,'yymmdd-HHMMSS')];
+%     save([ModelDir,filename],...
+%         '-regexp', '^(?!(data)$).')
+%     % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+%      
+%     %-% Offset gaussian model
+%     
+%     params = [0,0,0,0,0,0,1];
+%     
+%     [x_og,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+%         'dPrime',           x_dpgw(1),...
+%         'gaussianWidth',    x_dpgw(2));
+%     
+%     filename = ['MTurk_TCC-og_',datestr(now,'yymmdd-HHMMSS')];
+%     save([ModelDir,filename],...
+%         '-regexp', '^(?!(data)$).')
+%     % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+%     
+    %-% SSNU model (reduced)
     
     params = [0,0,0,1,0,0,0];
     
-    [x_ssnu,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+    [x_ssnu,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,16,16,...
         'dPrime',           x_dpgw(1),...
         'gaussianWidth',    x_dpgw(2));
     
-    filename = ['MTurk_TCC-ssnu_',datestr(now,'yymmdd-HHMMSS')];
+    filename = ['MTurk_TCC-ssnu16_',datestr(now,'yymmdd-HHMMSS')];
     save([ModelDir,filename],...
         '-regexp', '^(?!(data)$).')
     % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
@@ -83,11 +109,11 @@ if strcmp(AnalysisDepth,'fromPreProcessedData')
         'dPrime',           x_dpgw(1),...
         'gaussianWidth',    x_dpgw(2));
     
-    filename = ['MTurk_TCC-og_',datestr(now,'yymmdd-HHMMSS')];
+    filename = ['MTurk_TCC-og16_',datestr(now,'yymmdd-HHMMSS')];
     save([ModelDir,filename],...
         '-regexp', '^(?!(data)$).')
     % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
-    
+  
 end
 
 if strcmp(AnalysisDepth,'fromModelOutput')
@@ -123,5 +149,29 @@ load('MTurk_TCC-og_240730-172857.mat')
 % plotSimilarityMatrix(x, filename, '../')
 nParam = 182;
 [aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('MTurk_TCC-ssnu16_240731-231604.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 182;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('MTurk_TCC-og16_240731-231639.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 182;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+%%
+
+% figure, 
+% plot(0:360/64:360-(360/64),x_og)
+% hold on
+% yline(0)
+% 
+% hold on
+% 
+% load('Bae_TCC_og_0240725-183015.mat')
+% 
+% plot(0:2:358,x_og)
+% 
 
 
