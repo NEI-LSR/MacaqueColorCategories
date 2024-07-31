@@ -203,6 +203,8 @@ Four animals performed the task, completing a total of 209456 trials over 232 se
 
 Following the logic of \citet{bae_why_2015} - if a subject has a color category, the category center will be an attractor in the color space. 
 
+We have adopted this assumption to link the presence of underlying categories to bias in matching. 
+
 An attractor would be captured by a zero-crossing of negative slope in a plot of choice bias (Figure 1c). 
 Repellors, meanwhile, would be captured by zero-crossings of positive slope. 
 The approach is data-driven, so it will recover whatever categories exist; nonetheless, before collecting the data we considered three possibilities. 
@@ -211,11 +213,11 @@ Second, that the monkeys would show four color categories, predicted by attracto
 Third, that the monkeys would show four color categories, but predicted by data in human infants corresponding to repellor points defined by physiological cone-opponent mechanisms not basic color terms \citep{skelton_biological_2017} (Figure 1d, bottom).
 
 For reference, Figure 1e shows the results of a prior study in human adults \citep{bae_why_2015}, where the results are compatible with the second and third possibilities outlined above. 
-Note that the authors of the original study show that the data is best explained by a model with four attractors, even though there are only three zero-crossings (the study was replicated by others, confirming that the best fit is with a four-attractor model \citep{panichello_error-correcting_2019}). 
+Note that the authors of the original study show that the data is best explained by a model with four attractors, even though there are only three zero-crossings (this result has been replicated by others \citep{panichello_error-correcting_2019}). 
 
 The four recovered color categories do not perfectly line up with the four common basic terms; instead they correspond to pink, orange, green, blue.
 The discrepancy may arise because of limitations imposed by ensuring equal saturation and luminance among the colors (the resulting set of stimuli has neither a good red nor a good yellow) (see \citep{bae_why_2015}). 
-The four categories could also be seen as corresponding to the physiological cone-opponent mechanisms - each pole (denoted by labeled arrowheads) seems to roughly correspond to a repellor point (positive zero-crossing), with the exception of the L-M pole.
+The four categories may also corresponding to the physiological cone-opponent mechanisms - each pole (denoted by labeled arrowheads) seems to roughly correspond to a repellor point (positive zero-crossing), with the exception of the L-M pole.
 The recovery of four categories, at roughly matching locations, has been replicated in English speakers \citep{panichello_error-correcting_2019} across multiple versions of the task, including by us in new data collected using the discrete-matching version used presently (SI Figure 2). 
 
 \begin{figure}
@@ -812,10 +814,15 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth,trim={0 7cm 0 0},clip]{Outputs/Paper/Figures/flat/SI_Human_2.png}
+    \includegraphics[width=\textwidth,trim={0 4cm 0 0},clip]{Outputs/Paper/Figures/flat/SI_Human_2.png}
     \caption{\textbf{Color categories assessed in human participants with a nonverbal paradigm. }
-    Prior work by \citet{bae_why_2015} and \citet{panichello_error-correcting_2019} has used a task in which participants match the color of a cue to a continuous ring of colors; those published results were obtained with a combination of in-person experiments and on-line experiment, with a memory delay and without. The results are broadly consistent, recovering four color categories by mixture-model analysis, corresponding to blue, green, orange and pink. 
-    Note that the data from \citep{bae_why_2015} shown in the figure were from just three participants, engaged in a task that had a memory delay; those authors confirmed the results in more subjects with a version of the task that omitted the memory delay period (the cue and the match-option color wheel were presented simultaneously). The present work adapted the paradigm so that the match options in each trial were four discrete targets randomly drawn from 64 colors sampling the color space. The data shown in this figure were obtained in human participants, with experiments conducted online with Amazon Mechanical Turk. These results are again broadly consistent with the prior work using the continuous-matching ring in recovering, by mixture analysis, four significant categories corresponding to blue, green, orange, and pink. We note that the discrete-matching task recovers a trend for a fifth category that would correspond to "purple"; close inspection of the results in \citep{bae_why_2015, panichello_error-correcting_2019} and in studies of human infants \citep{skelton_biological_2017} also show evidence of this trend. The stimuli in the \citep{bae_why_2015, panichello_error-correcting_2019} were defined in CIELAB, while the stimuli in the present work were defined in CIELUV; this difference in color space is associated with a slight clockwise rotation of the cone-opponent axes. The S axis poles provide a useful landmark; they are associated with positive slopes in all three data sets.
+    Prior work by \citet{bae_why_2015} and \citet{panichello_error-correcting_2019} has used a task in which participants match the color of a cue to a continuous ring of colors; those published results were obtained with a combination of in-person experiments and on-line experiment, with a memory delay and without. 
+    The results are broadly consistent, recovering four color categories by mixture-model analysis, corresponding to blue, green, orange and pink. 
+    Note that the data from \citep{bae_why_2015} were from just three participants, engaged in a task that had a memory delay; those authors confirmed the results in more subjects with a version of the task that omitted the memory delay period (the cue and the match-option color wheel were presented simultaneously). 
+    The present work adapted the paradigm so that the match options in each trial were four discrete targets randomly drawn from 64 colors sampling the color space. 
+    The data shown in this figure were obtained in human participants, with experiments conducted online with Amazon Mechanical Turk. 
+    These results are again broadly consistent with the prior work using the continuous-matching ring in recovering, by mixture analysis, four significant categories corresponding to blue, green, orange, and pink. 
+    The stimuli in the \citep{bae_why_2015, panichello_error-correcting_2019} were defined in CIELAB, while the stimuli in the present work were defined in CIELUV; this difference in color space is associated with a slight clockwise rotation of the cone-opponent axes. The S axis poles provide a useful landmark; they are associated with positive slopes in all three data sets.
     } 
     \label{fig:Human}
     \end{fullwidth}
