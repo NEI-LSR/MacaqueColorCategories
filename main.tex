@@ -309,8 +309,8 @@ The results of these computational simulations show that different underlying me
 
 In an additional version of the TCC-v model ("free-similarity") we treat every cell in the similarity matrix as an independent model parameter (Figure 4a, 4b; the data for both panels are the same, centered on one or the other of the putative category centers recovered in the mixture model; free similarity matrices for the individual animals are shown in SI Figure 6). 
 The free-similarity matrix makes no assumptions about the underlying functions that determine the similarity between any pair of stimuli (in contrast to the prior models which assume a Gaussian with specific manipulations). 
-Such a model is hugely flexible, which would allow for non-hypothesized mechanisms to be surfaced (for example: a "favorite color" bias would appear as a vertical line).
-It also gives us a very intuitive and visual way to ask: is the average free similarity matrix better explained by the stimulus space non-uniformity model or the cognitive bias model? 
+Such a model is very flexible, allowing non-hypothesized mechanisms to surface (for example: a "favorite color" bias would appear as a vertical line).
+We can ask: is the average free similarity matrix better explained by the stimulus space non-uniformity model or the cognitive bias model? 
 In other words, do the panels in Figure 4a and 4b show mirror symmetry with bulges about the diagonal (like Figure 3f) or asymmetry about the diagonal without bulges (like Figure 3e)? 
 
 \begin{figure}
@@ -357,7 +357,7 @@ The free similarity matrix for the data from this animal shows an asymmetry abou
 The result in this animal, and trends that the other animals also have idiosyncratic cognitive biases, show that macaque monkeys have the potential to form cognitive color biases, and that the TCC-v model can recover them. 
 This is important not simply because it confirms that the ability to form cognitive categories does not require language, as suggested previously \citep{panichello_error-correcting_2019}, but also because it shows that if macaques had consensus color categories, we would have been able to observe them.
 AIC/BIC for null, cognitive bias, and stimulus-space non-uniformity models, fit to just this animal's data, are: [97181,96352,95242]/[97200,96962,95853] respectively.
-Ideally we would fit a model which allows for the presence of multiple mechanisms simultaneously - while this is already possible in our computational model, there are currently unresolved challenges involved in fitting such a model to real data due to the increased dimensionality. 
+
 
 \begin{figure}
     \begin{fullwidth}
@@ -376,18 +376,13 @@ Ideally we would fit a model which allows for the presence of multiple mechanism
 \paragraph{Revisiting the human data}
 
 The analysis of the average data collected in monkeys shows no evidence for cognitive biases and strong evidence for stimulus-space non-uniformities, which suggest there are no consensus color categories in monkeys, in contrast with humans. 
-But this conclusion depends on (1) the capacity of the task and analysis to recover cognitive biases; and (2) the existence of consensus cognitive color categories in humans, recoverable with the task/analysis. 
-Regarding (1), the data in one individual monkey shows clear evidence for an idiosyncratic cognitive bias (Figure 5). 
-Regarding (2), we re-analyzed the data collected by \citet{bae_why_2015} in human subjects using a TCC-v model to investigate the mechanisms underlying the response biases they recovered. 
-The average across human participants shows strong evidence for cognitive cognitive biases (Figure 6b,c-upper). 
-It also shows evidence for biases being driven by stimulus-space non-uniformities (Figure 6b,c-lower).
+But this conclusion depends on (1) the capacity of the task and analysis to recover cognitive biases; and (2) the existence of consensus cognitive color categories in humans. 
+Regarding (1), the data in one individual monkey shows clear evidence for an idiosyncratic (private) cognitive bias (Figure 5). 
+Regarding (2), we used the TCC-v model to re-analyze data collected in human subjects (Figure 6, SI Figure 2). 
+The analysis recovers evidence for both stimulus space non-uniformities and cognitive biases: the choice probability matrix (Figure 6b) shows deviations from the diagonal, like Figure 3e, as well as dilations along the diagonal, like Figure 3f. For example, the blue attractor and the pink attractor are associated with relatively wide distributions of matches (Figure 6c, upper), indicative of stimulus-space non-uniformities, while the orange attractor is associated with an asymmetric distribution of matches (Figure 6c, bottom), indicative of a cognitive bias.  
 
-Attractor points, recovered using a mixture modeling analysis, are highlighted in choice probability matrix in Figure 6b (Our use of choice probability matrices rather than similarity matrices for this analysis is the result of a computational limitation, see Methods).
-Visual inspection of this choice probability matrix reveals the presence of both the structure associated with stimulus-space non-uniformity and the structure associated with cognitive bias - the blue attractor seems to be predominantly driven by the former whereas the orange attractor seems to be driven predominantly by the latter.
-For the blue attractor we see a general dilation of responses away from the diagonal (resulting in a similarity function fit by a wider Gaussian, see upper panel of Figure 6c), whereas for the orange attractor we see a fairly narrow Gaussian (upper panel, Figure 6c) but with nearby hues having offset responses (lower panel, Figure 6c) to the left of the orange attractor the responses appear to drop below the unity diagonal and to the right they appear to rise above (highlighted in the lower panel of Figure 6c).
-For quantitative assessment, we can fit generative models to this data. 
-For a "null" model, a "cognitive" bias model, and a "stimulus-space non-uniformity" model we find AIC values of [76563,74864,75585] respectively, which suggests that both mechanistic models explain the data better than a null model to the extent that the increased parameter dimensionality is worthwhile, and that of the two mechanistic models the cognitive bias model performs better than a stimulus space non-uniformity model for this dataset.
-BIC values ([76577,76191,76912]) suggest that when the number of trials is factored in, the stimulus-space non-uniformity model is not sufficiently superior to the null model to justify the increased parameter dimensionality in this case.
+For quantitative assessment, we fit generative models to these data. 
+For a "null" model, a "cognitive bias" model, and a "stimulus-space non-uniformity" model we find AIC values of [76563,74864,75585]. These results imply that the cognitive and stimulus-space non-uniformity models both explain the data better than the null model, and of the two non-null models, the cognitive model has greater explanatory power. The relative advantage of the cognitive-bias model is also evident from the BIC values ([76577,76191,76912]), and only the cognitive-bias model performs better than the null model. The stimulus-space non-uniformity model appears to do no better than the null model because BLAH BLAH BLAH. 
 
 \paragraph{The potential impact of task differences}
 
