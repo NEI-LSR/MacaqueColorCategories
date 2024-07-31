@@ -201,10 +201,7 @@ The precision of the eye tracker (\textasciitilde0.3\degree{} of visual angle) w
 One consequence of the adapted paradigm is that it requires a much larger number of trials to satisfactorily assess the similarity relationships of each color to every other color. 
 Four animals performed the task, completing a total of 209456 trials over 232 sessions (SI Figure 1).
 
-Following the logic of \citet{bae_why_2015} - if a subject has a color category, the category center will be an attractor in the color space. 
-
-We have adopted this assumption to link the presence of underlying categories to bias in matching. 
-
+Following the logic of \citet{bae_why_2015} - if a subject has a color category, the category center will be an attractor in the color space. We have adopted this assumption to link the presence of underlying categories to bias in matching. 
 An attractor would be captured by a zero-crossing of negative slope in a plot of choice bias (Figure 1c). 
 Repellors, meanwhile, would be captured by zero-crossings of positive slope. 
 The approach is data-driven, so it will recover whatever categories exist; nonetheless, before collecting the data we considered three possibilities. 
@@ -217,7 +214,7 @@ Note that the authors of the original study show that the data is best explained
 
 The four recovered color categories do not perfectly line up with the four common basic terms; instead they correspond to pink, orange, green, blue.
 The discrepancy may arise because of limitations imposed by ensuring equal saturation and luminance among the colors (the resulting set of stimuli has neither a good red nor a good yellow) (see \citep{bae_why_2015}). 
-Alternatively, the  recovered categories may correspond to a repellor points (positive zero-crossing) defined by the poles of the cone-opponent mechanisms (arrowheads, Figure 1e), with the exception of the L-M pole.
+Alternatively, the  recovered categories may correspond to repellor points (positive zero-crossing) defined by the poles of the cone-opponent mechanisms (arrowheads, Figure 1e), with the exception of the L-M pole.
 
 The recovery of four categories has been replicated in English speakers \citep{panichello_error-correcting_2019} including by us (SI Figure 2). The four categories are at roughly matching locations across studies across (SI Figure 2). 
 
@@ -429,7 +426,7 @@ These results provide clues to the origin of the stimulus space non-uniformity i
 
 Monkeys performing a color-matching task showed consistent biases in errors across individuals, like humans, but unlike humans the biases were explained simply by non-uniformities in the color space. 
 Biases in humans also required a cognitive explanation. The results imply that humans show consensus color categories and monkeys do not. 
-We note that the present work depends on the assumption that categories give rise to the biases \citet{bae_stimulus-specific_2014}. 
+We note that the present work depends on the assumption that categories give rise to the biases \citep{bae_stimulus-specific_2014}. 
 In addition, while we model the biases as attractors, they could arise from repellors, or a combination. 
 
 The present results are consistent with the idea that color ordering is innate even if consensus color categories are not. 
@@ -441,7 +438,7 @@ Color categories reflect the behavioral relevance of colors in the world \citep{
 
 But are there possible non-linguistic explanations for the difference in results obtained in monkeys compared to humans? 
 Monkey brains are considerably different from human brains in many respects, and there may be unrecognized physiological differences that account for the behavioral differences. 
-Yet monkeys have similar cones, similar color-detection thresholds (\citep{gagin_color-detection_2014,hass_chromatic_2015}), similar visual cortex extending through the ventral visual pathway \cite{lafer-sousa_color-biased_2016,haile_visual_2019}) and are thought to show similar visual cognition to humans, all of which suggests that alternative explanations cannot be found in the normal operation of the visual system. This leaves differences in language and cognition. 
+Yet monkeys have similar cones, similar color-detection thresholds \citep{gagin_color-detection_2014,hass_chromatic_2015}, similar visual cortex extending through the ventral visual pathway \cite{lafer-sousa_color-biased_2016,haile_visual_2019} and are thought to show similar visual cognition to humans, all of which suggests that alternative explanations cannot be found in the normal operation of the visual system. This leaves differences in language and cognition. 
 
 We also consider whether macaques are born with innate color categories, but lose them. This seems unlikely. The animals studied presently live in social colonies with enrichment, including natural fruits and colored toys. Such an environment is not one of deprivation and provides sufficient experience for the expression of all other innate behaviors that have been assessed, including vocalizations, foraging, face recognition, grooming, and sexual function. 
 
@@ -526,9 +523,7 @@ To request a trial, participants used a mouse to adjust the location of a cursor
 The cue was displayed for 750 ms. 
 After the cue was extinguished, a fixation cross was shown but the cursor remained hidden to de-incentivize mouse movement (1500 ms). 
 Four choices were then shown, and the cursor reappeared; participants made their selection by using the mouse to move the cursor to their choice and clicking the mouse. 
-Most other aspects of the experimental design were the same as the experiment deployed with the monkeys: 64 colors of equal saturation and luminance (we assumed the monitor that each on-line participant was using matched the sRGB standard), evenly sampling CIELUV. 
-
-We did not provide feedback to human participants (in line with prior human work \citep{bae_why_2015,panichello_error-correcting_2019}). 
+Most other aspects of the experimental design were the same as the experiment deployed with the monkeys: 64 colors of equal saturation and luminance (we assumed the monitor that each on-line participant was using matched the sRGB standard), evenly sampling CIELUV. We did not provide feedback to human participants (in line with prior human work \citep{bae_why_2015,panichello_error-correcting_2019}). 
 
 We collected data from 72 participants in blocks of 400 trials; 400 - 2000 trials from each (mean: 639 trials).
 
@@ -666,8 +661,8 @@ This simplification also made it easier to modify the model; for example, to all
 
 \paragraph{Choice Probability Matrices vs. Similarity Matrices}
 
-A choice probability matrix is a graphical representation of the probability that choice $y$ will be chosen given cue $x$.
-To construct such a matrix, one counts the choices which were made in response to each cue, producing what we can refer to as a choice count matrix, and then divides each cell by the number of times that each cue/choice combination was presented. 
+A choice probability matrix is a graphical representation of the probability that choice $y$ will be chosen given cue $x$ (Si Figure 9, middle).
+To construct such a matrix, one counts the choices which were made in response to each cue, producing what we can refer to as a choice count matrix (SI Figure 9, left), and then divides each cell by the number of times that each cue/choice combination was presented. 
 This normalizes for the possibility that some cue/choice combinations were presented more than other combinations. 
 This process disregards any information about what the unchosen distractors were on a given trial.
 
