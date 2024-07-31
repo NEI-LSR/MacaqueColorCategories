@@ -388,10 +388,15 @@ BIC values ([76577,76191,76912]) suggest that when the number of trials is facto
 \paragraph{The potential impact of task differences}
 
 Modifications made to the task to make it suitable for use with monkeys may affect our results.
-For example, it is possible that a continuous response space is more likely to prompt behavior which points to a cognitive bias mechanism, and an alternative-forced-choice task to prompt behavior which points to a stimulus-space non-uniformity mechanism.
+
+It is possible that a continuous response space is more likely to prompt behavior which points to a cognitive bias mechanism, and an alternative-forced-choice task to prompt behavior which points to a stimulus-space non-uniformity mechanism.
 To fully understand the interaction between task and mechanism, further data will need to be collected in humans on a task precisely matched to the one deployed here in monkeys, however, our prediction is that this data will further support the conclusions we reach here.
 Our confidence is based on the fact that this task does appear to recover cognitive biases where they are present - there are clear asymmetries in the similarity matrix of individual animals (Figure 5x).
-We present new data for humans on a similar task (though differences:...) and provisionally find support for both stimulus-space non-uniformity and cognitive bias mechanisms.
+We also present new data for humans on a similar task (specifically, a version of the task where the response mode is alternative-forced-choice rather than continuous reproduction) and provisionally find support for both stimulus-space non-uniformity and cognitive bias mechanisms (Figure SI X).
+
+It is also possible that the provision or lack of feedback might modify the type, or extent, of biases recovered from the data - we provided feedback in our monkey experiment whereas experiments conducted with human participants (\citep{bae_why_2015,panichello_error-correcting_2019} and our own) generally do not.
+Our prediction regarding the effect of this would be that a) feedback might train a participant out of making errors and b) feedback might increase motivation on the task, both of which would lead to reduced biases and an improved performance.
+Our monkeys still exhibited strong response biases (Figure 2b,c), and made many errors (Figure 2a).
 
 \begin{figure}
     \begin{fullwidth}
@@ -407,11 +412,35 @@ We present new data for humans on a similar task (though differences:...) and pr
 
 \paragraph{A perceptually uniform color space unconfounded by language}
 
-Ample behavioral and neurophysiological data support the hypothesis that the perceptual systems that enable color vision are similar in macaques and humans \citep{schnapf_spectral_1987,gagin_color-detection_2014,horwitz_what_2015,lafer-sousa_color-biased_2016}. The weight of this prior evidence strongly suggests that the present results obtained in monkeys also apply to humans. That is, it seems likely that the CIELUV color space is not perceptually uniform for human observers either, as speculated by others \citep{stockman_colorimetry_2010,judd_ideal_1970}. The behavioral data in macaques provide an opportunity to reconstruct a truly perceptually uniform color space unconfounded by language, which could be the most accurate estimate to date of the true perceptually uniform underlying color space in humans. To generate such a space, we computed, empirically, a transformed color space such that the macaques would, on average, show no choice bias. We refer to this space as the Macaque Uniform Color Space (MUCS). When colors evenly sampled from the CIELUV space (Figure 6a) are plotted within this macaque-derived uniform color space, colors are bunched around the teal part of the space, and to a lesser extent, around the peach-colored part of the space (Figure 6b). We can also take colors sampled at uniform intervals in MUCS and project them into CIELUV (Figure 6c). This arrangement shows relative bunching around lime colors and lavender colors, which correspond to the colors of the poles of the S-cone-opponent axes. These results provide clues to the origin of the stimulus space non-uniformity in CIELUV.
+Ample behavioral and neurophysiological data support the hypothesis that the perceptual systems that enable color vision are similar in macaques and humans \citep{schnapf_spectral_1987,gagin_color-detection_2014,horwitz_what_2015,lafer-sousa_color-biased_2016}. 
+The weight of this prior evidence gives us confidence that the present results obtained in monkeys also apply to humans. 
+That is, it seems likely that the CIELUV color space is not perceptually uniform for human observers either, as speculated by others \citep{stockman_colorimetry_2010,judd_ideal_1970}. 
+The behavioral data in macaques provide an opportunity to reconstruct a truly perceptually uniform color space unconfounded by language, which could be the most accurate estimate to date of the true perceptually uniform underlying color space in humans. 
+
+To generate such a space, we computed, empirically, a transformed color space such that the macaques would, on average, show no choice bias. 
+We refer to this space as the Macaque Uniform Color Space (MUCS). 
+When colors evenly sampled from the CIELUV space (Figure 6a) are plotted within this macaque-derived uniform color space, colors are bunched around the teal part of the space, and to a lesser extent, around the peach-colored part of the space (Figure 6b). We can also take colors sampled at uniform intervals in MUCS and project them into CIELUV (Figure 6c). 
+This arrangement shows relative bunching around lime colors and lavender colors, which correspond to the colors of the poles of the S-cone-opponent axes. 
+These results provide clues to the origin of the stimulus space non-uniformity in CIELUV.
+
+At present our "colorspace" has only minimal coverage - it only considers colors which are isoluminant and in a ring which was originally specified in CIELUV.
+Using it beyond a very specific range of applications would require extrapolation, either through cautious mathematical extrapolation or through the collection of new data determined by the need at hand.
 
 \paragraph{Discussion}
 
-The mixture-model results in macaque monkeys are strikingly different from those in humans, but are similar in one regard: they both show repeller points aligned with the poles of the S-cone axis (compare the zero-crossings of the positive slopes in Figure 1e with those in Figure 2c; SI Figure 2) \citep{skelton_biological_2017,bae_why_2015,panichello_error-correcting_2019}. This commonality supports the idea that the present results apply to the human case, and suggests that the non-uniformity in CIELUV arises because the contribution of S-cone signals to supra-threshold color matching (in monkeys or humans) has not been accurately estimated. Such an inaccuracy may reflect differences between threshold measurements (such as those used to construct CIELUV) versus appearance measurements (such as those made presently), along with differences in the neural circuits that handle S versus L/M signals \citep{RN655, conway_color_2014}. 
+Throughout this paper, our linking of cognitive biases to color categories has relied heavily upon the conclusion of \citet{bae_stimulus-specific_2014} that categorical processing of color results in biases towards color category centers.
+While this seems like a reasonable hypothesis, supported by the evidence so far, it seems likely that as future research is conducted additional nuance will be added to this picture, which may in turn refine our understanding of the experiments reported here.
+For example, it is currently unclear to what extent biases are driven by attractor points versus repellor points - to our knowledge there has so far been no study which has been able to separate these two potential mechanisms.
+Further, almost all work we are aware of (with the exception of 
+
+The mixture-model results in macaque monkeys are strikingly different from those in humans, but are similar in one regard: they both show repeller points aligned with the poles of the S-cone axis (compare the zero-crossings of the positive slopes in Figure 1e with those in Figure 2c; SI Figure 2) \citep{skelton_biological_2017,bae_why_2015,panichello_error-correcting_2019}. 
+This commonality supports the idea that the present results apply to the human case, and suggests that the non-uniformity in CIELUV arises because the contribution of S-cone signals to supra-threshold color matching (in monkeys or humans) has not been accurately estimated. 
+Such an inaccuracy may reflect differences between threshold measurements (such as were used in the measurement of the CIE standard observers, the data from which was subsequently used to develop colorspaces such as CIELUV) versus appearance measurements (such as those made presently), along with differences in the neural circuits that handle S versus L/M signals \citep{RN655, conway_color_2014}. 
+
+We have thus far worked on the assumption that cognitive biases (represented by offsets in responses) and stimulus-space non-uniformities are fundamentally different mechanisms - one active and purposeful, and the other an unintended side-effect of how we define colorspace.
+Taken this way our study shows that there are differences between monkeys and humans in high-level processes: humans show consensus color categories and monkeys do not. 
+But it is also plausible that the relationship between these two mechanisms is less clear-cut; could it be that stimulus-space non-uniformities (perhaps task-dependent ones) are also an active mechanism by which beneficial biases might be introduced?
+Further work will be required to understand how these mechanisms might interact, and to what extent each exists with purpose.
 
 The present results are consistent with the idea that color ordering and the capacity to form color categories are innate - if the monkeys showed no capacity for color ordering, their pattern of errors would be entirely random and there would be no structure in the similarity matrices, i.e. the matrices would be uniform across the whole square and wouldn't show strong clustering along the diagonal. 
 But contrary to longstanding arguments in empirical philosophy \citep{RN18743}, the present results imply that perception by itself is not sufficient to generate consensus color categories. 
@@ -423,6 +452,12 @@ Color categories appear to reflect the behavioral relevance of colors in the wor
 For example, universal patterns in color naming predict which parts of scenes are labeled as objects \citep{gibson_color_2017}. 
 We speculate that the choice biases in humans will partially reflect the stimulus-space non-uniformities observed in monkeys as well as cognitive biases that have achieved consensus through shared behavioral relevance communicated by language \citep{RN18511,RN18514,RN18602}. 
 
+%\paragraph{Limitations}
+
+%- non-linguistic explanations
+%- environmental factors
+%- 
+
 
 \printbibliography[title=Main Text References]
 \end{refsection}
@@ -432,6 +467,8 @@ We speculate that the choice biases in humans will partially reflect the stimulu
 
 \begin{refsection}
 \newpage
+
+\section{Methods}
 
 \subsection{Subjects}
 
@@ -494,9 +531,13 @@ To request a trial, participants used a mouse to adjust the location of a cursor
 The cue was displayed for 750 ms. 
 After the cue was extinguished, a fixation cross was shown but the cursor remained hidden to de-incentivize mouse movement (1500 ms). 
 Four choices were then shown, and the cursor reappeared; participants made their selection by using the mouse to move the cursor to their choice and clicking the mouse. 
-All other aspects of the experimental design were the same as the experiment deployed with the monkeys: 64 colors of equal saturation and luminance (we assumed the monitor that each on-line participant was using matched the sRGB standard), evenly sampling CIELUV. 
-The pattern of results was consistent with the published studies using the continuous ring of colors, recovering four significant color categories corresponding to blue, green, orange, and pink (SI Figure 1). %!!!!!!
-% TODO Add more details
+Most other aspects of the experimental design were the same as the experiment deployed with the monkeys: 64 colors of equal saturation and luminance (we assumed the monitor that each on-line participant was using matched the sRGB standard), evenly sampling CIELUV. 
+
+We did not provide feedback to human participants (in line with prior human work \citep{bae_why_2015,panichello_error-correcting_2019}). 
+
+We collected data from 72 participants in blocks of 400 trials; 400 - 2000 trials from each (mean: 639 trials).
+
+The pattern of results was consistent with the published studies using the continuous ring of colors, recovering four significant color categories corresponding to blue, green, orange, and pink (SI Figure 1). 
 
 \subsection{Data Analysis}
 
@@ -771,13 +812,15 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SIBae_indi.png}
-    \caption{\textbf{Models fit to the individual data of \citep{bae_why_2015} (delayed).}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI_Bae_indi.png}
+    \caption{\textbf{Models fit to the individual data of \citet{bae_why_2015} (delayed).}
     The delayed data of \citep{bae_why_2015} consists of data from 3 participants, who completed 3600 trials each, providing sufficient data for a meaningful individual-level analysis.
     We present individual-level mixture models and choice probability matrices.
     The third observer (right) appears to have somewhat diminished cognitive biases compared to the other observers.
+    Prior work (such as \citep{bae_why_2015}) has focused on the analysis of aggregated data, partly because this suits the hypotheses they (and we) have sought to test, but also due to technical limitations - using current methods a large amount of data is required, and collecting smaller amounts of data from individuals and then combining it is often a more palatable solution than collecting vast amounts of data from individuals.
+    Future work which considers individual differences will be valuable, in part because it is an open question how consensus terms are created within a culture. For example, cognitive biases might only emerge at the group level as a combination of the biases of many individuals, in the same way that a rich representation of color categories is evident in a distributed fashion across human populations that appear to have relatively low informative color-naming systems \citep{lindsey_hunter-gatherer_2015,gibson_color_2017}.
     } 
-    \label{fig:MMBreakOut}
+    \label{fig:Bae_indi}
     \end{fullwidth}
 \end{figure}
 
