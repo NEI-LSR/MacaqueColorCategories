@@ -378,24 +378,15 @@ AIC/BIC for null, cognitive bias, and stimulus-space non-uniformity models, fit 
 The analysis of the average data collected in monkeys shows no evidence for cognitive biases and strong evidence for stimulus-space non-uniformities, which suggest there are no consensus color categories in monkeys, in contrast with humans. 
 But this conclusion depends on (1) the capacity of the task and analysis to recover cognitive biases; and (2) the existence of consensus cognitive color categories in humans. 
 Regarding (1), the data in one individual monkey shows clear evidence for an idiosyncratic (private) cognitive bias (Figure 5). 
-Regarding (2), we used the TCC-v model to re-analyze data collected in human subjects (Figure 6, SI Figure 2). 
-The analysis recovers evidence for both stimulus space non-uniformities and cognitive biases: the choice probability matrix (Figure 6b) shows deviations from the diagonal, like Figure 3e, as well as dilations along the diagonal, like Figure 3f. For example, the blue attractor and the pink attractor are associated with relatively wide distributions of matches (Figure 6c, upper), indicative of stimulus-space non-uniformities, while the orange attractor is associated with an asymmetric distribution of matches (Figure 6c, bottom), indicative of a cognitive bias.  
+Regarding (2), we used the TCC-v model to re-analyze three datasets collected in human subjects by three independent groups (Figure 6, SI Figure 2). 
+The analysis recovers evidence for both stimulus space non-uniformities and cognitive biases: the choice probability matrix (Figure 6b) shows deviations from the diagonal, like Figure 3e, as well as dilations along the diagonal, like Figure 3f. For example, the blue attractor and the pink attractor are associated with relatively wide distributions of matches (Figure 6c, upper), indicative of stimulus-space non-uniformities, while the orange attractor is associated with a relatively narrow and asymmetric distribution of matches (Figure 6c, bottom), indicative of a cognitive bias.  
 
 For quantitative assessment, we fit generative models to these data. 
-For a "null" model, a "cognitive bias" model, and a "stimulus-space non-uniformity" model we find AIC values of [76563,74864,75585]. These results imply that the cognitive and stimulus-space non-uniformity models both explain the data better than the null model, and of the two non-null models, the cognitive model has greater explanatory power. The relative advantage of the cognitive-bias model is also evident from the BIC values ([76577,76191,76912]), and only the cognitive-bias model performs better than the null model. The stimulus-space non-uniformity model appears to do no better than the null model because BLAH BLAH BLAH. 
+For a "null" model, a "cognitive bias" model, and a "stimulus-space non-uniformity" model we find AIC values of [76563,74864,75585]. These results imply that the cognitive and stimulus-space non-uniformity models both explain the data better than the null model; of the two non-null models, the cognitive model has greater explanatory power. The relative advantage of the cognitive-bias model is also evident from the BIC values ([76577,76191,76912]).
 
 \paragraph{The potential impact of task differences}
 
-Modifications made to the task to make it suitable for use with monkeys may affect our results.
-
-It is possible that a continuous response space is more likely to prompt behavior which points to a cognitive bias mechanism, and an alternative-forced-choice task to prompt behavior which points to a stimulus-space non-uniformity mechanism.
-To fully understand the interaction between task and mechanism, further data will need to be collected in humans on a task precisely matched to the one deployed here in monkeys, however, our prediction is that this data will further support the conclusions we reach here.
-Our confidence is based on the fact that this task does appear to recover cognitive biases where they are present - there are clear asymmetries in the similarity matrix of individual animals (Figure 5b).
-We also present new data for humans on a similar task (specifically, a version of the task where the response mode is alternative-forced-choice rather than continuous reproduction) and provisionally find support for both stimulus-space non-uniformity and cognitive bias mechanisms (Figure SI 2).
-
-It is also possible that the provision or lack of feedback might modify the type, or extent, of biases recovered from the data - we provided feedback in our monkey experiment whereas experiments conducted with human participants (\citep{bae_why_2015,panichello_error-correcting_2019} and our own) generally do not.
-Our prediction regarding the effect of this would be that a) feedback might train a participant out of making errors and b) feedback might increase motivation on the task, both of which would lead to reduced biases and an improved performance.
-Our monkeys still exhibited strong response biases (Figure 2b,c), and made many errors (Figure 2a).
+The continuous-matching task needed to be  modified to make it suitable for use in monkeys. Could these modifications impact the interpretation of the results? The two modifications are: changing the match options from a continous colored ring to four discrete choices (alternative forced choice, AFC) on each trial; and providing the animals with feedback after each trial. We do not believe either difference in task design has an impact on the main conclusions. First, we collected data in human subjects on the AFC, and despite the limitations of these data, the pattern of results is comparable (SI Figure 2; the data are limited because they were collected using an on-line platform). Second, we see no evidence that providing feedback reduces errors in matches, which is the concern raised by the second modification. On the contrary, the data collected in monkeys show pronounced biases. Additional data will need to be collected in humans on a task precisely matched to the one deployed here in monkeys to fully address possible interactions between task and mechanism. 
 
 \begin{figure}
     \begin{fullwidth}
@@ -409,62 +400,47 @@ Our monkeys still exhibited strong response biases (Figure 2b,c), and made many 
     \end{fullwidth}
 \end{figure}
 
-\paragraph{A perceptually uniform color space unconfounded by language}
+\paragraph{Toward a perceptually uniform color space unconfounded by language}
 
 Ample behavioral and neurophysiological data support the hypothesis that the perceptual systems that enable color vision are similar in macaques and humans \citep{schnapf_spectral_1987,gagin_color-detection_2014,horwitz_what_2015,lafer-sousa_color-biased_2016}. 
 The weight of this prior evidence gives us confidence that the present results obtained in monkeys also apply to humans. 
-That is, it seems likely that the CIELUV color space is not perceptually uniform for human observers either, which aligns with the findings of others \citep{stockman_colorimetry_2010,judd_ideal_1970,bujack_non-riemannian_2022}. 
-The non-uniformities in CIELUV and other nominally uniform colorspaces likely have multiple sources; in many cases such colorspaces are strongly constrained to have a small number of parameters, and are designed with very specific viewing conditions in mind.
-A task such as ours, paired with a stimulus-space non-uniformity TCC-v model gives a method by which a minimally constrained uniform colorspace may be created.
-To the extent to which language is a factor in producing color-space non-uniformities, the behavioral data in macaques provide an opportunity to reconstruct a uniform color space unconfounded by language, which may provide a useful insight into colorspace progression along the visual pathway in humans. 
+That is, it seems likely that the CIELUV color space is not perceptually uniform for human observers tested on the present task, a hypothesis we confirm (Figure 6, SI Figure 2) and which comports with other findings \citep{stockman_colorimetry_2010,judd_ideal_1970,bujack_non-riemannian_2022}. 
+The non-uniformities in CIELUV and other nominally uniform colorspaces likely have multiple sources. Colorspaces are generally constrained by a small number of defining parameters and are designed for specific viewing conditions and paradigms, which may partly explain why achieving a truly uniform color space has not been possible. But a truly perceptually uniform color space, defined by equal separations across a large set of tasks that tap both small and large color differences, may simply be unachievable, not for technical reasons but because the concept doesn't align with how the brain uses color (\citep{rosenthal_color_2021}). So, we sought to narrow the goal, to achieve a perceptually uniform color space for the present task. 
+
+The analysis of datasets collected in humans show evidence for both cognitive biases and stimulus-space non-uniformities (Figure 6, SI Figure 2), but teasing apart the relative contribution of these mechanisms is challenging. 
+The aggregate behavioral data in macaques are useful, therefore, because they do not show evidence for consensus cognitive biases and are explained entirely by stimulus space non-uniformities, providing an opportunity to reconstruct a uniform color space.
 
 To generate such a space, we computed, empirically, a transformed color space such that the macaques would, on average, show no choice bias. 
 We refer to this space as the Macaque Uniform Color Space (MUCS). 
 When colors evenly sampled from the CIELUV space (Figure 7a) are plotted within this macaque-derived uniform color space, colors are bunched around the teal part of the space, and to a lesser extent, around the peach-colored part of the space (Figure 7b). We can also take colors sampled at uniform intervals in MUCS and project them into CIELUV (Figure 7c). 
 This arrangement shows relative bunching around lime colors and lavender colors, which correspond to the colors of the poles of the S-cone-opponent axes. 
-These results provide clues to the origin of the stimulus space non-uniformity in CIELUV.
-
-At present our "colorspace" has only minimal coverage - it only considers colors which are isoluminant and in a ring which was originally specified in CIELUV.
-Using it beyond a very specific range of applications would require extrapolation, either through cautious mathematical extrapolation or through the collection of new data determined by the need at hand.
+These results provide clues to the origin of the stimulus space non-uniformity in CIELUV. Future work could extend the approach to stimuli that sample more of the gamut of human color perception and other tasks. 
 
 \paragraph{Discussion}
 
-Throughout this paper, our linking of cognitive biases to color categories has relied heavily upon the conclusion of \citet{bae_stimulus-specific_2014} that categorical processing of color results in biases towards color category centers.
-While this seems like a reasonable hypothesis, supported by the evidence so far, it seems likely that as future research is conducted additional nuance will be added to this picture, which may in turn refine our understanding of the experiments reported here.
-For example, it is currently unclear to what extent biases are driven by attractor points versus repellor points - to our knowledge there has so far been no study which has been able to separate these two potential mechanisms.
-Further, almost all work we are aware of (with the partial exception of \citet{muchhala_does_2022}) has limited the stimulus space to a set of isoluminant and isosaturated colors - this is an understandable and practical compromise but clearly leaves a great deal to be desired.
-We are hopeful that new techniques might soon allow for the collection of data which more comprehensively explores the connection between attractor points and color categories.
+Monkeys performing a color matching task showed biases in their errors, like humans, but unlike humans the biases were entirely explained by non-uniformities in the color space. The biases in humans, meanwhile, also required a cognitive explanation. Taken together the results imply that humans show consensus color categories and monkeys do not. Importantly, the present work depends on the assumption that categories give rise to biases in the color matching task, an assumption that is warranted \citet{bae_stimulus-specific_2014}. While we model the biases as attractors, they could arise from repellors, or a combination. 
 
-We conclude from the current results that monkeys do not have color categories.
-Some enthusiastic reviewers would like us to consider non-linguistic possibilities and have provided two for our consideration: (1) Perhaps monkey cognition is different in how sensory signals are processed to form categories in a fashion which means they are not recovered in our task, (2) that macaques are born with innate color categories, but that our particular macaques lost them at some point in their development.
+The present results are consistent with the idea that color ordering is innate. The similarity matrices obtained for data collected in the monkeys shows structure along the inverse diagonal, which would not be evident if the monkeys possessed no capacity for color ordering. Moreover, one animal showed clear evidence of a private color category, indicating that monkeys possess the capacity to form color categories. But contrary to longstanding arguments in empirical philosophy \citep{RN18743}, the present results imply that perception by itself is not sufficient to generate consensus color categories. Indeed, color perception is unnecessary for people to generate rich conceptual knowledge of color, including color categories \citep{kim_shared_2021}.  
 
-To the first possibility: monkeys have similar cones, similar color-detection thresholds (if anything more sensitive than humans, see \citep{gagin_color-detection_2014}), similar visual cortex (up through the ventral visual pathway, see \cite{lafer-sousa_color-biased_2016}), and show similar attentional mechanisms to humans, all of which suggest that alternative explanations cannot be found in the normal operation of the visual system. 
-This leaves differences in cognition, which is the explanation we appeal to, to explain the results. 
-We believe that this is semantically equivalent to the claim we are making.
+A salient difference between monkeys and humans is the expression of language, which provides a plausible mechanism by which an innate potential to form color categories could achieve consensus. But are there possible non-linguistic explanations for the difference in results obtained in monkeys compared to humans? Monkey brains are considerably different from human brains in many respects, and there may be unrecognized physiological differences that account for the behavioral differences. Yet monkeys have similar cones, similar color-detection thresholds (\citep{gagin_color-detection_2014,hass_chromatic_2015}), similar visual cortex extending through the ventral visual pathway \cite{lafer-sousa_color-biased_2016})CITE HAILE et al Neuroimage 2019.
 
-To the second possibility: we agree that many innate behaviors require appropriate developmental experience to be expressed as adults. 
-It is possible that the animals have innate color categories and that they do not have the appropriate environmental or other experience to retain these. 
-We very much doubt that this has occurred in this case. 
-The animals live in social colonies with lots of enrichment - they eat natural fruits and have many colored toys. 
-While this is not "nature", it provides sufficient experience for the expression of every other measured cognitive behavior in the animals (including memory, face recognition, vocalization, etc.). 
-As far as we are aware, the developmental literature indicates that this environment is permissive of the expression of innate behaviors, and that there must be radical limitations in the environment for innate behaviors to be lost - for example deprivation of face exposure.
+and they are thought to show similar visual cognition to humans, all of which suggests that alternative explanations cannot be found in the normal operation of the visual system. This leaves differences in higher-level cognition and language. 
+
+Alternatively, perhaps macaques are born with innate color categories, but lose them. This seems unlikely. The animals studied presently live in social colonies with enrichment, including natural fruits and colored toys. Such an environment is not one of deprivation and provides sufficient experience for the expression of all other innate behaviors that have been assessed, including vocalizations, foraging, face recognition, grooming, and sexual function. 
 
 The mixture-model results in macaque monkeys are strikingly different from those in humans, but are similar in one regard: they both show repeller points aligned with the poles of the S-cone axis (compare the zero-crossings of the positive slopes in Figure 1e with those in Figure 2c; SI Figure 2) \citep{skelton_biological_2017,bae_why_2015,panichello_error-correcting_2019}. 
-This commonality supports the idea that the present results apply to the human case, and suggests that the non-uniformity in CIELUV arises because the contribution of S-cone signals to supra-threshold color matching (in monkeys or humans) has not been accurately estimated. 
-Such an inaccuracy may reflect differences between threshold measurements (such as were used in the measurement of the CIE standard observers, the data from which was subsequently used to develop colorspaces such as CIELUV) versus appearance measurements (such as those made presently), along with differences in the neural circuits that handle S versus L/M signals \citep{RN655, conway_color_2014}. 
+This commonality suggests an orign for the stimulus space non-uniformity evident in data from both monkeys and humans, namely that the contribution of S-cone signals to supra-threshold color matching has not been accurately estimated. 
+Such an inaccuracy may reflect differences between threshold measurements versus appearance measurements, along with differences in the neural circuits that handle S versus L/M signals \citep{RN655, conway_color_2014}. 
 
-We have thus far worked on the assumption that cognitive biases (represented by offsets in responses) and stimulus-space non-uniformities are fundamentally different mechanisms - one active and purposeful, and the other an unintended side-effect of how we define colorspace.
-Taken this way our study shows that there are differences between monkeys and humans in high-level processes: humans show consensus color categories and monkeys do not. 
-But it is also plausible that the relationship between these two mechanisms is less clear-cut; could it be that stimulus-space non-uniformities (perhaps task-dependent ones) are also an active mechanism by which beneficial biases might be introduced?
+We have thus far assumed that biases of cognitive and stimulus origin are independent. But it is plausible that these two mechanisms interact. For example, stimulus-space non-uniformities, which may be task-dependent, could reflect a cognitive mechanism employed to adapt to the task. . 
 Further work will be required to understand how these mechanisms might interact, and to what extent each exists with purpose.
 
-The present results are consistent with the idea that color ordering and the capacity to form color categories are innate - if the monkeys showed no capacity for color ordering, their pattern of errors would be entirely random and there would be no structure in the similarity matrices, i.e. the matrices would be uniform across the whole square and wouldn't show strong clustering along the diagonal. 
-But contrary to longstanding arguments in empirical philosophy \citep{RN18743}, the present results imply that perception by itself is not sufficient to generate consensus color categories. 
-Prior work with congenitally blind people has shown that color perception is unnecessary for people to generate rich conceptual knowledge of color, including color categories \citep{kim_shared_2021}. 
+
 The prior work and the present work taken together show that perception is neither necessary nor sufficient for the emergence of consensus color categories, and consensus color categories are therefore likely not innate. 
 
 If color categories are not innate, where do they come from? 
 Color categories appear to reflect the behavioral relevance of colors in the world \citep{RN18616,gibson_color_2017}; the relevance of things is partially culturally determined, introducing a role for language in shaping consensus color categories. Given that color categories can be learned, as clearly evident in at least one macaque in our study (Figure 5) and two macaques in another study \citep{panichello_error-correcting_2019}, the introduction of language provides a mechanism by which cultures can form consensus about color categories. 
+
 For example, universal patterns in color naming predict which parts of scenes are labeled as objects \citep{gibson_color_2017}. 
 We speculate that the choice biases in humans will partially reflect the stimulus-space non-uniformities observed in monkeys as well as cognitive biases that have achieved consensus through shared behavioral relevance communicated by language \citep{RN18511,RN18514,RN18602}. 
 
