@@ -1,4 +1,4 @@
-function cleandata = combineData(dirname,rn,bootstrap)
+function cleandata = combineData(dirname,rn,bootstrap,eccentricity)
 
 % To combine data from individual files into one
 % matching number of trials so that each monkey is equally represented
@@ -7,13 +7,13 @@ function cleandata = combineData(dirname,rn,bootstrap)
 % > cleandata = combineData('.')
 % > save("combinedData.mat","cleandata")
 
-if ~exist('rn','var')
+if ~exist('rn','var') || isempty(rn)
     rn = 5; % random number seed picked by hand
     warning('Using default random number')
 end
 rng(rn); % fix random number generator for reproducibility
 
-if ~exist('bootstrap','var')
+if ~exist('bootstrap','var') || isempty(bootstrap)
     bootstrap = false;
 end
 
@@ -26,6 +26,28 @@ filename{4} = '220322--220823_Morty_data.mat';
 
 for dataset = 1:length(filename)
     tempdata{dataset} = load([dirname,filesep,filename{dataset}]);
+end
+
+%% Subset by eccentricity
+
+if exist('eccentricity','var')
+    for dataset = 1:length(filename)
+        for trial = 1:length(tempdata{dataset}.cleandata.trialdata.dirname)
+            cue_x = tempdata{1, dataset}.cleandata.trialdata.cue_loc{trial, 1}(1);
+            cue_y = tempdata{1, dataset}.cleandata.trialdata.cue_loc{trial, 1}(2);
+            tempdata{1,dataset}.cleandata.trialdata.cue_eccentricity(trial,1) = sqrt((cue_x-(1920/2))^2 + (cue_y-(1080/2))^2);
+        end
+        if strcmp(eccentricity,'upper') %remove certain eccentricities
+            eccIndex = tempdata{dataset}.cleandata.trialdata.cue_eccentricity(:,1) >= mean(tempdata{dataset}.cleandata.trialdata.cue_eccentricity(:,1));
+        else
+            eccIndex = tempdata{dataset}.cleandata.trialdata.cue_eccentricity(:,1) < mean(tempdata{dataset}.cleandata.trialdata.cue_eccentricity(:,1));
+        end
+        tempdata{1,dataset}.cleandata.trialdata.dirname     = tempdata{1,dataset}.cleandata.trialdata.dirname(eccIndex);
+        tempdata{1,dataset}.cleandata.trialdata.paradigm    = tempdata{1,dataset}.cleandata.trialdata.paradigm(eccIndex);
+        tempdata{1,dataset}.cleandata.trialdata.choices     = tempdata{1,dataset}.cleandata.trialdata.choices(eccIndex);
+        tempdata{1,dataset}.cleandata.trialdata.cues        = tempdata{1,dataset}.cleandata.trialdata.cues(eccIndex);
+        tempdata{1,dataset}.cleandata.trialdata.chosen      = tempdata{1,dataset}.cleandata.trialdata.chosen(eccIndex);
+    end
 end
 
 %% Strip out aborts
