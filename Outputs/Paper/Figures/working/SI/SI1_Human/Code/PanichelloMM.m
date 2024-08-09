@@ -193,6 +193,72 @@ plotSimilarityMatrix(choiceProb_diag*2,... % multiplying by 2 just to increase v
     [filename,'_',num2str(closestToZero)],'../',...
     closestToZero,false,model.stimCols) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
 
+%% TCC Models
 
+data.trialdata.nBig   = 360;
+data.trialdata.nSmall = 360;
+data.trialdata.nTrials = size(data.trialdata.cues,1);
+rn = 0;
+
+%% D-prime and gaussian width
+
+params = [0,1,0,0,1,0,0];
+
+[x_dpgw,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn);
+
+save(['Panichello_TCC_dpgw_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+disp(x_dpgw(1))
+disp(x_dpgw(2))
+
+%% SSNU model
+
+params = [0,0,0,1,0,0,0];
+
+[x_ssnu,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Panichello_TCC_ssnu_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+%% Offset gaussian model
+
+params = [0,0,0,0,0,0,1];
+
+[x_og,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],[],...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Panichello_TCC_og_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+%% SSNU model (reduced)
+
+params = [0,0,0,1,0,0,0];
+
+[x_ssnu16,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,16,[],...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Panichello_TCC_ssnu16_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
+
+%% Offset gaussian model (reduced)
+
+params = [0,0,0,0,0,0,1];
+
+[x_og16,aic,bic,nll_x,x0] = ParameterEstimator(data,params,rn,[],16,...
+    'dPrime',           x_dpgw(1),...
+    'gaussianWidth',    x_dpgw(2));
+
+save(['Panichello_TCC_og16_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],...
+    '-regexp', '^(?!(data)$).')
+% save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
 
 
