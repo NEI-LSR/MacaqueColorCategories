@@ -219,7 +219,8 @@ The four recovered color categories do not perfectly line up with the four commo
 The discrepancy may arise because of limitations imposed by ensuring equal saturation and luminance among the colors (the resulting set of stimuli has neither a good red nor a good yellow) (see \citep{bae_why_2015}). 
 Alternatively, the  recovered categories may correspond to repellor points (positive zero-crossing) defined by the poles of the cone-opponent mechanisms (arrowheads, Figure 1e), with the exception of the L-M pole.
 
-The recovery of four categories has been replicated in English speakers \citep{panichello_error-correcting_2019} including by us (SI Figure 2). The four categories are at roughly matching locations across studies across (SI Figure 2). 
+The recovery of four categories has been replicated in English speakers \citep{panichello_error-correcting_2019} including by us (SI Figure 2). 
+The four categories are at roughly matching locations across studies across (SI Figure 2). 
 
 \begin{figure}
     \begin{fullwidth}
@@ -379,7 +380,8 @@ The analysis of the average data collected in monkeys shows no evidence for cogn
 But this conclusion depends on (1) the capacity of the task and analysis to recover cognitive biases; and (2) the existence of consensus cognitive color categories in humans. 
 Regarding (1), the data in one individual monkey shows clear evidence for an idiosyncratic (private) cognitive bias (Figure 5). 
 Regarding (2), we used the TCC-v model to re-analyze three datasets collected in human subjects by three independent groups (Figure 6, SI Figure 2). 
-The analysis recovers evidence for both stimulus space non-uniformities and cognitive biases: the choice probability matrix (Figure 6b) shows deviations from the diagonal, like Figure 3e, as well as dilations along the diagonal, like Figure 3f. For example, the blue attractor and the pink attractor are associated with relatively wide distributions of matches (Figure 6c, upper), indicative of stimulus-space non-uniformities, while the orange attractor is associated with a relatively narrow and asymmetric distribution of matches (Figure 6c, bottom), indicative of a cognitive bias.  
+The analysis recovers evidence for both stimulus space non-uniformities and cognitive biases: the choice probability matrix (Figure 6b) shows deviations from the diagonal, like Figure 3e, as well as dilations along the diagonal, like Figure 3f. 
+For example, the blue attractor and the pink attractor are associated with relatively wide distributions of matches (Figure 6c, upper), indicative of stimulus-space non-uniformities, while the orange attractor is associated with a relatively narrow and asymmetric distribution of matches (Figure 6c, bottom), indicative of a cognitive bias.  
 
 For quantitative assessment, we fit generative models to these data. 
 For a "null" model, a "cognitive bias" model, and a "stimulus-space non-uniformity" model we find AIC values of [76563,74864,75585]. 
@@ -388,12 +390,14 @@ The relative advantage of the cognitive-bias model is also evident from the BIC 
 
 \paragraph{The potential impact of task differences}
 
-The continuous-matching task needed to be  modified to make it suitable for use in monkeys. Could these modifications impact the interpretation of the results? 
+The continuous-matching task needed to be modified to make it suitable for use in monkeys. 
+Could these modifications impact the interpretation of the results? 
 The two modifications are: changing the match options from a continuous colored ring to four discrete choices (alternative forced choice, AFC) on each trial; and providing the animals with feedback after each trial. 
 We do not believe either difference in task design has an impact on the main conclusions. 
 First, we collected data in human subjects on the AFC, and despite the limitations of these data, the pattern of results is comparable (SI Figure 2; the data are limited because they were collected using an on-line platform). 
 Second, we see no evidence that providing feedback reduces errors in matches, which is the concern raised by the second modification. 
-On the contrary, the data collected in monkeys show pronounced biases. Additional data will need to be collected in humans on a task precisely matched to the one deployed here in monkeys to fully address possible interactions between task and mechanism. 
+On the contrary, the data collected in monkeys show pronounced biases. 
+Additional data will need to be collected in humans on a task precisely matched to the one deployed here in monkeys to fully address possible interactions between task and mechanism. 
 
 \begin{figure}
     \begin{fullwidth}
@@ -770,7 +774,7 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{SI1_psychometric.tiff}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI1_psychometric.jpg}
     \caption{\textbf{Psychometric functions for the four individual animals (PO, CA, BU, MO) on the color-matching task illustrated in Figure 1.}
     Completed trials for the four animals were: 76121; 54555; 24526; 54252.
     } 
@@ -781,15 +785,19 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth,trim={0 4cm 0 0},clip]{SI_Human_2.tiff}
+    \includegraphics[width=\textwidth,trim={0 5cm 0 0},clip]{Outputs/Paper/Figures/flat/SI_Human_2.png}
     \caption{\textbf{Color categories assessed in human participants with a nonverbal paradigm. }
-    Prior work by \citet{bae_why_2015} and \citet{panichello_error-correcting_2019} has used a task in which participants match the color of a cue to a continuous ring of colors; those published results were obtained with a combination of in-person experiments and on-line experiment, with a memory delay and without. 
+    Prior work by \citet{panichello_error-correcting_2019} and \citet{bae_why_2015} has used a task in which participants match the color of a cue to a continuous ring of colors; those published results were obtained with a combination of in-person experiments and on-line experiment, with a memory delay and without. 
     The results are broadly consistent, recovering four color categories by mixture-model analysis, corresponding to blue, green, orange and pink. 
     The present work adapted the paradigm so that the match options in each trial were four discrete targets randomly drawn from 64 colors sampling the color space. 
     The data shown on the right of this figure were obtained in human participants, with experiments conducted online with Amazon Mechanical Turk. 
     These results are again broadly consistent with the prior work using the continuous-matching ring in recovering, by mixture analysis, four significant categories corresponding to blue, green, orange, and pink. 
-    The bottom row of this figure shows the choice probability matrices for the \citet{bae_why_2015} and \citet{panichello_error-correcting_2019} data, and the similarity matrix for our human data, with the mixture-model-identified attractor points highlighted.
-    The stimuli in the \citep{bae_why_2015, panichello_error-correcting_2019} were defined in CIELAB, while the stimuli in the present work were defined in CIELUV; this difference in color space is associated with a slight clockwise rotation of the cone-opponent axes. The S axis poles provide a useful landmark; they are associated with positive slopes in all three data sets.
+    The bottom row of this figure shows the choice probability matrices for the \citet{panichello_error-correcting_2019} and \citet{bae_why_2015} data, and the similarity matrix for our human data, with the mixture-model-identified attractor points highlighted.
+    Due to the lower sampling interval of our human data (64 hues compared to 360 and 180 for \citet{panichello_error-correcting_2019} and \citet{bae_why_2015} respectively) visual assessment of the similarity matrix is challenging for this dataset.
+    Fitting models to this data reveals that both cognitive bias and stimulus-space non-uniformity models provide better explanatory power than a null model, with the stimulus-space non-uniformity model the better of the two non-null models (AIC/BIC for null, cognitive bias, and stimulus-space non-uniformity models respectively are: [62703,61878,61768] / [62721,62455,62344]).
+    Further work is needed to understand the interaction of these mechanisms.
+    %Note also that we only collected data for distrator sets where the distractors were chromatically close to the cue, which leads to two wide stripes in the choice probability matrix which are filled by noise.
+    The stimuli in the prior work \citep{bae_why_2015, panichello_error-correcting_2019} were defined in CIELAB, while the stimuli in the present work were defined in CIELUV; this difference in color space is associated with a slight clockwise rotation of the cone-opponent axes. The S axis poles provide a useful landmark; they are associated with positive slopes in all three data sets.
     } 
     \label{fig:Human}
     \end{fullwidth}
@@ -798,7 +806,7 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{SI_Bae_indi.tiff}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI_Bae_indi.png}
     \caption{\textbf{Models fit to the individual data of \citet{bae_why_2015} (delayed).}
     The delayed data of \citep{bae_why_2015} consists of data from 3 participants, who completed 3600 trials each, providing sufficient data for a meaningful individual-level analysis.
     We present individual-level mixture models and choice probability matrices.
@@ -813,7 +821,7 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{SI3_MMBreakOut_2.tiff}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI3_MMBreakOut_2.jpg}
     \caption{\textbf{Gaussian fits from the Mixture Model.}
     Each trace shows the Gaussian fit for one of the 64 target colors (large number in each panel corresponds to the cue color) used in the color-matching task, as per Equation 1; data averaged over four animals. The extent to which each data point is black versus white indicates the number of trials that provided that choice option, normalized for each cue (the pair of smaller numbers below the cue-color number provides the range: the larger number corresponds to the black symbol, and the smaller number to white); see Methods for how the curves were fit to the data. 
     } 
@@ -824,7 +832,7 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{SI4_MM.tiff}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI4_MM.jpg}
     \caption{\textbf{Mixture-model analysis of the individual data for the four animals in the color-matching task.}
     Data shown in the same format as Figure 2c.
     All data for each animal is included (in contrast to Figures 2b,c where data were subsampled to ensure equal contributions from each animal).
@@ -836,7 +844,7 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{SI5_IndTCCv.tiff}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI5_IndTCCv.jpg}
     \caption{\textbf{Similarity matrices for free similarity matrix models, fit to individual data.}
     The order of the plots is the same as the order in other figures, PO, CA, BU, MO. 
     These plots use the full set of data for each animal.
@@ -849,7 +857,7 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{SI6_choiceMatrices.tiff}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI6_choiceMatrices.png}
     \caption{\textbf{Choice probability matrices for free similarity matrix models, for the four individuals.}
     As per the similarity matrices presented, each column represents a cue, and each row represents a choice. 
     Here, however, rather than the similarity between cue/choice pairs we show the probability of selection. 
@@ -863,7 +871,7 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \centering
     \begin{fullwidth}
-    \includegraphics[width=\textwidth+4cm]{SI7_distanceMetricComparison.tiff}
+    \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/SI7_distanceMetricComparison.png}
     \caption{\textbf{Comparing distance metrics: angular distance vs Euclidean distance.}
     We inherit the practice of using angular distance as our distance metric from prior work \citep{bae_why_2015,panichello_error-correcting_2019}, but another reasonable distance metric exists: the Euclidean distance in CIELAB and CIELUV is referred to as "Delta E". 
 	These two metrics are closely correlated at lower values, diverging increasingly at higher values. 
@@ -882,13 +890,12 @@ Writing – review \& editing: BRC, DJG\newline
 \begin{figure}
     \begin{fullwidth}
     \centering
-      \includegraphics[width=\textwidth+4cm]{F7_choiceProbVsSim.tiff}
+      \includegraphics[width=\textwidth+4cm]{Outputs/Paper/Figures/flat/F7_choiceProbVsSim.png}
            \caption{\textbf{Comparison of Choice Count Matrices, Choice Probability Matrices, and Similarity Matrices}.
            Choice count matrices describe the number of times a specific choice is made. 
            Choice probability matrices normalise for the number of times a particular choice was available as a choice option. 
            Similarity matrices are created through model fitting and represent the perceptual similarity between stimuli, and are beneficial since they are not influenced by mixed viability of distractors (see text for further details).
-           Plots shown are for the combined monkey data. 
-           For individual data, see SI Figure 5 and SI Figure 6.}
+           Plots shown are for the combined monkey data. For individual data, see SI Figure 5 and SI Figure 6.}
 		\label{fig:choiceProbVsSim}
     \end{fullwidth}
 \end{figure}
