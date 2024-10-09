@@ -676,37 +676,6 @@ The cost of this is that it does not allow for a distinction between the impact 
 In practice, we found that these parameters were highly correlated, and that reduction to a single parameter substantially reduced the computational cost of model fitting, and produced parameter estimates that were more resistant to variation in model-fitting starting values. 
 This simplification also made it easier to modify the model; for example, to allow for the peak of the function to not be at 0 (this affords the TCC-v model the same ability as the mixture model to capture offsets).
 
-\paragraph{Choice Probability Matrices vs. Similarity Matrices}
-
-A choice probability matrix is a graphical representation of the probability that choice $y$ will be chosen given cue $x$ (Si Figure 9, middle).
-To construct such a matrix, one counts the choices which were made in response to each cue, producing what we can refer to as a choice count matrix (SI Figure 9, left), and then divides each cell by the number of times that each cue/choice combination was presented. 
-This normalizes for the possibility that some cue/choice combinations were presented more than other combinations. 
-This process disregards any information about what the unchosen distractors were on a given trial.
-
-In paradigms which use a continuous response space the set of choices is the same on each trial – the full set of possible choices. 
-This is not the case for our reduced AFC paradigm, and this introduces a potential issue which needs consideration.
-
-Imagine a trial with three distractors which are all close to one another (let's say that they are 5, 6, and 7 colorimetric units away from the cue).
-On another trial, imagine that one distractor is a much more viable choice option than the other two (let's say the choices are 5, 25 and 26 units away from the cue).
-The odds of picking the distractor that is 5 units away is different on these two trials - it is more likely on the second trial, because the other distractors are less viable options. 
-This becomes a potential issue because to counterbalance trials such that each cue is shown with the full set of possible distractors would require roughly 2.5 million trials (nchoosek(63,3) * 64).
-Without counterbalancing, it is not possible to disentangle differences in choice probability which arise due to perceptual similarity (which is what we are aiming to measure) vs differences in distractor viability.
-
-We avoid having to collect a complete set of 2.5 million trials by employing the concept of a similarity matrix.
-A similarity matrix is the core component of a TCC-v model, and maps the similarity between cues and choices. 
-Using it, the similarity between the cue and each of the choices on a particular trial (and also the similarity between each of the choices themselves) can be used to compute the probability of each choice being selected.
-While we can compute the choice probability matrix rather simply, as described above, the creation of a similarity matrix requires a model-fitting approach – a similarity matrix is randomly initialized with values, and the likelihood of the data given that matrix is computed, then the matrix is randomly perturbed and the likelihood of the data is recomputed, and then perturbed again in whatever directions seem to increase the likelihood of the data, setting forth an iterative process whereby the similarity matrix is perturbed until a maximum in likelihood is reached, and our best estimate of the underlying similarity matrix is thus settled upon.
-This is a computationally intensive process, and for datasets with many choices (such as those with a continuous response space), we have been unable to fit similarity matrices. 
-Thankfully, there is a trade-off: data collected with continuous response spaces see less benefit of a similarity matrix over a probability matrix. 
-For such datasets, as the number of trials increases the probability matrix increasingly approximates the similarity matrix.
-It is expected that choice probability matrices and similarity matrices will be highly correlated and show the same structure.
-
-A related issue, also addressed by employing the concept a similarity matrix, is the artifact caused by the inclusion of a direct match on every trial in our paradigm. 
-This can be thought of as an unequal counterbalancing which no number of repeated trials would be able to balance out, but it is necessary for our training of the monkeys (since there needs to be a clear rubric for what choices are "correct" and thus rewarded).
-Note how the choice count matrices and choice probability matrices for our data appear to show an elevated diagonal. 
-The reason this exists in the choice count matrix is clear – those option are simply presented more frequently, but the reason this survives the normalization (by the number of times that each cue/choice combination was presented) is less obvious: any non-match choice which is close to the direct match will always have a viable competitor (the match), whereas the match choice won't always have a viable competitor (since it is possible that the distractors are all distant on a particular trial).
-This leads to an increased probability of selecting the matching choice relative to an incorrect choice. This issue only affects choice probability matrices; it does not affect similarity matrices.
-
 \paragraph{Quantitative Model Comparison}
 To compare the relative performance of models, we computed Bayesian Information Criterion (BIC) values for each model from the NLL. 
 The BIC values provide a unit by which we can assess whether the differences between NLL are meaningful, penalizing for number of parameters and number of trials. 
@@ -906,6 +875,38 @@ Writing – review \& editing: BRC, DJG\newline
 		\label{fig:choiceProbVsSim}
     \end{fullwidth}
 \end{figure}
+
+\newpage
+\paragraph{Choice Probability Matrices vs. Similarity Matrices}
+
+A choice probability matrix is a graphical representation of the probability that choice $y$ will be chosen given cue $x$ (Si Figure 9, middle).
+To construct such a matrix, one counts the choices which were made in response to each cue, producing what we can refer to as a choice count matrix (SI Figure 9, left), and then divides each cell by the number of times that each cue/choice combination was presented. 
+This normalizes for the possibility that some cue/choice combinations were presented more than other combinations. 
+This process disregards any information about what the unchosen distractors were on a given trial.
+
+In paradigms which use a continuous response space the set of choices is the same on each trial – the full set of possible choices. 
+This is not the case for our reduced AFC paradigm, and this introduces a potential issue which needs consideration.
+
+Imagine a trial with three distractors which are all close to one another (let's say that they are 5, 6, and 7 colorimetric units away from the cue).
+On another trial, imagine that one distractor is a much more viable choice option than the other two (let's say the choices are 5, 25 and 26 units away from the cue).
+The odds of picking the distractor that is 5 units away is different on these two trials - it is more likely on the second trial, because the other distractors are less viable options. 
+This becomes a potential issue because to counterbalance trials such that each cue is shown with the full set of possible distractors would require roughly 2.5 million trials (nchoosek(63,3) * 64).
+Without counterbalancing, it is not possible to disentangle differences in choice probability which arise due to perceptual similarity (which is what we are aiming to measure) vs differences in distractor viability.
+
+We avoid having to collect a complete set of 2.5 million trials by employing the concept of a similarity matrix.
+A similarity matrix is the core component of a TCC-v model, and maps the similarity between cues and choices. 
+Using it, the similarity between the cue and each of the choices on a particular trial (and also the similarity between each of the choices themselves) can be used to compute the probability of each choice being selected.
+While we can compute the choice probability matrix rather simply, as described above, the creation of a similarity matrix requires a model-fitting approach – a similarity matrix is randomly initialized with values, and the likelihood of the data given that matrix is computed, then the matrix is randomly perturbed and the likelihood of the data is recomputed, and then perturbed again in whatever directions seem to increase the likelihood of the data, setting forth an iterative process whereby the similarity matrix is perturbed until a maximum in likelihood is reached, and our best estimate of the underlying similarity matrix is thus settled upon.
+This is a computationally intensive process, and for datasets with many choices (such as those with a continuous response space), we have been unable to fit similarity matrices. 
+Thankfully, there is a trade-off: data collected with continuous response spaces see less benefit of a similarity matrix over a probability matrix. 
+For such datasets, as the number of trials increases the probability matrix increasingly approximates the similarity matrix.
+It is expected that choice probability matrices and similarity matrices will be highly correlated and show the same structure.
+
+A related issue, also addressed by employing the concept a similarity matrix, is the artifact caused by the inclusion of a direct match on every trial in our paradigm. 
+This can be thought of as an unequal counterbalancing which no number of repeated trials would be able to balance out, but it is necessary for our training of the monkeys (since there needs to be a clear rubric for what choices are "correct" and thus rewarded).
+Note how the choice count matrices and choice probability matrices for our data appear to show an elevated diagonal. 
+The reason this exists in the choice count matrix is clear – those option are simply presented more frequently, but the reason this survives the normalization (by the number of times that each cue/choice combination was presented) is less obvious: any non-match choice which is close to the direct match will always have a viable competitor (the match), whereas the match choice won't always have a viable competitor (since it is possible that the distractors are all distant on a particular trial).
+This leads to an increased probability of selecting the matching choice relative to an incorrect choice. This issue only affects choice probability matrices; it does not affect similarity matrices.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
