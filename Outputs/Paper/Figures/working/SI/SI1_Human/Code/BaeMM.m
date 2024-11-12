@@ -183,7 +183,7 @@ choiceProb_diag = choiceProb_diag/max(choiceProb_diag(:));
 filename = 'CP_Bae';
 
 % plotSimilarityMatrix(model.choice_probability) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
-plotSimilarityMatrix(choiceProb_diag*2,filename,'../',[],false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+plotSimilarityMatrix(choiceProb_diag*2,filename,'../',[],false,model.stimCols) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
 
 % TODO Relabel similarity as choice probability
 
@@ -215,7 +215,7 @@ end
 
 plotSimilarityMatrix(choiceProb_diag*2,...
     [filename,'_',num2str(closestToZero)],'../',...
-    closestToZero,false) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
+    closestToZero,false,model.stimCols) % using the same function, but note that this is *not* a similarity matrix (that would take into account the specific interactions between the available choices on each trial)
 
 
 %%
@@ -266,8 +266,9 @@ end
 stimCols = generateStimCols('nBig',180,'sat',model.stimCols(2));
 stimCols_sRGB = LabTosRGB([repelem(model.stimCols(1), 180); stimCols]);
 
-figure, hold on
-xlim([-90,90])
+figure('Position',[744 530 560 210]), 
+hold on
+xlim([-45,45])
 ylim([0,0.1])
 
 xline(0,'k:','LineWidth', 2, 'HandleVisibility','off')
@@ -286,14 +287,22 @@ for i = [1,2,3]
     % end
 end
 
+p = plot(model.gaussfits{80}); %160deg
+p.Color = stimCols_sRGB(80,:);
+p.LineWidth = 2;
+p.LineStyle = '--';
+
+legend off
+
 yticks([0,0.1])
 ylabel('Choice Probability')
-xticks(-90:45:90)
+xticks(-45:45:45)
 % xlabel() % TODO Is the x-axis interval or degree here?
 saveas(gcf,['..',filesep,'exGaus1.svg'])
 
-figure, hold on
-xlim([-90,90])
+figure('Position',[744 530 560 210]), 
+hold on
+xlim([-45,45])
 ylim([0,0.1])
 xline(0,'k:','LineWidth',2,'HandleVisibility','off')
 
@@ -301,20 +310,17 @@ for i = [-8,8]
     p = plot(model.gaussfits{closestToZero(1)+i});
     p.Color = stimCols_sRGB(closestToZero(1)+i,:);
     p.LineWidth = 2;
-    if i == -8
-        p.LineStyle = '--';
-    elseif i == 8
-        p.LineStyle = '-.';
-    end
 end
 
 yticks([0,0.1])
 ylabel('Choice Probability')
-xticks(-90:45:90)
+xticks(-45:45:45)
 % xlabel() % TODO Is the x-axis interval or degree here?
 
-legend({['Gaussian for cue ',num2str((closestToZero(1)-8))],...
-    ['Gaussian for cue ',num2str((closestToZero(1)+8))]})
+% legend({['Gaussian for cue ',num2str((closestToZero(1)-8))],...
+%     ['Gaussian for cue ',num2str((closestToZero(1)+8))]})
+
+legend off 
 
 saveas(gcf,['..',filesep,'exGaus2.svg'])
 
@@ -420,6 +426,26 @@ nParam = 182;
 load('Bae_TCC_og_0240725-183015.mat')
 % plotSimilarityMatrix(x, filename, '../')
 nParam = 182;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+%%
+clc
+
+% load('Bae_TCC_og16_0240727-050751.mat')
+% % plotSimilarityMatrix(x, filename, '../')
+% nParam = 18;
+% [aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('Bae_TCC_og16_0240727-142625.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 18;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+
+
+load('Bae_TCC_ssnu16_0240725-235622.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 18;
 [aic,bic] = aicbic(-nll_x,nParam,nTrials)
 
 

@@ -2,7 +2,7 @@
 
 %% Options
 
-clc, clear, %close all
+clc, clear, close all
 
 % Determine the depth of the analysis that you would like to reproduce
 

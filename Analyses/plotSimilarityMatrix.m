@@ -1,4 +1,4 @@
-function plotSimilarityMatrix(x,filename,OutPutFileDir,categoryCenter,withLabels)
+function plotSimilarityMatrix(x,filename,OutPutFileDir,categoryCenter,withLabels,Lab)
 
 %clear, clc, close all
 
@@ -24,7 +24,13 @@ end
 
 %%
 
-stimCols = generateStimCols('nBig',nBig);
+if exist('Lab','var')
+    stimCols = generateStimCols('nBig',nBig,'sat',Lab(2));
+    stimCols_sRGB = LabTosRGB([repelem(Lab(1), nBig); stimCols]);
+else
+    stimCols = generateStimCols('nBig',nBig);
+    stimCols_sRGB = LuvTosRGB([repelem(76.0693, nBig); stimCols]);
+end
 
 if rotateMatrix
     if exist('categoryCenter','var')
@@ -51,15 +57,26 @@ plot([1,nBig],[1,nBig],'k--')
 
 if exist('categoryCenter','var') && ~isempty(categoryCenter) % Add center lines
     if rotateMatrix
-        xline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',3)
-        yline(nBig/2,'Color', LuvTosRGB([76.0693;stimCols(:,nBig/2)]),'LineWidth',3)
+        if exist('Lab','var')
+            xline(nBig/2,'Color', stimCols_sRGB(nBig/2,:),'LineWidth',3)
+            yline(nBig/2,'Color', stimCols_sRGB(nBig/2,:),'LineWidth',3)
+        else
+            xline(nBig/2,'Color', stimCols_sRGB(nBig/2,:),'LineWidth',3)
+            yline(nBig/2,'Color', stimCols_sRGB(nBig/2,:),'LineWidth',3)
+        end
     else
         for i = 1:length(categoryCenter)
             xline(categoryCenter(i),...
-                'Color', LuvTosRGB([76.0693;stimCols(:,categoryCenter(i))]),...
+                'Color', stimCols_sRGB(categoryCenter(i),:),...
                 'LineWidth',3)
         end
     end
+end
+
+if false
+    xline(81,...
+        'Color', stimCols_sRGB(81,:),...
+        'LineWidth',3,'LineStyle','--')
 end
 
 cb1 = colorbar;
@@ -90,7 +107,6 @@ cb2 = colorbar;
 
 lambda = 1:nBig;
 
-stimCols_sRGB = LuvTosRGB([ones(1,nBig)*76.0693;stimCols]);
 ax = gca;
 ax.Colormap = stimCols_sRGB;
 ax.CLim = [min(lambda) max(lambda)];

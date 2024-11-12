@@ -38,10 +38,16 @@ for participant = 2
         warning('Multiple model files for this participant. Using most recent.')
         [~,idx] = sort([ModelFile.datenum]);
         ModelFile = ModelFile(idx);
-        ModelFile = ModelFile(end);
+        ModelFile = ModelFile(end-3);
     end
     load([modelOutputDir,filesep,'MixtureModels',filesep,ModelFile.name],'model')
 end
+
+whichFigures.MixMod_polar    = true;
+
+plotMixtureModel(model,...
+    whichFigures,['t_']) 
+
 
 %%
 
@@ -52,7 +58,7 @@ stimCols = generateStimCols('nBig',64);
 stimCols_sRGB = LabTosRGB([repelem(76.0693, 64); stimCols]);
 
 ylim([0,0.6])
-for j = 8%1:10
+for j = 2%1:10
     figure, hold on
 
     xline(0,'k:','LineWidth', 2, 'HandleVisibility','off')
@@ -66,8 +72,16 @@ for j = 8%1:10
     % title(j)
 end
 
-yticks([0,0.6])
+ylim([0,0.5])
+yticks([0,0.5])
 ylabel('Choice Probability')
 xticks(-90:45:90)
 
+legend off
+
+axis square
+
 saveas(gcf,fullfile('../',['F5_CastorCogBias_','exGaussian_', datestr(now,'yymmdd-HHMMSS'), '.svg']))
+
+hueIndex(closestToZero)
+[hueIndex(closestToZero(2)-j),hueIndex(closestToZero(2)+j)]

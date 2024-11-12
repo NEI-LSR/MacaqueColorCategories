@@ -133,31 +133,39 @@ plotSimilarityMatrix(x,...
 
 %%
 
+clc
+
 nTrials = 46000;
 
 load('MTurk_TCC-dpgw_240730-172702.mat')
 % plotSimilarityMatrix(x, filename, '../')
 nParam = 2;
+% nll_x
 [aic,bic] = aicbic(-nll_x,nParam,nTrials)
 
 load('MTurk_TCC-ssnu_240730-172824.mat')
 % plotSimilarityMatrix(x, filename, '../')
-nParam = 182;
+nParam = 66;
+% nll_x
 [aic,bic] = aicbic(-nll_x,nParam,nTrials)
 
 load('MTurk_TCC-og_240730-172857.mat')
 % plotSimilarityMatrix(x, filename, '../')
-nParam = 182;
+nParam = 66;
+% nll_x
 [aic,bic] = aicbic(-nll_x,nParam,nTrials)
 
+%%
 load('MTurk_TCC-ssnu16_240731-231604.mat')
 % plotSimilarityMatrix(x, filename, '../')
-nParam = 182;
+nParam = 18;
+% nll_x
 [aic,bic] = aicbic(-nll_x,nParam,nTrials)
 
 load('MTurk_TCC-og16_240731-231639.mat')
 % plotSimilarityMatrix(x, filename, '../')
-nParam = 182;
+nParam = 18;
+% nll_x
 [aic,bic] = aicbic(-nll_x,nParam,nTrials)
 
 %%

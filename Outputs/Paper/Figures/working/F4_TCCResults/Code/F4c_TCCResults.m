@@ -12,3 +12,7 @@
 %%
 
 plotbar_NLL_AIC_BIC('Combined','../')
+
+%% Castor
+
+plotbar_NLL_AIC_BIC('Castor','../')

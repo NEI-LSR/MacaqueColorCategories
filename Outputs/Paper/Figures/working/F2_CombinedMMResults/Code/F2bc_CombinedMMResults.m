@@ -10,7 +10,7 @@ clc, clear, close all
 % fromPreProcessedData:      % Generate figures from the pre-processed data
 % fromModelOutput:           % Generate figures from the model outputs only (fastest)
 
-AnalysisDepth = 'fromModelOutput';
+AnalysisDepth = 'fromPreProcessedData';
 
 %% Behind the scenes...
 
@@ -94,33 +94,22 @@ for i = [1,2]
     p = plot(model.gaussfits{closestToZero(i)});
     p.Color = stimCols_sRGB(closestToZero(i),:);
     p.LineWidth = 2;
+    p.DisplayName = ['Gaussian for cue ',num2str(closestToZero(i))];
+end
+
+for i = [1,2]
+    p = plot(model.gaussfits{closestToZero(i)+16});
+    p.Color = stimCols_sRGB(closestToZero(i)+16,:);
+    p.LineWidth = 2;
+    p.LineStyle = '--';
+    p.DisplayName = ['Gaussian for cue ',num2str(closestToZero(i)+16)];
 end
 
 xline(0,'k:','LineWidth', 2, 'HandleVisibility','off')
-
-avmodel = model.gaussfits{closestToZero(2)};
-
-for i = 1:64
-    a(i) = model.gaussfits{i}.a;
-    b(i) = model.gaussfits{i}.b;
-    c(i) = model.gaussfits{i}.c;
-    d(i) = model.gaussfits{i}.d;
-end
-avmodel.a = median(a);
-avmodel.b = median(b);
-avmodel.c = median(c);
-avmodel.d = median(d);
-
-p = plot(avmodel,'k--');
-p.LineWidth = 2;
 
 yticks([0,0.5])
 ylabel('Choice Probability')
 xticks(-90:45:90)
 % xlabel() % TODO Is the x-axis interval or degree here?
-
-legend({['Gaussian for cue ',num2str(closestToZero(1))],...
-    ['Gaussian for cue ',num2str(closestToZero(2))],...
-    'Average gaussian'})
 
 saveas(gcf,fullfile('../',['F2_CombinedMMResults_','exGaussian_', datestr(now,'yymmdd-HHMMSS'), '.svg']))

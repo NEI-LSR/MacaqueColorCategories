@@ -261,4 +261,39 @@ save(['Panichello_TCC_og16_',num2str(rn),datestr(now,'yymmdd-HHMMSS'),'.mat'],..
     '-regexp', '^(?!(data)$).')
 % save everything except data (https://www.mathworks.com/matlabcentral/answers/101287-how-do-i-save-all-of-the-workspace-variables-except-for-a-certain-specified-variable-name-in-matlab#answer_110635)
 
+%%
+
+nTrials = 17775;
+
+% For these the saving got kinda messed up so I should go into each one
+% and double check the NLL values
+
+load('Panichello_TCC_dpgw_0240731-222510.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 2;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('Panichello_TCC_ssnu_0240802-161946.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 362;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('Panichello_TCC_og_0240803-163959.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 362;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+
+
+load('Bae_TCC_og16_0240727-142625.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 18;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+load('Panichello_TCC_og16_0240806-113003.mat')
+% plotSimilarityMatrix(x, filename, '../')
+nParam = 18;
+[aic,bic] = aicbic(-nll_x,nParam,nTrials)
+
+
 
