@@ -10,5 +10,3 @@ To fill them, either clone the repo with `git clone --recurse-submodules https:/
 git submodule init
 git submodule update
 ```
-
-This project also requires PsychToolbox (though not super heavily, mainly just LuvToXYZ to plotting, I think...)
