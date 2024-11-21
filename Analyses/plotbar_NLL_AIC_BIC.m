@@ -13,25 +13,25 @@ d = [repoHomeDir,filesep,'Analyses',filesep,'TCCModels',filesep];
 % p = 'Morty';
 
 if strcmp(p,'Combined')
-    NLLfiles = {'\NLL_230826-101803.csv','\NLL_230831-111225.csv','\NLL_230907-093101.csv'};
+    NLLfiles = {'NLL_230826-101803.csv','NLL_230831-111225.csv','NLL_230907-093101.csv'};
 elseif strcmp(p,'Castor')
-    NLLfiles = {'\NLL_230830-091609.csv','\NLL_230830-105121.csv'};
+    NLLfiles = {'NLL_230830-091609.csv','NLL_230830-105121.csv'};
 elseif strcmp(p,'Pollux')
-    NLLfiles = {'\NLL_230901-034950.csv','\NLL_230902-203220.csv'};
+    NLLfiles = {'NLL_230901-034950.csv','NLL_230902-203220.csv'};
 elseif strcmp(p,'Buster')
-    NLLfiles = {'\NLL_230901-125452.csv','\NLL_230901-143654.csv'};
+    NLLfiles = {'NLL_230901-125452.csv','NLL_230901-143654.csv'};
 elseif strcmp(p,'Morty')
-    NLLfiles = {'\NLL_230903-000444.csv','\NLL_230903-023202.csv'};
+    NLLfiles = {'NLL_230903-000444.csv','NLL_230903-023202.csv'};
 end
 
 for i = 1:4
-    t = readtable([d,p,NLLfiles{1}]);
+    t = readtable([d,p,filesep,NLLfiles{1}]);
     NLL(i) = min(table2array(t(:,i)));
 end
-NLL(end+1) = table2array(readtable([d,p,NLLfiles{2}]));
+NLL(end+1) = table2array(readtable([d,p,filesep,NLLfiles{2}]));
 
 if strcmp(p,'Combined')
-    NLL = [NLL,table2array(readtable([d,p,NLLfiles{3}]))];
+    NLL = [NLL,table2array(readtable([d,p,filesep,NLLfiles{3}]))];
     [AIC,BIC] = aicbic(-NLL,[2,64,64,130,130,64^2],102738);
 else
     [AIC,BIC] = aicbic(-NLL,[2,64,64,130,130],102738);
